@@ -1,0 +1,44 @@
+\chapter{Constrained Hypercube Path}
+\label{chap:hypercube}
+
+The $n$-hypercube is the graph with vertex set $\{0, 1\}^n$ such that two vertices are adjacent whenever their coordinates differ by exactly one component. In this section, we consider the following abstraction of reconfiguration problems involving subsets.
+
+\begin{defn}{(Constrained Hypercube Path).} Given two vertices $s, t$ of the $n-$ hypercube, both contained in a polytope $P := \{x \in \mathbb{R}^n : Ax \leq b\}$ for some $A = (a_{ij}) \in \mathbb{Z}^{d \times n}$ and $b \in \mathbb{Z}^d$, does there exist a path from $s$ to $t$
+in the hypercube, all vertices of which lie in $P$?
+\end{defn}
+
+\section{Problems correlation}
+\todo{To find a better name for that chapter}
+The knapsack (decision) problem involves exactly two linear constraints, and the Knapsack reconfiguration problem can be cast as a special case of the constrained hypercube path problem where $d = 2$. The definitions
+are as follows.
+
+\begin{defn}{(Knapsack (decision) Problem).} Given integers $l$ and $u$ and two sets of integers $S = \{a_1, a_2,\dots, a_n\}$ and $W = \{w_1, w_2,\dots, w_n\}$, does there exist a subset $A \subseteq [ n ]$ such that
+\end{defn}
+
+\begin{defn}{(Knapsack Reconfiguration Problem).} Given two solutions $A_1$ and $A_2$ to an instance of the knapsack problem, can $A_2$ be obtained by repeated $1-$move reconfiguration, begining with $A_i$, so that all intermediate subsets are also solutions ?
+\end{defn}
+
+\begin{theorem}{}The Constrained Hypercube Path problem is \PSPACE-complete, even when $d = O(1)$.
+\end{theorem}
+
+\begin{proof}{Many-way reconfiguration problem $\leq_p$ Constrained Hypercube Path problem}
+The reduction is from the exact cover many-way reconfiguration problem, and is a modification of the
+reduction given in the proof of Theorem $3.3$.  \todo{For this I have to understand and detail Theorem $3.3$}
+\end{proof}
+
+
+\section{Summary}
+\begin{figure}[h!]
+\begin{center}
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=1]
+  \node (1) [draw, rounded rectangle] {Constrained Hypercube Path problem};
+  \node (2) [below=of 1, draw, rounded rectangle] {Knapsack Reconfiguration problem};
+  \node (3) [below=of 2, draw, rounded rectangle] {Subset Sum Reconfiguration problem};
+  \draw[<-]  (1) to node [auto] {Special case where $d = 2$} (2);
+  \draw[<-]  (2) to node [auto] {Special case where $S = W$} (3);
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\end{center}
+\caption{To define}\label{fig:specialCase}
+\end{figure}

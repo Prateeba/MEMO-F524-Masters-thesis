@@ -1,0 +1,129 @@
+\chapter{Reconfiguration of satisfiability problems} \label{chap:SAT}
+In this chapter, boolean satisifiability reconfiguration problems are presented. For decades the Boolean satisfiability problem also known
+as SAT has fascinated scientific world. The craze behind it led to the celebrated theorem of Cook Levin, that SAT is $\NP$-complete. In the
+reconfiguration context the following general set-up is considered :
+Given a Boolean formula $\Phi$ with $n$ Boolean variable and two satisfying assignments $s_{0}$ and $s_{t}$, is it possible to
+transform $s_{0}$ to $s_{t}$ such that at each step, only one variable $x_i$ can be flipped and each intermediate assignment remains
+feasible.
+
+For Boolean satisfiability problems, the structure of the solution space
+is characterized by the solution graph, where the vertices are the solutions,
+and two solutions are connected iff they differ in exactly one variable. In
+2006, Gopalan et al. studied connectivity properties of the solution graph. motivated mainly by
+research on satisfiability algorithms and the satisfiability threshold. They
+proved dichotomies for the diameter of connected components and for the
+complexity of the st-connectivity question, and conjectured a trichotomy
+for the connectivity question. Recently, we were able to establish the
+trichotomy \cite{schwerdtfeger2013computational}.
+
+The Boolean satisfiability problem (SAT), as well as many related questions like
+equivalence, counting, enumeration, and numerous versions of optimization, are
+of great importance in both theory and applications of computer science. In this
+article, we focus on the solution-space structure: We consider the solution graph
+,
+where the vertices are the solutions, and two solutions are connected iff they
+differ in exactly one variable. For this implicitly defined graph, we then study
+the connectivity and st-connectivity problems, and the diameter of connected
+components. The figures below give an impression of how solution graphs may
+look like.
+
+A direct application of st-connectivity in solution graphs are reconfiguration
+problems, that arise when we wish to find a step-by-step transformation between two feasible solutions of a problem,
+such that all intermediate results are also feasible.
+
+Meanwhile, Gopalan et al.’s results have also been applied directly to reconfiguration problems, that arise when a step-by-step transformation
+between two feasible solutions of a problem is searched, such that all intermediate results are feasible. The solutions
+(satisfying assignments) of a formula $\Phi$ over n variables induce  a subgraph $G(\Phi)$ of the n-dimensional hypercube graph, that is, the
+vertices are the solutions of $\Phi$, and two solutions are connected iff they differ in exactly one
+variable.
+% ------------------------------------------------------------------------------------------------------
+
+The Boolean satisfiability problem (satisfiability problem for short) is one of the central problems in computational
+complexity theory. Schaefer proposed in \cite{schaefer_complexity_1978} a framework for expressing variants of the satisfiability problem,
+and showed a dichotomy theorem: the satisfiability problem for certain classes of Boolean formulas is in $\P$ while it is $\NP$-complete for
+all other classes in the framework. In a single stroke, this result pinpoints the computational
+complexity of all well-known variants of SAT, such as $3$-SAT, HORN $3$-SAT, NOT-ALL-EQUAL $3$-SAT, and 1-IN-$3$ SAT.
+
+Since then, dichotomies or trichotomies have been established
+for several aspects of the satisfiability problem such as optimization [6,8,24], counting [7], inverse satisfiability [23], minimal
+satisfiability [28], unique satisfiability [19], 3-valued satisfiability [3] and propositional abduction [9].
+Very recently, Gopalan et al. studied in [17,18] connectivity properties of the solution-space of Boolean formulas, and
+investigated complexity issues on connectivity problems in Schaefer’s framework [31], while the connectivity properties
+of disjunctive normal forms (DNFs) were studied by Ekin et al. [14]. The connectivity problem (Conn) is to decide whether
+the solutions of a given Boolean formula $\Phi$ on n variables induce a connected subgraph of the n-dimensional hypercube,
+while the st-connectivity problem (st-Conn) is to decide whether two specific solutions s and t of $\Phi$ are connected. As
+mentioned in [17,18], connectivity properties of Boolean satisfiability merit study in their own right, since they shed light
+
+\todo{Finish intro + results + roadmap}
+
+- Introduce the chapter, it's purpose
+- Important results concerning the chapter/SAT
+- Roadmap.
+
+
+\section{Schaefer's framework}
+
+\subsection{Basic concepts}
+A CNF-formula is a Boolean formula of the form $C_{1} \land \dots \land C_{n}$, where each $C_i$ is a clause, that is, a finite disjunction
+of literals. A $k$-CNF formula $(k \geq 1)$ is a CNF-formula where each $C_i$ has at most $k$ literals.
+
+A \textit{logical relation} $R$ is a non-empty subset of $\{0,1\}^k$, for some $k \geq 1;$ $k$ is the \textit{arity} of $R$. A logical relation
+is a function that takes as input a Boolean vector and returns a Boolean. For a set $\mathcal{S}$ of logical relations, a $\mathcal{S}$-formula
+is a conjuntion of logical relations from $\mathcal{S}$ , where the arguments of each relation are freely chosen among a set of variables.
+
+
+
+Let $\mathcal{S}$ be a finite set of logical relations. A CNF($\mathcal{S}$)\textit{-formula} over a set of variables $V = \{x_{1}, \dots, x_{n}\}$
+is a finite conjunction $C_{1} \land \dots \land C_{n}$ of clauses built using relations from $\mathcal{S}$, variables from $V$, and the constants $0$ and $1$;
+this means that each $C_{i}$ is an expression of the form $R()$, where $R \in \mathcal{S}$ is a relation of arity $k$, and each $C_{i}$ is a
+variable in $V$ or one of the constants $0,1$. A $\textit{solution}$ if a CNF($\mathcal{S}$)-formula $\varphi$ is an assignment
+$s = (a_{1}, \dots, a_{n})$ of Boolean values to the variables that makes every clause of $\varphi$ true. A CNF($\mathcal{S}$)-formula is
+$\textit{satisfiable}$ if it has at least one solution.
+
+\todo{To clean up}
+
+\subsection{Statement of Results}
+The $\textit{satisfiability problems}$ SAT($\mathcal{S}$) associated with a finite set $\mathcal{S}$ of logical relation asks :
+Given a CNF($\mathcal{S}$) $\varphi$, is it satisfiable ?
+
+\begin{theorem}Let $\mathcal{S}$ be a finite set of logical relations. If $\mathcal{S}$ is Schaefer, then SAT($\mathcal{S}$) is in
+$\P$;  otherwise SAT($\mathcal{S}$) is $\NP-$complete.
+\end{theorem}
+
+
+\subsubsection{Dichotomie Results}
+
+\subsection{Connectivity of CNF-Formulas}
+Research has focused on the structure of the solution space only quite recently: One of the earliest studies on solution-space connectivity
+was done for CNF($\mathcal{S}$)-formulas. In this paper, we are interested in the connectivity properties of the space of solutions
+of CNF($\mathcal{S}$)-formulas. If $\varphi$ is a CNF($\mathcal{S}$)-formula with $n$ variables, then the solution graph
+G($\varphi$) of $\varphi$ denotes the subgraph of the $n$-dimensional hypercube induced by the solutions of
+$\varphi$. This means that the vertices of G($\varphi$) are the solutions of $\varphi$, and there is an edge between
+two solutions of G($\varphi$) precisely when they differ in exactly one variable.
+
+The following decision problems were considered in this context :
+Gopalan et al. studied the following two decision problems for CNF($\mathcal{S}$)-formulas:
+
+\begin{flushleft}
+    The \textit{st-Connectivity Problem} ST-CONN($\mathcal{S}$) \\
+    \textbf{Instance: } A CNF($\mathcal{S}$)-formula $\varphi$ and two satisfying assignments $s$ and $t$ of $\Phi$. \\
+    \textbf{Question: } Is there a path from $s$ to $t$ in G($\varphi$) ? \\
+\end{flushleft}
+
+\begin{flushleft}
+    The \textit{Connectivity Problem} CONN($\mathcal{S}$) \\
+    \textbf{Instance: } A CNF($\mathcal{S}$)-formula $\Phi$ . \\
+    \textbf{Question: } Is G($\Phi$) connected ? \\
+\end{flushleft}
+
+
+
+
+\section{Hardness Resulrs for $3$-CNF formulas}
+
+
+
+
+
+
+

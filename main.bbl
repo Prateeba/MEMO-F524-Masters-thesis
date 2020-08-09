@@ -1,0 +1,185 @@
+\begin{thebibliography}{10}
+
+\bibitem{allender_complexity_nodate}
+Eric Allender, Michael Bauland, Neil Immerman, Henning Schnoor, and Heribert
+  Vollmer.
+\newblock The {Complexity} of {Satisﬁability} {Problems}: {Reﬁning}
+  {Schaefer}’s {Theorem}.
+\newblock page~12.
+
+\bibitem{bonsma}
+Paul Bonsma and Luis Cereceda.
+\newblock Finding paths between graph colourings: Pspace-completeness and
+  superpolynomial distances.
+\newblock {\em Theor. Comput. Sci.}, 410:5215--5226, 01 2009.
+
+\bibitem{bonsma_cereceda}
+Paul Bonsma, Luis Cereceda, Jan van~den Heuvel, and Matthew Johnson.
+\newblock Finding paths between graph colourings: Computational complexity and
+  possible distances.
+\newblock {\em Electronic Notes in Discrete Mathematics}, 29:463--469, 08 2007.
+
+\bibitem{bonsma_reconfiguring_2014}
+Paul Bonsma, Marcin Kamiński, and Marcin Wrochna.
+\newblock Reconfiguring independent sets in claw-free graphs.
+
+\bibitem{DBLP:journals/corr/abs-1009-3217}
+Paul~S. Bonsma.
+\newblock Shortest path reconfiguration is pspace-hard.
+\newblock {\em CoRR}, abs/1009.3217, 2010.
+
+\bibitem{cardinal_reconfiguration_2018}
+Jean Cardinal, Erik~D. Demaine, David Eppstein, Robert~A. Hearn, and Andrew
+  Winslow.
+\newblock Reconfiguration of {Satisfying} {Assignments} and {Subset} {Sums}:
+  {Easy} to {Find}, {Hard} to {Connect}.
+\newblock {\em arXiv:1805.04055 [cs]}, May 2018.
+\newblock arXiv: 1805.04055.
+
+\bibitem{cereceda}
+Luis Cereceda, Jan van~den Heuvel, and Matthew Johnson.
+\newblock Connectedness of the graph of vertex-colourings.
+\newblock {\em Discrete Mathematics}, 308:913--919, 03 2008.
+
+\bibitem{2014arXiv1406.6576D}
+Erik~D. {Demaine}, Martin~L. {Demaine}, Eli {Fox-Epstein}, Duc~A. {Hoang},
+  Takehiro {Ito}, Hirotaka {Ono}, Yota {Otachi}, Ryuhei {Uehara}, and Takeshi
+  {Yamada}.
+\newblock {Linear-Time Algorithm for Sliding Tokens on Trees}.
+\newblock {\em arXiv e-prints}, page arXiv:1406.6576, June 2014.
+
+\bibitem{diestel_graph_2000}
+Reinhard Diestel.
+\newblock {\em Graph theory}.
+\newblock Number 173 in Graduate texts in mathematics. Springer, New York, 2nd
+  ed edition, 2000.
+
+\bibitem{fox-epstein_sliding_2015}
+Eli Fox-Epstein, Duc~A. Hoang, Yota Otachi, and Ryuhei Uehara.
+\newblock Sliding token on bipartite permutation graphs.
+\newblock In Khaled Elbassioni and Kazuhisa Makino, editors, {\em Algorithms
+  and Computation}, pages 237--247. Springer Berlin Heidelberg.
+
+\bibitem{gopalan_connectivity_2006}
+Parikshit Gopalan, Phokion~G. Kolaitis, Elitza Maneva, and Christos~H.
+  Papadimitriou.
+\newblock The {Connectivity} of {Boolean} {Satisfiability}: {Computational} and
+  {Structural} {Dichotomies}.
+\newblock {\em arXiv:cs/0609072}, September 2006.
+\newblock arXiv: cs/0609072.
+
+\bibitem{DBLP:journals/siamcomp/GopalanKMP09}
+Parikshit Gopalan, Phokion~G. Kolaitis, Elitza~N. Maneva, and Christos~H.
+  Papadimitriou.
+\newblock The connectivity of boolean satisfiability: Computational and
+  structural dichotomies.
+\newblock {\em {SIAM} J. Comput.}, 38(6):2330--2355, 2009.
+
+\bibitem{hearn_pspace-completeness_2004}
+Robert~A. Hearn and Erik~D. Demaine.
+\newblock {PSPACE}-completeness of sliding-block puzzles and other problems
+  through the nondeterministic constraint logic model of computation.
+
+\bibitem{hearn_demaine_ncl_book}
+Robert~Aubrey Hearn.
+\newblock {\em Games, Puzzles, and Computation}.
+\newblock PhD thesis, USA, 2006.
+\newblock AAI0810083.
+
+\bibitem{hordern_sliding_1986}
+Edward Hordern.
+\newblock {\em Sliding piece puzzles}.
+\newblock Oxford University Press.
+\newblock {OCLC}: 14100017.
+
+\bibitem{ito_invitation_nodate}
+Takehiro Ito.
+\newblock Invitation to {Combinatorial} {Reconfiguration}.
+\newblock page~47.
+
+\bibitem{DBLP:journals/tcs/ItoDHPSUU11}
+Takehiro Ito, Erik~D. Demaine, Nicholas J.~A. Harvey, Christos~H.
+  Papadimitriou, Martha Sideri, Ryuhei Uehara, and Yushi Uno.
+\newblock On the complexity of reconfiguration problems.
+\newblock {\em Theor. Comput. Sci.}, 412(12-14):1054--1065, 2011.
+
+\bibitem{ito_reconfiguration_2009}
+Takehiro Ito, Marcin Kamiński, and Erik~D. Demaine.
+\newblock Reconfiguration of list edge-colorings in a graph.
+\newblock In Frank Dehne, Marina Gavrilova, Jörg-Rüdiger Sack, and Csaba~D.
+  Tóth, editors, {\em Algorithms and Data Structures}, pages 375--386.
+  Springer Berlin Heidelberg.
+
+\bibitem{DBLP:conf/iwoca/JohnsonCH08}
+Matthew Johnson, Luis Cereceda, and Jan van~den Heuvel.
+\newblock Finding paths between 3-colourings.
+\newblock In Mirka Miller and Koichi Wada, editors, {\em Proceedings of the
+  19th International Workshop on Combinatorial Algorithms, {IWOCA} 2008,
+  September 13-15, 2008, Nagoya, Japan}, pages 182--196. College Publications,
+  2008.
+
+\bibitem{shortest_path}
+Marcin Kaminski, Paul Medvedev, and Martin Milanic.
+\newblock Shortest paths between shortest paths.
+\newblock {\em Theor. Comput. Sci.}, 412:5205--5210, 09 2011.
+
+\bibitem{kaminski_complexity_2012}
+Marcin Kamiński, Paul Medvedev, and Martin Milanič.
+\newblock Complexity of independent set reconfigurability problems.
+\newblock 439:9--15.
+
+\bibitem{Karp1972}
+Richard~M. Karp.
+\newblock Reducibility among {{Combinatorial Problems}}.
+\newblock In Raymond~E. Miller, James~W. Thatcher, and Jean~D. Bohlinger,
+  editors, {\em Complexity of {{Computer Computations}}: {{Proceedings}} of a
+  Symposium on the {{Complexity}} of {{Computer Computations}}, Held {{March}}
+  20--22, 1972, at the {{IBM Thomas J}}. {{Watson Research Center}}, {{Yorktown
+  Heights}}, {{New York}}, and Sponsored by the {{Office}} of {{Naval
+  Research}}, {{Mathematics Program}}, {{IBM World Trade Corporation}}, and the
+  {{IBM Research Mathematical Sciences Department}}}, pages 85--103. {Springer
+  US}.
+
+\bibitem{manquinho_satisability-based_nodate}
+Vasco~M Manquinho, João P~Marques Silva, Arlindo~L Oliveira, and Karem~A
+  Sakallah.
+\newblock Satisﬁability-{Based} {Algorithms} for 0-1 {Integer} {Programming}.
+\newblock page~10.
+
+\bibitem{mouawad_reconfiguration_2014}
+Amer~E. Mouawad, Naomi Nishimura, Venkatesh Raman, and Marcin Wrochna.
+\newblock Reconfiguration over tree decompositions.
+
+\bibitem{nishimura_introduction_2017}
+Naomi Nishimura.
+\newblock Introduction to {Reconfiguration}.
+\newblock page~24, 2017.
+
+\bibitem{savitch_relationships_1970}
+Walter~J. Savitch.
+\newblock Relationships between nondeterministic and deterministic tape
+  complexities.
+\newblock 4(2):177--192.
+
+\bibitem{schaefer_complexity_1978}
+Thomas~J. Schaefer.
+\newblock The complexity of satisfiability problems.
+\newblock In {\em Proceedings of the tenth annual {ACM} symposium on {Theory}
+  of computing - {STOC} '78}, pages 216--226, San Diego, California, United
+  States, 1978. ACM Press.
+
+\bibitem{sipserIntroductionTheoryComputation2006}
+Michael Sipser.
+\newblock {\em Introduction to the {{Theory}} of {{Computation}}}.
+\newblock {Course Technology}, second edition.
+
+\bibitem{DBLP:journals/corr/Heuvel13}
+Jan van~den Heuvel.
+\newblock The complexity of change.
+\newblock {\em CoRR}, abs/1312.2816, 2013.
+
+\bibitem{van_der_zanden_parameterized_nodate}
+Tom~C. van~der Zanden.
+\newblock Parameterized complexity of graph constraint logic.
+
+\end{thebibliography}

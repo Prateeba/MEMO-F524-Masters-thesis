@@ -1,0 +1,270 @@
+%! Author = prat
+%! Date = 14/04/2020
+
+% Preamble
+\documentclass[
+    %fontsize=12pt % The default document font size, options: 10pt, 11pt, 12pt
+    english, % ngerman for German
+    onehalfspacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+    headsepline, % Uncomment to get a line under the header
+    parskip, % Uncomment to add space between paragraphs
+]{MastersDoctoralThesis} % The class file specifying the document structure
+
+% Packages
+\usepackage{lmodern}
+\usepackage{scrextend}
+\KOMAoption{fontsize}{12.5pt}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{makeidx}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{todonotes}
+\usepackage[all]{xy}
+\usepackage{units}
+\usepackage{enumerate}
+\usepackage[hidelinks]{hyperref}
+\usepackage[]{algorithm2e} %algorithm
+\usepackage[langfont=roman,basic]{complexity}
+\usepackage{amssymb, amsmath, amsthm, pict2e}
+\usepackage{pdfsync}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{pgf,tikz}
+\usetikzlibrary{decorations.markings}
+\usepackage{subcaption}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations,arrows, graphs, quotes}
+\usetikzlibrary{shapes.misc, positioning}
+\usepgflibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows,automata}
+
+
+\def\arr{\hbox{𝓇}}
+\usepackage{environ}
+\usepackage{csquotes}
+\usepackage{amsmath}
+\usepackage{natbib}
+\makeatletter
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+    \def\tikz@width{#1}%
+    \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+                         \BODY
+    \end{lrbox}%
+    \pgfmathparse{#1/\wd\measure@tikzpicture}%
+    \edef\tikzscale{\pgfmathresult}%
+    \BODY
+}
+\def\ver{0.12} %size of a vertex
+
+\tikzset{middlearrow/.style={
+    decoration={markings,
+    mark= at position 0.6 with {\arrow[scale=4]{#1}} ,
+    },
+    postaction={decorate}
+}
+}
+
+\tikzset{Bullet/.style={fill=black,draw,color=#1,circle,minimum size=2pt,scale=0.9}}
+
+
+%%%%%%%%%%%%%%%%  start macros  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\let\emph\relax
+\DeclareTextFontCommand{\emph}{\bfseries\em}
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{defn}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+\theoremstyle{plain}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{obs}[theorem]{Observation}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{hyp}[theorem]{Hypothesis}
+\newtheorem{alg}[theorem]{Algorithm}
+\numberwithin{theorem}{section}
+\newtheorem{proofpart}{Part}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+%%%%%%%%%%%%%%%%  end macros  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	MARGIN SETTINGS
+%----------------------------------------------------------------------------------------
+
+\geometry{
+    paper=a4paper, % Change to letterpaper for US letter
+    inner=2.5cm, % Inner margin
+    outer=3.8cm, % Outer margin
+    bindingoffset=.5cm, % Binding offset
+    top=1.5cm, % Top margin
+    bottom=1.5cm, % Bottom margin
+%showframe, % Uncomment to show how the type block is set on the page
+}
+%----------------------------------------------------------------------------------------
+%	THESIS INFORMATION
+%----------------------------------------------------------------------------------------
+
+\thesistitle{Reconfiguration Problems} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+\supervisor{Dr. Jean \textsc{Cardinal}} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
+\examiner{} % Your examiner's name, this is not currently used anywhere in the template, print it elsewhere with \examname
+\degree{} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
+\author{Prateeba \textsc{Ruggoo}} % Your name, this is used in the title page and abstract, print it elsewhere with \authorname
+\addresses{} % Your address, this is not currently used anywhere in the template, print it elsewhere with \addressname
+
+\subject{PSPACE COMPLETE Problems} % Your subject area, this is not currently used anywhere in the template, print it elsewhere with \subjectname
+\keywords{} % Keywords for your thesis, this is not currently used anywhere in the template, print it elsewhere with \keywordnames
+\university{\href{https://www.ulb.be}{Université libre de Bruxelles}} % Your university's name and URL, this is used in the title page and abstract, print it elsewhere with \univname
+\department{\href{https://www2.ulb.ac.be/facs/sciences/info}{Department of Computer Science}} % Your department's name and URL, this is used in the title page and abstract, print it elsewhere with \deptname
+\group{\href{http://researchgroup.university.com}{}} % Your research group's name and URL, this is used in the title page, print it elsewhere with \groupname
+\faculty{\href{http://faculty.university.com}{}} % Your faculty's name and URL, this is used in the title page and abstract, print it elsewhere with \facname
+
+\AtBeginDocument{
+    \hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
+    \hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
+    \hypersetup{pdfkeywords=\keywordnames} % Set the PDF's keywords to your keywords
+}
+
+% Document
+\begin{document}
+    \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+    \pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+    \begin{titlepage}
+        \begin{center}
+
+            \vspace*{.06\textheight}
+            {\scshape\LARGE \univname\par}\vspace{1.5cm} % University name
+            \textsc{\Large Master Thesis}\\[0.5cm] % Thesis type
+
+            \HRule \\[0.4cm] % Horizontal line
+            {\huge \bfseries \ttitle\par}\vspace{0.4cm} % Thesis title
+            \HRule \\[1.5cm] % Horizontal line
+
+            \begin{minipage}[t]{0.4\textwidth}
+                \begin{flushleft} \large
+                \emph{Author:}\\
+                \href{}{\authorname} % Author name - remove the \href bracket to remove the link
+                \end{flushleft}
+            \end{minipage}
+            \begin{minipage}[t]{0.4\textwidth}
+                \begin{flushright} \large
+                \emph{Supervisor:} \\
+                \href{}{\supname} % Supervisor name - remove the \href bracket to remove the link
+                \end{flushright}
+            \end{minipage}\\[3cm]
+
+            \vfill
+            \groupname  \deptname  % Research group name and department name
+
+            \vfill
+
+            {\large \today}\\[4cm] % Date
+            %\includegraphics{Logo} % University/department logo - uncomment to place it
+
+            \vfill
+        \end{center}
+    \end{titlepage}
+
+%----------------------------------------------------------------------------------------
+%	QUOTATION PAGE
+%----------------------------------------------------------------------------------------
+
+    \vspace*{0.2\textheight}
+
+    %\noindent\enquote{\itshape Understand well as I may, my comprehension can only be an infinitesimal fraction of all I want to understand.}\bigbreak
+
+    %\hfill Ada Lovelace
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT PAGE
+%----------------------------------------------------------------------------------------
+
+    \begin{abstract}
+        \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
+        The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too\ldots
+    \end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+    \begin{acknowledgements}
+        \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
+        \todo{To add Acknowledgment}
+        %I would like to thank my little kitten, Koi ni who brings me everyday joy \ldots
+    \end{acknowledgements}
+
+%----------------------------------------------------------------------------------------
+%	LIST OF CONTENTS/FIGURES/TABLES PAGES
+%----------------------------------------------------------------------------------------
+    \hypersetup{linkcolor=black}
+    \tableofcontents % Prints the main table of contents
+
+%\listoffigures % Prints the list of figures
+
+%\listoftables % Prints the list of tables
+
+%----------------------------------------------------------------------------------------
+%	DEDICATION
+%----------------------------------------------------------------------------------------
+
+    \dedicatory{For/Dedicated to/To my\ldots}
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - CHAPTERS
+%----------------------------------------------------------------------------------------
+
+    \mainmatter % Begin numeric (1,2,3...) page numbering
+
+    \pagestyle{thesis} % Return the page headers back to the "thesis" style
+
+% Include the chapters of the thesis as separate files from the Chapters folder
+\include{Chapters/introduction/main}
+\include{Chapters/Preliminaries/main}
+\include{Chapters/chap1_NCL/main}
+\include{Chapters/chap2_SAT/main}
+\include{Chapters/chap3_SUBSETSUMs_recon/main}
+%\include{Chapters/chap4_constrained_hypercube_path/main}
+
+%\include{Chapters/chap1_NCL/test_fig}
+
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - APPENDICES
+%----------------------------------------------------------------------------------------
+
+    \appendix % Cue to tell LaTeX that the following "chapters" are Appendices
+
+% Include the appendices of the thesis as separate files from the Appendices folder
+% Uncomment the lines as you write the Appendices
+
+%\include{Appendices/AppendixA}
+%\include{Appendices/AppendixB}
+%\include{Appendices/AppendixC}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+    \nocite{*}
+    \bibliography{main}
+    \bibliographystyle{plain}
+
+\end{document}

@@ -1,0 +1,144 @@
+\begin{example}{An example of configuration-to-configuration and configuration-to-edge for AND/OR Constraints Graphs}
+\begin{figure}[H]
+  \begin{subfigure}[b]{0.23\textwidth}
+     \centering
+      \begin{tikzpicture}[scale=0.8]
+        \def\ver{0.15} %size of a vertex
+        % v1
+        \def\xa{0}
+        \def\ya{0}
+        %----------------- arrrows -----------------
+        \node (1) at (\xa+2.5,\ya) {$\Rightarrow$};
+        \node (2) at (\xa+7.3,\ya) {$\Rightarrow$};
+        \node (3) at (\xa+12,\ya) {$\Rightarrow$};
+        %----------------- arrrows -----------------
+        % f_1 arrows
+        \draw[middlearrow={>}, blue] (\xa-1.5,\ya-2)-- (\xa-1.5,\ya+2); % v3 - v2
+        \node (4) at (\xa-1.1,\ya) {$A$};
+        \draw[middlearrow={>}, blue] (\xa-1.5,\ya-2) -- (\xa+2,\ya);    % v3 - v4
+        \draw[middlearrow={<}, blue] (\xa-1.5,\ya-2) -- (\xa,\ya);      % v3 - v1
+        \draw[middlearrow={<}, blue] (\xa,\ya) -- (\xa+2,\ya);          % v1 - v4
+        \draw[middlearrow={>}, red] (\xa-1.5,\ya+2) -- (\xa,\ya);       % v2 - v1
+        \draw[middlearrow={>}, red] (\xa-1.5,\ya+2) -- (\xa+2,\ya);     % v2 - v4
+
+        \draw[ultra thick, -, blue] (\xa-1.5,\ya-2)-- (\xa-1.5,\ya+2);
+        \draw[ultra thick, -, blue] (\xa-1.5,\ya-2) -- (\xa+2,\ya);
+        \draw[ultra thick, -, blue] (\xa-1.5,\ya-2) -- (\xa,\ya);
+        \draw[ultra thick, -, blue] (\xa,\ya) -- (\xa+2,\ya);
+        \draw[ultra thick, -, red] (\xa-1.5,\ya+2) -- (\xa,\ya);
+        \draw[ultra thick, -, red] (\xa-1.5,\ya+2)-- (\xa+2,\ya);
+        %graph G : Nodes fill
+        \path[fill] (\xa,\ya) circle (\ver);           %v1
+        \path[fill] (\xa-1.5,\ya+2) circle (\ver);     %v2
+        \path[fill] (\xa-1.5,\ya-2) circle (\ver);     %v3
+        \path[fill] (\xa+2,\ya) circle (\ver);         %v4
+      \end{tikzpicture}
+      \caption{$OR$}
+      \label{fig:and_NCL}
+  \end{subfigure}
+  \hspace{0.5em} % vertical space
+  \begin{subfigure}[b]{0.23\textwidth}
+    \centering
+      \begin{tikzpicture}[scale=0.8]
+        \def\ver{0.15} %size of a vertex
+        % v1
+        \def\xb{0}
+        \def\yb{0}
+        % Highlight change
+        \draw[fill=yellow, opacity=.7, ultra thick, dotted, rotate around={37:(\xb-0.75,\yb+1)},yellow] (\xb-0.75,\yb+1) ellipse (10pt and 45pt);
+        % f_1 arrows
+        \draw[middlearrow={>}, blue] (\xb-1.5,\yb-2)-- (\xb-1.5,\yb+2); % v3 - v2
+        \node (4) at (\xb-1.1,\yb) {$A$};
+        \draw[middlearrow={>}, blue] (\xb-1.5,\yb-2) -- (\xb+2,\yb);    % v3 - v4
+        \draw[middlearrow={<}, blue] (\xb-1.5,\yb-2) -- (\xb,\yb);      % v3 - v1
+        \draw[middlearrow={<}, blue] (\xb,\yb) -- (\xb+2,\yb);          % v1 - v4
+        \draw[middlearrow={<}, red] (\xb-1.5,\yb+2) -- (\xb,\yb);       % v2 - v1
+        \draw[middlearrow={>}, red] (\xb-1.5,\yb+2) -- (\xb+2,\yb);     % v2 - v4
+
+        \draw[ultra thick, -, blue] (\xb-1.5,\yb-2)-- (\xb-1.5,\yb+2);
+        \draw[ultra thick, -, blue] (\xb-1.5,\yb-2) -- (\xb+2,\yb);
+        \draw[ultra thick, -, blue] (\xb-1.5,\yb-2) -- (\xb,\yb);
+        \draw[ultra thick, -, blue] (\xb,\yb) -- (\xb+2,\yb);
+        \draw[ultra thick, -, red] (\xb-1.5,\yb+2) -- (\xb,\yb);
+        \draw[ultra thick, -, red] (\xb-1.5,\yb+2)-- (\xb+2,\yb);
+        %graph G : Nodes fill
+        \path[fill] (\xb,\yb) circle (\ver);           %v1
+        \path[fill] (\xb-1.5,\yb+2) circle (\ver);     %v2
+        \path[fill] (\xb-1.5,\yb-2) circle (\ver);     %v3
+        \path[fill] (\xb+2,\yb) circle (\ver);         %v4
+      \end{tikzpicture}
+      \caption{$OR$}
+      \label{fig:on_vertex_sliding}
+  \end{subfigure}
+  \hspace{0.5em} % vertical space
+  \begin{subfigure}[b]{0.23\textwidth}
+    \centering
+      \begin{tikzpicture}[scale=0.8]
+        \def\ver{0.15} %size of a vertex
+        % v1
+        \def\xb{0}
+        \def\yb{0}
+        % Highlight change
+        \draw[fill=yellow, opacity=.7, ultra thick, dotted, rotate around={60:(\xb+0.1,\yb+1)},yellow] (\xb+0.1,\yb+1) ellipse (10pt and 65pt);
+        % f_1 arrows
+        \draw[middlearrow={>}, blue] (\xb-1.5,\yb-2)-- (\xb-1.5,\yb+2); % v3 - v2
+        \node (4) at (\xb-1.1,\yb) {$A$};
+        \draw[middlearrow={>}, blue] (\xb-1.5,\yb-2) -- (\xb+2,\yb);    % v3 - v4
+        \draw[middlearrow={<}, blue] (\xb-1.5,\yb-2) -- (\xb,\yb);      % v3 - v1
+        \draw[middlearrow={<}, blue] (\xb,\yb) -- (\xb+2,\yb);          % v1 - v4
+        \draw[middlearrow={<}, red] (\xb-1.5,\yb+2) -- (\xb,\yb);       % v2 - v1
+        \draw[middlearrow={<}, red] (\xb-1.5,\yb+2) -- (\xb+2,\yb);     % v2 - v4
+
+        \draw[ultra thick, -, blue] (\xb-1.5,\yb-2)-- (\xb-1.5,\yb+2);
+        \draw[ultra thick, -, blue] (\xb-1.5,\yb-2) -- (\xb+2,\yb);
+        \draw[ultra thick, -, blue] (\xb-1.5,\yb-2) -- (\xb,\yb);
+        \draw[ultra thick, -, blue] (\xb,\yb) -- (\xb+2,\yb);
+        \draw[ultra thick, -, red] (\xb-1.5,\yb+2) -- (\xb,\yb);
+        \draw[ultra thick, -, red] (\xb-1.5,\yb+2)-- (\xb+2,\yb);
+        %graph G : Nodes fill
+        \path[fill] (\xb,\yb) circle (\ver);           %v1
+        \path[fill] (\xb-1.5,\yb+2) circle (\ver);     %v2
+        \path[fill] (\xb-1.5,\yb-2) circle (\ver);     %v3
+        \path[fill] (\xb+2,\yb) circle (\ver);         %v4
+      \end{tikzpicture}
+      \caption{$OR$}
+      \label{fig:on_vertex_sliding}
+  \end{subfigure}
+  \hspace{0.7em} % vertical space
+  \begin{subfigure}[b]{0.23\textwidth}
+    \centering
+      \begin{tikzpicture}[scale=0.8]
+        \def\ver{0.15} %size of a vertex
+        % v1
+        \def\xb{0.2}
+        \def\yb{0}
+        % Highlight change
+        \draw[fill=yellow, opacity=.7, ultra thick, dotted, rotate around={0:(\xb-1.5,\yb)},yellow] (\xb-1.5,\yb) ellipse (10pt and 65pt);
+        % f_1 arrows
+        \draw[middlearrow={<}, blue] (\xb-1.5,\yb-2)-- (\xb-1.5,\yb+2); % v3 - v2
+        \node (4) at (\xb-1.1,\yb) {$A$};
+        \draw[middlearrow={>}, blue] (\xb-1.5,\yb-2) -- (\xb+2,\yb);    % v3 - v4
+        \draw[middlearrow={<}, blue] (\xb-1.5,\yb-2) -- (\xb,\yb);      % v3 - v1
+        \draw[middlearrow={<}, blue] (\xb,\yb) -- (\xb+2,\yb);          % v1 - v4
+        \draw[middlearrow={<}, red] (\xb-1.5,\yb+2) -- (\xb,\yb);       % v2 - v1
+        \draw[middlearrow={<}, red] (\xb-1.5,\yb+2) -- (\xb+2,\yb);     % v2 - v4
+
+        \draw[ultra thick, -, blue] (\xb-1.5,\yb-2)-- (\xb-1.5,\yb+2);
+        \draw[ultra thick, -, blue] (\xb-1.5,\yb-2) -- (\xb+2,\yb);
+        \draw[ultra thick, -, blue] (\xb-1.5,\yb-2) -- (\xb,\yb);
+        \draw[ultra thick, -, blue] (\xb,\yb) -- (\xb+2,\yb);
+        \draw[ultra thick, -, red] (\xb-1.5,\yb+2) -- (\xb,\yb);
+        \draw[ultra thick, -, red] (\xb-1.5,\yb+2)-- (\xb+2,\yb);
+        %graph G : Nodes fill
+        \path[fill] (\xb,\yb) circle (\ver);           %v1
+        \path[fill] (\xb-1.5,\yb+2) circle (\ver);     %v2
+        \path[fill] (\xb-1.5,\yb-2) circle (\ver);     %v3
+        \path[fill] (\xb+2,\yb) circle (\ver);         %v4
+      \end{tikzpicture}
+      \caption{$OR$}
+      \label{fig:on_vertex_sliding}
+  \end{subfigure}
+  \caption{An instance of configuration-to-edge where the goal is to reverse the edge $A$ through a sequence of moves.}
+  \label{fig:configuration-to-edge}
+\end{figure}
+\end{example}

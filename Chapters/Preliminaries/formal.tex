@@ -1,0 +1,46 @@
+\subsubsection{Turing Machine}
+The Turing is a computation model used in theoretical computer science.
+
+\begin{defn}
+A Turing machine is a $7-tuple$, $(\mathcal{Q}, \Sigma, \Gamma, \delta,q_0, q_{accept}, q_{reject})$ where $\mathcal{Q}, \Sigma, \Gamma$ are all finite sets and
+\begin{enumerate}
+    \item $\mathcal{Q}$ is the set of states,
+    \item $\Sigma$ is the input alphabet not containing the blank symbol  $\sqcup$,
+    \item $\Gamma$ is the tape alphabet, where $\sqcup \in \Gamma$ and $\Sigma \subseteq \Gamma$,
+    \item $\delta : \mathcal{Q} \times \Gamma \rightarrow  \mathcal{Q} \times \Gamma \times \{L, R\}$ is the transition function,
+    \item $q_0 \in \mathcal{Q}$ is the start state,
+    \item $q_{accept} \in \mathcal{Q}$ is the accept state, and
+    \item $q_{reject} \in \mathcal{Q}$ is the reject state, where $q_{reject} \neq q_{accept}$
+\end{enumerate}
+
+\paragraph{Semantics :} The transition function $\delta$ explains how the Turing Machine operates, i.e how it goes from one state to another. \\
+If $\delta\{q,a\} = (r,b,L)$, and the machine is in state $q$ with its head on the tape cell reading the symbol $a$, it will replace the $a$ with a $b$, transition to state $r$ and move the head left.
+\end{defn}
+
+\subsubsection{Non deterministic Turing Machine}
+A non-deterministic Turing Machine is defined similarly as the deterministic Turing Machine except for the transition function. A non-deterministic machine can at any computation step, proceed with various possibilities. Its transition is defined as follows :
+$\delta : \mathcal{Q} \times \Gamma \rightarrow  \mathcal{P}\{\mathcal{Q} \times \Gamma \times \{L, R\}\}$ where $\mathcal{P}$ is the power set of $\mathcal{Q}$.   \todo{Schema}
+
+\subsection{Computability Theory} \todo{Is it necessary ?}
+
+\subsection{Computational Complexity Theory}
+
+
+The class \NP consists of decision problems verifiable with polynomial time algorithms.  That is, any
+yes-instance for a problem in \NP has a certificate that can be checked by a \textit{verifier} in
+polynomial time. \todo{Add def of verifier}
+
+\begin{defn}
+\NP $= \{L | \exists V $such that $V$ is a verifier for $L$ and $V \in P\}$.
+\end{defn}
+
+\begin{defn}
+A language $L$ is \NP-complete if it satisfied the following conditions :
+\begin{enumerate}
+    \item $L$ is in \NP, and
+    \item Every language $L^{'}$ in \NP is polynomial time reducible to $L$.
+\end{enumerate}
+\end{defn}
+If a problem satisfies only the second condition, it is an \NP-hard problem.
+
+\todo{complete the space complexity part}

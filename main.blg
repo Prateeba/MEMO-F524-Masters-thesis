@@ -1,0 +1,79 @@
+This is BibTeX, Version 0.99d (TeX Live 2020)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: Chapters/introduction/main.aux
+A level-1 auxiliary file: Chapters/Preliminaries/main.aux
+A level-1 auxiliary file: Chapters/chap1_NCL/main.aux
+A level-1 auxiliary file: Chapters/chap2_SAT/main.aux
+A level-1 auxiliary file: Chapters/chap3_SUBSETSUMs_recon/main.aux
+The style file: plain.bst
+Database file #1: main.bib
+Warning--I didn't find a database entry for "schwerdtfeger2013computational"
+Warning--I didn't find a database entry for "app"
+Warning--empty journal in allender_complexity_nodate
+Warning--empty year in allender_complexity_nodate
+Warning--empty journal in bonsma_reconfiguring_2014
+Warning--empty year in bonsma_reconfiguring_2014
+Warning--empty year in fox-epstein_sliding_2015
+Warning--empty journal in hearn_pspace-completeness_2004
+Warning--empty year in hearn_pspace-completeness_2004
+Warning--empty school in hearn_demaine_ncl_book
+Warning--empty year in hordern_sliding_1986
+Warning--empty journal in ito_invitation_nodate
+Warning--empty year in ito_invitation_nodate
+Warning--empty year in ito_reconfiguration_2009
+Warning--empty journal in kaminski_complexity_2012
+Warning--empty year in kaminski_complexity_2012
+Warning--empty year in Karp1972
+Warning--empty journal in manquinho_satisability-based_nodate
+Warning--empty year in manquinho_satisability-based_nodate
+Warning--empty journal in mouawad_reconfiguration_2014
+Warning--empty year in mouawad_reconfiguration_2014
+Warning--empty journal in nishimura_introduction_2017
+Warning--empty journal in savitch_relationships_1970
+Warning--empty year in savitch_relationships_1970
+Warning--empty year in sipserIntroductionTheoryComputation2006
+Warning--empty journal in van_der_zanden_parameterized_nodate
+Warning--empty year in van_der_zanden_parameterized_nodate
+You've used 30 entries,
+            2118 wiz_defined-function locations,
+            681 strings with 9981 characters,
+and the built_in function-call counts, 10632 in all, are:
+= -- 1022
+> -- 539
+< -- 11
++ -- 214
+- -- 179
+* -- 741
+:= -- 1753
+add.period$ -- 96
+call.type$ -- 30
+change.case$ -- 172
+chr.to.int$ -- 0
+cite$ -- 55
+duplicate$ -- 433
+empty$ -- 761
+format.name$ -- 179
+if$ -- 2225
+int.to.chr$ -- 0
+int.to.str$ -- 30
+missing$ -- 32
+newline$ -- 153
+num.names$ -- 68
+pop$ -- 220
+preamble$ -- 1
+purify$ -- 144
+quote$ -- 0
+skip$ -- 315
+stack$ -- 0
+substring$ -- 551
+swap$ -- 118
+text.length$ -- 11
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 114
+warning$ -- 25
+while$ -- 95
+width$ -- 32
+write$ -- 313
+(There were 27 warnings)
