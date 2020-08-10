@@ -1,42 +1,52 @@
 \chapter{Subset sum Reconfiguration}
 The subset sum problem is a well-known \NP-complete problem in which given an integer $x$ and a set of integers $S = \{a_1, a_2,\dots, a_n\}$,
-we wish to find a subset $A \subseteq [n]$ such that $\sum_{i \in A} ai = x$ ? In this chapter, we explore the reconfiguration version of the
-subset sum problem, more specifically the $k$-move Subset Sum reconfiguration. We say that a set of integers $A_1$ can be
-\textit{$k$-move reconfigured} into a second set of integers $A_2$ whenever the symmetric difference of $A_1$ and $A_2$ has cardinality at most $k$.
+we wish to find a subset $A \subseteq [n]$ such that $\sum_{i \in A} ai = x$ ?
 
-Reconﬁguration problems have been studied extensively in recent literature. However, reconﬁguration problems for subset sum have not been studied yet.
-In \cite{app}
+In \cite{Ito11approximabilityof} Ito and Demaine considered the following problem :
+Given two packings $A_0$ and $A_t$, both of total size at least $k$, and we are asked whether we can transform one into the other via
+packings by moving (namely, either adding or removing) a single item to/from the previous one without ever going through a packing of total size
+less than $k$. They called this problem the SUBSET SUM RECONFIGURATION problem and proved that it is strongly $\NP$-hard, and is
+$\PSPACE$-complete for the variant with conflict graph.
+
+In this chapter, we explore another reconfiguration version of the subset sum problem referred to as the $k$-move Subset Sum reconfiguration
+problem. We say that a set of integers $A_1$ can be \textit{$k$-move reconfigured} into a second set of integers $A_2$ whenever the symmetric
+difference of $A_1$ and $A_2$ has cardinality at most $k$. In \cite{cardinal_reconfiguration_2018} the $k$-move Subset Sum reconfiguration
+problem was proved to be $\PSPACE$-complete. This chapter is dedicated to that particular proof in an attempt to detail the hardness proof.
+
 \section{$k$-move Subset Sum Reconfiguration}
-\begin{defn}{($k$-move Subset Sum Reconfiguration Problem).} Given two solutions $A_1$ and $A_2$ to an instance of the subset sum problem, can $A_2$ be obtained
-by repeated $k$-move reconfiguration, beginning with $A_1$, so that all intermediate subsets are also solutions?
+\begin{defn}{($k$-move Subset Sum Reconfiguration Problem).} Given two solutions $A_1$ and $A_2$ to an instance of the subset sum problem,
+can $A_2$ be obtained by repeated $k$-move reconfiguration, beginning with $A_1$, so that all intermediate subsets are also solutions?
 \end{defn}
 
 \subsection{Trivial cases}
 The reconfiguration problem is trivial if the reconfiguration steps are restricted to involve only the removal or addition of a single element
-of $S$, as no single such move can maintain the same sum. The problem remains trivial for $k=2$, since any removed element must be replaced by itself.
-For $k=3$, we prove the following theorem: \begin{theorem}The $3$-move Subset Sum Reconfiguration problem is strongly \PSPACE-complete.\end{theorem}
+of $S$, as no single such move can maintain the same sum. The problem remains trivial for $k=2$, since any removed element must be replaced by
+itself. For $k=3$, we prove the following theorem:
+\begin{theorem}The $3$-move Subset Sum Reconfiguration problem is strongly $\PSPACE$-complete.\end{theorem}
 
-We first start by showing that the $k$-move subset sum problem is in \PSPACE and then provide a \PSPACE-hardness proof to show that it is \PSPACE-complete.
+We first start by showing that the $k$-move subset sum problem is in $\PSPACE$ and then provide a $\PSPACE$-hardness proof to show that
+it is $\PSPACE$-complete.
 
-\begin{lemma}For every $k \in \mathbb{N}$, the $k$-move Subset Sum Reconfiguration problem is in \PSPACE. \end{lemma} 
+\begin{lemma}For every $k \in \mathbb{N}$, the $k$-move Subset Sum Reconfiguration problem is in $\PSPACE$. \end{lemma}
 \begin{proof}
-For an instance with $|S| = n$, there are $O(n^{k})$ other subsets reachable by a $k-$move reconfiguration, since each such move can be specified by the set of items in the
-symmetric difference of the two subsets. So all adjacent subsets in the reconfiguration graph can be enumerated in polynomial time.
-Then the $k$-move subset sum reconfiguration  problem is in \NPSPACE by the following algorithm : in the reconfiguration graph, repeatedly move between subsets by
-non-deterministically selecting a neighbour in polynomial time and space. Since \NPSPACE $=$ \PSPACE, $k$-move subset sum is also in \PSPACE.
+For an instance with $|S| = n$, there are $O(n^{k})$ other subsets reachable by a $k-$move reconfiguration, since each such move can be specified
+by the set of items in the symmetric difference of the two subsets. So all adjacent subsets in the reconfiguration graph can be enumerated in
+polynomial time. Then the $k$-move subset sum reconfiguration  problem is in $\NPSPACE$ by the following algorithm : in the reconfiguration graph,
+repeatedly move between subsets by  non-deterministically selecting a neighbour in polynomial time and space. Since \NPSPACE $=$ \PSPACE,
+$k$-move subset sum is also in $\PSPACE$.
 \end{proof}
 
-\begin{lemma}The $k$-move Subset Sum Reconfiguration problem is \PSPACE-hard. \end{lemma}
+\begin{lemma}The $k$-move Subset Sum Reconfiguration problem is $\PSPACE$-hard. \end{lemma}
 Proving the hardness is done in two steps. First, reducing the Sliding Token Reconfiguration problem to the Exact Cover Reconfiguration problem.
 Then from the Exact Cover Reconfiguration problem to the $3$-move Subset Sum Reconfiguration problem.
 
 \subsubsection{SLIDING TOKEN PROBLEM}
-The Sliding token problem is introduced in chapter \ref{chap:NCL} and detailed in section \ref{sec:sliding_tokens}. Hearn and Demaine proved that the
-SLIDING TOKEN PROBLEM is \PSPACE-complete for planar graphs, as an example of the application of the nondeterministic constraint logic
-model and they implicitly proved that the SLIDING TOKEN PROBLEM is \PSPACE-hard on $3$-regular graphs since the reduction is done from a restricted NCL machine
-(NCL-CONFIGURATION-TO-EDGE) in which the underlying graph is planar and all vertices have degree three. The labeled variant of the sliding token problem, where
-each token has a unique label, is also \PSPACE-hard and is detailed in section \ref{sec:labeled_sliding_token} of chapter \ref{chap:NCL} . It is the latter version
-that is used in the reduction.
+The Sliding token problem is introduced in chapter \ref{chap:NCL} and detailed in section \ref{sec:sliding_tokens}. Hearn and Demaine proved that
+the SLIDING TOKEN PROBLEM is $\PSPACE$-complete for planar graphs, as an example of the application of the nondeterministic constraint logic
+model and they implicitly proved that the SLIDING TOKEN PROBLEM is $\PSPACE$-hard on $3$-regular graphs since the reduction is done from a
+restricted NCL machine (NCL-CONFIGURATION-TO-EDGE) in which the underlying graph is planar and all vertices have degree three. The labeled
+variant of the sliding token problem, where each token has a unique label, is also $\PSPACE$-hard and is detailed in section \ref{sec:labeled_sliding_token}
+of chapter \ref{chap:NCL} . It is the latter version that is used in the reduction.
 
 \subsubsection{Exact Cover Reconfiguration problem} \label{subsubsection:Exact_cover}
 The exact cover reconfiguration problem is the second problem introduced along this reduction.
@@ -47,8 +57,8 @@ provided that there exist $S_1, S_2, S_3 \subseteq \mathcal{S}$ with $C_1 - C_2 
 Since $C_1, C_2$ are exact covers it is mandatory that $S_1 = S_2 \cup S_3$ and $ S_2 \cap S_3 = \emptyset$.
 \end{defn}
 
-\begin{defn}{(Exact Cover Reconfiguration problem).} Given a set $\mathcal{S}$ of subsets of a set $\mathcal{U}$, and two configuration $C_1$ and $C_2$, can $C_1$
-be reconfigured into $C_2$ via repeated splits and merges ?
+\begin{defn}{(Exact Cover Reconfiguration problem).} Given a set $\mathcal{S}$ of subsets of a set $\mathcal{U}$, and two configuration
+$C_1$ and $C_2$, can $C_1$ be reconfigured into $C_2$ via repeated splits and merges ?
 \end{defn}
 
 \begin{example}
@@ -71,7 +81,7 @@ following : $C_1 = \{\{1\}, \{2,3\}\}$ and $C_2 = \{\{1,2\}, \{3\}\}$. A solutio
 \end{figure}
 \end{example}
 
-\begin{lemma}The Exact Cover Reconfiguration problem is \PSPACE-hard for instances that are 23-colorable hypergraphs. \end{lemma}
+\begin{lemma}The Exact Cover Reconfiguration problem is $\PSPACE$-hard for instances that are $23$-colorable hypergraphs. \end{lemma}
 
 \begin{proof}Labeled variant of the SLIDING TOKEN PROBLEM $\leq_p$ Exact Cover Reconfiguration problem.
 
@@ -127,10 +137,10 @@ The input instance of the labeled variant of the SLIDING TOKEN PROBLEM is descri
   \end{figure}
 \end{example}
 
-\subsubsection{Preliminaries}
+\subsubsection{Preliminaries} \label{sssec:prelim}
 \paragraph{Slide Set.}
-For each pair of adjacent vertices $v_i, v_j \in V$ of the input instance of the sliding token problem, the set consisting of these two vertices and their 
-neighbors is called a $slide set$, denoted $S_{i,j}$.
+For each pair of adjacent vertices $v_i, v_j \in V$ of the input instance of the sliding token problem, the set consisting of these two vertices
+and their neighbors is called a $slide set$, denoted $S_{i,j}$.
 \begin{figure}[H]
 \begin{center}
 \begin{scaletikzpicturetowidth}{\textwidth}
@@ -174,8 +184,9 @@ neighbors is called a $slide set$, denoted $S_{i,j}$.
 \end{figure}
 
 \paragraph{Maximally split configuration $C$.}
-A configuration $C$ of the constructed Exact Cover Reconfiguration instance is called \textit{maximally split} if every subset $c \in C$ containing a token
-contains at most one vertex and token-less subsets contains exactly one vertex.
+A configuration $C$ of the constructed Exact Cover Reconfiguration instance is called \textit{maximally split} if every $c \in C$
+contains exactly one vertex and up to one token.
+
 \begin{example}{A maximally split configuration $C$}
   \begin{figure}[h!]
     \begin{center}
@@ -188,7 +199,7 @@ contains at most one vertex and token-less subsets contains exactly one vertex.
     \caption{A maximally split configuration $C_1$.}
     \label{}
   \end{figure}
-  $C_1$ is maximally split since each subset $c \in C_1$ contains exactly one vertex and up to one token.
+  $C_1$ is maximally split since each subset $c \i\in C_1$ contains exactly one vertex and up to one token.
 \end{example}
 
 \paragraph{Sploot set of a configuration $C$.}
@@ -196,7 +207,8 @@ For each exact cover conﬁguration C in the output instance, let sploot($C$) be
 
 
 \subsubsection{Output $\mathcal{U}$ and $\mathcal{S}$}
-The output instance of the Exact Cover Reconfiguration problem contains a set $\mathcal{S}$ of subsets of a set $\mathcal{U}$ defined in \ref{subsubsection:Exact_cover} where :
+The output instance of the Exact Cover Reconfiguration problem contains a set $\mathcal{S}$ of subsets of a set $\mathcal{U}$ defined in
+\ref{subsubsection:Exact_cover} where :
 \begin{itemize}
   \item $\mathcal{U} = \{v_1, v_2, \dots, v_{|V|}\} \cup \{t_1, t_2, \dots, t_{|T|}\}.$
   \item The set $\mathcal{S}$ is defined as follows, for every pair of adjacent vertices $v_i, v_j$ and token $t_k$
@@ -207,25 +219,37 @@ The output instance of the Exact Cover Reconfiguration problem contains a set $\
     \end{itemize}
 \end{itemize}
 
-\begin{example}According to the above example, \ref{fig:input_sliding_token_example}, the output instance of the Exact Cover Reconfiguration problem is the following :
+\begin{example}According to the above example, \ref{fig:input_sliding_token_example}, the output instance of the Exact Cover Reconfiguration
+problem is the following :
 \end{example}
 
 \subsubsection{Output starting and ending configurations, $C_1$ and $C_2$}
-The starting configuration $C_1$ is the union of $\{\{ v_i \} : v_i \in V - I_1\}$ and, for every $v_i \in I_1$, a set $\{v_i, t_k\}$ with a distinct $t_k$.
-The ending configuration $C_2$ is then the union of $\{\{ v_i \} : v_i \in V - I_2\}$ and, for every $v_i \in I_2$, a set $\{v_i, t_k\}$ with a distinct $t_k$.
+The starting configuration $C_1$ is the union of $\{\{ v_i \} : v_i \in V - I_1\}$ and, for every $v_i \in I_1$, a set $\{v_i, t_k\}$ with a
+distinct $t_k$.
+The ending configuration $C_2$ is then the union of $\{\{ v_i \} : v_i \in V - I_2\}$ and, for every $v_i \in I_2$, a set $\{v_i, t_k\}$ with a
+distinct $t_k$.
 
-\begin{example}Continuing the example, $C_1$ and $C_2$ would be :
+\begin{example}Continuing the running example, $C_1$ and $C_2$ would be :
 \begin{itemize}
   \item $C_1 = \{ \{v_2, v_4, v_5, v_6\}, \{v_1, t_1\}, \{v_3, t_2\}\}$.
   \item $C_2 = \{ \{v_1, v_3, v_5, v_6\}, \{v_2, t_1\}, \{v_4, t_2\}\}$.
 \end{itemize}
 \end{example}
 
-\subsubsection{23-colorability of the output instance $H = (U, \mathcal{S})$}
-The goal here is to make sure that no two vertices of distance at most $3$ (i.e. in a common slide set ref \ref{fig:slide_set}) have the same color. Given that
-the kth power $G^{k}$ of an undirected graph $G$ is another graph that has the same set of vertices, but in which two vertices are adjacent when their
-distance in $G$ is at most $k$, to find the colorability of the output instance $H = (U, \mathcal{S})$, it suffices to compute $\Delta(G^{3})$. Since $G$ is
-$3-$regular, $G^3$ has degree at most $21$ proven by the following figure.
+\subsubsection{$23$-colorability of the output instance $H = (U, \mathcal{S})$}
+The goal here is to make sure that no two vertices of distance at most $3$ (i.e. in a common slide set ref \ref{fig:slide_set}) have the same color.
+More precisely, we want to prove that given $23$-colours, no two vertices having a common slide set would have the same colour. This constraint
+will enforce the absence of tokens on neighbors of $v_i$ and $v_j$, and the presence of a token on $v_i$ or $v_j$, but not both making sure that
+any merge or split will result into a feasible configuration. \todo{To check integrity + reformulate}.
+
+Given that the $kth$ power $G^{k}$ of an undirected graph $G$ is another graph that has the same set of vertices, but in which two vertices are
+adjacent when their distance in $G$ is at most $k$, to find the colorability of the output instance $H = (U, \mathcal{S})$, it suffices to
+compute $\Delta(G^{3})$. Since $G$ is $3-$regular, $G^3$ has degree at most $21$ proven by the following figure where the worst case
+scenario ($i.e.,$ a tree is attached to each root so as to force the root to meet new nodes and add new edges).
+
+On veut que dans $\mathcal{S}$, chaque paire de sommet ayant un common slide set n'ait pas la meme couleur.
+Pour ce faire on doit connaitre le max deg de $\mathcal{S}$. Pour connaitre le max degrée on va compute le graphe $G^3$ de $G$
+car par definition de la kth power d'un graphe $G^3$ sera equivalent $\mathcal{S}$.
 
 \begin{figure} [H]
   \centering
@@ -281,43 +305,64 @@ $3-$regular, $G^3$ has degree at most $21$ proven by the following figure.
 \end{figure}
 
 
-So $G$ can be $22-$colored such that no two vertices of distance at most $3$ (i.e. in a common slide set) have the same color. Such a coloring ensures that no
-pair of vertices in a common set in $\mathcal{S}$ share a color. Coloring the tokens in $\mathcal{T}$ a distinct (23rd) color then gives a coloring
-of $\mathcal{U}$ such that no pair of elements of a common set share the same color.
+So $G$ can be $22-$colored such that no two vertices of distance at most $3$ (i.e. in a common slide set) have the same color. Such a coloring
+ensures that no pair of vertices in a common set in $\mathcal{S}$ share a color. Coloring the tokens in $\mathcal{T}$ a distinct (23rd) color
+then gives a coloring of $\mathcal{U}$ such that no pair of elements of a common set share the same color.
 
 \subsubsection{High level idea}
-The subsets containing exactly one vertex and a token (e.g., $\{v_i, t_k\}$) represents the presence of the token $t_k$ on vertex $v_i$ and the subsets consisting of a slide set and a token (e.g., $\{S_{i,j} \cup t_k\}$) represent the presence of a mid-slide token between $v_i$ and $v_j$. (the intention of sliding a token from the vertex $v_i$ to $v_j$).
+We first note that the subsets containing exactly one vertex and a token (e.g., $\{v_i, t_k\}$) represents the presence of the token
+$t_k$ on vertex $v_i$ and the subsets consisting of a slide set and a token (e.g., $\{S_{i,j} \cup t_k\}$) represent the presence of a
+"mid-slide" token between $v_i$ and $v_j$. A "mid-slide" token can be interpreted as the token $t_k$ not being properly on $v_i$ or $v_j$ but is
+"on it's way" from $v_i$ to $v_j$. Therefore, sliding a token $t_k$ from $v_i$ to $v_j$ is simulated by first
+merging $\{v_i, t_k\}$ and $S_{i,j}-\{v_i\}$ into $S_{i,j} \cup \{t_k\}$, and then splitting this set into this set into $S_{i,j}-\{v_j\}$
+and ${v_j, t_k}$. The first step of this sequence enforces the absence of tokens on neighbors of $v_i$ and $v_j$ since by definition, the slide
+set $S_{ij}$ of $v_i$ and $v_j$ contains all the of $v_i$ and $v_j$ and having the token $t_k$  merged in $S_{ij}$ means that $t_k$ is not on any
+vertex. The second step then ensures the presence of a token on $v_i$ or $v_j$, but not both.
+Before a merge-split sequence, additional splits and merges of token-less sets may be needed to obtain $S_{i,j}-\{v_i\}$.
 
-Therefore, sliding a token $t_k$ from $v_i$ to $v_j$ is simulated by first merging $\{v_i, t_k\}$ and $S_{i,j} - \{v_i\}$ into $S_{i,j} \cup \{t_k\}$, and then splitting this set into this set into $S_{i,j} - \{v_j\}$ and ${v_j, t_k}$.
-
-\subsubsection{Reduction structure}
-The function $f_{red}$ is the function that maps the token arrangements to maximally split covers in the following way :
+\subsubsection{Bijection between configurations.}
+Given the definition of maximally split configurations in \ref{sssec:prelim}. The following defines a function $f_{red}$ from token arrangements
+to maximally split covers in the following way :
 \begin{enumerate}
-  \item Each token-less vertex corresponds to a set $\{v_i\}$ in the cover. $i.e f_{red} : v_i \rightarrow \{v_i\}$
-  \item Each token $t_k$ placed at $v_i$ corresponds to a set $\{v_j, t_k\}$ in the cover. $i.e f_{red} : v_i, t_k \rightarrow \{v_i, t_k\}$ \todo{correct this}
+  \item Each token-less vertex corresponds to a set $\{v_i\}$ in the cover.
+  \item Each token $t_k$ placed at $v_i$ corresponds to a set $\{v_j, t_k\}$ in the cover.
 \end{enumerate}
+Notice that $f_{red}$ is a bijection since each cover configuration is an exact cover (pas de doublons) and each token
+arrangement contains no doublons no plus. Notice also that $f_{red}(p_1) = C_1$ and $f_{red}(p_2) = C_2$.
+\todo{Understand why and how to affirm that it is a bijection + I do not agree with f(p1) = c1 etc}
 
-\begin{claim} A token arrangement $p^{'}$ is reachable from a token arrangement $p$ if and only if $f_{red}(p^{'})$ is reachable from $f_{red}(p)$ via split and merges.
+\subsubsection{Reduction structure.}
+The remainder of the proof is devoted to proving the following claim:
+\begin{claim} A token arrangement $p^{'}$ is reachable from a token arrangement $p$ if and only if $f_{red}(p^{'})$ is reachable from
+$f_{red}(p)$ via split and merges.
 \end{claim}
+Both directions are proved inductively. That is, we consider only “adjacent” configurations. We also assume that the starting token
+arrangement $p : T \rightarrow V$ has $ \{p(t) : t \in T \}$ independent.
 
-\subsubsection{Forward Direction : Sliding token $\rightarrow$ Exact cover}
-Goal : Prove that $p$ can be reconfigured in $p^{'}$ via a token slide if $f_{red}(p^{'})$ can be reached from $f_{red}(p)$ via splits and merges. \todo{To remove obvious information later}
-
-Let $p$ be a token arrangement that can be reconfigured into $p^{'}$ via a token slide from $v_i$ to $v_j$. Then $f_{red}(p^{'})$ can be reached from $f_{red}(p)$ via the following sequence of merges and splits.
+\subsubsection{Sliding tokens reachability  $\rightarrow$ Exact cover reachability}
+Let $p$ be a token arrangement that can be reconfigured into $p^{'}$ via a token slide from $v_i$ to $v_j$. Then $f_{red}(p^{'})$ can be reached
+from $f_{red}(p)$ via the following sequence of merges and splits.
 \begin{enumerate}
+  \item Repeatedly merge token-less vertex sets to form $S_{i,j}-\{v_i\}$.
   \item Merge $S_{i,j} - \{v_i\}$ and $\{v_i, t_k\}$ into $S_{i,j} \cup \{t_k\}$.
   \item Split $S_{i,j} \cup \{t_k\}$ into $S_{i,j} - \{v_j\}$ and $\{v_j, t_k\}$.
+  \item Repeatedly split the token-less vertex set $S_{i,j}-\{v_j\}$ into single vertex sets.
 \end{enumerate}
 
-\begin{example}A token slide from $v_1$ to $v_6$ is simulated by first merging $\{v_1, t_1\}$ and $S_{1,6} - \{v_1\}$ into $S_{1,6} \cup \{t_1\}$, and then splitting this set into this set into $S_{1,6} - \{v_6\}$ and $\{v_6, t_1\}$.
-
+\begin{example}A token slide from $v_1$ to $v_6$ is simulated by first merging $\{v_1, t_1\}$ and $S_{1,6} - \{v_1\}$ into $S_{1,6} \cup \{t_1\}$,
+and then splitting this set into this set into $S_{1,6} - \{v_6\}$ and $\{v_6, t_1\}$.
 \end{example}
 
-\subsubsection{Backward Direction : Exact Cover $\rightarrow$ Sliding token}
-For each exact cover configuration $C$ in the output instance, let \textit{sploot(C)} be the set of all maximally split configurations reachable from $C$. Let $C$ and $C^{'}$ be two maximally split configurations such that $C$ can be reconfigured into $C^{'}$ and $C_{inter}$ be the first configuration encountered in the reconfiguration sequence such that \textit{sploot($C_{inter}$)} $\neq \{C\}$.
+\subsubsection{Exact Cover reachability $\rightarrow$ Sliding tokens reachability} \todo{This part is not clear}
+
+For each exact cover configuration $C$ in the output instance, let \textit{sploot(C)} be the set of all maximally split configurations reachable
+from $C$. Let $C$ and $C^{'}$ be two maximally split configurations such that $C$ can be reconfigured into $C^{'}$ and $C_{inter}$ be the first
+configuration encountered in the reconfiguration sequence such that \textit{sploot($C_{inter}$)} $\neq \{C\}$.
 
 \begin{obs}
-Since $C$ and $C^{'}$ are both maximally split configurations, the only way of obtaining $C_{inter}$ is by merging two sets, one of which contains a token. Thus, $C_{inter}$ is obtained by merging $\{v_i, t_k\}$ and $S_{i,j} - \{v_i, t_k\}$  to form $S_{i,j} \cup \{t_k\}$ for some $v_i, v_j and t_k$.
+Since $C$ and $C^{'}$ are both maximally split configurations, the only way of obtaining $C_{inter}$ is by merging two sets, one of which contains
+a token. Thus, $C_{inter}$ is obtained by merging $\{v_i, t_k\}$ and $S_{i,j} - \{v_i, t_k\}$  to form $S_{i,j} \cup \{t_k\}$ for
+some $v_i, v_j and t_k$.
 \end{obs}
 
 \begin{remark}
@@ -330,50 +375,72 @@ Once $C_{inter}$ is reached two moves can be considered to move forward :
   \item Or split $S_{i,j} \cup t_k$ into $S_{i^{'},j^{'}} - \{v_j^{'},t_k\}$ where $S_{i,j} = S_{i^{'}, j^{'}}$.
 \end{enumerate}
 
-By definition of the exact cover configuration $C$, since $S_{i,j} - \{v_i\}, \{v_i, t_k\} \in C$, the token arrangement $p$ with $f_{red}(p) = C$ has no tokens on vertices in $S_{i,j}$ except for token $t_k$ on $v_i$. Added the fact that $S_{i,j} = S_{i^{'}, j^{'}}$, it contains all the neighbors of $v_i, v_i^{'}, v_j, v_j^{'}$ (by definition of a slide set), thus the token arrangement obtained by moving the location of $t_k$ in $p$ from $v_i$ to $v_j$, $v_i$, or $v_j$ is an independent set.
+By definition of the exact cover configuration $C$, since $S_{i,j} - \{v_i\}, \{v_i, t_k\} \in C$, the token
+arrangement $p$ with $f_{red}(p) = C$ has no tokens on vertices in $S_{i,j}$ except for token $t_k$ on $v_i$. Added the fact
+that $S_{i,j} = S_{i^{'}, j^{'}}$, it contains all the neighbors of $v_i, v_i^{'}, v_j, v_j^{'}$ (by definition of a slide set), thus the token
+arrangement obtained by moving the location of $t_k$ in $p$ from $v_i$ to $v_j$, $v_i$, or $v_j$ is an independent set.
 
 So all that remains is to prove that there are a sequence of slides moving $t_k$ from $v_i$ to $v_j$ via vertices
-in $\{v_i, v_j, v_i^{'}, v_j^{'}\}$. Since $S_{i,j} = S_{i,j}, v^{'}_i, v^{'}_j \in S_{i,j}$ and so either $v_i \in {v^{'}_i, v^{'}_j}$, or there is an edge ${v_i, v^{'}_i}$ or ${v_i, v^{'}_j} \in E$. So $t_k$ can slide from $v_i$ to either $v_i$ or $v_j$ (via 0 or 1 slides), and then from $v_i$ or $v_j$ to $v_j$ (via 0 or 1 slides).
+in $\{v_i, v_j, v_i^{'}, v_j^{'}\}$. Since $S_{i,j} = S_{i,j}, v^{'}_i, v^{'}_j \in S_{i,j}$ and so either $v_i \in {v^{'}_i, v^{'}_j}$, or
+there is an edge ${v_i, v^{'}_i}$ or ${v_i, v^{'}_j} \in E$. So $t_k$ can slide from $v_i$ to either $v_i$ or $v_j$ (via 0 or 1 slides),
+and then from $v_i$ or $v_j$ to $v_j$ (via 0 or 1 slides).
 \end{proof}
 
 \begin{example}{}
 \end{example}
 
 
-
-\begin{theorem}{The $3$-move Subset Sum Reconfiguration problem is strongly \PSPACE-complete.}\end{theorem}
-\begin{proof}The reduction is from the Exact Cover Reconfiguration problem for instances that are $23-$ colorable induced hypergraphs, proved \PSPACE-hard.
+\begin{theorem}{The $3$-move Subset Sum Reconfiguration problem is strongly $\PSPACE$-complete.}\end{theorem}
+\begin{proof}The reduction is from the Exact Cover Reconfiguration problem for instances that are $23-$colorable induced hypergraphs,
+proved $\PSPACE$-hard.
 
 \subsubsection{Input Instance of the Exact Cover Reconfiguration problem}
 Recall that the Exact Cover Reconfiguration instance contains a set $\mathcal{S}$ of subsets of a set $\mathcal{U}$ and two exact
 covers $C_1$ and $C_2 \subseteq \mathcal{S}$.
   
-\begin{itemize}
-  \item $H = (U, \mathcal{S})$ where $U$ is the set of vertices of $H$ and $\mathcal{S}$ is the set of non-empty subsets of $U$ referred
-  as the hyperedges of $H$.
-\end{itemize}
-
-
-\subsubsection{Reduction Structure}
-Given an instance of the exact cover problem, each element $a$ of $U$ is given an arbitrary label $i$ where $i \in \{1, \dots, |U|\}$ and
-is partitioned according to its color $j$ where $j \in \{1, \dots, 23\}$.
-A function $f : \mathcal{U} \rightarrow \mathbb{N}$ maps each element of the universe $\mathcal{U}$ of the input Exact Cover Reconfiguration
-problem to a positive integer. The positive integer is computed using the encoding of the label and color of an element $a$. The function $f$ maps a color-j
-element $a_{i}$ to $i.2^{100j \lceil log_{2}(|U|) \rceil}$. In binary, this mapping consists of the binary encoding of $i$ followed by $100j \lceil log_{2}(|U|) \rceil$
-zeros. The idea here is to use $j$ to create an interval for elements of $U$ have the same colour and $i$ as an offset to differentiate elements of the same colour.
-
-
-\subsubsection{Output $\mathcal{S}$ and $x$}
-The numbers in the output $3-$move Subset Sum Reconfiguration instances are $\{\sum_{a \in S} f(a) : S \in \mathcal{S}\}$ and the
-output target sum is $\sum_{a \in \mathcal{U}} f(a)$.
-
+%\begin{itemize}
+%  \item $H = (U, \mathcal{S})$ where $U$ is the set of vertices of $H$ and $\mathcal{S}$ is the set of non-empty subsets of $U$ referred
+%  as the hyperedges of $H$.
+%\end{itemize}
 
 \subsubsection{High level idea}
 Every $3-$move Subset Sum Reconfiguration step is either a \textit{merge} where $a_i$ and $a_j$ are replaced by $a_i + a_j$ or a \textit{split}
 where $a_i + a_j$ is replaced by $a_i$ and $a_j$.
 
 
+\subsubsection{Reduction Structure}
+Given an instance of the exact cover problem, each element $a$ of $U$ is given an arbitrary label $i$ where $i \in \{1, \dots, |U|\}$ and
+is partitioned according to its color $j$ where $j \in \{1, \dots, 23\}$.
+A function $f : \mathcal{U} \rightarrow \mathbb{N}$ maps each element of the universe $\mathcal{U}$ of the input Exact Cover Reconfiguration
+problem to a positive integer. The positive integer is computed using the encoding of the label and color of an element $a$. The function
+$f$ maps a color-$j$ element $a_{i}$ to $i.2^{100j \lceil log_{2}(|U|) \rceil}$. In binary, this mapping consists of the binary encoding of
+$i$ followed by $100j \lceil log_{2}(|U|) \rceil$ zeros. The idea here is to use $j$ to create an interval for elements of $U$ have the same
+colour or are part of the same colour class and $i$ as an offset to differentiate elements of the same colour.
+
+
+\subsubsection{Output $\mathcal{S}$ and $x$}
+The numbers in the output $3-$move Subset Sum Reconfiguration instances are $\{\sum_{a \in S} f(a) : S \in \mathcal{S}\}$ and the
+output target sum is $\sum_{a \in \mathcal{U}} f(a)$.
+
+\subsubsection{Output size}
+
+
+
 \subsubsection{Correctness}
+A reconﬁguration in both the exact cover and $3$-move subset sum problems involves splitting
+or merging elements. Thus it suffices to prove that the function $f$ yields a one-to-one mapping $g : \mathcal{S} \rightarrow N$
+given by $g(\mathcal{S}) = \sum_{a \in \mathcal{S}}^{} f(a)$.
+
+Recall that the function $f$ maps each element $a_i \in U$ to a value based upon the color of $a_i$. The sums of
+the outputs of $f$ for all elements of all colors $1$ to $j-1$ is at most $2^{100(j-1)} log_{2}(|U|)|U|^{2} \leq 2^{(100j-98)}log_{2}(|U|)$
+while the output of $f$ for any element of any color $j$ or larger is at least $2^{100(j)} log_{2}(|U|) \geq 2^{(98)}log_{2}(|U|)$.
+
+Thus if a pair of sets $\mathcal{S}_1, \mathcal{S}_2 \subseteq S$ have $\mathcal{S}_1 = \mathcal{S}_2$, then their color-$j$ elements
+differ, this difference cannot be made up by adding or removing elements of colors $1$ to $j-1$ (values too small) or colors $j + 1$ to $23$
+(values too large). Thus if $\mathcal{S}_1 = \mathcal{S}_2$, then $g(\mathcal{S}_1) = g(\mathcal{S}_2)$.
+\todo{Demythyfy this!!!!!!!!!! + Correction needed}
+
+
 
 \end{proof}
 

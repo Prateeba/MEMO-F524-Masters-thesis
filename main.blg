@@ -9,7 +9,6 @@ A level-1 auxiliary file: Chapters/chap3_SUBSETSUMs_recon/main.aux
 The style file: plain.bst
 Database file #1: main.bib
 Warning--I didn't find a database entry for "schwerdtfeger2013computational"
-Warning--I didn't find a database entry for "app"
 Warning--empty journal in allender_complexity_nodate
 Warning--empty year in allender_complexity_nodate
 Warning--empty journal in bonsma_reconfiguring_2014
@@ -35,45 +34,45 @@ Warning--empty year in savitch_relationships_1970
 Warning--empty year in sipserIntroductionTheoryComputation2006
 Warning--empty journal in van_der_zanden_parameterized_nodate
 Warning--empty year in van_der_zanden_parameterized_nodate
-You've used 30 entries,
+You've used 31 entries,
             2118 wiz_defined-function locations,
-            681 strings with 9981 characters,
-and the built_in function-call counts, 10632 in all, are:
-= -- 1022
-> -- 539
+            684 strings with 10111 characters,
+and the built_in function-call counts, 10865 in all, are:
+= -- 1042
+> -- 552
 < -- 11
-+ -- 214
-- -- 179
-* -- 741
-:= -- 1753
-add.period$ -- 96
-call.type$ -- 30
-change.case$ -- 172
++ -- 219
+- -- 183
+* -- 751
+:= -- 1791
+add.period$ -- 98
+call.type$ -- 31
+change.case$ -- 177
 chr.to.int$ -- 0
-cite$ -- 55
-duplicate$ -- 433
-empty$ -- 761
-format.name$ -- 179
-if$ -- 2225
+cite$ -- 56
+duplicate$ -- 440
+empty$ -- 783
+format.name$ -- 183
+if$ -- 2275
 int.to.chr$ -- 0
-int.to.str$ -- 30
+int.to.str$ -- 31
 missing$ -- 32
-newline$ -- 153
-num.names$ -- 68
-pop$ -- 220
+newline$ -- 157
+num.names$ -- 70
+pop$ -- 230
 preamble$ -- 1
-purify$ -- 144
+purify$ -- 148
 quote$ -- 0
-skip$ -- 315
+skip$ -- 324
 stack$ -- 0
-substring$ -- 551
-swap$ -- 118
+substring$ -- 556
+swap$ -- 119
 text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 114
+type$ -- 118
 warning$ -- 25
-while$ -- 95
-width$ -- 32
-write$ -- 313
-(There were 27 warnings)
+while$ -- 97
+width$ -- 33
+write$ -- 321
+(There were 26 warnings)

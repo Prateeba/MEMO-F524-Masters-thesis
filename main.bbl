@@ -97,6 +97,10 @@ Takehiro Ito.
 \newblock Invitation to {Combinatorial} {Reconfiguration}.
 \newblock page~47.
 
+\bibitem{Ito11approximabilityof}
+Takehiro Ito and Erik~D. Demaine.
+\newblock Approximability of the subset sum reconfiguration problem, 2011.
+
 \bibitem{DBLP:journals/tcs/ItoDHPSUU11}
 Takehiro Ito, Erik~D. Demaine, Nicholas J.~A. Harvey, Christos~H.
   Papadimitriou, Martha Sideri, Ryuhei Uehara, and Yushi Uno.
