@@ -66,7 +66,7 @@
 
 \tikzset{middlearrow/.style={
     decoration={markings,
-    mark= at position 0.6 with {\arrow[scale=4]{#1}} ,
+    mark= at position 0.6 with {\arrow[scale=5]{#1}} ,
     },
     postaction={decorate}
 }
@@ -189,9 +189,9 @@
 
     \vspace*{0.2\textheight}
 
-    %\noindent\enquote{\itshape Understand well as I may, my comprehension can only be an infinitesimal fraction of all I want to understand.}\bigbreak
+    \noindent\enquote{\itshape Understand well as I may, my comprehension can only be an infinitesimal fraction of all I want to understand.}\bigbreak
 
-    %\hfill Ada Lovelace
+    \hfill Ada Lovelace
 
 %----------------------------------------------------------------------------------------
 %	ABSTRACT PAGE
@@ -199,7 +199,20 @@
 
     \begin{abstract}
         \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
-        The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too\ldots
+        Reconfiguration problems arise when we wish to find a step-by-step transformation between two feasible solutions of a problem
+        such that all intermediate results are also feasible. The solution space of reconfiguration problems can be represented as a
+        reconﬁguration graph, where two vertices representing solutions are adjacent if one can be formed from the other in a single step.
+        Work in the area encompasses both structural questions (Is the reconﬁguration graph connected?, Is there a path between a node
+        $s$ and a node $t$ in the reconfiguration graph?) and algorithmic ones (How can one ﬁnd the shortest sequence of steps between two
+        solutions?)
+        In the first half this thesis we analyse various aspects of the Constraint Logic framework, from the book “Games, Puzzles and Computation”
+        by Hearn and Demaine which provides several problems that are often a convenient starting point for reductions and present an
+        depth study of the alternative formulation of NCL, the sliding tokens problem.
+        In the second half of this thesis, we analyse the complexity results around boolean Satisfiability reconfiguration problems and
+        investigate dichotomies/tricotomies that have been established and their applications. We also focus on complementing some
+        recent $\PSPACE-$hardness proofs given in \cite{cardinal_reconfiguration_2018} concerning Subset sum reconfiguration problem.
+
+
     \end{abstract}
 
 %----------------------------------------------------------------------------------------
@@ -208,7 +221,10 @@
 
     \begin{acknowledgements}
         \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-        \todo{To add Acknowledgment}
+        First and foremost, my utmost gratitude to prof. Jean cardinal, whose patience and encouragement I will never forget.
+        I am indebted to my parents who have given me the opportunity of an education and support throughout my life.
+        Thanks also to my partner for providing guidance and a sounding board when required.
+
         %I would like to thank my little kitten, Koi ni who brings me everyday joy \ldots
     \end{acknowledgements}
 
@@ -226,10 +242,24 @@
 %	DEDICATION
 %----------------------------------------------------------------------------------------
 
-    \dedicatory{For/Dedicated to/To my\ldots}
+    \dedicatory{Every challenging work needs self efforts as well as
+                the support of those who are very close to our heart.
+                My humble effort I dedicate to my sweet and loving
+
+
+                Family $\&$ Partner
+
+
+                Whose love, affection and encouragement made me able to
+                complete this challenge,
+
+                Along with all hard working and respected
+
+
+                Teachers}
 
 %----------------------------------------------------------------------------------------
-%	THESIS CONTENT - CHAPTERS
+%	THESIS CONTENT - CHAPTERSFor/Dedicated to/To my\ldots
 %----------------------------------------------------------------------------------------
 
     \mainmatter % Begin numeric (1,2,3...) page numbering
@@ -243,7 +273,8 @@
 \include{Chapters/chap2_SAT/main}
 \include{Chapters/chap3_SUBSETSUMs_recon/main}
 %\include{Chapters/chap4_constrained_hypercube_path/main}
-
+\include{Chapters/Chap5_future_works/main}
+\include{Chapters/Chap6_conclusion/main}
 %\include{Chapters/chap1_NCL/test_fig}
 
 

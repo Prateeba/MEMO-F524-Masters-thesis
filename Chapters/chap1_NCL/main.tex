@@ -8,15 +8,17 @@ Several decision problems surrounding the NCL framework are proved to be $\PSPAC
 $\PSPACE$-completeness of well-known Sliding-block puzzles such as Rush Hour and Sokoban \cite{hearn_demaine_ncl_book}. Demaine and Hearn argue that NCL can be considered as a
 model of computation in its own right instead of just a set of decision problems. Thus, proving a problem to be $\PSPACE$-hard in the NCL
 framework simply requires the construction of a couple of gadgets that can be connected together.
-The last section of \cite{hearn_pspace-completeness_2004} gives an interesting equivalent formulation of NCL in terms of sliding tokens along
-graph edges. This latter formulation will be the focus of section \ref{sec:sliding_tokens} to prove that the Sliding token problem
-is $\PSPACE$-complete.
+In the last section of \cite{hearn_pspace-completeness_2004} gives an interesting equivalent formulation of NCL in terms of sliding tokens along
+graph edges. This latter formulation will be the focus of sections \ref{sec:sliding_tokens} and \ref{sec:labeled_sliding_token} to prove that
+the Sliding token problem and labelled variant of the sliding token problem are $\PSPACE$-complete (theorems \ref{theorem:ncl_sliding_token}
+and \ref{theorem:labeled_sliding} respectively).
 
 \textit{Roadmap.} Section \ref{sec:formalism} describes the constraint logic using a graph formulation.
 Section \ref{sec:contraint_graph} gives an overview of AND/OR constraint graphs which is the primary formulation used in the NCL framework.
 Section \ref{sec:ncl_results} present some complexity results of decision problems stemming from the constraint logic framework.
-Lastly, in section \ref{sec:sliding_tokens} we detail the $\PSPACE$-completeness proof of the sliding token problem using the alternative
-formulation of NCL.
+In section \ref{sec:sliding_tokens} we detail the $\PSPACE$-completeness proof of the sliding token problem using the alternative
+formulation of NCL (theorem \ref{theorem:ncl_sliding_token}). Lastly, in section \ref{sec:labeled_sliding_token} the hardness proof of the
+labeled variant of the sliding token problem is given.
 
 \section{Graph Formulation}\label{sec:formalism}
 An NCL machine consists of a \textit{constraint graph}, $G = (V,E)$ that we can think of as our computation model.
@@ -30,13 +32,11 @@ edges of $v$ is at least $2$. A \textit{legal move} is the reversal of a single 
 As part of the constraint logic framework,  Hearn and Demaine provided a restricted variant of Nondeterministic Constraint Logic (restricted NCL),
 in which the constraint graph $G$ is planar, $3$-regular, uses only weights $ \in \{1,2\}$ and the graph is constructed from only two specific vertex
 types ($AND$ and $OR$ vertices). A vertex $v$ of $G$ is an \textit{AND vertex} if exactly one incident edge has weight $2$ (Figure \ref{fig:and_vertex}) and
-a vertex $v$ of $G$ is an \textit{OR vertex} if all the incident edges have weight $2$ (Figure \ref{fig:or_vertex}).
-
-A graph $G$ is an \textit{AND/OR constraint graph} if it consists of only $AND$ and $OR$ vertices. Figure \ref{fig:and_all_possible_moves}
-and \ref{fig:or_all_possible_moves} depicts the reconfiguration graph of an $AND$ vertex and $OR$ vertex respectively.
+a vertex $v$ of $G$ is an \textit{OR vertex} if all the incident edges have weight $2$ (Figure \ref{fig:or_vertex}). Thus, a graph
+$G$ is an \textit{AND/OR constraint graph} if it consists of only $AND$ and $OR$ vertices.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGINING OF A FIGURE : AND and OR vertex of constraint graph %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}
+\begin{figure}[H]
   \begin{subfigure}[b]{0.4\textwidth}
     \centering
       \begin{scaletikzpicturetowidth}{\textwidth}
@@ -85,257 +85,58 @@ and \ref{fig:or_all_possible_moves} depicts the reconfiguration graph of an $AND
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ENDING OF A FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGINING OF A FIGURE : All possible moves of an AND vertex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-  \begin{center}
-    \begin{scaletikzpicturetowidth}{\textwidth}
-      \begin{tikzpicture}[scale=0.8]
-        % v1
-        \def\xa{0}
-        \def\ya{0}
-        % v2
-        \def\xb{\xa-3}
-        \def\yb{\ya+3}
-        % v3
-        \def\xc{\xa+3}
-        \def\yc{\ya+3}
-        % v4
-        \def\xd{\xa}
-        \def\yd{\ya+6}
-        % v5
-        \def\xe{\xa}
-        \def\ye{\ya-4}
-        %labels
-        \node (1) at (\xa+2,\ya) {$f_1$};
-        \node (2) at (\xb-2,\yb) {$f_2$};
-        \node (3) at (\xc+2,\yc) {$f_3$};
-        \node (5) at (\xd+2,\yd) {$f_4$};
-        \node (4) at (\xe+2,\ye) {$f_0$};
-        % f_1 arrows
-        \draw[middlearrow={<}, red] (\xa, \ya) -- (\xa+0.9, \ya-0.8);
-        \draw[middlearrow={<}, red] (\xa, \ya) -- (\xa-1, \ya-0.8);
-        \draw[middlearrow={<}, blue] (\xa, \ya) -- (\xa, \ya+1);
-        \draw[ultra thick, -, blue] (\xa, \ya) -- (\xa, \ya+1);
-        \draw[ultra thick, -, red] (\xa, \ya) -- (\xa+0.9, \ya-0.8);
-        \draw[ultra thick, -, red] (\xa, \ya) -- (\xa-1, \ya-0.8);
-        \path[fill=none, draw, ultra thick, dotted] (\xa,\ya) circle (\ver+1.2);     %f1
-        % f_2 arrows
-        \draw[middlearrow={>}, red] (\xb, \yb) --(\xb-0.9, \yb-0.8);
-        \draw[middlearrow={<}, red] (\xb, \yb) --(\xb+0.9, \yb-0.8);
-        \draw[middlearrow={<}, blue] (\xb, \yb) --(\xb, \yb+1);
-        \draw[ultra thick, -, red] (\xb, \yb) --(\xb-0.9, \yb-0.8);
-        \draw[ultra thick, -, red] (\xb, \yb) --(\xb+0.9, \yb-0.8);
-        \draw[ultra thick, -, blue] (\xb, \yb) --(\xb, \yb+1);
-        \path[fill=none, draw, ultra thick, dotted] (\xb,\yb) circle (\ver+1.2);     %f2
-        % f_3  arrows
-        \draw[middlearrow={<}, red] (\xc, \yc) --(\xc-0.9, \yc-0.8);
-        \draw[middlearrow={>}, red] (\xc, \yc) --(\xc+0.9, \yc-0.8);
-        \draw[middlearrow={<}, blue] (\xc, \yc) --(\xc, \yc+1);
-        \draw[ultra thick, -, red] (\xc, \yc) --(\xc-0.9, \yc-0.8);
-        \draw[ultra thick, -, red] (\xc, \yc) --(\xc+0.9, \yc-0.8);
-        \draw[ultra thick, -, blue] (\xc, \yc) --(\xc, \yc+1);
-        \path[fill=none, draw, ultra thick, dotted] (\xc,\yc) circle (\ver+1.2);     %f3
-        % f_4  arrows
-        \draw[middlearrow={>}, red] (\xd, \yd) --(\xd-0.9, \yd-0.8);
-        \draw[middlearrow={>}, red] (\xd, \yd) --(\xd+0.9, \yd-0.8);
-        \draw[middlearrow={<}, blue] (\xd, \yd) --(\xd, \yd+1);
-        \draw[ultra thick, -, red] (\xd, \yd) --(\xd-0.9, \yd-0.8);
-        \draw[ultra thick, -, red] (\xd, \yd) --(\xd+0.9, \yd-0.8);
-        \draw[ultra thick, -, blue] (\xd, \yd) --(\xd, \yd+1);
-        \path[fill=none, draw, ultra thick, dotted] (\xd,\yd) circle (\ver+1.2);     %f4
-        % f_0  arrows
-        \draw[middlearrow={<}, red] (\xe, \ye) --(\xe-0.9, \ye-0.8);
-        \draw[middlearrow={<}, red] (\xe, \ye) --(\xe+0.9, \ye-0.8);
-        \draw[middlearrow={>}, blue] (\xe, \ye) --(\xe, \ye+1);
-        \draw[ultra thick, -, red] (\xe, \ye) --(\xe-0.9, \ye-0.8);
-        \draw[ultra thick, -, red] (\xe, \ye) --(\xe+0.9, \ye-0.8);
-        \draw[ultra thick, -, blue] (\xe, \ye) --(\xe, \ye+1);
-        \path[fill=none, draw, ultra thick, dotted] (\xe,\ye) circle (\ver+1.2);     %f0
-        %relations
-        \draw[ultra thick, <->] (\xe,\ye+1.4) -- (\xa,\ya-1.4);
-        \draw[ultra thick, <->] (\xa+1,\ya+1) -- (\xc-1,\yc-1);
-        \draw[ultra thick, <->] (\xa-1,\ya+1) -- (\xb+1,\yb-1);
-        \draw[ultra thick, <->] (\xc-1,\yc+1) -- (\xd+1,\yd-1);
-        \draw[ultra thick, <->] (\xd-1,\yd-1) -- (\xb+1,\yb+1);
-        %graph G : Nodes fill
-        \path[fill] (\xa,\ya) circle (\ver);     %f1
-        \path[fill] (\xb,\yb) circle (\ver);     %f2
-        \path[fill] (\xc,\yc) circle (\ver);     %f3
-        \path[fill] (\xd,\yd) circle (\ver);     %f4
-        \path[fill] (\xe,\ye) circle (\ver);     %f0
-      \end{tikzpicture}
-    \end{scaletikzpicturetowidth}
-  \end{center}
-  \caption{All the possible orientations of edges of an AND vertex.}
-  \label{fig:and_all_possible_moves}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ENDING OF A FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGINING OF A FIGURE : All possible moves of an OR vertex  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-  \begin{center}
-    \begin{scaletikzpicturetowidth}{\textwidth}
-      \begin{tikzpicture}[scale=0.8]
-        % v1
-        \def\xa{0}
-        \def\ya{0}
-        % v2
-        \def\xb{\xa-3}
-        \def\yb{\ya+3}
-        % v3
-        \def\xc{\xa+3}
-        \def\yc{\ya+3}
-        % v4
-        \def\xd{\xa}
-        \def\yd{\ya+6}
-        % v5
-        \def\xe{\xa}
-        \def\ye{\ya-4}
-        % v6
-        \def\xf{\xa-3}
-        \def\yf{\ya-7}
-        % v7
-        \def\xg{\xa+3}
-        \def\yg{\ya-7}
-        %labels
-        \node (1) at (\xa+2,\ya) {$f_1$};
-        \node (2) at (\xb-2,\yb) {$f_2$};
-        \node (3) at (\xc+2,\yc) {$f_3$};
-        \node (5) at (\xd+2,\yd) {$f_4$};
-        \node (4) at (\xe+2,\ye) {$f_0$};
-        \node (6) at (\xf-2,\yf) {$f_6$};
-        \node (7) at (\xg+2,\yg) {$f_7$};
-        % f_1 arrows
-        \draw[middlearrow={<}, blue] (\xa, \ya) -- (\xa+0.9, \ya-0.8);
-        \draw[middlearrow={<}, blue] (\xa, \ya) -- (\xa-1, \ya-0.8);
-        \draw[middlearrow={<}, blue] (\xa, \ya) -- (\xa, \ya+1);
-        \draw[ultra thick, -, blue] (\xa, \ya) -- (\xa, \ya+1);
-        \draw[ultra thick, -, blue] (\xa, \ya) -- (\xa+0.9, \ya-0.8);
-        \draw[ultra thick, -, blue] (\xa, \ya) -- (\xa-1, \ya-0.8);
-        \path[fill=none, draw, ultra thick, dotted] (\xa,\ya) circle (\ver+1.2);     %f1
-        % f_2 arrows
-        \draw[middlearrow={>}, blue] (\xb, \yb) --(\xb-0.9, \yb-0.8);
-        \draw[middlearrow={<}, blue] (\xb, \yb) --(\xb+0.9, \yb-0.8);
-        \draw[middlearrow={<}, blue] (\xb, \yb) --(\xb, \yb+1);
-        \draw[ultra thick, -, blue] (\xb, \yb) --(\xb-0.9, \yb-0.8);
-        \draw[ultra thick, -, blue] (\xb, \yb) --(\xb+0.9, \yb-0.8);
-        \draw[ultra thick, -, blue] (\xb, \yb) --(\xb, \yb+1);
-        \path[fill=none, draw, ultra thick, dotted] (\xb,\yb) circle (\ver+1.2);     %f2
-        % f_3  arrows
-        \draw[middlearrow={<}, blue] (\xc, \yc) --(\xc-0.9, \yc-0.8);
-        \draw[middlearrow={>}, blue] (\xc, \yc) --(\xc+0.9, \yc-0.8);
-        \draw[middlearrow={<}, blue] (\xc, \yc) --(\xc, \yc+1);
-        \draw[ultra thick, -, blue] (\xc, \yc) --(\xc-0.9, \yc-0.8);
-        \draw[ultra thick, -, blue] (\xc, \yc) --(\xc+0.9, \yc-0.8);
-        \draw[ultra thick, -, blue] (\xc, \yc) --(\xc, \yc+1);
-        \path[fill=none, draw, ultra thick, dotted] (\xc,\yc) circle (\ver+1.2);     %f3
-        % f_4  arrows
-        \draw[middlearrow={>}, blue] (\xd, \yd) --(\xd-0.9, \yd-0.8);
-        \draw[middlearrow={>}, blue] (\xd, \yd) --(\xd+0.9, \yd-0.8);
-        \draw[middlearrow={<}, blue] (\xd, \yd) --(\xd, \yd+1);
-        \draw[ultra thick, -, blue] (\xd, \yd) --(\xd-0.9, \yd-0.8);
-        \draw[ultra thick, -, blue] (\xd, \yd) --(\xd+0.9, \yd-0.8);
-        \draw[ultra thick, -, blue] (\xd, \yd) --(\xd, \yd+1);
-        \path[fill=none, draw, ultra thick, dotted] (\xd,\yd) circle (\ver+1.2);     %f4
-        % f_0  arrows
-        \draw[middlearrow={<}, blue] (\xe, \ye) --(\xe-0.9, \ye-0.8);
-        \draw[middlearrow={<}, blue] (\xe, \ye) --(\xe+0.9, \ye-0.8);
-        \draw[middlearrow={>}, blue] (\xe, \ye) --(\xe, \ye+1);
-        \draw[ultra thick, -, blue] (\xe, \ye) --(\xe-0.9, \ye-0.8);
-        \draw[ultra thick, -, blue] (\xe, \ye) --(\xe+0.9, \ye-0.8);
-        \draw[ultra thick, -, blue] (\xe, \ye) --(\xe, \ye+1);
-        \path[fill=none, draw, ultra thick, dotted] (\xe,\ye) circle (\ver+1.2);     %f0
-        % f_6 arrows
-        \draw[middlearrow={>}, blue] (\xf, \yf) --(\xf-0.9, \yf-0.8);
-        \draw[middlearrow={<}, blue] (\xf, \yf) --(\xf+0.9, \yf-0.8);
-        \draw[middlearrow={>}, blue] (\xf, \yf) --(\xf, \yf+1);
-        \draw[ultra thick, -, blue] (\xf, \yf) --(\xf-0.9, \yf-0.8);
-        \draw[ultra thick, -, blue] (\xf, \yf) --(\xf+0.9, \yf-0.8);
-        \draw[ultra thick, -, blue] (\xf, \yf) --(\xf, \yf+1);
-        \path[fill=none, draw, ultra thick, dotted] (\xf,\yf) circle (\ver+1.2);     %f6
-        % f_7 arrows
-        \draw[middlearrow={<}, blue] (\xg, \yg) --(\xg-0.9, \yg-0.8);
-        \draw[middlearrow={>}, blue] (\xg, \yg) --(\xg+0.9, \yg-0.8);
-        \draw[middlearrow={>}, blue] (\xg, \yg) --(\xg, \yg+1);
-        \draw[ultra thick, -, blue] (\xg, \yg) --(\xg-0.9, \yg-0.8);
-        \draw[ultra thick, -, blue] (\xg, \yg) --(\xg+0.9, \yg-0.8);
-        \draw[ultra thick, -, blue] (\xg, \yg) --(\xg, \yg+1);
-        \path[fill=none, draw, ultra thick, dotted] (\xg,\yg) circle (\ver+1.2);     %f7
-        %relations
-        \draw[ultra thick, <->] (\xe,\ye+1.4) -- (\xa,\ya-1.4);
-        \draw[ultra thick, <->] (\xa+1,\ya+1) -- (\xc-1,\yc-1);
-        \draw[ultra thick, <->] (\xa-1,\ya+1) -- (\xb+1,\yb-1);
-        \draw[ultra thick, <->] (\xc-1,\yc+1) -- (\xd+1,\yd-1);
-        \draw[ultra thick, <->] (\xd-1,\yd-1) -- (\xb+1,\yb+1);
-        \draw[ultra thick, <->] (\xe-1,\ye-1) -- (\xf+1,\yf+1);
-        \draw[ultra thick, <->] (\xe+1,\ye-1) -- (\xg-1,\yg+1);
-        %graph G : Nodes fill
-        \path[fill] (\xa,\ya) circle (\ver);     %f1
-        \path[fill] (\xb,\yb) circle (\ver);     %f2
-        \path[fill] (\xc,\yc) circle (\ver);     %f3
-        \path[fill] (\xd,\yd) circle (\ver);     %f4
-        \path[fill] (\xe,\ye) circle (\ver);     %f0
-        \path[fill] (\xf,\yf) circle (\ver);     %f6
-        \path[fill] (\xg,\yg) circle (\ver);     %f7
-      \end{tikzpicture}
-    \end{scaletikzpicturetowidth}
-  \end{center}
-  \caption{All the possible orientations of edges of an OR vertex.}
-  \label{fig:or_all_possible_moves}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ENDING OF A FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{NCL Results} \label{sec:ncl_results}
-A fundamental decision problem regarding constraint graphs is that of their satisfiability:
-
+This section compiles the important complexity results linked to NCL. A first fundamental decision problem that arises in the NCL framework
+is about the satisfiability of a given constraint graph $G$. It is defined as follows :
 \begin{flushleft}
   CONSTRAINT GRAPH SATISFIABILITY \\
   \textbf{Instance: } A constraint graph $G$. \\
   \textbf{Question: } Does $G$ have a legal configuration ? \\
 \end{flushleft}
-CONSTRAINT GRAPH SATISFIABILITY is $\NP-$complete\cite{hearn_demaine_ncl_book}.
+In \cite{hearn_demaine_ncl_book} Demaine and Hearn proved that the CONSTRAINT GRAPH SATISFIABILITY problem is $\NP-$complete.
 
-An important problem regarding constraint graph configurations is whether they can be reconfigured into each other.
+Another important problem regarding constraint graphs is about their reconfigurability. The CONFIGURATION-TO-CONFIGURATION (C2C) problem asks
+if given two configurations of a constraint graph $G$, whether they can be reconfigured into each other.
 \begin{flushleft}
-  NONDETERMINISTIC CONSTRAINT LOGIC (configuration-to-configuration) \\
+  CONFIGURATION-TO-CONFIGURATION (C2C)\\
   \textbf{Instance: } A constraint graph $G$ and two legal configurations $C_1, C_2$ for $G$. \\
   \textbf{Question: } Is there a sequence of legal configurations from $C_0, C_1, \dots , C_t$ such that $C_i$ is obtained from $C_{i-1}$
-  by a legal move for each $i$ with $1 \leq i \leq t$ ? \\
+  by a legal move for each $i$ with $1 \leq i \leq t$ and $C_0 = C_1, C_t = C_2$ ? \\
 \end{flushleft}
-This problem is called the configuration-to-configuration (C2C) variant of Nondeterministic Constraint Logic and is also
-$\PSPACE$-complete\cite{hearn_demaine_ncl_book}.
+Hearn and Demaine established that the C2C problem is $\PSPACE$-complete\cite{hearn_demaine_ncl_book}.
 
-Another natural question that arises in the NCL framework is whether a particular edge $e$ can be reversed.
+Similar to the C2C problem, the CONFIGURATION-TO-EDGE (C2E) problem asks whether a target edge $e$ can be reversed
+given a constraint graph $G$.
 \begin{flushleft}
-  NONDETERMINISTIC CONSTRAINT LOGIC (configuration-to-edge) \\
+  CONFIGURATION-TO-EDGE (C2E) \\
   \textbf{Instance: } A constraint graph $G$, a target edge $e$ from $G$ and an initial legal configuration $C$ for $G$ . \\
   \textbf{Question: } Is there a sequence of legal configurations, starting with $C$, where every configuration is obtained from the previous
   by changing the orientation of one edge, so that $e$ is eventually reversed? \\
 \end{flushleft}
-Configuration-to-edge is $\PSPACE$-complete\cite{hearn_demaine_ncl_book}.
+Hearn and Demaine proved that the C2E problem is also $\PSPACE$-complete\cite{hearn_demaine_ncl_book}.
 
-More interestingly, the hardness result for configuration-to-configuration and configuration-to-edge still holds when the vertices of $G$
-are restricted to be $AND$ and $OR$ vertices defined in section \ref{sec:contraint_graph}. Configuration-to-edge and configuration-to-configuration hardness proof involves a reduction from quantified Boolean formulas, based on the logical
-interpretation of AND/OR constraint graphs. Additional gadgets are required for simulating quantifiers and for converting red edges into blue
-edges (and vice versa), which can all be accomplished by combinations of AND and OR vertices. \cite{hearn_demaine_ncl_book}.
+More interestingly, the hardness result for C2C and C2E still holds when the vertices of $G$ are restricted to be $AND$ and $OR$ vertices
+defined in section \ref{sec:contraint_graph}. C2C and C2E hardness proof involves a reduction from quantified Boolean formulas, based on the
+logical interpretation of AND/OR constraint graphs. Additional gadgets are required for simulating quantifiers and for converting red edges
+into blue edges (and vice versa), which can all be accomplished by combinations of $AND$ and $OR$ vertices \cite{hearn_demaine_ncl_book}.
 
-Demaine and Hearn in fact strengthen this result even further and show that configuration-to-edge and configuration-to-configuration both
-remain \PSPACE-complete when the constraint graph $G$ is planar. This involves the construction of crossover gadgets that allow two
-edges to cross each other.
+Demaine and Hearn in fact strengthen this result even further and show that C2C and C2E both remain $\PSPACE$-complete when the constraint
+graph $G$ is planar \cite{hearn_demaine_ncl_book}. This proof involves the construction of crossover gadgets that allow two edges to cross
+each other.
 
 It is also possible to impose an additional restriction, while preserving the hardness of these problems: each vertex with three blue edges
 can be required to be part of a triangle with a red edge. Such a vertex is called a protected or, and it has the property that
 (in any valid orientation of the whole graph) it is not possible for both of the blue edges in the triangle to be directed inwards.
 This restriction makes it easier to simulate these vertices in hardness reductions for other problems\cite{hearn_demaine_ncl_book}.
 Additionally, the constraint graphs can be required to have bounded bandwidth, and the problems on them will still remain
-$\PSPACE$-complete\cite{van_der_zanden_parameterized_nodate}
+$\PSPACE$-complete\cite{van_der_zanden_parameterized_nodate}.
 
 
-\section{Alternative Formulation of NCL : Sliding Tokens} \label{sec:sliding_tokens}
-The SLIDING TOKEN problem was introduced by Hearn and Demaine \cite{hearn_pspace-completeness_2004} as a variant of SLIDING-BLOCK puzzle
+\section{Alternative formulation : Sliding tokens} \label{sec:sliding_tokens}
+The SLIDING TOKEN problem was introduced by Hearn and Demaine in \cite{hearn_pspace-completeness_2004} as a variant of SLIDING-BLOCK puzzle
 with $1 \times 1 $ blocks on a graph but require no adjacent tokens, which can be seen as a reconfiguration problem for Independent Set.
-Suppose that we are given two independent sets $I_b$ and $I_r$ of a graph $G =(V,E)$ such that $|I_b| = |I_r|$ and imagine that a \textit{token}
-is placed on each vertex in $I_b$. Then, the SLIDING TOKEN problem is to determine whether there exists a sequence
+Suppose that we are given two independent sets $I_b$ and $I_r$ of a graph $G =(V,E)$ such that $|I_b| = |I_r|$ and imagine that a
+\textit{token} is placed on each vertex in $I_b$. Then, the SLIDING TOKEN problem is to determine whether there exists a sequence
 $ S = \langle I_1, I_2, \dots, I_l \rangle$ of independent sets of $G$ such that :
 \begin{enumerate}
   \item $I_1 = I_b, I_l = I_r,$ and $|I_i| = |I_b| = |I_r|$ for all $i, 1 \leq i \leq l;$ and
@@ -345,9 +146,10 @@ That is, $I_i$ can be obtained from $I_{i-1}$ by sliding exactly one token on a 
 along an edge $xy \in E(G)$. Such a sequence $S$, if exists, is called a \textit{TS-sequence} in $G$ between $I_b$ and $I_r$.
 We denote by a $3$-tuple $(G, I_{b}, I_{r})$ an instance of SLIDING TOKEN problem.  If a TS-sequence $S$ in $G$ between $I_{b}$ and $I_{r}$ exists,
 we say that $I_{b}$ is \textit{reconfigurable} to $I_{r}$ (and vice versa), and write $I_{b} \overset{G}\leftrightsquigarrow I_{r}$. The sets
-$I_{b}$ and $I_{r}$ are the \textit{initial} and \textit{target} independent sets, respectively. For a TS-sequence $S$, the \textit{length} len($S$)
-of $S$ is defined as the number of independent sets in $S$ minus one. In other words, len($S$) is the number of \textit{token-slides} described in
-$S$. Figure \ref{fig:sliding_token_example} illustrates a TS-sequence of length $4$ between two independent sets $I_{b} = I_{1}$ and $I_{r} = I_{5}$.
+$I_{b}$ and $I_{r}$ are the \textit{initial} and \textit{target} independent sets, respectively. For a TS-sequence $S$, the \textit{length}
+len($S$)of $S$ is defined as the number of independent sets in $S$ minus one. In other words, len($S$) is the number of \textit{token-slides}
+described in $S$. Figure \ref{fig:sliding_token_example} illustrates a TS-sequence of length $4$ between two independent sets
+$I_{b} = I_{1}$ and $I_{r} = I_{5}$.
 
 \begin{figure}[H]
   \centering
@@ -480,37 +282,41 @@ $S$. Figure \ref{fig:sliding_token_example} illustrates a TS-sequence of length 
   \label{fig:sliding_token_example}
 \end{figure}
 
-\subsection{Known results for the SLIDING TOKEN problem}
-Analogous to the Independent Set problem being the key problem among thousands of $\NP$-complete problems, the SLIDING TOKEN problem
-plays an important role since several $\PSPACE$-hardness results have been proved using reductions from it.
+\subsection{Known results for the SLIDING TOKEN problem.}
+Analogous to the Independent Set problem being the key problem among thousands of $\NP$-complete problems to prove $\NP$-hardness,
+the SLIDING TOKEN problem plays an important role since several $\PSPACE$-hardness results have been proved using reductions from it.
 
-For the sliding token problem, some polynomial time algorithms are investigated as follows: Linear time algorithms have been shown for cographs
-(also known as P4-free graphs) \cite{kaminski_complexity_2012} and trees \cite{2014arXiv1406.6576D}. Polynomial time algorithms are shown for
-bipartite permutation graphs \cite{fox-epstein_sliding_2015}, and claw-free graphs \cite{bonsma_reconfiguring_2014}. On the other hand,
-$\PSPACE$-completeness is also shown for graphs of bounded treewidth \cite{mouawad_reconfiguration_2014}, and planar graphs \cite{hearn_pspace-completeness_2004}.
+For the sliding token problem, some polynomial time algorithms have been investigated as follows: Linear time algorithms have been shown
+for cographs (also known as P4-free graphs) \cite{kaminski_complexity_2012} and trees \cite{2014arXiv1406.6576D}. Polynomial time algorithms
+are shown for bipartite permutation graphs \cite{fox-epstein_sliding_2015}, and claw-free graphs \cite{bonsma_reconfiguring_2014}.
+On the other hand, $\PSPACE$-completeness is shown for graphs of bounded treewidth \cite{mouawad_reconfiguration_2014}, and planar
+graphs \cite{hearn_pspace-completeness_2004}.
 
-\subsection{$\PSPACE$-completeness}
+\subsection{$\PSPACE$-completeness.}
 
-In this section we go over the $\PSPACE$-completeness result of the SLIDING TOKEN problem, proved by a reduction from NCL. As seen in section \ref{sec:ncl_results}, there are slightly different
-versions of decision problems for NCL and all of them are $\PSPACE-$complete. For our purpose, we just need the version for the
-configuration-to-configuration for planar NCL. Recall that an instance of the configuration-to-configuration planar NCL problem is defined
-on a $3-$regular, planar, directed graph where each edge has a weight $\in \{1,2\}$ and each vertex is either and $AND$ or an $OR$ vertex.
+In this section we go over the $\PSPACE$-completeness result of the SLIDING TOKEN problem, proved by a reduction from NCL. As seen in
+section \ref{sec:ncl_results}, there are slightly different versions of decision problems for NCL and all of them are $\PSPACE-$complete.
+For our purpose, we just need the version for the configuration-to-configuration for planar NCL. Recall that an instance of the
+C2C planar NCL problem is defined on a $3-$regular, planar, directed graph where each edge has a weight $\in \{1,2\}$ and each vertex is
+either and $AND$ or an $OR$ vertex. The proof of theorem \ref{theorem:ncl_sliding_token} is organised in sections
+\ref{subsubsection:reduction_structure} to \ref{subsubsection:and_or} which explains the reduction structure, gadets used and how they are
+connected together.
 
-\subsubsection{Reduction structure}
-To show that the SLIDING TOKEN PROBLEM is $\PSPACE-$complete we provide a reduction from configuration-to-configuration for AND/OR graphs
+\subsubsection{Reduction structure.}\label{subsubsection:reduction_structure}
+To show that the SLIDING TOKEN problem is $\PSPACE$-complete we provide a reduction from configuration-to-configuration for AND/OR graphs
 such that the NCL instance is solvable if and only if the corresponding SLIDING TOKEN is solvable. The sliding token instance is constructed by
 piecing together gadgets which emulates the directed edges, the AND vertices and the OR vertices of the given NCL instance.
 We construct the corresponding NCL $AND$ and $OR$ vertex gadgets out of sliding-token subgraphs illustrated in figures
 \ref{fig:and_gadget_sliding_token} and \ref{fig:or_gadget_sliding_token} respectively.
 
-\subsubsection{The OR gadget and the AND gadget.}
+\subsubsection{The OR gadget and the AND gadget.}\label{subsubsection:or_and}
 The construction of Fig.\ref{fig:and_gadget_sliding_token} satisfies the same constraints as an NCL $AND$ vertex, with the upper
 token corresponding to the blue edge and both lower tokens corresponding to the red edges. The upper token can slide in only when both lower
 tokens are slid out thus maintaining the flow constraint of an NCL AND vertex.
 Likewise, the construction of Fig.\ref{fig:or_gadget_sliding_token} satisfies the same constraints as an NCL $OR$ vertex with the upper
 and two lower tokens corresponding the the $OR$ blue edges. The upper token in the $OR$ gadget can slide in when  either lower token is slid
 out and the internal token can then slide to one side or the other to make room. Here it is the internal token that ensures the NCL flow
-constraints by sliding on a appropriate vertex among the three to make such that one among the outer tokens are slid in.
+constraint is satisfied by sliding on a appropriate vertex among the three internal nodes to force one among the outer tokens are slid in.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGINING OF A FIGURE : AND and OR gadget of Sliding Token %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure} [H]
@@ -576,7 +382,7 @@ constraints by sliding on a appropriate vertex among the three to make such that
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ENDING OF A FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{AND/OR Graphs}
+\subsubsection{AND/OR Graphs}\label{subsubsection:and_or}
 We showed how to construct $AND$ and $OR$ vertices. We now show how to connect the vertices into an arbitrary planar constraint graph.
 First, the edges that cross the dotted-line gadget borders are called “port” edges. A token on an outer port-edge vertex represents an
 inward-directed NCL edge, and vice-versa. Second, observe that no port token may ever leave its port edge. Choosing a particular port
@@ -586,9 +392,9 @@ Given an $AND/OR$ graph $G$ and two legal configurations $C_1, C_2$ for $G$, we 
 $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port tokens appropriately.
 
 
-\begin{theorem}Sliding Token problem is $\PSPACE$-complete. \end{theorem}
+\begin{theorem}Sliding Token problem is $\PSPACE$-complete. \end{theorem}\label{theorem:ncl_sliding_token}
 \begin{proof}
-  First, we show that SLIDING TOKEN PROBLEM is in $\PSPACE$.
+  First, we show that SLIDING TOKEN problem is in $\PSPACE$.
   The SLIDING TOKEN problem is in $\PSPACE$ since the state of the input graph can be described in a linear number of bits, specifying the
   position of each token and the list of possible moves from any state can be computed in polynomial time. Thus we can nondeterministically
   traverse the state space, at each step nondeterministically choosing a move to make , and maintaining the current state but not the previously
@@ -599,9 +405,9 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
   provided above. The NCL instance is solvable if and only if the corresponding SLIDING TOKEN is solvable.
 \end{proof}
 
-\begin{example}{Reduction Example.}
+\begin{example}{Find a name. \\}
+\textbf{Input restricted NCL C2E instance} \hfill
 
-\textbf{Input RESTRICTED NCL instance} \hfill
 \begin{figure}[H]
   \centering
   \begin{subfigure}[b]{0.4\textwidth}
@@ -778,16 +584,16 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
     \caption{Target configuration = $C_3$}
     \label{fig:input_instance_3}
   \end{subfigure}
-  \caption{Configuration-to-edge input instance}
+  \caption{C2E input instance}
   \label{fig:input_instance_config_to_edge}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%% Output instance %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Output instance %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \textbf{Output Sliding-Token instance} \hfill
 \begin{figure}[H]
   \centering
   \begin{scaletikzpicturetowidth}{\textwidth}
-    \begin{tikzpicture}[scale=0.9]
+    \begin{tikzpicture}[scale=0.7]
       %%%%%%%%%%%% AND 1 %%%%%%%%%%%%
       \def\ver{0.12} %size of a vertex
       \def\xa{-1}
@@ -837,7 +643,7 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
       %%%%%%%%%%%% OR 1 %%%%%%%%%%%%
       \def\ver{0.12} %size of a vertex
       \def\xd{0}
-      \def\yd{-13}
+      \def\yd{-11}
       %G_1
       \draw (\xd,\yd) circle (0.2cm);           %v1
       \draw (\xd+0.5,\yd-0.8) circle (0.2cm);   %v4
@@ -859,7 +665,7 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
       %%%%%%%%%%%% OR 2 %%%%%%%%%%%%
       \def\ver{0.12} %size of a vertex
       \def\xe{4}
-      \def\ye{-9}
+      \def\ye{-7}
       %G_1
       \draw (\xe,\ye) circle (0.2cm);           %v1
       \draw (\xe+0.5,\ye-0.8) circle (0.2cm);   %v4
@@ -881,7 +687,7 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
       %%%%%%%%%%%% OR 3 %%%%%%%%%%%%
       \def\ver{0.12} %size of a vertex
       \def\xf{8}
-      \def\yf{-13}
+      \def\yf{-11}
       %G_1
       \draw (\xf,\yf) circle (0.2cm);           %v1
       \draw (\xf+0.5,\yf-0.8) circle (0.2cm);   %v4
@@ -904,24 +710,24 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
       \node (a) at (2,-2) {\textbf{A}};            % Label reject
       \draw [-, red, thick, arrows={->[scale=3,red]}] (\xc-0.5,\yc-0.8) to [out=170,in=10] (\xa+0.5,\ya-0.8);            % AND 3  -- AND 1
       \draw [-, red, thick, arrows={->[scale=3,red]}] (\xa-0.5,\ya-0.8)  to [out=300,in=170] (\xb-0.5,\yb-0.8);          % AND 1  -- AND 2
-      \draw [-, red, thick, arrows={->[scale=3,red]}] (\xb+0.5,\yb-0.8) to [out=5,in=250] (\xc+0.5,\yc-0.8);             % AND 2  -- AND 3
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd-1.5,\yd-1.5) to [out=120,in=170] (\xa,\ya);                 % OR 1  -- AND 1
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd+1.5,\yd-1.5) to [out=330,in=200] (\xf-1.5,\yf-1.5);          % OR 1  -- OR 3
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf,\yf) to [out=100,in=340] (\xe+1.5,\ye-1.5);                 % OR 3  -- OR 2
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe-1.5,\ye-1.5) to [out=200,in=40] (\xd,\yd+1);                  % OR 2  -- OR 1
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf+1.5,\yf-1.5) to [out=20,in=340] (\xc,\yc);                   % OR 3  -- AND 3
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe,\ye+1) to [out=100,in=260] (\xb,\yb);                           % OR 2  -- AND 2
+      \draw [-, red, thick, arrows={->[scale=3,red]}] (\xb+0.5,\yb-0.8) to [out=5,in=235] (\xc+0.5,\yc-0.8);             % AND 2  -- AND 3
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd-1.5,\yd-1.5) to [out=130,in=220] (\xa,\ya);                 % OR 1  -- AND 1
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd+1.5,\yd-1.5) to [out=340,in=200] (\xf-1.5,\yf-1.5);         % OR 1  -- OR 3
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf,\yf+1)  to [out=140,in=340] (\xe+1.5,\ye-1.5);              % OR 3  -- OR 2
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe-1.5,\ye-1.5) to [out=200,in=40] (\xd,\yd+1);                % OR 2  -- OR 1
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf+1.5,\yf-1.5) to [out=40,in=320] (\xc,\yc);                  % OR 3  -- AND 3
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe,\ye+1) to [out=100,in=260] (\xb,\yb);                       % OR 2  -- AND 2
     \end{tikzpicture}
   \end{scaletikzpicturetowidth}
   \caption{Sliding Tokens vertex gadgets.}
   \label{fig:output_instance_final}
 \end{figure}
 
-
+%----------------------------------------- out 2 ----------------------------------------------------------
 \begin{figure}[H]
   \centering
   \begin{scaletikzpicturetowidth}{\textwidth}
-    \begin{tikzpicture}[scale=0.9]
+    \begin{tikzpicture}[scale=0.7]
       %%%%%%%%%%%% AND 1 %%%%%%%%%%%%
       \def\ver{0.12} %size of a vertex
       \def\xa{-1}
@@ -995,7 +801,7 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
       %%%%%%%%%%%% OR 2 %%%%%%%%%%%%
       \def\ver{0.12} %size of a vertex
       \def\xe{4}
-      \def\ye{-9}
+      \def\ye{-7}
       %G_1
       \draw (\xe,\ye) circle (0.2cm);           %v1
       \draw (\xe+0.5,\ye-0.8) circle (0.2cm);   %v4
@@ -1038,26 +844,26 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
 
       %%%%%%%%%%% EDGES %%%%%%%%%
       \node (a) at (2,-2) {\textbf{A}};            % Label reject
-      \draw [-, red, thick, arrows={->[scale=3,red]}]  (\xa+0.5,\ya-0.8) to [out=10,in=170]  (\xc-0.5,\yc-0.8);            % AND 1  -- AND 3
-      \draw [-, red, thick, arrows={->[scale=3,red]}] (\xa-0.5,\ya-0.8)  to [out=280,in=170] (\xb-0.5,\yb-0.8);          % AND 1  -- AND 2
-      \draw [-, red, thick, arrows={->[scale=3,red]}] (\xb+0.5,\yb-0.8) to [out=5,in=280] (\xc+0.5,\yc-0.8);             % AND 2  -- AND 3
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd-1.5,\yd-1.5) to [out=120,in=250] (\xa,\ya);                 % OR 1  -- AND 1
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd+1.5,\yd-1.5) to [out=320,in=190] (\xf-1.5,\yf-1.5);          % OR 1  -- OR 3
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf,\yf) to [out=100,in=340] (\xe+1.5,\ye-1.5);                 % OR 3  -- OR 2
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe-1.5,\ye-1.5) to [out=200,in=70] (\xd,\yd+1);                  % OR 2  -- OR 1
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf+1.5,\yf-1.5) to [out=80,in=320] (\xc,\yc);                   % OR 3  -- AND 3
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe,\ye+1) to [out=100,in=260] (\xb,\yb);                           % OR 2  -- AND 2
+      \draw [-, red, thick, arrows={->[scale=3,red]}]  (\xa+0.5,\ya-0.8) to [out=10,in=170]  (\xc-0.5,\yc-0.8);          % AND 1  -- AND 3
+      \draw [-, red, thick, arrows={->[scale=3,red]}] (\xa-0.5,\ya-0.8)  to [out=300,in=170] (\xb-0.5,\yb-0.8);          % AND 1  -- AND 2
+      \draw [-, red, thick, arrows={->[scale=3,red]}] (\xb+0.5,\yb-0.8) to [out=5,in=235] (\xc+0.5,\yc-0.8);             % AND 2  -- AND 3
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd-1.5,\yd-1.5) to [out=130,in=220] (\xa,\ya);                 % OR 1  -- AND 1
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd+1.5,\yd-1.5) to [out=340,in=200] (\xf-1.5,\yf-1.5);         % OR 1  -- OR 3
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf,\yf+1)  to [out=140,in=340] (\xe+1.5,\ye-1.5);              % OR 3  -- OR 2
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe-1.5,\ye-1.5) to [out=200,in=40] (\xd,\yd+1);                % OR 2  -- OR 1
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf+1.5,\yf-1.5) to [out=40,in=320] (\xc,\yc);                  % OR 3  -- AND 3
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe,\ye+1) to [out=100,in=260] (\xb,\yb);                       % OR 2  -- AND 2
     \end{tikzpicture}
   \end{scaletikzpicturetowidth}
   \caption{Sliding Tokens vertex gadgets.}
   \label{fig:output_instance_final}
 \end{figure}
 
-
+% ----------------------------------------- out 3 -----------------------------------------------
 \begin{figure}[H]
   \centering
   \begin{scaletikzpicturetowidth}{\textwidth}
-    \begin{tikzpicture}[scale=0.9]
+    \begin{tikzpicture}[scale=0.7]
       %%%%%%%%%%%% AND 1 %%%%%%%%%%%%
       \def\ver{0.12} %size of a vertex
       \def\xa{-1}
@@ -1136,7 +942,7 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
       %%%%%%%%%%%% OR 2 %%%%%%%%%%%%
       \def\ver{0.12} %size of a vertex
       \def\xe{4}
-      \def\ye{-9}
+      \def\ye{-7}
       %G_1
       \draw (\xe,\ye) circle (0.2cm);           %v1
       \draw (\xe+0.5,\ye-0.8) circle (0.2cm);   %v4
@@ -1179,26 +985,29 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
 
       %%%%%%%%%%% EDGES %%%%%%%%%
       \node (a) at (2,-2) {\textbf{A}};            % Label reject
-      \draw [-, red, thick, arrows={->[scale=3,red]}]  (\xa+0.5,\ya-0.8) to [out=10,in=170]  (\xc-0.5,\yc-0.8);            % AND 1  -- AND 3
-      \draw [-, red, thick, arrows={->[scale=3,red]}] (\xa-0.5,\ya-0.8)  to [out=280,in=170] (\xb-0.5,\yb-0.8);          % AND 1  -- AND 2
-      \draw [-, red, thick, arrows={->[scale=3,red]}]  (\xc+0.5,\yc-0.8) to [out=280,in=5]  (\xb+0.5,\yb-0.8);             % AND 2  -- AND 3
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd-1.5,\yd-1.5) to [out=120,in=250] (\xa,\ya);                 % OR 1  -- AND 1
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd+1.5,\yd-1.5) to [out=320,in=190] (\xf-1.5,\yf-1.5);          % OR 1  -- OR 3
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf,\yf) to [out=100,in=340] (\xe+1.5,\ye-1.5);                 % OR 3  -- OR 2
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe-1.5,\ye-1.5) to [out=200,in=70] (\xd,\yd+1);                  % OR 2  -- OR 1
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf+1.5,\yf-1.5) to [out=80,in=320] (\xc,\yc);                   % OR 3  -- AND 3
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe,\ye+1) to [out=100,in=260] (\xb,\yb);                           % OR 2  -- AND 2
+
+      %\draw [-, red, thick, arrows={->[scale=3,red]}]  (\xc+0.5,\yc-0.8) to [out=280,in=5]  (\xb+0.5,\yb-0.8);             % AND 2  -- AND 3
+
+      \draw [-, red, thick, arrows={->[scale=3,red]}]  (\xa+0.5,\ya-0.8) to [out=10,in=170]  (\xc-0.5,\yc-0.8);          % AND 1  -- AND 3
+      \draw [-, red, thick, arrows={->[scale=3,red]}] (\xa-0.5,\ya-0.8)  to [out=300,in=170] (\xb-0.5,\yb-0.8);          % AND 1  -- AND 2
+      \draw [-, red, thick, arrows={->[scale=3,red]}] (\xc+0.5,\yc-0.8) to [out=235,in=5] (\xb+0.5,\yb-0.8) ;            % AND 3  -- AND 2
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd-1.5,\yd-1.5) to [out=130,in=220] (\xa,\ya);                 % OR 1  -- AND 1
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd+1.5,\yd-1.5) to [out=340,in=200] (\xf-1.5,\yf-1.5);         % OR 1  -- OR 3
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf,\yf+1)  to [out=140,in=340] (\xe+1.5,\ye-1.5);              % OR 3  -- OR 2
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe-1.5,\ye-1.5) to [out=200,in=40] (\xd,\yd+1);                % OR 2  -- OR 1
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf+1.5,\yf-1.5) to [out=40,in=320] (\xc,\yc);                  % OR 3  -- AND 3
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe,\ye+1) to [out=100,in=260] (\xb,\yb);                       % OR 2  -- AND 2
     \end{tikzpicture}
   \end{scaletikzpicturetowidth}
   \caption{Sliding Tokens vertex gadgets.}
   \label{fig:output_instance_final}
 \end{figure}
 
-
+% ------------------------------------------- out 4 --------------------------------------------------
 \begin{figure}[H]
   \centering
   \begin{scaletikzpicturetowidth}{\textwidth}
-    \begin{tikzpicture}[scale=0.9]
+    \begin{tikzpicture}[scale=0.7]
       %%%%%%%%%%%% AND 1 %%%%%%%%%%%%
       \def\ver{0.12} %size of a vertex
       \def\xa{-1}
@@ -1282,7 +1091,7 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
       %%%%%%%%%%%% OR 2 %%%%%%%%%%%%
       \def\ver{0.12} %size of a vertex
       \def\xe{4}
-      \def\ye{-9}
+      \def\ye{-7}
       %G_1
       \draw (\xe,\ye) circle (0.2cm);           %v1
       \draw (\xe+0.5,\ye-0.8) circle (0.2cm);   %v4
@@ -1324,15 +1133,15 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
 
       %%%%%%%%%%% EDGES %%%%%%%%%
       \node (a) at (2,-2) {\textbf{A}};            % Label reject
-      \draw [-, red, thick, arrows={->[scale=3,red]}]  (\xa+0.5,\ya-0.8) to [out=10,in=170]  (\xc-0.5,\yc-0.8);            % AND 1  -- AND 3
-      \draw [-, red, thick, arrows={->[scale=3,red]}] (\xa-0.5,\ya-0.8)  to [out=280,in=170] (\xb-0.5,\yb-0.8);          % AND 1  -- AND 2
-      \draw [-, red, thick, arrows={->[scale=3,red]}]  (\xc+0.5,\yc-0.8) to [out=280,in=5]  (\xb+0.5,\yb-0.8);             % AND 2  -- AND 3
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd-1.5,\yd-1.5) to [out=120,in=250] (\xa,\ya);                 % OR 1  -- AND 1
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd+1.5,\yd-1.5) to [out=320,in=190] (\xf-1.5,\yf-1.5);          % OR 1  -- OR 3
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf,\yf) to [out=100,in=340] (\xe+1.5,\ye-1.5);                 % OR 3  -- OR 2
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe-1.5,\ye-1.5) to [out=200,in=70] (\xd,\yd+1);                  % OR 2  -- OR 1
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xc,\yc) to [out=320,in=80]  (\xf+1.5,\yf-1.5);                   % OR 3  -- AND 3
-      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xb,\yb) to [out=260,in=100] (\xe,\ye+1);                           % OR 2  -- AND 2
+      \draw [-, red, thick, arrows={->[scale=3,red]}]  (\xa+0.5,\ya-0.8) to [out=10,in=170]  (\xc-0.5,\yc-0.8);          % AND 1  -- AND 3
+      \draw [-, red, thick, arrows={->[scale=3,red]}] (\xa-0.5,\ya-0.8)  to [out=300,in=170] (\xb-0.5,\yb-0.8);          % AND 1  -- AND 2
+      \draw [-, red, thick, arrows={->[scale=3,red]}] (\xc+0.5,\yc-0.8) to [out=235,in=5] (\xb+0.5,\yb-0.8) ;            % AND 3  -- AND 2
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd-1.5,\yd-1.5) to [out=130,in=220] (\xa,\ya);                 % OR 1  -- AND 1
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd+1.5,\yd-1.5) to [out=340,in=200] (\xf-1.5,\yf-1.5);         % OR 1  -- OR 3
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf,\yf+1)  to [out=140,in=340] (\xe+1.5,\ye-1.5);              % OR 3  -- OR 2
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe-1.5,\ye-1.5) to [out=200,in=40] (\xd,\yd+1);                % OR 2  -- OR 1
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf+1.5,\yf-1.5) to [out=40,in=320] (\xc,\yc);                  % OR 3  -- AND 3
+      \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xb,\yb) to [out=260,in=100] (\xe,\ye+1);                       % AND 2  -- OR 2
     \end{tikzpicture}
   \end{scaletikzpicturetowidth}
   \caption{Sliding Tokens vertex gadgets.}
@@ -1343,14 +1152,16 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
 
 \section{Labelled variant of Sliding-Token Problem}\label{sec:labeled_sliding_token}
 
-The labelled sliding token problem is a variant of the Sliding token problem where each token has a unique label. The goal of this section is
-to prove that the sliding token problem remains $\PSPACE$-hard even with labeled tokens. In order to prove that the labeled Sliding token
-problem is $\PSPACE$-hard, we'll first prove that a slightly different version of the SLIDING TOKEN problem is also $\PSPACE$-hard. It is this
-latter version that will be used to prove the $\PSPACE$-hardness of the labeled sliding token problem.
+The labelled sliding token problem is a variant of the Sliding token problem where each token has a unique label. The purpose of this section is
+to prove that the sliding token problem remains $\PSPACE$-hard even with labeled tokens. In \cite{bonsma}, Bonsma showed that a slightly different
+version of the SLIDING TOKEN problem is also $\PSPACE$-hard. This latter version called the Standard sliding token problem
+(described in section \ref{subsec:standard_sliding_token}) is then used to establish the hardness of the $k$-COLOUR PATH problem. To achieve our
+goal only a slight modification of that proof is needed. For the sake of completeness we will go through the original proof and add the
+modification needed. On our journey we will encouter some interesting graph colouring problems described in sections \ref{subsection:coloring_problems}.
 
-\subsection{Standard sliding token problem}
-Bonsma and Cereceda showed that the sliding tokens problem remains $\PSPACE$-complete \cite{bonsma} even for very restricted graphs and token
-configurations, defined as follows : The graph $G_s$ is composed of \textit{token triangles} (i.e., copies of $K_3$), \textit{token edges}
+\subsection{Standard sliding token problem}\label{subsec:standard_sliding_token}
+Bonsma and Cereceda showed in \cite{bonsma} that the sliding tokens problem remains $\PSPACE$-complete even for very restricted graphs and
+token configurations, defined as follows : The graph $G_s$ is composed of \textit{token triangles} (i.e., copies of $K_3$), \textit{token edges}
 (i.e., copies of $K_2$) and link edges (i.e., copies of $K_2$). Every vertex of $G_s$ is part of exactly one token triangle or one token edge.
 Token triangles and token edges are all mutually disjoint, and joined together by link edges. Moreover, each vertex in a token triangle is of
 degree exactly $3$, and $G_s$ has a planar embedding such that every token triangle forms a face. Thus, The maximum degree of $G_s$ is $3$
@@ -1409,12 +1220,13 @@ We say that a token conﬁguration $T$ of $G_s$ is \textit{standard} if each tok
 in $T$. Then, any move from a standard token configuration results in another standard token configuration since any token will never leave its
 token triangle or token edge, and will never slide along a link edge because the first time any token would slide to another triangle or edge,
 it would become adjacent to the token belonging to this triangle or edge. So tokens may never slide along a link edge. It is this latter
-observation that will allow us to prove the $\PSPACE$-hardness of the labeled variant while doing only a little modification in the original proof.
+observation that will allow us to prove the $\PSPACE$-hardness of the labeled variant while doing only a little modification
+in the original proof.
 
 The sliding tokens problem remains $\PSPACE$-complete even if $G_s$ is such a restricted graph and both $T_0$ and $T_t$ are standard token
 configurations \cite{bonsma}. This restricted problem is called the Standard sliding tokens problem.
 
-\subsection{Labelled tokens}
+\subsection{Labelled tokens} \label{subsection:coloring_problems} \todo{To redo this part}
 In graph theory, graph coloring is a special case of graph labeling; it is an assignment of labels traditionally called "colors" to elements of a
 graph subject to certain constraints. In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices
 are of the same color; this is called a vertex coloring. Two prominent vertex coulouring problems that will help achieve our goal are defined
@@ -1440,7 +1252,7 @@ In this context, the LIST-COLOUR PATH is defined as follows :
 \end{flushleft}
 
 
-The goal now is to prove that if the Standard Sliding token problem is colourabable $i.e.,$ labeled with $k$-colours, then
+The goal now is to prove that if the Standard Sliding token problem is $k$ colourabable $i.e.,$ labeled with $k$-colours, then
 having labeled token should not be a bother. In \cite{bonsma} Bonsma established that $k$-Colour Path is $\PSPACE$-complete for
 several graph classes and values of $k \geq 4$. This result was obtained through a reduction from the Standard Sliding Tokens.
 In order to facilitate the reduction, a first reduction was done to the List-Colour path problem.
@@ -1449,67 +1261,75 @@ In \cite{bonsma} Bonsma introduced a lemma that makes going back to the $k$-colo
 
 
 \subsection{Reduction Structure}
-
-\subsubsection{Equivalent LIST-COLOUR PATH instances}
-Given a restricted instance $G, T_{A}, T_{B}$ of the Standard Sliding Tokens as described in Section \ref{sec:labeled_sliding_token}, we
-construct an instance $G^{'}, L, \alpha, \beta$ of LIST-COLOUR Path such that standard token configurations of $G$ correspond to
+Given a restricted instance $G, T_{A}, T_{B}, T$ of the Standard Sliding Token problem where $T$ is a set of labelled token, we
+construct an instance $G^{'}, L, \alpha, \beta, T$ of LIST-COLOUR Path such that standard token configurations of $G$ correspond to
 list-colourings of $G^{'}$ , and sliding a token in $G$ corresponds to a sequence of vertex recolourings in $G^{'}$.
 
-We first label the vertices of $G$: the token triangles are labelled $1, \dots , n_{t}$ , and the vertices of triangle $i$ are labelled
-$t_{i1}$, $t_{i2}$ and $t_{i3}$. The token edges are labelled $1, \dots , n_{e}$, and the vertices of token edge $i$ are labelled
-$e_{i1}$ and $e_{i2}$.
+We first start by labelling the vertices of $G$: 
+\begin{enumerate}
+  \item The token triangles are labelled $1, \dots , n_{t}$ , and the vertices of each triangle $i$ are labelled
+        $t_{i1}$, $t_{i2}$ and $t_{i3}$.
+  \item The token edges are labelled $1, \dots , n_{e}$, and the vertices of each token edge $i$ are labelled
+        $e_{i1}$ and $e_{i2}$.
+\end{enumerate}
 
-The construction of $G$ is as follows: for every token triangle $i$ we introduce a vertex $t_{i}$, with colour list $L(t_{i}) = \{1, 2, 3\}$.
-For every token edge $i$ we introduce a vertex $e_{i}$ in $G^{'}$ , with colour list $L(e_{i}) = \{1, 2\}$. Whenever a link edge of $G$ joins
-a vertex $t_{ia}$ with a vertex $e_{jb}$, we add an $(a, b)$-forbidding path of even length between $t_{i}$ and $e_{j}$ in $G$ . We do the same
-for pairs $t_{ia}$ and $t_{jb}$, and pairs $e_{ia}$ and $e_{jb}$. Note that this is a polynomial-time transformation.
+The construction of $G^{'}$ is as follows: For every token triangle $i$ in $G$ we introduce a vertex $t_{i}$, with colour list
+$L(t_{i}) = \{1, 2, 3\}$ in $G^{'}$ . For every token edge $i$ in $G$ we introduce a vertex $e_{i}$ in $G^{'}$, with colour
+list $L(e_{i}) = \{1, 2\}$. Whenever a link edge of $G$ joins a vertex $t_{ia}$ with a vertex $e_{jb}$, we add an $(a, b)$-forbidding
+path of even length between $t_{i}$ and $e_{j}$ in $G$ . We do the same for pairs $t_{ia}$ and $t_{jb}$, and pairs $e_{ia}$ and $e_{jb}$.
+Linking the vertices in $G^{'}$ through $(a, b)$-forbidding paths will make sure that no tokens are adjacent to each other.
+Note that this is a polynomial-time transformation.
 
-Standard token configurations of $G$ now correspond to colourings of $G$ as follows: a token configuration where the token of token edge $i$ is
-on $e_{ij} (j = 1, 2 )$ corresponds to colourings of $G$ where $e_{i}$ has colour $j$. Analogously, if the token of token triangle $i$ is on
-$t_{ij} (j = 1, 2, 3)$, this corresponds to colourings where $t_{i}$ has colour $j$. Since tokens are not adjacent, it is possible to choose
-colours for the internal vertices of the $(a, b)$-forbidding paths so as to obtain a proper colouring of $G^{'}$. Two colourings $\alpha$ and
-$\beta$ corresponding to $T_{A}$ and $T_{B}$ respectively are constructed this way. Note that to a given standard token configuration of $G$
-there can correspond multiple colourings of $G$ because of the freedom in choice of colours for the internal vertices of the $(a, b)$-forbidding
-paths.
+Standard token configurations of $G$ now correspond to colourings of $G^{'}$ as follows:
+\begin{enumerate}
+  \item For each token edge $i$ of the token configuration, the token being on $e_{ij} (j = 1, 2 )$
+  corresponds to colourings of $G$ where $e_{i}$ has colour $j$.
+  \item For each token triangle $i$ of the token configuration, the token being on $t_{ij} (j = 1, 2, 3)$,
+  corresponds to colourings where $t_{i}$ has colour $j$.
+\end{enumerate}
 
-Let $W$ be the sets of $G$ and $f: T \rightarrow W$ be a function where $T$ is the given set of token labels. $f$ is bijective because
-as stressed before this is the standard sliding token problem, thus each token gadget contains exactly one token and no token can slide
-along the link edge; this means that a token is associated to a gadget throught $f$ so the color of the vertex of a gadget
-$w \in W$ in the LIST-EDGE path instance represents the positions of the token $t \in T$ s.t $f(t) = w$.
+Since tokens are not adjacent, it is possible to choose colours for the internal vertices of the $(a, b)$-forbidding paths so as to
+obtain a proper colouring of $G^{'}$. Two colourings $\alpha$ and $\beta$ corresponding to $T_{A}$ and $T_{B}$ respectively are constructed
+this way. Note that to a given standard token configuration of $G$ there can correspond multiple colourings of $G$ because of the freedom
+in choice of colours for the internal vertices of the $(a, b)$-forbidding paths.
+
+For the labels, let $W$ be the set of token edges and token triangles of $G$ i.e., $W = \{e_1,\dots, e_{|E|} \} \cup \{t_1,\dots, t_{|T|} \}$
+where $|E|$ is the total number of edge tokens in $G$ and $|T|$ is the total number of triangle tokens in $G$
+and $f: T \rightarrow W$, a function mapping the set of given labels to the tokens on token edges and token triangles of $G$.
 
 
 \begin{claim} Let $G, T_A, T_B$ be a restricted instance of Sliding Tokens where each token is given a unique label as described in
 section \ref{sec:labeled_sliding_token}, and let $G , L, \alpha, \beta$ be the corresponding instance of List-Colour Path as constructed above.
 Then $G, T_A, T_B$ is a Yes-instance if and only if $G , L, \alpha, \beta$ is a YES-instance.
-\end{claim}
+\end{claim}\label{theorem:labeled_sliding}
 
-\begin{proof}
-  Recall that a token configuration in which the token of token edge $i$ (token triangle $i$) is on $e_{ij}$ (on $t_ {ij}$) corresponds
-  to multiple colourings of $G$ where $ei$ ($t_i$) has colour $j$. Because of this multiplicity of colourings, we define colour classes of
-  colourings: if two colourings $\kappa$ and $\lambda$ of $G$ have $\kappa(t_i) = \lambda(t_i)$ and $\kappa(e_i) = \lambda(e_i)$ for every $i$,
-  then $\kappa$ and $\lambda$ are said to be in the same colour class.
+\begin{proof} \cite{bonsma}
+Recall that a token configuration in which the token of token edge $i$ (token triangle $i$) is on $e_{ij}$ (on $t_ {ij}$) corresponds
+to multiple colourings of $G$ where $ei$ ($t_i$) has colour $j$. Because of this multiplicity of colourings, we define colour classes of
+colourings: if two colourings $\kappa$ and $\lambda$ of $G$ have $\kappa(t_i) = \lambda(t_i)$ and $\kappa(e_i) = \lambda(e_i)$ for every $i$,
+then $\kappa$ and $\lambda$ are said to be in the same colour class.
 
-  Hence the correspondence between standard token configurations and colourings defines a mapping between standard
-  token configurations and colour classes. This mapping is in fact a bijection: $(a, b)$-forbidding paths restrict their end vertices
-  from having colours $a$ and $b$ respectively, but they pose no other restriction on the possible colours of their end vertices.
-  So $t_{ia}$ and $e_{jb}$ cannot both be occupied by a token in a token configuration if and only if no colouring $\kappa$ has $\kappa(t_i)$ = $a$
-  and $\kappa(e_j) = b$. (Similar statements hold for pairs $t_i$ and $t_j$, and pairs $e_i$ and $e_j$.)
+Hence the correspondence between standard token configurations and colourings defines a mapping between standard
+token configurations and colour classes. This mapping is in fact a bijection: $(a, b)$-forbidding paths restrict their end vertices
+from having colours $a$ and $b$ respectively, but they pose no other restriction on the possible colours of their end vertices.
+So $t_{ia}$ and $e_{jb}$ cannot both be occupied by a token in a token configuration if and only if no colouring $\kappa$ has $\kappa(t_i)$ = $a$
+and $\kappa(e_j) = b$. (Similar statements hold for pairs $t_i$ and $t_j$, and pairs $e_i$ and $e_j$.)
 
-  The function $f$ is also a bijective function since token token ever leave it's gadget but only slides on their internal vertices.
+The function $f$ also yields a bijective mapping : Since no token can slide along a link edge in the Standard sliding token,
+each element $w \in W$ can be attributed a label such that the colour of $w$ in the output LIST-COULOUR path instance represents
+the vertex placement of the label $t \in T$ s.t $f(t) = w$.
 
-  Now we claim that if there exists a sequence of moves that transforms $T_A$ into $T_B$, then there exists a sequence of
-  recolourings that transforms $\alpha$ into $\beta$. We mentioned earlier that any token configuration obtainable from $T_A$ is a standard
-  token configuration. Hence every token move corresponds to recolouring a vertex $t_i$ or a vertex $e_i$. Note that before
-  recolouring $t_i$ (or $e_i$), it may be necessary to first recolour some internal vertices of $(a, b)$-forbidding paths incident with
-  $t_i$ (or $e_i$), but by the definition of $(a, b)$-forbidding paths, we know this is always possible. It can also be seen that when
-  we finally arrive in the colour class that contains $\beta$ in this way, the internal vertices of all $(a, b)$-forbidding paths can be
-  recoloured so that exactly the colouring $\beta$ is obtained.
+Now we claim that if there exists a sequence of moves that transforms $T_A$ into $T_B$, then there exists a sequence of
+recolourings that transforms $\alpha$ into $\beta$. We mentioned earlier that any token configuration obtainable from $T_A$ is a standard
+token configuration \cite{bonsma}. Hence every token move corresponds to recolouring a vertex $t_i$ or a vertex $e_i$. Note that before
+recolouring $t_i$ (or $e_i$), it may be necessary to first recolour some internal vertices of $(a, b)$-forbidding paths incident with
+$t_i$ (or $e_i$), but by the definition of $(a, b)$-forbidding paths, we know this is always possible. It can also be seen that when
+we finally arrive in the colour class that contains $\beta$ in this way, the internal vertices of all $(a, b)$-forbidding paths can be
+recoloured so that exactly the colouring $\beta$ is obtained.
 
-  Similarly, for every sequence of recolourings from $\alpha$ to $\beta$ we can construct a sequence of token moves from $T_A$ to $T_B$:
-  whenever a vertex $t_i$ ($e_i$) is recoloured from colour a to colour $b$, we move the corresponding token from $t_{ia}$ to $t_{ib}$
-  (from $e_ {ia}$ to $e_{ib}$). This completes the proof.
-
-
+Similarly, for every sequence of recolourings from $\alpha$ to $\beta$ we can construct a sequence of token moves from $T_A$ to $T_B$:
+whenever a vertex $t_i$ ($e_i$) is recoloured from colour a to colour $b$, we move the corresponding token from $t_{ia}$ to $t_{ib}$
+(from $e_ {ia}$ to $e_{ib}$). This completes the proof.
 \end{proof}
 
 \begin{figure}[H]

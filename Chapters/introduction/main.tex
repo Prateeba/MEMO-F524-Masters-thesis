@@ -1,17 +1,4 @@
-\chapter{Introduction}
-\label{ch:intro}
-%Algorithmic graph theory is useful in modeling real-world problems, where the domain of the problem is modeled as a graph and the constraints on the solution
-%define feasible solutions. For example, consider the problem of activating a number of routers subject to pairwise incompatibility constraints. Here, router
-%compatibilities can be modeled as a graph and a feasible solution as an independent set. Traditionally, the real-world user
-%first defines a problem instance and then uses an algorithm to find a feasible solution which she then ‘‘implements’’ in the
-%real world. However, some real-world situations do not follow this simple paradigm and are more dynamic because they
-%allow the solution to ‘‘evolve’’ over time. For example, consider the situation where a set of routers is already active but
-%the operator has been instructed to use a different set of routers, which also form an independent set. To maintain network
-%functionality, she can only switch one router at a time, but she has to make sure that there are always enough active routers
-%(say, at least k) and that they are pairwise compatible. Thus, she would like to switch between the two configurations, while
-%maintaining enough compatible routers at every intermediate step.
-%In general, this type of situation gives rise to a reconfiguration framework
-
+\chapter{Introduction}\label{ch:intro}
 Reconfiguration problems are combinatorial problems in which we are given a collection of configurations, together with some
 transformation rule(s) that allows us to change one configuration to another such that each intermediate solution remains satisfiable at all times.
 A configuration can be the arrangement of puzzle pieces, the location of a robot with respect to obstacles in space, or the ordering of symbols to
@@ -38,24 +25,23 @@ reconfigurability analogues that are in $\P$, for example the $3$-colorability p
 have reconfigurability versions that are $\PSPACE$-complete, such as shortest paths \cite{DBLP:journals/corr/abs-1009-3217} or the problem of deciding whether
 two $4$-colorings of a given bipartite or planar graph are reconfigurable \cite{bonsma}.
 
-
 This thesis does not attempt to catalogue all research results that can be categorized as reconfiguration, but instead focuses on demonstrating the
-main themes in the area (Satisfiability reconfiguration problems and Binary integer programming reconfiguration problems) and complement some
-recent $\PSPACE-$hardness proof given in \cite{cardinal_reconfiguration_2018}. More precisely, we go over and detail the $\PSPACE-$completeness of
-the following decision problems :
+main themes in the area and complement some recent $\PSPACE-$hardness proofs given in \cite{cardinal_reconfiguration_2018}. More precisely, we go
+over and detail the $\PSPACE-$completeness of the following decision problems :
 \begin{itemize}
     \item Given two subsets of a set $S$ of integers of integers with the same sum, can one subset be transformed into the other by adding or removing
     at most 3 elements of $S$ at a time, such that the intermediate subsets also have the same sum ?
-    \item Given two points in $\{0,1\}^{n}$ contained in a polytope $P$ specified by a constant number of linear inequalities, is there a path in the
-    $n-$hypercube connecting the two points and contained in $P$ ?
+    \item In the process of complementing the $3$-move subset sum reconfiguration problem, we also give a simple hardness proof the labelled variant
+    of the sliding token problem, described in section \ref{sec:labeled_sliding_token}.
 \end{itemize}
 
 In the first half of this thesis, we study the Nondeterministic Constraint Logic of Computation introduced by Hearn and Demaine.
-The NCL framework consists of different graph games ($i.e.$ problems) specific for every major complexity class, more specifically the class $\PSPACE$.
-These graph games are created in order to facilitate the reduction to other games. Reviewing NCL as part of this thesis is fundamental since it has
-been and still is the trigger for many $\PSPACE-$ hardness results in recreational mathematics.
+The NCL framework consists of different graph games ($i.e.$ problems) specific for every major complexity class, more specifically the
+class $\PSPACE$. These graph games are created in order to facilitate the reduction to other games. Reviewing NCL as part of this thesis is
+fundamental since it has been and still is the trigger for many $\PSPACE-$ hardness results in recreational mathematics.
 
-The the second part of this thesis focuses on Satisfiability reconfiguration problems and Binary integer programming reconfiguration problems.
-Finally, in Chapter 7 our conclusions are presented and some proposals for future work are made.
+The second part of this thesis focuses on Satisfiability reconfiguration problems and the Subset sum reconfiguration problem and
+provides a visual support for the latter problem with the intent on helping on having a better idea of the reconfiguration graph and it's
+connectivity properties. Finally, in Chapter 7 our conclusions are presented and some proposals for future work are made.
 
 

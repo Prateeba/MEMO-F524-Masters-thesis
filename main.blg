@@ -6,6 +6,8 @@ A level-1 auxiliary file: Chapters/Preliminaries/main.aux
 A level-1 auxiliary file: Chapters/chap1_NCL/main.aux
 A level-1 auxiliary file: Chapters/chap2_SAT/main.aux
 A level-1 auxiliary file: Chapters/chap3_SUBSETSUMs_recon/main.aux
+A level-1 auxiliary file: Chapters/Chap5_future_works/main.aux
+A level-1 auxiliary file: Chapters/Chap6_conclusion/main.aux
 The style file: plain.bst
 Database file #1: main.bib
 Warning--I didn't find a database entry for "schwerdtfeger2013computational"
@@ -36,7 +38,7 @@ Warning--empty journal in van_der_zanden_parameterized_nodate
 Warning--empty year in van_der_zanden_parameterized_nodate
 You've used 31 entries,
             2118 wiz_defined-function locations,
-            684 strings with 10111 characters,
+            686 strings with 10181 characters,
 and the built_in function-call counts, 10865 in all, are:
 = -- 1042
 > -- 552

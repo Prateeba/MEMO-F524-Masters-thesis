@@ -435,3 +435,205 @@ $U_1,U_2, \dots, U_{m}$ such that $\sum_{u \in U} s(u) = b$  $\forall j \in 1,\d
 \caption{}
 \end{figure}
 \end{example}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGINING OF A FIGURE : All possible moves of an AND vertex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+\begin{center}
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=0.7]
+% v1
+\def\xa{0}
+\def\ya{0}
+% v2
+\def\xb{\xa-3}
+\def\yb{\ya+3}
+% v3
+\def\xc{\xa+3}
+\def\yc{\ya+3}
+% v4
+\def\xd{\xa}
+\def\yd{\ya+6}
+% v5
+\def\xe{\xa}
+\def\ye{\ya-4}
+%labels
+\node (1) at (\xa+2,\ya) {$f_1$};
+\node (2) at (\xb-2,\yb) {$f_2$};
+\node (3) at (\xc+2,\yc) {$f_3$};
+\node (5) at (\xd+2,\yd) {$f_4$};
+\node (4) at (\xe+2,\ye) {$f_0$};
+% f_1 arrows
+\draw[middlearrow={<}, red] (\xa, \ya) -- (\xa+0.9, \ya-0.8);
+\draw[middlearrow={<}, red] (\xa, \ya) -- (\xa-1, \ya-0.8);
+\draw[middlearrow={<}, blue] (\xa, \ya) -- (\xa, \ya+1);
+\draw[ultra thick, -, blue] (\xa, \ya) -- (\xa, \ya+1);
+\draw[ultra thick, -, red] (\xa, \ya) -- (\xa+0.9, \ya-0.8);
+\draw[ultra thick, -, red] (\xa, \ya) -- (\xa-1, \ya-0.8);
+\path[fill=none, draw, ultra thick, dotted] (\xa,\ya) circle (\ver+1.2);     %f1
+% f_2 arrows
+\draw[middlearrow={>}, red] (\xb, \yb) --(\xb-0.9, \yb-0.8);
+\draw[middlearrow={<}, red] (\xb, \yb) --(\xb+0.9, \yb-0.8);
+\draw[middlearrow={<}, blue] (\xb, \yb) --(\xb, \yb+1);
+\draw[ultra thick, -, red] (\xb, \yb) --(\xb-0.9, \yb-0.8);
+\draw[ultra thick, -, red] (\xb, \yb) --(\xb+0.9, \yb-0.8);
+\draw[ultra thick, -, blue] (\xb, \yb) --(\xb, \yb+1);
+\path[fill=none, draw, ultra thick, dotted] (\xb,\yb) circle (\ver+1.2);     %f2
+% f_3  arrows
+\draw[middlearrow={<}, red] (\xc, \yc) --(\xc-0.9, \yc-0.8);
+\draw[middlearrow={>}, red] (\xc, \yc) --(\xc+0.9, \yc-0.8);
+\draw[middlearrow={<}, blue] (\xc, \yc) --(\xc, \yc+1);
+\draw[ultra thick, -, red] (\xc, \yc) --(\xc-0.9, \yc-0.8);
+\draw[ultra thick, -, red] (\xc, \yc) --(\xc+0.9, \yc-0.8);
+\draw[ultra thick, -, blue] (\xc, \yc) --(\xc, \yc+1);
+\path[fill=none, draw, ultra thick, dotted] (\xc,\yc) circle (\ver+1.2);     %f3
+% f_4  arrows
+\draw[middlearrow={>}, red] (\xd, \yd) --(\xd-0.9, \yd-0.8);
+\draw[middlearrow={>}, red] (\xd, \yd) --(\xd+0.9, \yd-0.8);
+\draw[middlearrow={<}, blue] (\xd, \yd) --(\xd, \yd+1);
+\draw[ultra thick, -, red] (\xd, \yd) --(\xd-0.9, \yd-0.8);
+\draw[ultra thick, -, red] (\xd, \yd) --(\xd+0.9, \yd-0.8);
+\draw[ultra thick, -, blue] (\xd, \yd) --(\xd, \yd+1);
+\path[fill=none, draw, ultra thick, dotted] (\xd,\yd) circle (\ver+1.2);     %f4
+% f_0  arrows
+\draw[middlearrow={<}, red] (\xe, \ye) --(\xe-0.9, \ye-0.8);
+\draw[middlearrow={<}, red] (\xe, \ye) --(\xe+0.9, \ye-0.8);
+\draw[middlearrow={>}, blue] (\xe, \ye) --(\xe, \ye+1);
+\draw[ultra thick, -, red] (\xe, \ye) --(\xe-0.9, \ye-0.8);
+\draw[ultra thick, -, red] (\xe, \ye) --(\xe+0.9, \ye-0.8);
+\draw[ultra thick, -, blue] (\xe, \ye) --(\xe, \ye+1);
+\path[fill=none, draw, ultra thick, dotted] (\xe,\ye) circle (\ver+1.2);     %f0
+%relations
+\draw[ultra thick, <->] (\xe,\ye+1.4) -- (\xa,\ya-1.4);
+\draw[ultra thick, <->] (\xa+1,\ya+1) -- (\xc-1,\yc-1);
+\draw[ultra thick, <->] (\xa-1,\ya+1) -- (\xb+1,\yb-1);
+\draw[ultra thick, <->] (\xc-1,\yc+1) -- (\xd+1,\yd-1);
+\draw[ultra thick, <->] (\xd-1,\yd-1) -- (\xb+1,\yb+1);
+%graph G : Nodes fill
+\path[fill] (\xa,\ya) circle (\ver);     %f1
+\path[fill] (\xb,\yb) circle (\ver);     %f2
+\path[fill] (\xc,\yc) circle (\ver);     %f3
+\path[fill] (\xd,\yd) circle (\ver);     %f4
+\path[fill] (\xe,\ye) circle (\ver);     %f0
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\end{center}
+\caption{All the possible orientations of edges of an AND vertex.}
+\label{fig:and_all_possible_moves}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ENDING OF A FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGINING OF A FIGURE : All possible moves of an OR vertex  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+\begin{center}
+\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{tikzpicture}[scale=0.7]
+% v1
+\def\xa{0}
+\def\ya{0}
+% v2
+\def\xb{\xa-3}
+\def\yb{\ya+3}
+% v3
+\def\xc{\xa+3}
+\def\yc{\ya+3}
+% v4
+\def\xd{\xa}
+\def\yd{\ya+6}
+% v5
+\def\xe{\xa}
+\def\ye{\ya-4}
+% v6
+\def\xf{\xa-3}
+\def\yf{\ya-7}
+% v7
+\def\xg{\xa+3}
+\def\yg{\ya-7}
+%labels
+\node (1) at (\xa+2,\ya) {$f_1$};
+\node (2) at (\xb-2,\yb) {$f_2$};
+\node (3) at (\xc+2,\yc) {$f_3$};
+\node (5) at (\xd+2,\yd) {$f_4$};
+\node (4) at (\xe+2,\ye) {$f_0$};
+\node (6) at (\xf-2,\yf) {$f_6$};
+\node (7) at (\xg+2,\yg) {$f_7$};
+% f_1 arrows
+\draw[middlearrow={<}, blue] (\xa, \ya) -- (\xa+0.9, \ya-0.8);
+\draw[middlearrow={<}, blue] (\xa, \ya) -- (\xa-1, \ya-0.8);
+\draw[middlearrow={<}, blue] (\xa, \ya) -- (\xa, \ya+1);
+\draw[ultra thick, -, blue] (\xa, \ya) -- (\xa, \ya+1);
+\draw[ultra thick, -, blue] (\xa, \ya) -- (\xa+0.9, \ya-0.8);
+\draw[ultra thick, -, blue] (\xa, \ya) -- (\xa-1, \ya-0.8);
+\path[fill=none, draw, ultra thick, dotted] (\xa,\ya) circle (\ver+1.2);     %f1
+% f_2 arrows
+\draw[middlearrow={>}, blue] (\xb, \yb) --(\xb-0.9, \yb-0.8);
+\draw[middlearrow={<}, blue] (\xb, \yb) --(\xb+0.9, \yb-0.8);
+\draw[middlearrow={<}, blue] (\xb, \yb) --(\xb, \yb+1);
+\draw[ultra thick, -, blue] (\xb, \yb) --(\xb-0.9, \yb-0.8);
+\draw[ultra thick, -, blue] (\xb, \yb) --(\xb+0.9, \yb-0.8);
+\draw[ultra thick, -, blue] (\xb, \yb) --(\xb, \yb+1);
+\path[fill=none, draw, ultra thick, dotted] (\xb,\yb) circle (\ver+1.2);     %f2
+% f_3  arrows
+\draw[middlearrow={<}, blue] (\xc, \yc) --(\xc-0.9, \yc-0.8);
+\draw[middlearrow={>}, blue] (\xc, \yc) --(\xc+0.9, \yc-0.8);
+\draw[middlearrow={<}, blue] (\xc, \yc) --(\xc, \yc+1);
+\draw[ultra thick, -, blue] (\xc, \yc) --(\xc-0.9, \yc-0.8);
+\draw[ultra thick, -, blue] (\xc, \yc) --(\xc+0.9, \yc-0.8);
+\draw[ultra thick, -, blue] (\xc, \yc) --(\xc, \yc+1);
+\path[fill=none, draw, ultra thick, dotted] (\xc,\yc) circle (\ver+1.2);     %f3
+% f_4  arrows
+\draw[middlearrow={>}, blue] (\xd, \yd) --(\xd-0.9, \yd-0.8);
+\draw[middlearrow={>}, blue] (\xd, \yd) --(\xd+0.9, \yd-0.8);
+\draw[middlearrow={<}, blue] (\xd, \yd) --(\xd, \yd+1);
+\draw[ultra thick, -, blue] (\xd, \yd) --(\xd-0.9, \yd-0.8);
+\draw[ultra thick, -, blue] (\xd, \yd) --(\xd+0.9, \yd-0.8);
+\draw[ultra thick, -, blue] (\xd, \yd) --(\xd, \yd+1);
+\path[fill=none, draw, ultra thick, dotted] (\xd,\yd) circle (\ver+1.2);     %f4
+% f_0  arrows
+\draw[middlearrow={<}, blue] (\xe, \ye) --(\xe-0.9, \ye-0.8);
+\draw[middlearrow={<}, blue] (\xe, \ye) --(\xe+0.9, \ye-0.8);
+\draw[middlearrow={>}, blue] (\xe, \ye) --(\xe, \ye+1);
+\draw[ultra thick, -, blue] (\xe, \ye) --(\xe-0.9, \ye-0.8);
+\draw[ultra thick, -, blue] (\xe, \ye) --(\xe+0.9, \ye-0.8);
+\draw[ultra thick, -, blue] (\xe, \ye) --(\xe, \ye+1);
+\path[fill=none, draw, ultra thick, dotted] (\xe,\ye) circle (\ver+1.2);     %f0
+% f_6 arrows
+\draw[middlearrow={>}, blue] (\xf, \yf) --(\xf-0.9, \yf-0.8);
+\draw[middlearrow={<}, blue] (\xf, \yf) --(\xf+0.9, \yf-0.8);
+\draw[middlearrow={>}, blue] (\xf, \yf) --(\xf, \yf+1);
+\draw[ultra thick, -, blue] (\xf, \yf) --(\xf-0.9, \yf-0.8);
+\draw[ultra thick, -, blue] (\xf, \yf) --(\xf+0.9, \yf-0.8);
+\draw[ultra thick, -, blue] (\xf, \yf) --(\xf, \yf+1);
+\path[fill=none, draw, ultra thick, dotted] (\xf,\yf) circle (\ver+1.2);     %f6
+% f_7 arrows
+\draw[middlearrow={<}, blue] (\xg, \yg) --(\xg-0.9, \yg-0.8);
+\draw[middlearrow={>}, blue] (\xg, \yg) --(\xg+0.9, \yg-0.8);
+\draw[middlearrow={>}, blue] (\xg, \yg) --(\xg, \yg+1);
+\draw[ultra thick, -, blue] (\xg, \yg) --(\xg-0.9, \yg-0.8);
+\draw[ultra thick, -, blue] (\xg, \yg) --(\xg+0.9, \yg-0.8);
+\draw[ultra thick, -, blue] (\xg, \yg) --(\xg, \yg+1);
+\path[fill=none, draw, ultra thick, dotted] (\xg,\yg) circle (\ver+1.2);     %f7
+%relations
+\draw[ultra thick, <->] (\xe,\ye+1.4) -- (\xa,\ya-1.4);
+\draw[ultra thick, <->] (\xa+1,\ya+1) -- (\xc-1,\yc-1);
+\draw[ultra thick, <->] (\xa-1,\ya+1) -- (\xb+1,\yb-1);
+\draw[ultra thick, <->] (\xc-1,\yc+1) -- (\xd+1,\yd-1);
+\draw[ultra thick, <->] (\xd-1,\yd-1) -- (\xb+1,\yb+1);
+\draw[ultra thick, <->] (\xe-1,\ye-1) -- (\xf+1,\yf+1);
+\draw[ultra thick, <->] (\xe+1,\ye-1) -- (\xg-1,\yg+1);
+%graph G : Nodes fill
+\path[fill] (\xa,\ya) circle (\ver);     %f1
+\path[fill] (\xb,\yb) circle (\ver);     %f2
+\path[fill] (\xc,\yc) circle (\ver);     %f3
+\path[fill] (\xd,\yd) circle (\ver);     %f4
+\path[fill] (\xe,\ye) circle (\ver);     %f0
+\path[fill] (\xf,\yf) circle (\ver);     %f6
+\path[fill] (\xg,\yg) circle (\ver);     %f7
+\end{tikzpicture}
+\end{scaletikzpicturetowidth}
+\end{center}
+\caption{All the possible orientations of edges of an OR vertex.}
+\label{fig:or_all_possible_moves}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ENDING OF A FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

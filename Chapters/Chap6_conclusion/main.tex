@@ -1,0 +1,78 @@
+\chapter{Conclusion}
+We have analysed various aspect of Bounded NCL and have shown that
+despite some ambiguities, Planar Bounded NCL is indeed NP-complete.
+We have reduced Bounded NCL to both Klondike and Mahjong and
+
+veriﬁed the prior results that these puzzles are NP-complete. We have re-
+duced Planar Bounded NCL to Nonograms, and veriﬁed the prior result that
+Nonograms are NP-complete. We consider our contribution on these results
+amongst the veriﬁcation, also the simplicity of the established proof. We have
+reduced Bounded 2CL to Dou Shou Qi, and proven it PSPACE-hard.
+
+By doing so we have added weight to the claim of [6], stating that Con-
+straint Logic is indeed a decent framework to analyse and proof the complex-
+ity of puzzles and games.
+
+As a suggestion for future work it would be interesting to see whether
+Dou Shou Qi is also in PSPACE, so we can classify it as PSPACE-complete.
+If it turns out not to be in PSPACE, a mayor contribution would be to prove
+it EXPTIME-hard (for Constraint Logic can provide 2CL) or maybe even
+EXPSPACE-hard.
+
+Besides the games and puzzles that are currently classiﬁed, there are
+games which seem to yield to a reduction from Constraint Logic, for exam-
+ple the Binary Puzzle and Rummikub. Reducing the appropriate Constraint
+Logic problem to one of these games would be an interesting result.
+
+% ------------------------------------------------------------------------
+We have studied the parameterized complexity of constraint logic problems with regards
+to (combinations of) solution length, maximum degree and treewidth as parameters. As
+a main result, we showed that Nondeterministic Constraint Logic is PSPACE-
+complete on planar, 3-regular graphs of bounded bandwidth constructed using only
+AND and (protected) OR vertices. We gave several applications of this result, showing
+reconﬁguration versions of several classical graph problems PSPACE-hard on planar
+graphs of bounded bandwidth, as well as showing Rush Hour PSPACE-complete when
+played on a rectangular board where one of the lengths of the sides is bounded by a
+constant.
+
+We showed that when parameterized by solution length, C2E, C2C and bounded C2E
+variants of Nondeterministic Constraint Logic are W[1]-hard, but bounded C2C
+NCL becomes ﬁxed parameter tractable. Essentially, the hardness of bounded C2E NCL
+when parameterized by solution length is due to the complexity of ﬁnding a suitable
+target conﬁguration, rather than from that of determining a reconﬁguration sequence.
+However, when parametrizing by maximum degree in addition to solution length, all
+cases become ﬁxed parameter tractable.
+
+When parameterized by treewidth, Constraint Graph Satisfiability becomes weakly
+NP-complete (rather than strongly NP-complete). When considering maximum degree
+in addition to treewidth, CGS becomes ﬁxed parameter tractable. Note that this is
+in stark contrast to the complexity of NCL, which remains PSPACE-complete even for
+ﬁxed values of this parameter. This is an interesting example of how reconﬁguration
+problems can be much harder than their decision variants.
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{scaletikzpicturetowidth}{\textwidth}
+            \begin{tikzpicture}[scale=1]
+                \node (1) at (0,0) [draw, rounded rectangle, align=center] {CONFIGURATION-TO-EDGE\\for restricted NCL};
+                \node (2)  [below=of 1, draw, rounded rectangle, align=center] {SLIDING-TOKEN\\problem};
+                \node (3)  [below=of 2, draw, rounded rectangle, align=center] {STANDARD SLIDING-TOKEN\\problem};
+                \node (4)  [below=of 3, draw, rounded rectangle, align=center] {LIST-COLOUR PATH\\problem};
+                \node (5)  [below=of 4, draw, rounded rectangle, align=center] {$K$-COLOUR PATH\\problem};
+                \node (6) at (8, -2.3) [draw, rounded rectangle, align=center] {Labelled sliding token\\problem};
+                \node (7) [below=of 6, draw, rounded rectangle, align=center] {Exact cover split and merge\\ reconfiguration problem};
+                \node (8) [below=of 7, draw, rounded rectangle, align=center] {$k$-move Subset sum\\reconfiguration problem};
+
+                \draw[->]  (1) to node [auto] {$\leq{p}$} (2);
+                \draw[-]  (2) to node [auto] {variant} (3);
+                \draw[->]  (3) to node [auto] {$\leq{p}$} (4);
+                \draw[->]  (4) to node [auto] {$\leq{p}$} (5);
+                \draw[-]  (2) to node [auto] {variant} (6);
+                \draw[->]  (6) to node [auto] {$\leq{p}$} (7);
+                \draw[->]  (7) to node [auto] {$\leq{p}$} (8);
+
+            \end{tikzpicture}
+        \end{scaletikzpicturetowidth}
+    \end{center}
+    \caption{$\PSPACE$-complete problems encoutered and their relationship.}\label{fig:conclusion}
+\end{figure}
