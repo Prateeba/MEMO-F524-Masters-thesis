@@ -116,9 +116,10 @@ given a constraint graph $G$.
 Hearn and Demaine proved that the C2E problem is also $\PSPACE$-complete\cite{hearn_demaine_ncl_book}.
 
 More interestingly, the hardness result for C2C and C2E still holds when the vertices of $G$ are restricted to be $AND$ and $OR$ vertices
-defined in section \ref{sec:contraint_graph}. C2C and C2E hardness proof involves a reduction from quantified Boolean formulas, based on the
-logical interpretation of AND/OR constraint graphs. Additional gadgets are required for simulating quantifiers and for converting red edges
-into blue edges (and vice versa), which can all be accomplished by combinations of $AND$ and $OR$ vertices \cite{hearn_demaine_ncl_book}.
+defined in section \ref{sec:contraint_graph} ans referred as restricted NCL. C2C and C2E hardness proof involves a reduction from quantified
+Boolean formulas, based on the logical interpretation of AND/OR constraint graphs. Additional gadgets are required for simulating quantifiers
+and for converting red edges into blue edges (and vice versa), which can all be accomplished by combinations of $AND$ and $OR$
+vertices \cite{hearn_demaine_ncl_book}.
 
 Demaine and Hearn in fact strengthen this result even further and show that C2C and C2E both remain $\PSPACE$-complete when the constraint
 graph $G$ is planar \cite{hearn_demaine_ncl_book}. This proof involves the construction of crossover gadgets that allow two edges to cross
@@ -1151,6 +1152,45 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
 
 
 \section{Labelled variant of Sliding-Token Problem}\label{sec:labeled_sliding_token}
+\begin{figure}[H]
+  \begin{center}
+    \begin{scaletikzpicturetowidth}{\textwidth}
+      \begin{tikzpicture}[scale=1]
+
+        \def\ver{0.12} %size of a vertex
+        \def\xa{1}
+        \def\ya{5}
+%nodes
+        \path[fill] (\xa,\ya) circle (\ver);       % v5
+        \path[fill] (\xa+1,\ya+1) circle (\ver);   % v3
+        \path[fill] (\xa+1,\ya+2) circle (\ver);   % v2
+        \path[fill] (\xa,\ya+3) circle (\ver);     % v1
+        \path[fill] (\xa-1,\ya+2) circle (\ver);   % v6
+        \path[fill] (\xa-1,\ya+1) circle (\ver);   % v4
+%labels
+        \node (1) at (\xa,\ya+3.5) {$v_1$};     % v1
+        \node (2) at (\xa+1.5,\ya+2) {$v_2$};   % v2
+        \node (3) at (\xa+1.5,\ya+1) {$v_3$};   % v3
+        \node (5) at (\xa,\ya-0.5) {$v_5$};     % v5
+        \node (4) at (\xa-1.5,\ya+1) {$v_4$};   % v4
+        \node (6) at (\xa-1.5,\ya+2) {$v_6$};   % v6
+%edges
+        \draw[thick] (\xa,\ya)--(\xa+1,\ya+1)--(\xa+1,\ya+2)--(\xa,\ya+3)--(\xa-1,\ya+2)--(\xa-1,\ya+1)--(\xa,\ya) ; % contour
+        \draw[thick] (\xa,\ya)--(\xa,\ya+3) ;       % v5 - v1
+        \draw[thick] (\xa+1,\ya+1)--(\xa-1,\ya+1) ; % v3 - v4
+        \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
+%independent sets
+        \draw[ultra thick,green] (\xa,\ya+3+ \ver+0.2) coordinate(a1)  arc (90:450:\ver +0.2) coordinate(a2);
+        \draw[ultra thick,green] (\xa+1,\ya+1+ \ver+0.2) coordinate(d1)  arc (90:450:\ver +0.2) coordinate(d2);
+        \draw[ultra thick,blue] (\xa-1,\ya+1+ \ver+0.2) coordinate(a1)  arc (90:450:\ver +0.2) coordinate(a2);
+        \draw[ultra thick,blue] (\xa+1,\ya+2+ \ver+0.2) coordinate(d1)  arc (90:450:\ver +0.2) coordinate(d2);
+
+      \end{tikzpicture}
+    \end{scaletikzpicturetowidth}
+  \end{center}
+  \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+  \label{fig:input_sliding_token_example}
+\end{figure}
 
 The labelled sliding token problem is a variant of the Sliding token problem where each token has a unique label. The purpose of this section is
 to prove that the sliding token problem remains $\PSPACE$-hard even with labeled tokens. In \cite{bonsma}, Bonsma showed that a slightly different

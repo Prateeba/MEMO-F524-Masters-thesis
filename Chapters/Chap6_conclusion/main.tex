@@ -1,54 +1,9 @@
 \chapter{Conclusion}
-We have analysed various aspect of Bounded NCL and have shown that
-despite some ambiguities, Planar Bounded NCL is indeed NP-complete.
-We have reduced Bounded NCL to both Klondike and Mahjong and
-
-veriﬁed the prior results that these puzzles are NP-complete. We have re-
-duced Planar Bounded NCL to Nonograms, and veriﬁed the prior result that
-Nonograms are NP-complete. We consider our contribution on these results
-amongst the veriﬁcation, also the simplicity of the established proof. We have
-reduced Bounded 2CL to Dou Shou Qi, and proven it PSPACE-hard.
-
-By doing so we have added weight to the claim of [6], stating that Con-
-straint Logic is indeed a decent framework to analyse and proof the complex-
-ity of puzzles and games.
-
-As a suggestion for future work it would be interesting to see whether
-Dou Shou Qi is also in PSPACE, so we can classify it as PSPACE-complete.
-If it turns out not to be in PSPACE, a mayor contribution would be to prove
-it EXPTIME-hard (for Constraint Logic can provide 2CL) or maybe even
-EXPSPACE-hard.
-
-Besides the games and puzzles that are currently classiﬁed, there are
-games which seem to yield to a reduction from Constraint Logic, for exam-
-ple the Binary Puzzle and Rummikub. Reducing the appropriate Constraint
-Logic problem to one of these games would be an interesting result.
-
-% ------------------------------------------------------------------------
-We have studied the parameterized complexity of constraint logic problems with regards
-to (combinations of) solution length, maximum degree and treewidth as parameters. As
-a main result, we showed that Nondeterministic Constraint Logic is PSPACE-
-complete on planar, 3-regular graphs of bounded bandwidth constructed using only
-AND and (protected) OR vertices. We gave several applications of this result, showing
-reconﬁguration versions of several classical graph problems PSPACE-hard on planar
-graphs of bounded bandwidth, as well as showing Rush Hour PSPACE-complete when
-played on a rectangular board where one of the lengths of the sides is bounded by a
-constant.
-
-We showed that when parameterized by solution length, C2E, C2C and bounded C2E
-variants of Nondeterministic Constraint Logic are W[1]-hard, but bounded C2C
-NCL becomes ﬁxed parameter tractable. Essentially, the hardness of bounded C2E NCL
-when parameterized by solution length is due to the complexity of ﬁnding a suitable
-target conﬁguration, rather than from that of determining a reconﬁguration sequence.
-However, when parametrizing by maximum degree in addition to solution length, all
-cases become ﬁxed parameter tractable.
-
-When parameterized by treewidth, Constraint Graph Satisfiability becomes weakly
-NP-complete (rather than strongly NP-complete). When considering maximum degree
-in addition to treewidth, CGS becomes ﬁxed parameter tractable. Note that this is
-in stark contrast to the complexity of NCL, which remains PSPACE-complete even for
-ﬁxed values of this parameter. This is an interesting example of how reconﬁguration
-problems can be much harder than their decision variants.
+we have analysed various aspect of the restricted NCL problems and have detailed the $\PSPACE$-completeness
+result of the sliding token problem which is an alternative formulation of NCL. We then showed that the labelled
+variant of the sliding the sliding is also $\PSPACE$-complete.
+This latter result was then used to establish the complexity result of the $k$-move Subset sum reconfiguration problem
+for $k = 3$. All problems encoutered during our journey to the completion of this thesis is summed in in fig \ref{fig:conclusion}. \todo{To finish}
 
 \begin{figure}[H]
     \begin{center}
