@@ -200,17 +200,15 @@
     \begin{abstract}
         \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
         Reconfiguration problems arise when we wish to find a step-by-step transformation between two feasible solutions of a problem
-        such that all intermediate results are also feasible. The solution space of reconfiguration problems can be represented as a
-        reconﬁguration graph, where two vertices representing solutions are adjacent if one can be formed from the other in a single step.
-        Work in the area encompasses both structural questions (Is the reconﬁguration graph connected?, Is there a path between a node
-        $s$ and a node $t$ in the reconfiguration graph?) and algorithmic ones (How can one ﬁnd the shortest sequence of steps between two
-        solutions?)
+        such that all intermediate results are also feasible. Recently, study about the solution space of reconfiguration problems
+        defined as \textit{reconfiguration graph} sparked great interest. In this work, we focus on the structural questions
+        (Is the reconfiguration graph connected?, Is there a path between a node $s$ and a node $t$ in the reconfiguration graph?).
         In the first half this thesis we analyse various aspects of the Constraint Logic framework, from the book “Games, Puzzles and Computation”
-        by Hearn and Demaine which provides several problems that are often a convenient starting point for reductions and present an
-        depth study of the alternative formulation of NCL, the sliding tokens problem.
-        In the second half of this thesis, we analyse the complexity results around boolean Satisfiability reconfiguration problems and
+        by Hearn and Demaine which provides several problems that are often a convenient starting point for reductions in order tp prove
+        $\PSPACE$-hardness and present an in-depth study of the alternative formulation of NCL, the sliding tokens problem.
+        In the second half of this thesis, we analyse the complexity results around the boolean Satisfiability reconfiguration problems and
         investigate dichotomies/tricotomies that have been established and their applications. We also focus on complementing some
-        recent $\PSPACE-$hardness proofs given in \cite{cardinal_reconfiguration_2018} concerning Subset sum reconfiguration problem.
+        recent $\PSPACE-$hardness proofs given in \cite{cardinal_reconfiguration_2018} concerning the $k$-move Subset sum reconfiguration problem.
 
 
     \end{abstract}
@@ -221,9 +219,14 @@
 
     \begin{acknowledgements}
         \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-        First and foremost, my utmost gratitude to prof. Jean cardinal, whose patience and encouragement I will never forget.
-        I am indebted to my parents who have given me the opportunity of an education and support throughout my life.
-        Thanks also to my partner for providing guidance and a sounding board when required.
+        First and foremost, my utmost gratitude to Prof. Jean cardinal, whose patience and encouragement I will never forget.
+        And whose door was always open whenever I had questions concerning my research or whenever I was lost, I could always
+        count on him for guidance. He consistently allowed this thesis to be my own work, but steered me in the right direction whenever
+        he thought I needed it.
+
+        I am also deeply indebted to my parents who have given me the opportunity of an education and support throughout my life.
+        Finally, I must express my very profound gratitude to my partner for providing me with continuous encouragement
+        and a sounding board when required. This accomplishment would not have been possible without them. Thank you.
 
         %I would like to thank my little kitten, Koi ni who brings me everyday joy \ldots
     \end{acknowledgements}

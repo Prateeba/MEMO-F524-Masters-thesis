@@ -1,8 +1,12 @@
 \chapter{Future works}
 
 While working on this thesis a few questions popped up in my brain :
-
 \paragraph{Shortest reconfiguration path in the sliding token reconfiguration problem.}
+\begin{flushleft}
+    Shortest Sliding Token [Yamada and Uehara 2016]\\
+    \textbf{Instance: } A yes-instance $(G, I, J)$ of Sliding Token, where $I, J$ are independent sets of a graph $G$. \\
+    \textbf{Question: } Find a shortest TS-sequence that transforms $I$ into $J$ (and vice versa) \\
+\end{flushleft}
 
 %-------------------------------------------- Init --------------------------------------------
 \begin{figure}[H]
@@ -384,6 +388,28 @@ While working on this thesis a few questions popped up in my brain :
     \caption{Configuration-to-edge input instance}
     \label{fig:s2}
 \end{figure}
+
+\begin{theorem}(Kaminski et al. 2012)
+It is $\NP$-complete to decide if there is a TS-sequence having at most $l$ token-slides between two independent sets $I, J$ of a
+perfect graph $G$ even when $l$ is polynomial in $|V(G)|$.
+\end{theorem}
+
+\begin{theorem}(Kaminski et al. 2012)
+Shortest Sliding Token can be solved in linear time for cographs (P4-free graphs).
+\end{theorem}
+
+\begin{theorem}(Yamada and Uehara 2016)
+Shortest Sliding Token can be solved in polynomial time for proper interval graphs, trivially perfect graphs, and caterpillars.
+\end{theorem}
+
+\begin{theorem}(Sugimori, AAAC 2018)
+Shortest Sliding Token can be solved in $O(poly(n))$ time when the input graph is a tree T on n vertices.
+\end{theorem}
+
+\begin{theorem}(Ryuhei Uehara, CIAC 2019)
+Shortest Sliding Token can be solved in $O(n^2)$ time when the input graph is a spider G (i.e., a tree having exactly one
+vertex of degree at least $3$) on $n$ vertices.
+\end{theorem}
 
 
 \paragraph{St-Conn(S) problem in NCL.}
