@@ -15,10 +15,11 @@ second set of integers $A_2$ whenever the symmetric difference of $A_1$ and $A_2
 $k$-move Subset Sum reconfiguration problem is $\PSPACE$-complete \cite{cardinal_reconfiguration_2018}. This chapter is dedicated to this
 result. 
 
-\textit{Roadmap.} \todo{To finish at the end}
-particular proof in an attempt to detail the hardness proof.
+\textit{Roadmap.} This chapter is organised in the following way : Sections \ref{sec:k_move_sec} to \ref{sec:Exact_cover} introduces
+the $k$-move subset sum reconfiguration problem, the labelled sliding token problem and the exact cover problem reconfiguration problem
+respectively along with proofs of their complexity results added with illustrative examples to help visualize the concepts.
 
-\section{$k$-move Subset Sum Reconfiguration}
+\section{$k$-move Subset Sum Reconfiguration}\label{sec:k_move_sec}
 To begin our journey to the hardness proof of the $3$-move subset sum reconfiguration problem, we first start by defining the decision
 problem of the $k$-move subset sum reconfiguration.
 \begin{defn}{($k$-move Subset Sum Reconfiguration Problem).} Given two solutions $A_1$ and $A_2$ to an instance of the subset sum problem,
@@ -48,7 +49,6 @@ polynomial time. Then the $k$-move subset sum reconfiguration problem is in $\NP
 repeatedly move between subsets by  non-deterministically selecting a neighbour in polynomial time and space. Since \NPSPACE $=$ \PSPACE
 \cite{savitch_relationships_1970}, the $k$-move subset sum is also in $\PSPACE$.
 \end{proof}
-
 
 \section{Labelled SLIDING TOKEN problem.}\label{sec:sliding_problem}
 The Sliding token problem is introduced in chapter \ref{chap:NCL} and detailed in section \ref{sec:sliding_tokens}. Hearn and Demaine proved that
@@ -124,43 +124,82 @@ Sections \ref{subsubsection:high_level} to \ref{subsubsection:23_colorability} a
 
 \begin{example}{Input instance of the Labeled SLIDING TOKEN PROBLEM}
   \begin{figure}[H]
-    \begin{center}
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
       \begin{scaletikzpicturetowidth}{\textwidth}
         \begin{tikzpicture}[scale=1]
-
           \def\ver{0.12} %size of a vertex
-          \def\xa{1}
-          \def\ya{5}
-%nodes
-          \path[fill] (\xa,\ya) circle (\ver);       % v5
-          \path[fill] (\xa+1,\ya+1) circle (\ver);   % v3
-          \path[fill] (\xa+1,\ya+2) circle (\ver);   % v2
-          \path[fill] (\xa,\ya+3) circle (\ver);     % v1
-          \path[fill] (\xa-1,\ya+2) circle (\ver);   % v6
-          \path[fill] (\xa-1,\ya+1) circle (\ver);   % v4
-%labels
+          \def\xa{0}
+          \def\ya{0}
+          % Highlight change
+          \draw[fill=yellow, opacity=.7, draw=none] (\xa,\ya+3)  circle (0.3cm); % v1
+          \draw[fill=yellow, opacity=.7, draw=none] (\xa+1,\ya+1) circle (0.3cm);  % v3
+          % graph G
+          \draw (\xa,\ya) circle (0.2cm);          % v5
+          \draw (\xa+1,\ya+1) circle (0.2cm);      % v3
+          \draw (\xa+1,\ya+2) circle (0.2cm);      % v2
+          \draw (\xa,\ya+3) circle (0.2cm);        % v1
+          \draw (\xa-1,\ya+2) circle (0.2cm);      % v6
+          \draw (\xa-1,\ya+1)circle (0.2cm);       % v4
+          % Tokens
+          \path[fill] (\xa,\ya+3) circle (\ver);   % v1
+          \path[fill] (\xa+1,\ya+1) circle (\ver); % v3
+          % labels
           \node (1) at (\xa,\ya+3.5) {$v_1$};     % v1
           \node (2) at (\xa+1.5,\ya+2) {$v_2$};   % v2
           \node (3) at (\xa+1.5,\ya+1) {$v_3$};   % v3
           \node (5) at (\xa,\ya-0.5) {$v_5$};     % v5
           \node (4) at (\xa-1.5,\ya+1) {$v_4$};   % v4
           \node (6) at (\xa-1.5,\ya+2) {$v_6$};   % v6
-%edges
+          %edges
           \draw[thick] (\xa,\ya)--(\xa+1,\ya+1)--(\xa+1,\ya+2)--(\xa,\ya+3)--(\xa-1,\ya+2)--(\xa-1,\ya+1)--(\xa,\ya) ; % contour
           \draw[thick] (\xa,\ya)--(\xa,\ya+3) ;       % v5 - v1
           \draw[thick] (\xa+1,\ya+1)--(\xa-1,\ya+1) ; % v3 - v4
           \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
-%independent sets
-          \draw[ultra thick,green] (\xa,\ya+3+ \ver+0.2) coordinate(a1)  arc (90:450:\ver +0.2) coordinate(a2);
-          \draw[ultra thick,green] (\xa+1,\ya+1+ \ver+0.2) coordinate(d1)  arc (90:450:\ver +0.2) coordinate(d2);
-          \draw[ultra thick,blue] (\xa-1,\ya+1+ \ver+0.2) coordinate(a1)  arc (90:450:\ver +0.2) coordinate(a2);
-          \draw[ultra thick,blue] (\xa+1,\ya+2+ \ver+0.2) coordinate(d1)  arc (90:450:\ver +0.2) coordinate(d2);
-
         \end{tikzpicture}
       \end{scaletikzpicturetowidth}
-    \end{center}
-    \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
-    \label{fig:input_sliding_token_example}
+      \caption{Initial token configuration $T_{A}$.}
+      \label{fig:standard_1}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+      \begin{scaletikzpicturetowidth}{\textwidth}
+        \begin{tikzpicture}[scale=1]
+          \def\ver{0.12} %size of a vertex
+          \def\xa{0}
+          \def\ya{0}
+          % Highlight change
+          \draw[fill=yellow, opacity=.7, draw=none] (\xa,\ya+3)  circle (0.3cm); % v1
+          \draw[fill=yellow, opacity=.7, draw=none] (\xa+1,\ya+1) circle (0.3cm);  % v3
+          % graph G
+          \draw (\xa,\ya) circle (0.2cm);          % v5
+          \draw (\xa+1,\ya+1) circle (0.2cm);      % v3
+          \draw (\xa+1,\ya+2) circle (0.2cm);      % v2
+          \draw (\xa,\ya+3) circle (0.2cm);        % v1
+          \draw (\xa-1,\ya+2) circle (0.2cm);      % v6
+          \draw (\xa-1,\ya+1)circle (0.2cm);       % v4
+          % Tokens
+          \path[fill] (\xa,\ya+3) circle (\ver);   % v1
+          \path[fill] (\xa+1,\ya+1) circle (\ver); % v3
+          % labels
+          \node (1) at (\xa,\ya+3.5) {$v_1$};     % v1
+          \node (2) at (\xa+1.5,\ya+2) {$v_2$};   % v2
+          \node (3) at (\xa+1.5,\ya+1) {$v_3$};   % v3
+          \node (5) at (\xa,\ya-0.5) {$v_5$};     % v5
+          \node (4) at (\xa-1.5,\ya+1) {$v_4$};   % v4
+          \node (6) at (\xa-1.5,\ya+2) {$v_6$};   % v6
+          %edges
+          \draw[thick] (\xa,\ya)--(\xa+1,\ya+1)--(\xa+1,\ya+2)--(\xa,\ya+3)--(\xa-1,\ya+2)--(\xa-1,\ya+1)--(\xa,\ya) ; % contour
+          \draw[thick] (\xa,\ya)--(\xa,\ya+3) ;       % v5 - v1
+          \draw[thick] (\xa+1,\ya+1)--(\xa-1,\ya+1) ; % v3 - v4
+          \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
+        \end{tikzpicture}
+      \end{scaletikzpicturetowidth}
+      \caption{Target token configuration $T_{B}$.}
+      \label{fig:standard_2}
+    \end{subfigure}
+    \caption{A Standard sliding token instance with initial and target labelled token configuration $T_{A}$ and $T_{B}$ respectively with
+    $p_{1}(T_{A}) = \{v_1, v_3\}$ and $p_{2}(T_{B}) = \{v_2, v_4\}$.}
+    \label{fig:input_instance_standard}
   \end{figure}
 \end{example}
 
@@ -267,13 +306,12 @@ distinct $t_k$.
 The goal here is to make sure that no two vertices of distance at most $3$ (i.e. in a common slide set see figure \ref{fig:slide_set}) have the same
 color. More precisely, we want to prove that given $23$-colours, no two vertices having a common slide set would have the same colour.
 This constraint will enforce the absence of tokens on neighbors of $v_i$ and $v_j$, and the presence of a token on $v_i$ or $v_j$, but not both
-making sure that any merge or split will result into a feasible configuration. \todo{reformulate}.
+making sure that any merge or split will result into a feasible configuration.
 
 Given that the $kth$ power $G^{k}$ of an undirected graph $G$ is another graph that has the same set of vertices, but in which two vertices are
 adjacent when their distance in $G$ is at most $k$, to find the colorability of the output instance $H = (U, \mathcal{S})$, it suffices to
 compute $\Delta(G^{3})$. Since $G$ is $3-$regular, $G^3$ has degree at most $21$ proven by the following figure where the worst case
-scenario ($i.e.,$ a tree is attached to each root so as to force the root to meet new nodes and add new edges \todo{To reformulate this correctly}).
-
+scenario.
 
 \begin{figure} [H]
   \centering
@@ -350,9 +388,9 @@ to maximally split covers in the following way :
   \item Each token-less vertex corresponds to a set $\{v_i\}$ in the cover.
   \item Each token $t_k$ placed at $v_i$ corresponds to a set $\{v_j, t_k\}$ in the cover.
 \end{enumerate}
-Notice that $f_{red}$ is a bijection since each cover configuration is an exact cover (pas de doublons) and each token
-arrangement contains no doublons no plus. Notice also that $f_{red}(p_1) = C_1$ and $f_{red}(p_2) = C_2$.
-\todo{I do not agree with f(p1) = c1 etc}
+Notice that $f_{red}$ is a bijection since each cover configuration is an exact cover (no duplicates) and each token
+arrangement contains no duplicates either. Notice also that $f_{red}(p_1) = C_1$ and $f_{red}(p_2) = C_2$.
+
 
 \subsubsection{Reduction structure.}
 The remainder of the proof is devoted to proving the following claim:

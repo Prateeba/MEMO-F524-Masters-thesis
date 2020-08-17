@@ -42,35 +42,35 @@
 \contentsline {section}{\numberline {4.2}Connectivity of CNF-Formulas / Gopalan et al's.}{29}{section.70}%
 \contentsline {section}{\numberline {4.3}Planar NAE 3-SAT Reconﬁguration / Cardinal}{30}{section.71}%
 \contentsline {chapter}{\numberline {5}Subset sum Reconfiguration}{31}{chapter.72}%
-\contentsline {section}{\numberline {5.1}$k$-move Subset Sum Reconfiguration}{32}{section.75}%
-\contentsline {section}{\numberline {5.2}Labelled SLIDING TOKEN problem.}{33}{section.79}%
-\contentsline {section}{\numberline {5.3}Exact Cover Reconfiguration problem}{33}{section.80}%
-\contentsline {subsection}{\numberline {5.3.1}$k$-colorability}{34}{subsection.85}%
-\contentsline {subsection}{\numberline {5.3.2}${\ensuremath {\mathsf {PSPACE}}}$-hardness result of the ECR problem.}{34}{subsection.86}%
-\contentsline {subsubsection}{Input instance of the Labeled SLIDING TOKEN PROBLEM}{35}{section*.88}%
-\contentsline {subsubsection}{Preliminaries}{35}{section*.91}%
-\contentsline {paragraph}{Slide Set.}{36}{section*.92}%
-\contentsline {paragraph}{Maximally split configuration $C$.}{36}{section*.94}%
-\contentsline {paragraph}{Sploot set of a configuration $C$.}{36}{section*.97}%
-\contentsline {subsubsection}{Output $\mathcal {U}$ and $\mathcal {S}$}{36}{section*.98}%
-\contentsline {subsubsection}{Output exact cover starting and ending configurations, $C_1$ and $C_2$}{37}{section*.101}%
-\contentsline {subsubsection}{$23$-colorability of the output instance $H = (U, \mathcal {S})$}{37}{section*.103}%
-\contentsline {subsubsection}{High level idea}{38}{section*.107}%
-\contentsline {subsubsection}{Bijection between configurations.}{38}{section*.108}%
-\contentsline {subsubsection}{Reduction structure.}{39}{section*.112}%
-\contentsline {subsubsection}{Sliding tokens reachability $\rightarrow $ Exact cover reachability}{39}{section*.114}%
-\contentsline {subsubsection}{Exact Cover reachability $\rightarrow $ Sliding tokens reachability}{39}{section*.120}%
-\contentsline {section}{\numberline {5.4}$3$-move Subset Sum reconfiguration problem}{41}{section.127}%
-\contentsline {subsection}{\numberline {5.4.1}${\ensuremath {\mathsf {PSPACE}}}$-hardness result}{41}{subsection.128}%
-\contentsline {subsubsection}{Input Instance of the Exact Cover Reconfiguration problem}{41}{section*.130}%
-\contentsline {subsubsection}{High level idea}{41}{section*.131}%
-\contentsline {subsubsection}{Reduction Structure}{41}{section*.132}%
-\contentsline {subsubsection}{Output $\mathcal {S}$ and $x$}{41}{section*.133}%
-\contentsline {subsubsection}{Output size}{42}{section*.134}%
-\contentsline {subsubsection}{Correctness}{42}{section*.135}%
-\contentsline {chapter}{\numberline {6}Future works}{43}{chapter.137}%
-\contentsline {paragraph}{Shortest reconfiguration path in the sliding token reconfiguration problem.}{43}{section*.138}%
-\contentsline {paragraph}{St-Conn(S) problem in NCL.}{46}{section*.147}%
-\contentsline {paragraph}{Can schaefer's dichotomy be applied to the 3-move subset sum reconfiguration problem i.e can we have a tight result for $k \leq 3$ and $k \geq 3 ? $}{46}{section*.148}%
-\contentsline {paragraph}{Finding an optimal $k < 23$ for the colour classes of the exact cover problem. More en rapport avec le path in hypercube.}{46}{section*.149}%
-\contentsline {chapter}{\numberline {7}Conclusion}{47}{chapter.150}%
+\contentsline {section}{\numberline {5.1}$k$-move Subset Sum Reconfiguration}{32}{section.74}%
+\contentsline {section}{\numberline {5.2}Labelled SLIDING TOKEN problem.}{33}{section.78}%
+\contentsline {section}{\numberline {5.3}Exact Cover Reconfiguration problem}{33}{section.79}%
+\contentsline {subsection}{\numberline {5.3.1}$k$-colorability}{34}{subsection.84}%
+\contentsline {subsection}{\numberline {5.3.2}${\ensuremath {\mathsf {PSPACE}}}$-hardness result of the ECR problem.}{34}{subsection.85}%
+\contentsline {subsubsection}{Input instance of the Labeled SLIDING TOKEN PROBLEM}{35}{section*.87}%
+\contentsline {subsubsection}{Preliminaries}{35}{section*.90}%
+\contentsline {paragraph}{Slide Set.}{36}{section*.91}%
+\contentsline {paragraph}{Maximally split configuration $C$.}{36}{section*.93}%
+\contentsline {paragraph}{Sploot set of a configuration $C$.}{36}{section*.96}%
+\contentsline {subsubsection}{Output $\mathcal {U}$ and $\mathcal {S}$}{36}{section*.97}%
+\contentsline {subsubsection}{Output exact cover starting and ending configurations, $C_1$ and $C_2$}{37}{section*.100}%
+\contentsline {subsubsection}{$23$-colorability of the output instance $H = (U, \mathcal {S})$}{37}{section*.102}%
+\contentsline {subsubsection}{High level idea}{38}{section*.104}%
+\contentsline {subsubsection}{Bijection between configurations.}{38}{section*.105}%
+\contentsline {subsubsection}{Reduction structure.}{39}{section*.108}%
+\contentsline {subsubsection}{Sliding tokens reachability $\rightarrow $ Exact cover reachability}{39}{section*.110}%
+\contentsline {subsubsection}{Exact Cover reachability $\rightarrow $ Sliding tokens reachability}{39}{section*.116}%
+\contentsline {section}{\numberline {5.4}$3$-move Subset Sum reconfiguration problem}{40}{section.123}%
+\contentsline {subsection}{\numberline {5.4.1}${\ensuremath {\mathsf {PSPACE}}}$-hardness result}{40}{subsection.124}%
+\contentsline {subsubsection}{Input Instance of the Exact Cover Reconfiguration problem}{41}{section*.126}%
+\contentsline {subsubsection}{High level idea}{41}{section*.127}%
+\contentsline {subsubsection}{Reduction Structure}{41}{section*.128}%
+\contentsline {subsubsection}{Output $\mathcal {S}$ and $x$}{41}{section*.129}%
+\contentsline {subsubsection}{Output size}{41}{section*.130}%
+\contentsline {subsubsection}{Correctness}{41}{section*.131}%
+\contentsline {chapter}{\numberline {6}Future works}{43}{chapter.133}%
+\contentsline {paragraph}{Shortest reconfiguration path in the sliding token reconfiguration problem.}{43}{section*.134}%
+\contentsline {paragraph}{St-Conn(S) problem in NCL.}{46}{section*.143}%
+\contentsline {paragraph}{Can schaefer's dichotomy be applied to the 3-move subset sum reconfiguration problem i.e can we have a tight result for $k \leq 3$ and $k \geq 3 ? $}{46}{section*.144}%
+\contentsline {paragraph}{Finding an optimal $k < 23$ for the colour classes of the exact cover problem. More en rapport avec le path in hypercube.}{46}{section*.145}%
+\contentsline {chapter}{\numberline {7}Conclusion}{47}{chapter.146}%

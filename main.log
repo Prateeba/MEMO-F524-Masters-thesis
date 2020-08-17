@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.14)  16 AUG 2020 22:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.14)  17 AUG 2020 02:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1353,6 +1353,21 @@ LaTeX Warning: Label `fig:input_instance_config_to_edge' multiply defined.
 (/home/prat/IdeaProjects/MasterThesis/src/Chapters/chap3_SUBSETSUMs_recon/main.
 aux
 
+LaTeX Warning: Label `fig:standard_1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:standard_1' multiply defined.
+
+
+LaTeX Warning: Label `fig:standard_2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:standard_2' multiply defined.
+
+
+LaTeX Warning: Label `fig:input_instance_standard' multiply defined.
+
+
 LaTeX Warning: Label `fig:subgraph' multiply defined.
 
 )
@@ -1865,11 +1880,11 @@ tex
 Chapter 5.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 21.
+(hyperref)                removing `math shift' on input line 22.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 21.
+(hyperref)                removing `math shift' on input line 22.
 
 1: section
 [31
@@ -1878,7 +1893,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 ]
-Overfull \hbox (2.3125pt too wide) in paragraph at lines 31--31
+Overfull \hbox (2.3125pt too wide) in paragraph at lines 32--32
 [][][][][][]\T1/lmr/bx/n/12.5 Theorem 5.1.2. []\T1/lmr/m/it/12.5 The $[][]\OT1/
 lmr/m/n/12.5 3$\T1/lmr/m/it/12.5 -move Sub-set Sum Re-con-fig-u-ra-tion prob-le
 m is strongly
@@ -1904,115 +1919,119 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [34] [35]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 236.
+(hyperref)                removing `math shift' on input line 275.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 236.
+(hyperref)                removing `math shift' on input line 275.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 236.
+(hyperref)                removing `math shift' on input line 275.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 236.
+(hyperref)                removing `math shift' on input line 275.
+
+
+LaTeX Warning: Reference `fig:input_sliding_token_example' on page 36 undefined
+ on input line 288.
 
 [36]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 253.
+(hyperref)                removing `math shift' on input line 292.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 253.
+(hyperref)                removing `subscript' on input line 292.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 253.
+(hyperref)                removing `math shift' on input line 292.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 253.
+(hyperref)                removing `math shift' on input line 292.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 253.
+(hyperref)                removing `subscript' on input line 292.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 253.
+(hyperref)                removing `math shift' on input line 292.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 266.
+(hyperref)                removing `math shift' on input line 305.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 266.
+(hyperref)                removing `math shift' on input line 305.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 266.
+(hyperref)                removing `math shift' on input line 305.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 266.
+(hyperref)                removing `math shift' on input line 305.
 
 [37]
 
-LaTeX Warning: Reference `sssec:prelim' on page 38 undefined on input line 347.
+LaTeX Warning: Reference `sssec:prelim' on page 38 undefined on input line 385.
 
 
 [38]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 365.
+(hyperref)                removing `math shift' on input line 403.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rightarrow' on input line 365.
+(hyperref)                removing `\rightarrow' on input line 403.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 365.
+(hyperref)                removing `math shift' on input line 403.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 379.
+(hyperref)                removing `math shift' on input line 417.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rightarrow' on input line 379.
+(hyperref)                removing `\rightarrow' on input line 417.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 379.
+(hyperref)                removing `math shift' on input line 417.
 
 [39]
-Overfull \hbox (0.27829pt too wide) in paragraph at lines 418--418
+Overfull \hbox (0.27829pt too wide) in paragraph at lines 456--456
 [][][]$[][]\OT1/lmr/m/n/18.00003 3$\T1/lmr/bx/n/18.00003 -move Sub-set Sum re-c
 on-fig-u-ra-tion prob-
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 418.
+(hyperref)                removing `math shift' on input line 456.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 418.
+(hyperref)                removing `math shift' on input line 456.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 420.
+(hyperref)                removing `math shift' on input line 458.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 420.
+(hyperref)                removing `math shift' on input line 458.
 
 
-Overfull \hbox (2.3125pt too wide) in paragraph at lines 421--421
+Overfull \hbox (2.3125pt too wide) in paragraph at lines 459--459
 [][][][][][]\T1/lmr/bx/n/12.5 Theorem 5.4.1. []\T1/lmr/m/it/12.5 The $[][]\OT1/
 lmr/m/n/12.5 3$\T1/lmr/m/it/12.5 -move Sub-set Sum Re-con-fig-u-ra-tion prob-le
 m is strongly
@@ -2021,19 +2040,19 @@ m is strongly
 [40]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 445.
+(hyperref)                removing `math shift' on input line 483.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 445.
+(hyperref)                removing `math shift' on input line 483.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 445.
+(hyperref)                removing `math shift' on input line 483.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 445.
+(hyperref)                removing `math shift' on input line 483.
 
 [41]) [42]
 \openout2 = `Chapters/Chap5_future_works/main.aux'.
@@ -2090,7 +2109,7 @@ aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 304.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 304.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B2E518FAEB8CF00DE99C8688E95CD5FB;12468.
+(rerunfilecheck)             Checksum: E7D6584AA5BFE70658B14B22F5BDDCEE;12468.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -2104,10 +2123,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 41914 strings out of 481967
- 867454 string characters out of 5934344
- 1260584 words of memory out of 5000000
- 56523 multiletter control sequences out of 15000+600000
+ 41839 strings out of 481967
+ 865971 string characters out of 5934344
+ 1258012 words of memory out of 5000000
+ 56452 multiletter control sequences out of 15000+600000
  735745 words of font info for 172 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  73i,50n,90p,3233b,1563s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2140,10 +2159,10 @@ fb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msam
 10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/
 msbm10.pfb>
 Output written on /home/prat/IdeaProjects/MasterThesis/src/main.pdf (64 pages, 
-582931 bytes).
+582310 bytes).
 PDF statistics:
- 1050 PDF objects out of 1200 (max. 8388607)
- 933 compressed objects within 10 object streams
- 249 named destinations out of 1000 (max. 500000)
+ 1046 PDF objects out of 1200 (max. 8388607)
+ 929 compressed objects within 10 object streams
+ 245 named destinations out of 1000 (max. 500000)
  637 words of extra memory for PDF output out of 10000 (max. 10000000)
 
