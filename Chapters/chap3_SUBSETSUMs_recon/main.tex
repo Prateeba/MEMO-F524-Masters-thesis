@@ -36,7 +36,7 @@ The proof of theorem \ref{theorem:3_move} is organised in the following way : We
 sum reconfiguration problem in $\PSPACE$ (lemma \ref{lemma:k_move_pspace}). Proving the hardness is done in two steps. The first step
 consists of reducing the labelled Sliding Token Reconfiguration problem to the Exact Cover Reconfiguration problem (lemma \ref{lemma:ECR}).
 However before diving into the proof of lemma \ref{lemma:ECR}, we first take a detour to sections \ref{sec:sliding_problem} and
-\ref{sec:Exact_cover} where the labeled sliding token reconfiguration and exact cover reconfiguration problems are introduced respectively.
+\ref{sec:Exact_cover} where the labelled sliding token reconfiguration and exact cover reconfiguration problems are introduced respectively.
 
 The second step involves reducing the Exact Cover Reconfiguration problem to the $3$-move Subset Sum Reconfiguration problem
 (theorem \ref{theorem:3_move_theorem}).
@@ -56,7 +56,7 @@ the SLIDING TOKEN PROBLEM is $\PSPACE$-complete for planar graphs \cite{hearn_ps
 the nondeterministic constraint logic model and they implicitly proved that the SLIDING TOKEN PROBLEM is $\PSPACE$-hard on $3$-regular graphs
 since the reduction is done from a restricted NCL machine (NCL-CONFIGURATION-TO-EDGE) in which the underlying graph is planar and all vertices
 have degree three. The labelled variant of the sliding token problem, where each token has a unique label, is also $\PSPACE$-hard and is proved
-in section \ref{sec:labeled_sliding_token} of chapter \ref{chap:NCL}.
+in section \ref{sec:labelled_sliding_token} of chapter \ref{chap:NCL}.
 
 \section{Exact Cover Reconfiguration problem} \label{sec:Exact_cover}
 The exact cover reconfiguration problem is the second problem introduced along this reduction. It will be referred to as the
@@ -95,10 +95,10 @@ following : $C_1 = \{\{1\}, \{2,3\}\}$ and $C_2 = \{\{1,2\}, \{3\}\}$. A solutio
 \end{figure}
 \end{example}
 
-\subsection{$k$-colorability}
+\subsection{$k$-colourability}
 Recall that a set $\mathcal{S}$ of subsets of a set $U$ can be considered as a hypergraph $H = (U, \mathcal{S})$, where each element
-of $U$ is a vertex and each element of $\mathcal{S}$ is a hyperedge. We say that a hypergraph is $k$-colorable whenever we
-can assign one of $k$ colors to each vertex such that no two vertices in a hyperedge have the same color. The colourability of the ECR
+of $U$ is a vertex and each element of $\mathcal{S}$ is a hyperedge. We say that a hypergraph is $k$-colourable whenever we
+can assign one of $k$ colours to each vertex such that no two vertices in a hyperedge have the same colour. The colourability of the ECR
 problem is introduced for further use.
 
 \subsection{$\PSPACE$-hardness result of the ECR problem.} \label{subsection:ECR_problem}
@@ -110,19 +110,19 @@ section \ref{subsubsection:input_instance}, followed by the definition of some t
 \ref{subsubsection:prelim}. The output instance is described in section \ref{subsubsection:output_instance}.
 Sections \ref{subsubsection:high_level} to \ref{subsubsection:23_colorability} are devoted to the proof.
 
-\begin{lemma}The Exact Cover Reconfiguration problem is $\PSPACE$-hard for instances that are $23$-colorable hypergraphs. \end{lemma} \label{lemma:ECR}
-\begin{proof}Labeled variant of the SLIDING TOKEN PROBLEM $\leq_p$ Exact Cover Reconfiguration problem.
+\begin{lemma}The Exact Cover Reconfiguration problem is $\PSPACE$-hard for instances that are $23$-colourable hypergraphs. \end{lemma} \label{lemma:ECR}
+\begin{proof}labelled variant of the SLIDING TOKEN PROBLEM $\leq_p$ Exact Cover Reconfiguration problem.
 
-\subsubsection{Input instance of the Labeled SLIDING TOKEN PROBLEM}\label{subsubsection:input_instance}
+\subsubsection{Input instance of the labelled SLIDING TOKEN PROBLEM}\label{subsubsection:input_instance}
 \begin{itemize}
   \item $G = (V,E)$, a $3$-regular graph.
-  \item $T$, a set of labeled tokens.
-  \item $p_1 : T \rightarrow V,$ a function mapping each labeled token to a vertex placement in the starting configuration of the output instance.
-  \item $p_2 : T \rightarrow V,$ a function mapping each labeled token to a vertex placement in the ending configuration of the output instance.
+  \item $T$, a set of labelled tokens.
+  \item $p_1 : T \rightarrow V,$ a function mapping each labelled token to a vertex placement in the starting configuration of the output instance.
+  \item $p_2 : T \rightarrow V,$ a function mapping each labelled token to a vertex placement in the ending configuration of the output instance.
   \item $I_1 = \{p_1(t) : t \in T\}$ and $I_2 = \{p_2(t) : t \in T\}$ are independent sets of size $|T| \leq |V|$.
 \end{itemize}
 
-\begin{example}{Input instance of the Labeled SLIDING TOKEN PROBLEM}
+\begin{example}{Input instance of the labelled SLIDING TOKEN PROBLEM}
   \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
@@ -158,7 +158,7 @@ Sections \ref{subsubsection:high_level} to \ref{subsubsection:23_colorability} a
           \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
         \end{tikzpicture}
       \end{scaletikzpicturetowidth}
-      \caption{Initial token configuration $T_{A}$.}
+      \caption{Initial configuration $S_{1}$.}
       \label{fig:standard_1}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
@@ -168,18 +168,18 @@ Sections \ref{subsubsection:high_level} to \ref{subsubsection:23_colorability} a
           \def\xa{0}
           \def\ya{0}
           % Highlight change
-          \draw[fill=yellow, opacity=.7, draw=none] (\xa,\ya+3)  circle (0.3cm); % v1
-          \draw[fill=yellow, opacity=.7, draw=none] (\xa+1,\ya+1) circle (0.3cm);  % v3
+          \draw[fill=yellow, opacity=.7, draw=none] (\xa+1,\ya+2)  circle (0.3cm); % v2
+          \draw[fill=yellow, opacity=.7, draw=none] (\xa-1,\ya+1) circle (0.3cm);  % v4
           % graph G
           \draw (\xa,\ya) circle (0.2cm);          % v5
           \draw (\xa+1,\ya+1) circle (0.2cm);      % v3
           \draw (\xa+1,\ya+2) circle (0.2cm);      % v2
           \draw (\xa,\ya+3) circle (0.2cm);        % v1
           \draw (\xa-1,\ya+2) circle (0.2cm);      % v6
-          \draw (\xa-1,\ya+1)circle (0.2cm);       % v4
+          \draw (\xa-1,\ya+1) circle (0.2cm);      % v4
           % Tokens
-          \path[fill] (\xa,\ya+3) circle (\ver);   % v1
-          \path[fill] (\xa+1,\ya+1) circle (\ver); % v3
+          \path[fill] (\xa+1,\ya+2) circle (\ver);   % v2
+          \path[fill] (\xa-1,\ya+1) circle (\ver);   % v4
           % labels
           \node (1) at (\xa,\ya+3.5) {$v_1$};     % v1
           \node (2) at (\xa+1.5,\ya+2) {$v_2$};   % v2
@@ -194,17 +194,18 @@ Sections \ref{subsubsection:high_level} to \ref{subsubsection:23_colorability} a
           \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
         \end{tikzpicture}
       \end{scaletikzpicturetowidth}
-      \caption{Target token configuration $T_{B}$.}
+      \caption{Target configuration $S_{2}$.}
       \label{fig:standard_2}
     \end{subfigure}
-    \caption{A Standard sliding token instance with initial and target labelled token configuration $T_{A}$ and $T_{B}$ respectively with
-    $p_{1}(T_{A}) = \{v_1, v_3\}$ and $p_{2}(T_{B}) = \{v_2, v_4\}$.}
+    \caption{A Standard sliding token instance with initial and target labelled token configuration $S_{1}$ and $S_{2}$ respectively with a
+    set of labelled tokens $T = \{t_1, t_2\}$ and $p_{1}(T_{A}) = \{v_1, v_3\}$ and $p_{2}(T_{B}) = \{v_2, v_4\}$ (the mapping is shown by
+    the highlighted vertices).}
     \label{fig:input_instance_standard}
   \end{figure}
 \end{example}
 
 \subsubsection{Preliminaries} \label{subsubsection:prelim}
-Before diving in the proof, a few concepts that will be used are presented hereunder :
+Before diving in the proof resulr, a few notions that will be used are presented hereunder :
 \paragraph{Slide Set.}
 For each pair of adjacent vertices $v_i, v_j \in V$ of the input instance of the sliding token problem, the set consisting of these two vertices
 and their neighbors is called a $slide set$, denoted $S_{i,j}$.
@@ -302,14 +303,14 @@ distinct $t_k$.
 \end{itemize}
 \end{example}
 
-\subsubsection{$23$-colorability of the output instance $H = (U, \mathcal{S})$}\label{subsubsection:23_colorability}
+\subsubsection{$23$-colourability of the output instance $H = (U, \mathcal{S})$}\label{subsubsection:23_colorability}
 The goal here is to make sure that no two vertices of distance at most $3$ (i.e. in a common slide set see figure \ref{fig:slide_set}) have the same
-color. More precisely, we want to prove that given $23$-colours, no two vertices having a common slide set would have the same colour.
+colour. More precisely, we want to prove that given $23$-colours, no two vertices having a common slide set would have the same colour.
 This constraint will enforce the absence of tokens on neighbors of $v_i$ and $v_j$, and the presence of a token on $v_i$ or $v_j$, but not both
 making sure that any merge or split will result into a feasible configuration.
 
 Given that the $kth$ power $G^{k}$ of an undirected graph $G$ is another graph that has the same set of vertices, but in which two vertices are
-adjacent when their distance in $G$ is at most $k$, to find the colorability of the output instance $H = (U, \mathcal{S})$, it suffices to
+adjacent when their distance in $G$ is at most $k$, to find the colourability of the output instance $H = (U, \mathcal{S})$, it suffices to
 compute $\Delta(G^{3})$. Since $G$ is $3-$regular, $G^3$ has degree at most $21$ proven by the following figure where the worst case
 scenario.
 
@@ -367,8 +368,8 @@ scenario.
 \end{figure}
 
 
-So $G$ can be $22-$colored such that no two vertices of distance at most $3$ have the same color. Coloring the tokens in $\mathcal{T}$
-a distinct (23rd) color then gives a coloring of $\mathcal{U}$ such that no pair of elements of a common set share the same color.
+So $G$ can be $22-$coloured such that no two vertices of distance at most $3$ have the same colour. Colouring the tokens in $\mathcal{T}$
+a distinct (23rd) colour then gives a colouring of $\mathcal{U}$ such that no pair of elements of a common set share the same colour.
 
 \subsubsection{High level idea}\label{subsubsection:high_level}
 We first note that the subsets containing exactly one vertex and a token (e.g., $\{v_i, t_k\}$) represents the presence of the token
@@ -445,39 +446,33 @@ the constraint to statisfy in order to split from $C_{inter}$ to $C^{'}$ was to 
 So all that remains is to prove that there are a sequence of slides moving $t_k$ from $v_i$ to $v_j^{'}$ via vertices
 in $\{v_i, v_j, v_i^{'}, v_j^{'}\}$. Since $S_{i,j} = S_{i^{'},j^{'}}$ it means that $v_i^{'}, v_j^{'} \in S_{i,j}$ too.
 So either $v_i \in {v_i^{'}, v_j^{'}}$, or there is an edge $\{v_i, v_i^{'}\}$ or $\{v_i, v_j^{'}\} \in E$. So $t_k$ can slide
-from $v_i$ to either $v_i^{'}$ or $v_j^{'}$ (via 0 or 1 slides), and then from $v_i^{'}$ or $v_j^{'}$ to $v_j^{'}$ (via 0 or 1 slides).
-
-\todo{Add simple example here to demonstrate the last part}
+from $v_i$ to either $v_i^{'}$ or $v_j^{'}$ (via 0 or 1 slide), and then from
+$v_i^{'}$ or $v_j^{'}$ to $v_j^{'}$ (via 0 or 1 slide).
 \end{proof}
 
-\begin{example}{}
-\end{example}
-
 \section{$3$-move Subset Sum reconfiguration problem}
+Having established the complexity of the Exact cover problem, we can finally prove the main theorem of this chapter (theorem \ref{theorem:3_move_theorem}).
 
-\subsection{$\PSPACE$-hardness result} \label{subsection:3_move_hardness}
 \begin{theorem}{The $3$-move Subset Sum Reconfiguration problem is strongly $\PSPACE$-complete.}\end{theorem} \label{theorem:3_move_theorem}
 
-\begin{proof}The reduction is from the Exact Cover Reconfiguration problem for instances that are $23-$colorable induced hypergraphs,
-proved $\PSPACE$-hard.
-
-\subsubsection{Input Instance of the Exact Cover Reconfiguration problem}
-Recall that the Exact Cover Reconfiguration instance contains a set $\mathcal{S}$ of subsets of a set $\mathcal{U}$ and two exact
-covers $C_1$ and $C_2 \subseteq \mathcal{S}$.
-
+\begin{proof}The reduction is from the Exact Cover Reconfiguration problem for instances that are $23-$colourable induced hypergraphs,
+proved $\PSPACE$-hard. Recall that the Exact Cover Reconfiguration instance contains a set $\mathcal{S}$ of subsets of a set $\mathcal{U}$
+and two exact covers $C_1$ and $C_2 \subseteq \mathcal{S}$.
 
 \subsubsection{High level idea}
-Every $3-$move Subset Sum Reconfiguration step is either a \textit{merge} where $a_i$ and $a_j$ are replaced by $a_i + a_j$ or a \textit{split}
-where $a_i + a_j$ is replaced by $a_i$ and $a_j$.
+The goal is to find a correspondence between the addition and removal of elements in the $3-$move subset sum instance
+and the splits and merges of the Exact cover instance. The correspondence is the following : Every $3-$move Subset Sum Reconfiguration
+step is either a \textit{merge} where elements $a_i$ and $a_j$ are replaced by $a_i + a_j$ or a \textit{split} where $a_i + a_j$ is
+replaced by $a_i$ and $a_j$.
 
 \subsubsection{Reduction Structure}
 Given an instance of the exact cover problem, each element $a$ of $U$ is given an arbitrary label $i$ where $i \in \{1, \dots, |U|\}$ and
-is partitioned according to its color $j$ where $j \in \{1, \dots, 23\}$.
-A function $f : \mathcal{U} \rightarrow \mathbb{N}$ maps each element of the universe $\mathcal{U}$ of the input Exact Cover Reconfiguration
-problem to a positive integer. The positive integer is computed using the encoding of the label and color of an element $a$. The function
-$f$ maps a color-$j$ element $a_{i}$ to $i.2^{100j \lceil log_{2}(|U|) \rceil}$. In binary, this mapping consists of the binary encoding of
-$i$ followed by $100j \lceil log_{2}(|U|) \rceil$ zeros. The idea here is to use $j$ to create an interval for elements of $U$ have the same
-colour or are part of the same colour class and $i$ as an offset to differentiate elements of the same colour.
+is partitioned according to its colour $j$ where $j \in \{1, \dots, 23\}$.
+A function $f : \mathcal{U} \rightarrow \mathbb{N}$ maps each element $a$ of the universe $\mathcal{U}$ of the input Exact Cover Reconfiguration
+problem to a positive integer. The positive integer is computed using the encoding of the label $i$ and colour $j$ of an element $a$.
+The function $f$ maps a colour-$j$ element $a_{i}$ to $i.2^{100j \lceil log_{2}(|U|) \rceil}$. In binary, this mapping consists of the
+binary encoding of$i$ followed by $100j \lceil log_{2}(|U|) \rceil$ zeros. The idea here is to use $j$ to create an interval for elements
+of $U$ have the same colour or are part of the same colour class and $i$ as an offset to differentiate elements of the same colour.
 
 
 \subsubsection{Output $\mathcal{S}$ and $x$}
@@ -493,18 +488,88 @@ A reconﬁguration in both the exact cover and $3$-move subset sum problems invo
 or merging elements. Thus it suffices to prove that the function $f$ yields a one-to-one mapping $g : \mathcal{S} \rightarrow N$
 given by $g(\mathcal{S}) = \sum_{a \in \mathcal{S}}^{} f(a)$.
 
-Recall that the function $f$ maps each element $a_i \in U$ to a value based upon the color of $a_i$. The sums of
-the outputs of $f$ for all elements of all colors $1$ to $j-1$ is at most $2^{100(j-1)} log_{2}(|U|)|U|^{2} \leq 2^{(100j-98)}log_{2}(|U|)$
-while the output of $f$ for any element of any color $j$ or larger is at least $2^{100(j)} log_{2}(|U|) \geq 2^{(98)}log_{2}(|U|)$.
+Recall that the function $f$ maps each element $a_i \in U$ to a value based upon the colour of $a_i$. The sums of
+the outputs of $f$ for all elements of all colours $1$ to $j-1$ is at most $2^{100(j-1) log_{2}(|U|)}.|U|^{2} \leq 2^{(100j-98)log_{2}(|U|)}$
+while the output of $f$ for any element of any colour $j$ or larger is at least $2^{100(j) log_{2}(|U|)} \geq 2^{(98)}.2^{(100j-98)log_{2}(|U|)}$.
 
-Thus if a pair of sets $\mathcal{S}_1, \mathcal{S}_2 \subseteq S$ have $\mathcal{S}_1 = \mathcal{S}_2$, then their color-$j$ elements
-differ, this difference cannot be made up by adding or removing elements of colors $1$ to $j-1$ (values too small) or colors $j + 1$ to $23$
-(values too large). Thus if $\mathcal{S}_1 = \mathcal{S}_2$, then $g(\mathcal{S}_1) = g(\mathcal{S}_2)$.
-\todo{Demythyfy this!!!!!!!!!! + Correction needed}
-
-
+Thus if a pair of sets $\mathcal{S}_1, \mathcal{S}_2 \subseteq S$ have $\mathcal{S}_1 \neq \mathcal{S}_2$, then their colour-$j$ elements
+differ, this difference cannot be made up by adding or removing elements of colours $1$ to $j-1$ (values too small) or colours $j + 1$ to $23$
+(values too large). Thus if $\mathcal{S}_1 \neq \mathcal{S}_2$, then $g(\mathcal{S}_1) \neq g(\mathcal{S}_2)$.
 \end{proof}
 
+\begin{example}
+Concerning this proof, a new smaller illustrative example is used. Just to demonstrate our purpose we will consider here that we have only
+$5$ colours and only $|\mathcal{S}| = 4$.  \\
+\begin{flushleft}
+  $\mathcal{S} = \{S_1, S_2, S_3, S_4\}$ where : \\
+  $S_1 = \{a_1, a_3, a_4\} $ \\
+  $S_2 = \{a_2, a_5,a_6, a_7\} $ \\
+  $S_3 = \{a_1, a_3, a_2, a_6\} $ \\
+  $S_4 = \{a_1, a_2, a_3, a_4, a_5, a_6, a_7\} $ \\
+\end{flushleft}
+
+\begin{flushleft}
+  \begin{tabular}{ |c|c|c|c||c|c| }
+    \hline
+    colours, $j =$ : & 4 & 3 & 2 & 1 & 0 \\
+    \hline
+    & $a_1$ & $a_3$ & $a_4$ & &          \\
+    &  & $a_5$ & $a_2$ & $a_6$ & $a_7$  \\
+    \hline
+  \end{tabular}
+\end{flushleft}
+
+\begin{flushleft}
+  $f(a_1) = 10000$ \\
+  $f(a_2) = 200$   \\
+  $f(a_3) = 3000$  \\
+  $f(a_4) = 400$   \\
+  $f(a_5) = 5000$  \\
+  $f(a_6) = 60$    \\
+  $f(a_7) = 7$     \\
+  Thus the output target sum $x = \sum_{a \in U} f(a)$ \\
+  \qquad \qquad \qquad \qquad \qquad \qquad \quad $x = 18667$
+\end{flushleft}
+
+\begin{flushleft}
+  $S_1 = 10000 + 3000 + 400$ \\
+  $S_2 = 200 + 5000 + 60 + 70$   \\
+  $S_3 = 10000 + 3000 + 200 + 60$  \\
+  $S_4 = 10000 + 200 + 3000 + 400 + 5000 + 60 + 7$   \\
+  The numbers are $ \mathcal {S} = \{13400, 05267, 13260, 18667\} $ \\
+\end{flushleft}
+
+An element $T$ in $\mathcal{S}$ can be split in $T_1$ and $T_2$ of $\mathcal{S}$ if and only if $g(T) = g(T_1) + g(T_2)$.
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.4\textwidth}
+    \begin{scaletikzpicturetowidth}{\textwidth}
+      \begin{tikzpicture}[scale=0.8]
+        \node (1) [draw, rectangle] {\{$S_4$\}};
+        \node (2) [below=of 1, draw, rectangle] { \{$S_1$\}, \{$S_2$\}};
+        \draw[->]  (1) to node [auto] {split} (2);
+        \node (a) at (4,-1) {$\underleftrightarrow{\textbf{iff}}$};            % Label reject
+      \end{tikzpicture}
+    \end{scaletikzpicturetowidth}
+    \caption{Initial token configuration $T_{A}$.}
+    \label{fig:standard_1}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \begin{scaletikzpicturetowidth}{\textwidth}
+      \begin{tikzpicture}[scale=0.8]
+        \node (1) [draw, rectangle] {$g(S_4)$};
+        \node (2) [below=of 1, draw, rectangle] { $g(S_1) + g(S_2)$};
+        \draw[->]  (1) to node [auto] {$\stackrel{?}{=}$} (2);
+      \end{tikzpicture}
+    \end{scaletikzpicturetowidth}
+    \caption{Target token configuration $T_{B}$.}
+    \label{fig:standard_2}
+  \end{subfigure}
+  \caption{A Standard sliding token instance with initial and target labelled token configuration $T_{A}$ and $T_{B}$ respectively.}
+  \label{fig:input_instance_standard}
+\end{figure}
+
+\end{example}
 
 
 

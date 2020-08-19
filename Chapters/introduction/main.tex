@@ -14,16 +14,16 @@ application of a single transformation rule,\textit{a reconfiguration step}. Any
 sequence of reconfiguration steps called a \textit{reconfiguration sequence}.
 
 Interest in combinatorial reconfiguration begun with the Sliding blocks puzzles and steadily increased during the last decade. The reconfiguration framework has recently been applied in a number of settings,
-including vertex coloring \cite{bonsma}, \cite{bonsma_cereceda}, \cite{cereceda}, list-edge coloring \cite{ito_reconfiguration_2009}, clique, set cover,
+including vertex colouring \cite{bonsma}, \cite{bonsma_cereceda}, \cite{cereceda}, list-edge colouring \cite{ito_reconfiguration_2009}, clique, set cover,
 integer programming, matching, spanning tree, matroid bases \cite{DBLP:journals/tcs/ItoDHPSUU11}, block puzzles \cite{hearn_pspace-completeness_2004},
 shortest path \cite{shortest_path}, independent set \cite{hearn_pspace-completeness_2004},\cite{DBLP:journals/tcs/ItoDHPSUU11}, \cite{kaminski_complexity_2012},
 and satisfiability \cite{DBLP:journals/siamcomp/GopalanKMP09}.
 Many problems in $\P$ have their reconfigurability problems in $\P$ as well, such as spanning tree, matching, and matroid problems in general. On the other hand,
 the reconfigurability of independent set, set cover, and integer programming are $\PSPACE$-complete \cite{DBLP:journals/tcs/ItoDHPSUU11}. In general however, knowing
 the complexity of a decision problem does not allow us to directly infer the complexity status of its reconfigurability problem(s). Several $\NP$-complete problems have
-reconfigurability analogues that are in $\P$, for example the $3$-colorability problem \cite{DBLP:conf/iwoca/JohnsonCH08}. Alternatively, some problems in $\P$
+reconfigurability analogues that are in $\P$, for example the $3$-colourability problem \cite{DBLP:conf/iwoca/JohnsonCH08}. Alternatively, some problems in $\P$
 have reconfigurability versions that are $\PSPACE$-complete, such as shortest paths \cite{DBLP:journals/corr/abs-1009-3217} or the problem of deciding whether
-two $4$-colorings of a given bipartite or planar graph are reconfigurable \cite{bonsma}.
+two $4$-colourings of a given bipartite or planar graph are reconfigurable \cite{bonsma}.
 
 This thesis does not attempt to catalogue all research results that can be categorized as reconfiguration, but instead focuses on demonstrating the
 main themes in the area and complement some recent $\PSPACE-$hardness proofs given in \cite{cardinal_reconfiguration_2018}. More precisely, we go
@@ -32,7 +32,7 @@ over and detail the $\PSPACE-$completeness of the following decision problems :
     \item Given two subsets of a set $S$ of integers of integers with the same sum, can one subset be transformed into the other by adding or removing
     at most 3 elements of $S$ at a time, such that the intermediate subsets also have the same sum ?
     \item In the process of complementing the $3$-move subset sum reconfiguration problem, we also give a simple hardness proof the labelled variant
-    of the sliding token problem, described in section \ref{sec:labeled_sliding_token}.
+    of the sliding token problem, described in section \ref{sec:labelled_sliding_token}.
 \end{itemize}
 
 In the first half of this thesis, we study the Nondeterministic Constraint Logic of Computation introduced by Hearn and Demaine.

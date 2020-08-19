@@ -6,11 +6,10 @@ A level-1 auxiliary file: Chapters/Preliminaries/main.aux
 A level-1 auxiliary file: Chapters/chap1_NCL/main.aux
 A level-1 auxiliary file: Chapters/chap2_SAT/main.aux
 A level-1 auxiliary file: Chapters/chap3_SUBSETSUMs_recon/main.aux
-A level-1 auxiliary file: Chapters/Chap5_future_works/main.aux
 A level-1 auxiliary file: Chapters/Chap6_conclusion/main.aux
+A level-1 auxiliary file: Chapters/Chap5_future_works/main.aux
 The style file: plain.bst
 Database file #1: main.bib
-Warning--I didn't find a database entry for "schwerdtfeger2013computational"
 Warning--empty journal in allender_complexity_nodate
 Warning--empty year in allender_complexity_nodate
 Warning--empty journal in bonsma_reconfiguring_2014
@@ -36,45 +35,45 @@ Warning--empty year in savitch_relationships_1970
 Warning--empty year in sipserIntroductionTheoryComputation2006
 Warning--empty journal in van_der_zanden_parameterized_nodate
 Warning--empty year in van_der_zanden_parameterized_nodate
-You've used 31 entries,
+You've used 33 entries,
             2118 wiz_defined-function locations,
-            686 strings with 10181 characters,
-and the built_in function-call counts, 10865 in all, are:
-= -- 1042
-> -- 552
+            700 strings with 10471 characters,
+and the built_in function-call counts, 11386 in all, are:
+= -- 1094
+> -- 566
 < -- 11
-+ -- 219
-- -- 183
-* -- 751
-:= -- 1791
-add.period$ -- 98
-call.type$ -- 31
-change.case$ -- 177
++ -- 226
+- -- 187
+* -- 786
+:= -- 1882
+add.period$ -- 105
+call.type$ -- 33
+change.case$ -- 185
 chr.to.int$ -- 0
-cite$ -- 56
-duplicate$ -- 440
-empty$ -- 783
-format.name$ -- 183
-if$ -- 2275
+cite$ -- 58
+duplicate$ -- 461
+empty$ -- 829
+format.name$ -- 187
+if$ -- 2381
 int.to.chr$ -- 0
-int.to.str$ -- 31
-missing$ -- 32
-newline$ -- 157
-num.names$ -- 70
-pop$ -- 230
+int.to.str$ -- 33
+missing$ -- 34
+newline$ -- 168
+num.names$ -- 74
+pop$ -- 235
 preamble$ -- 1
-purify$ -- 148
+purify$ -- 154
 quote$ -- 0
-skip$ -- 324
+skip$ -- 338
 stack$ -- 0
-substring$ -- 556
-swap$ -- 119
+substring$ -- 594
+swap$ -- 121
 text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 118
+type$ -- 126
 warning$ -- 25
-while$ -- 97
-width$ -- 33
-write$ -- 321
-(There were 26 warnings)
+while$ -- 102
+width$ -- 35
+write$ -- 344
+(There were 25 warnings)

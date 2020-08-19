@@ -1,96 +1,175 @@
 \chapter{Reconfiguration of satisfiability problems} \label{chap:SAT}
 
 In this chapter, boolean satisifiability reconfiguration problems are presented. For decades the Boolean satisfiability problem also known
-as SAT has fascinated scientific world. The craze behind it led to the celebrated theorem of Cook Levin, that SAT is $\NP$-complete.
-Schaefer proposed in \cite{schaefer_complexity_1978} a framework for expressing variants of the satisfiability problem,
+as SAT has fascinated scientific world. In 1978 Schaefer proposed a framework for expressing variants of the satisfiability problem,
 and showed a dichotomy theorem: the satisfiability problem for certain classes of Boolean formulas is in $\P$ while it is $\NP$-complete for
-all other classes in the framework. In a single stroke, this result pinpoints the computational complexity of all well-known variants of SAT,
-such as $3$-SAT, HORN $3$-SAT, NOT-ALL-EQUAL $3$-SAT, and 1-IN-$3$ SAT.
+all other classes in the framework \cite{schaefer_complexity_1978}. In a single stroke, this result pinpoints the computational complexity
+of all well-known variants of SAT, such as $3$-SAT, HORN $3$-SAT, NOT-ALL-EQUAL $3$-SAT, and 1-IN-$3$ SAT. Since then, dichotomies or
+trichotomies have been established for several aspects of the satisfiability problem such as optimization [6,8,24], counting [7], inverse
+satisfiability [23], minimal satisfiability [28], unique satisfiability [19], 3-valued satisfiability [3] and
+propositional abduction [9].
 
-Since then, dichotomies or trichotomies have been established for several aspects of the satisfiability problem such as optimization [6,8,24],
-counting [7], inverse satisfiability [23], minimal satisfiability [28], unique satisfiability [19], 3-valued satisfiability [3] and
-propositional abduction [9]. Very recently, Gopalan et al. studied in [17,18] connectivity properties of the solution-space of Boolean
-formulas, and investigated complexity issues on connectivity problems in Schaefer’s framework [31].
 
-For Boolean satisfiability problems, the structure of the solution space is characterized by the solution graph, where the vertices are
-the solutions, and two solutions are connected iff they differ in exactly one variable. In 2006, Gopalan et al. studied connectivity properties
-of the solution graph motivated mainly by research on satisfiability algorithms and the satisfiability threshold. The connectivity problem (Conn) is
-to decide whether the solutions of a given Boolean formula $\varphi$ on $n$ variables induce a connected subgraph of the $n$-dimensional hypercube,
-while the st-connectivity problem (st-Conn) is to decide whether two specific solutions $s$ and $t$ of $\Phi$ are connected. They
-proved dichotomies for the diameter of connected components and for the complexity of the st-connectivity question, and conjectured a trichotomy
-for the connectivity question. Recently, the trichotomy was established in  \cite{schwerdtfeger2013computational}.
+In 2006, Gopalan et al. studied connectivity properties of the solution graph motivated mainly by research on satisfiability algorithms
+and the satisfiability threshold. For Boolean satisfiability problems, the structure of the solution space is characterized by the solution
+graph, where the vertices are the solutions, and two solutions are connected iff they differ in exactly one variable.
+The connectivity problem (Conn) is to decide whether the solutions of a given Boolean formula $\varphi$ on $n$ variables induce a
+connected subgraph of the $n$-dimensional hypercube, while the st-connectivity problem (st-Conn) is to decide whether two specific
+solutions $s$ and $t$ of $\varphi$ are connected. They proved dichotomies for the diameter of connected components and for the complexity of the
+st-connectivity question, and conjectured a trichotomy for the connectivity question. Building on this work, recently the trichotomy was
+established in \cite{schwerdtfeger_computational_2015}: Conn is either in $\P$, $\coNP$-complete, or $\PSPACE$-complete.
 
 A direct application of st-connectivity in solution graphs are reconfiguration problems. Gopalan et al.’s results have also been applied
-directly to reconfiguration problems, that arise when a step-by-step transformation
-between two feasible solutions of a problem is searched, such that all intermediate results are feasible. The solutions
-(satisfying assignments) of a formula $\Phi$ over n variables induce  a subgraph $G(\Phi)$ of the n-dimensional hypercube graph, that is, the
-vertices are the solutions of $\Phi$, and two solutions are connected iff they differ in exactly one variable.
-
-In the reconfiguration context the following general set-up is considered :
-Given a Boolean formula $\varphi$ with $n$ Boolean variable and two satisfying assignments $s_{1}$ and $s_{2}$, is it possible to
-transform $s_{1}$ to $s_{2}$ such that at each step, only one variable $x_i$ can be flipped and each intermediate assignment remains
-feasible. \todo{Needs rework }
-
+directly to reconfiguration problems which happens to be the subject of this thesis. The solutions (satisfying assignments) of a formula
+$\varphi$ over $n$ variables induce  a subgraph $G(\varphi)$ of the $n$-dimensional hypercube graph, that is, the vertices are the
+solutions of $\varphi$, and two solutions are connected iff they differ in exactly one variable.
 
 - Roadmap.
 
 
-\section{Schaefer's framework}
+% ----------------------------------------------------------------------------------------------------------------------------------
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ----------------------------------------------------------------------------------------------------------------------------------
+\section{Schaefer's framework}\label{sec:schaefer's framework}
+Schaefer identified the complexity of every satisfiability problem SAT($\mathcal{S}$), where $\mathcal{S}$ ranges over all finite sets of
+logical relations \cite{schwerdtfeger_computational_2015}. To state Schaefer’s main result, we need to define some basic concepts.
+We will use the standard notions and definitions used in \cite{schaefer_complexity_1978} and \cite{DBLP:journals/siamcomp/GopalanKMP09}.
 
-\subsection{Basic concepts}
-A CNF-formula is a Boolean formula of the form $C_{1} \land \dots \land C_{n}$, where each $C_i$ is a clause, that is, a finite disjunction
-of literals. A $k$-CNF formula $(k \geq 1)$ is a CNF-formula where each $C_i$ has at most $k$ literals.
+\subsection{Preliminaries}
 
-A \textit{logical relation} $R$ is a non-empty subset of $\{0,1\}^k$, for some $k \geq 1;$ $k$ is the \textit{arity} of $R$. A logical relation
-is a function that takes as input a Boolean vector and returns a Boolean. For a set $\mathcal{S}$ of logical relations, a $\mathcal{S}$-formula
-is a conjuntion of logical relations from $\mathcal{S}$ , where the arguments of each relation are freely chosen among a set of variables.
-
-
-
-Let $\mathcal{S}$ be a finite set of logical relations. A CNF($\mathcal{S}$)\textit{-formula} over a set of variables $V = \{x_{1}, \dots, x_{n}\}$
-is a finite conjunction $C_{1} \land \dots \land C_{n}$ of clauses built using relations from $\mathcal{S}$, variables from $V$, and the constants $0$ and $1$;
-this means that each $C_{i}$ is an expression of the form $R()$, where $R \in \mathcal{S}$ is a relation of arity $k$, and each $C_{i}$ is a
-variable in $V$ or one of the constants $0,1$. A $\textit{solution}$ if a CNF($\mathcal{S}$)-formula $\varphi$ is an assignment
-$s = (a_{1}, \dots, a_{n})$ of Boolean values to the variables that makes every clause of $\varphi$ true. A CNF($\mathcal{S}$)-formula is
-$\textit{satisfiable}$ if it has at least one solution.
-
-\todo{To clean up}
-
-\subsection{Statement of Results}
-The $\textit{satisfiability problems}$ SAT($\mathcal{S}$) associated with a finite set $\mathcal{S}$ of logical relation asks :
-Given a CNF($\mathcal{S}$) $\varphi$, is it satisfiable ?
-
-\begin{theorem}Let $\mathcal{S}$ be a finite set of logical relations. If $\mathcal{S}$ is Schaefer, then SAT($\mathcal{S}$) is in
-$\P$;  otherwise SAT($\mathcal{S}$) is $\NP-$complete.
-\end{theorem}
+A CNF-formula is a Boolean formula of the form $C_{1} \land \dots \land C_{m}$, where each $C_i$ is a finite disjunction of literals where $C_i$
+is referred to as a clause. A $k$-CNF formula $(k \geq 1)$ is a CNF-formula where each $C_i$ has at most $k$ literals.
 
 
-\subsubsection{Dichotomie Results}
+A \textit{logical relation} $R$ is a non-empty subset of $\{0,1\}^n$, for some $n \geq 1$ where $n$ is the \textit{arity} of $R$.
+A logical relation is a function that takes as input a Boolean vector and returns a Boolean. For a set $\mathcal{S}$ of logical relations, a
+$\mathcal{S}$-formula is a conjuntion of logical relations from $\mathcal{S}$, where the arguments of each relation are freely chosen among
+a set of variables.
 
-\section{Connectivity of CNF-Formulas / Gopalan et al's.}
-Research has focused on the structure of the solution space only quite recently: One of the earliest studies on solution-space connectivity
-was done for CNF($\mathcal{S}$)-formulas. In this paper, we are interested in the connectivity properties of the space of solutions
-of CNF($\mathcal{S}$)-formulas. If $\varphi$ is a CNF($\mathcal{S}$)-formula with $n$ variables, then the solution graph
-G($\varphi$) of $\varphi$ denotes the subgraph of the $n$-dimensional hypercube induced by the solutions of
-$\varphi$. This means that the vertices of G($\varphi$) are the solutions of $\varphi$, and there is an edge between
-two solutions of G($\varphi$) precisely when they differ in exactly one variable.
+For a finite set of relations $\mathcal{S}$, a $CNF(\mathcal{S})$-formula over a set of variables $V = \{x_1, \dots, x_n\}$ is a finite
+conjunction $C_{1} \land \dots \land C_{m}$, where each $C_i$ is an expression of the form $R(\xi_1,\dots , \xi_k)$, with a $k$-ary
+relation $R \in S$, and each $\xi_j$ is a variable from $V$ or one of the constants $0, 1$. A $\textit{solution}$ if a
+CNF($\mathcal{S}$)-formula $\varphi$ is an assignment $s = (a_{1}, \dots, a_{n})$ of Boolean values to the variables that makes every
+clause of $\varphi$ true. A CNF($\mathcal{S}$)-formula is $\textit{satisfiable}$ if it has at least one solution.
 
-The following decision problems were considered in this context :
-Gopalan et al. studied the following two decision problems for CNF($\mathcal{S}$)-formulas:
+The satisfiability problem SAT($\mathcal{S}$) associated with a finite set $\mathcal{S}$ of logical relations asks:
+given a CNF($\mathcal{S}$)-formula $\varphi$, is it satisfiable? All well known restrictions of Boolean satisfiability, such as $3$-SAT,
+NOT-ALL-EQUAL $3$-SAT, and POSITIVE $1$-IN-$3$ SAT, can be cast as $SAT(\mathcal{S})$ problems, for a suitable choice of $\mathcal{S}$.
 
-\begin{flushleft}
-    The \textit{st-Connectivity Problem} ST-CONN($\mathcal{S}$) \\
-    \textbf{Instance: } A CNF($\mathcal{S}$)-formula $\varphi$ and two satisfying assignments $s$ and $t$ of $\Phi$. \\
-    \textbf{Question: } Is there a path from $s$ to $t$ in G($\varphi$) ? \\
-\end{flushleft}
+Schaefer identified the complexity of every satisfiability problem SAT($\mathcal{S}$), where $\mathcal{S}$ ranges over all finite sets of
+logical relations. To state Schaefer’s main result, we need to deﬁne some properties and relations for $R$ and $\mathcal{S}$.
 
-\begin{flushleft}
-    The \textit{Connectivity Problem} CONN($\mathcal{S}$) \\
-    \textbf{Instance: } A CNF($\mathcal{S}$)-formula $\Phi$ . \\
-    \textbf{Question: } Is G($\Phi$) connected ? \\
-\end{flushleft}
+\begin{defn} Let $R$ be a logical relation.
+    \begin{enumerate}
+        \item $R$ is bijunctive if it is the set of solutions of a $2$-CNF formula.
+        \item $R$ is Horn if it is the set of solutions of a Horn formula, where a Horn formula is a CNF-formula where each $C_i$ has at most
+        one positive literal.
+        \item $R$ is dual Horn if it is the set of solutions of a dual Horn formula, where a dual Horn formula is a CNF-formula where each
+        $C_i$ has at most one negative literal.
+        \item $R$ is affine if it is the set of solutions of a system of linear equations over $\mathcal{Z}_2$.
+    \end{enumerate}
+\end{defn}
+
+\begin{defn}A set $S$ of logical relations is Schaefer if at least one of the following conditions holds:
+    \begin{enumerate}
+        \item Every relation in $\mathcal{S}$ is bijunctive.
+        \item Every relation in $\mathcal{S}$ is Horn.
+        \item Every relation in $\mathcal{S}$ is dual Horn.
+        \item Every relation in $\mathcal{S}$ is affine.
+    \end{enumerate}
+\end{defn}
+
+We are now ready to present Schaefer's theorem :
+\begin{theorem}{(Schaefer’s Dichotomy Theorem [22])} Let $S$ be a finite set of logical relations. If $\mathcal{S}$ is Schaefer, then
+SAT($\mathcal{S}$) is in $\P$; otherwise, SAT($\mathcal{S}$) is $\NP$-complete.
+\end{theorem}\label{theorem:dichotomy}
+
+Theorem \ref{theorem:dichotomy} is called a dichotomy theorem because Ladner \cite{ladner} has shown that if $P \neq NP$, then there are problems
+in $\NP$ that are neither in $\P$, nor $\NP$-complete. Thus, Theorem \ref{theorem:dichotomy} asserts that no SAT($\mathcal{S}$) problem
+is a problem of the kind discovered by Ladner.
 
 
 
+% ----------------------------------------------------------------------------------------------------------------------------------
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ----------------------------------------------------------------------------------------------------------------------------------
+\section{Gopalan et al.'s results}\label{sec:gopalan-et-al.'s-results}
 
-\section{Planar NAE 3-SAT Reconﬁguration / Cardinal}
+Gopalan et al. believed continued expanding Schaefer's dichotomie and focused on the connectivity of Boolean satisfiability. They believe
+that connectivity properties of Boolean satisfiability merit study in their own right, as they shed light on the structure of the solution
+space of Boolean formulas thus specifically addressed CNF(S)-formulas and studied the complexity of the
+following two decision problems,
+\begin{itemize}
+    \item the connectivity problem $Conn(S)$, that asks for a given $CNF(S)$-formula $\varphi$ whether $G(\varphi)$ is connected,
+    \item the st-connectivity problem $st-Conn(S)$, that asks for a given $CNF(S)$-formula $\varphi$ and two solutions $s$ and $t$ whether
+    there a path from $s$ to $t$ in $G(\varphi)$.
+\end{itemize}
+
+\subsection{Complexity-theoric dichotomies}
+Schaefer showed that the satisfiability problem is solvable in polynomial time precisely for formulas built from Boolean
+relations all of which are bijunctive, or all of which are Horn, or all of which are dual Horn, or all of which are affine. Gopalan et al.
+identified new classes of Boolean relations, called \textit{tight relations}, that properly contain the classes of bijunctive, Horn, dual Horn,
+and affine relations. They then showed that st-connectivity is solvable in linear time for formulas built from tight relations,
+and $\PSPACE$-complete in all other cases. Their second main result is a dichotomy theorem for the connectivity
+problem: it is in $\coNP$ for formulas built from tight relations, and $\PSPACE$-complete in all other cases.
+
+\subsection{Structural dichotomy theorem}
+In addition to these two complexity-theoretic dichotomies, we establish a structural dichotomy theorem for the diameter of the connected
+components of the solution space of Boolean formulas. This result asserts that, in the PSPACE-complete cases, the diameter of
+the connected components can be exponential, but in all other cases it is linear. Thus, small
+diameter and tractability of the st-connectivity problem are remarkably aligned.
+
+Their results are summarized in comparison to the satisfiability problem $SAT(\mathcal{S})$ in table \ref{tab:1}.
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c || c | c | c | c |}
+        \hline
+        $\mathcal{S}$ & SAT($\mathcal{S}$) & ST-CONN($\mathcal{S}$) & CONN($\mathcal{S}$) & Diameter \\ [0.5ex]
+        \hline\hline
+        Schaefer & $\P$ & $\P$ & $\coNP$ & $O(n)$ \\
+        Tight, not Schaefer & $\NP$-compl. & $\P$ & $\coNP$-compl. & $O(n)$ \\
+        Not tight & $\NP$-compl. & $\PSPACE$-compl. & $\PSPACE$-compl. & $2^{\Omega (\sqrt{n}) }$ \\ [1ex]
+        \hline
+    \end{tabular}
+    \caption{Gopalan et al.’s results \cite{gopalan_connectivity_2006}}
+    \label{tab:1}
+\end{table}
+
+
+%Our original hope was that tractability results for connectivity could conceivably inform
+%heuristic algorithms for satisﬁability and enhance their effectiveness. In this context, our
+%ﬁndings are prima facie negative: we show that when satisﬁability is intractable, then con-
+%nectivity is also intractable. But our results do contain a glimmer of hope: there are broad
+%classes of intractable satisﬁability problems, those built from tight relations, with polynomial
+%st-connectivity and small diameter. It would be interesting to investigate if these properties
+%make random instances built from tight relations easier for WalkSAT and similar heuristics,
+%and if so, whether such heuristics are amenable to rigorous analysis.
+
+
+\section{A computational Trichotomy}\label{sec:a-computational-trichotomy}
+Schwerdtfeger investigated issues in Gopalan et al.'s work and argued that repeated occurrences of variables in constraint applications.
+And thus proved that repeated variables can make the problems harder and the diameter exponential in some cases, which leads to a slight
+shift of the boundaries. Also, corrections are needed in the application of Gopalan et al.’s concept of structural expressibility, used
+in the reductions from 3-CNF formulas that establish PSPACE-completeness. In Section 4, we prove the conjectured trichotomy for
+ConnC(S), also with the boundaries shifted in the hard direction. Fitted to the correct boundaries, we will introduce the classes of
+safely tight and CPSS sets of relations; The supplemental Section 5 will investigate certain properties of CPSS sets of relations.
+
+The following table summarizes their results.
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c || c | c | c | c |}
+        \hline
+        $\mathcal{S}$ & SAT($\mathcal{S}$) & ST-CONN($\mathcal{S}$) & CONN($\mathcal{S}$) & Diameter \\ [0.5ex]
+        \hline\hline
+        CPSS & $\P$ & $\P$ & $\P$ & $O(n)$ \\
+        Schaefer, not CPSS & $\P$ & $\P$ & $\coNP$-compl. & $O(n)$ \\
+        Safely tight, not Schaefer & $\NP$-compl. & $\P$ & $\coNP$-compl. & $2^{\Omega (\sqrt{n}) }$ \\
+        Not safely tight & $\NP$-compl. & $\PSPACE$-compl. & $\PSPACE$-compl. & $2^{\Omega (\sqrt{n}) }$ \\ [1ex]
+        \hline
+    \end{tabular}
+    \caption{Complete classification of the connectivity problems and the diameter
+    for CNF($\mathcal{S}$)-formulas with constants, in comparison to SAT \cite{schwerdtfeger_computational_2015}}
+    \label{tab:2}
+\end{table}
+
+

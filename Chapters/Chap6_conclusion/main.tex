@@ -1,14 +1,16 @@
-\chapter{Conclusion}
-we have analysed various aspect of the restricted NCL problems and have detailed the $\PSPACE$-completeness
-result of the sliding token problem which is an alternative formulation of NCL. We then showed that the labelled
-variant of the sliding the sliding is also $\PSPACE$-complete.
-This latter result was then used to establish the complexity result of the $k$-move Subset sum reconfiguration problem
-for $k = 3$. All problems encoutered during our journey to the completion of this thesis is summed in in fig \ref{fig:conclusion}. \todo{To finish}
+\chapter{Conclusions and Future Work}
+Throughout this thesis, we have researched and analysed reconfiguration problems by starting with the Nondeterministic Constraint Logic
+which seems to be the go-to reduction in order to prove $\PSPACE$-hardness results. More specifically, we focused on the alternative
+formulation of NCL and detailed the $\PSPACE$-completeness result of the sliding token problem. We then showed that the labelled variant of the
+SLIDING TOKEN problem is also $\PSPACE$-complete. This latter result was then used to establish the complexity result of the
+$k$-move Subset sum reconfiguration problem for $k = 3$. Our contribution was to provide detailed explanatory examples and explications to complement
+the proof of theorem \ref{theorem:3_move_theorem}.
+All reconfiguration problems encountered during our journey to the completion of this thesis is summed in fig \ref{fig:conclusion}.
 
 \begin{figure}[H]
     \begin{center}
         \begin{scaletikzpicturetowidth}{\textwidth}
-            \begin{tikzpicture}[scale=1]
+            \begin{tikzpicture}[scale=0.8]
                 \node (1) at (0,0) [draw, rounded rectangle, align=center] {CONFIGURATION-TO-EDGE\\for restricted NCL};
                 \node (2)  [below=of 1, draw, rounded rectangle, align=center] {SLIDING-TOKEN\\problem};
                 \node (3)  [below=of 2, draw, rounded rectangle, align=center] {STANDARD SLIDING-TOKEN\\problem};
@@ -29,5 +31,5 @@ for $k = 3$. All problems encoutered during our journey to the completion of thi
             \end{tikzpicture}
         \end{scaletikzpicturetowidth}
     \end{center}
-    \caption{$\PSPACE$-complete problems encoutered and their relationship.}\label{fig:conclusion}
+    \caption{$\PSPACE$-complete problems encountered and their relationship.}\label{fig:conclusion}
 \end{figure}

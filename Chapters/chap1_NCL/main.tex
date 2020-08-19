@@ -9,16 +9,16 @@ $\PSPACE$-completeness of well-known Sliding-block puzzles such as Rush Hour and
 model of computation in its own right instead of just a set of decision problems. Thus, proving a problem to be $\PSPACE$-hard in the NCL
 framework simply requires the construction of a couple of gadgets that can be connected together.
 In the last section of \cite{hearn_pspace-completeness_2004} gives an interesting equivalent formulation of NCL in terms of sliding tokens along
-graph edges. This latter formulation will be the focus of sections \ref{sec:sliding_tokens} and \ref{sec:labeled_sliding_token} to prove that
+graph edges. This latter formulation will be the focus of sections \ref{sec:sliding_tokens} and \ref{sec:labelled_sliding_token} to prove that
 the Sliding token problem and labelled variant of the sliding token problem are $\PSPACE$-complete (theorems \ref{theorem:ncl_sliding_token}
-and \ref{theorem:labeled_sliding} respectively).
+and \ref{theorem:labelled_sliding} respectively).
 
 \textit{Roadmap.} Section \ref{sec:formalism} describes the constraint logic using a graph formulation.
 Section \ref{sec:contraint_graph} gives an overview of AND/OR constraint graphs which is the primary formulation used in the NCL framework.
 Section \ref{sec:ncl_results} present some complexity results of decision problems stemming from the constraint logic framework.
 In section \ref{sec:sliding_tokens} we detail the $\PSPACE$-completeness proof of the sliding token problem using the alternative
-formulation of NCL (theorem \ref{theorem:ncl_sliding_token}). Lastly, in section \ref{sec:labeled_sliding_token} the hardness proof of the
-labeled variant of the sliding token problem is given.
+formulation of NCL (theorem \ref{theorem:ncl_sliding_token}). Lastly, in section \ref{sec:labelled_sliding_token} the hardness proof of the
+labelled variant of the sliding token problem is given.
 
 \section{Graph Formulation}\label{sec:formalism}
 An NCL machine consists of a \textit{constraint graph}, $G = (V,E)$ that we can think of as our computation model.
@@ -1116,10 +1116,10 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
 \end{example}
 
 
-\section{Labelled variant of Sliding-Token Problem}\label{sec:labeled_sliding_token}
+\section{Labelled variant of Sliding-Token Problem}\label{sec:labelled_sliding_token}
 
 The labelled sliding token problem is a variant of the Sliding token problem where each token has a unique label. The purpose of this section is
-to prove that the sliding token problem remains $\PSPACE$-hard even with labeled tokens. In \cite{bonsma}, Bonsma showed that a slightly different
+to prove that the sliding token problem remains $\PSPACE$-hard even with labelled tokens. In \cite{bonsma}, Bonsma showed that a slightly different
 version of the SLIDING TOKEN problem is also $\PSPACE$-hard. This latter version called the Standard sliding token problem
 (described in section \ref{subsec:standard_sliding_token}) is then used to establish the hardness of the $k$-COLOUR PATH problem. To achieve our
 goal only a slight modification of that proof is needed. For the sake of completeness we will go through the original proof and add the
@@ -1185,17 +1185,15 @@ We say that a token conﬁguration $T$ of $G_s$ is \textit{standard} if each tok
 in $T$. Then, any move from a standard token configuration results in another standard token configuration since any token will never leave its
 token triangle or token edge, and will never slide along a link edge because the first time any token would slide to another triangle or edge,
 it would become adjacent to the token belonging to this triangle or edge. So tokens may never slide along a link edge. It is this latter
-observation that will allow us to prove the $\PSPACE$-hardness of the labeled variant while doing only a little modification
+observation that will allow us to prove the $\PSPACE$-hardness of the labelled variant while doing only a little modification
 in the original proof.
 
 The sliding tokens problem remains $\PSPACE$-complete even if $G_s$ is such a restricted graph and both $T_0$ and $T_t$ are standard token
 configurations \cite{bonsma}. This restricted problem is called the Standard sliding tokens problem.
 
 \subsection{Labelled tokens} \label{subsection:coloring_problems}
-In graph theory, graph coloring is a special case of graph labeling; it is an assignment of labels traditionally called "colors" to elements of a
-graph subject to certain constraints. One of the simplest constraint is to color the vertices of a graph such that no two adjacent vertices
-are of the same color, referred to as vertex colouring. Two prominent vertex coulouring problems that we will encounter and are part of the
-hardness proof of the labelled sliding token problem are defined hereunder :
+Two prominent vertex coulouring problems that we will encounter and are part of the hardness proof of the labelled sliding token problem
+are defined hereunder :
 
 \subsubsection{$k$-colouring.}
 For a positive integer $k$ and a graph $G$, we define the $k$-colour graph of $G$, denoted $\mathcal{C}_{k}(G)$,
@@ -1274,9 +1272,9 @@ where $|E|$ is the total number of edge tokens in $G$ and $|T|$ is the total num
 and $f: T \rightarrow W$, a function mapping the set of given labels to the tokens on token edges and token triangles of $G$.
 
 \begin{claim} Let $G, T_A, T_B$ be a restricted instance of Sliding Tokens where each token is given a unique label as described in
-section \ref{sec:labeled_sliding_token}, and let $G , L, \alpha, \beta$ be the corresponding instance of List-Colour Path as constructed above.
+section \ref{sec:labelled_sliding_token}, and let $G , L, \alpha, \beta$ be the corresponding instance of List-Colour Path as constructed above.
 Then $G, T_A, T_B$ is a Yes-instance if and only if $G , L, \alpha, \beta$ is a YES-instance.
-\end{claim}\label{theorem:labeled_sliding}
+\end{claim}\label{theorem:labelled_sliding}
 
 \begin{proof} \cite{bonsma}
 Recall that a token configuration in which the token of token edge $i$ (token triangle $i$) is on $e_{ij}$ (on $t_ {ij}$) corresponds

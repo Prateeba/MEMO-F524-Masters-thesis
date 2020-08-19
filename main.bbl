@@ -144,6 +144,11 @@ Richard~M. Karp.
   {{IBM Research Mathematical Sciences Department}}}, pages 85--103. {Springer
   US}.
 
+\bibitem{ladner}
+Richard~E. Ladner.
+\newblock On the structure of polynomial time reducibility.
+\newblock {\em J. ACM}, 22(1):155–171, January 1975.
+
 \bibitem{manquinho_satisability-based_nodate}
 Vasco~M Manquinho, João P~Marques Silva, Arlindo~L Oliveira, and Karem~A
   Sakallah.
@@ -171,6 +176,13 @@ Thomas~J. Schaefer.
 \newblock In {\em Proceedings of the tenth annual {ACM} symposium on {Theory}
   of computing - {STOC} '78}, pages 216--226, San Diego, California, United
   States, 1978. ACM Press.
+
+\bibitem{schwerdtfeger_computational_2015}
+Konrad~W. Schwerdtfeger.
+\newblock A {Computational} {Trichotomy} for {Connectivity} of {Boolean}
+  {Satisfiability}.
+\newblock {\em arXiv:1312.4524 [cs]}, October 2015.
+\newblock arXiv: 1312.4524.
 
 \bibitem{sipserIntroductionTheoryComputation2006}
 Michael Sipser.

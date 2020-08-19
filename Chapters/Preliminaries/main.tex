@@ -4,7 +4,7 @@ This chapter serves as a general introduction to some mathematical concepts that
 \section{Graph theory}
 
 \subsection{Basic Notation}
-Let $G$ be a simple, undirected graph with vertex set $V(G)$ and edge set $E(G)$. The \textit{neighborhood} of a vertex $v$ is denoted by
+Let $G$ be a simple, undirected graph with vertex set $V(G)$ and edge set $E(G)$. The \textit{neighbourhood} of a vertex $v$ is denoted by
 $N_{G}(v) = \{u | uv \in E(G)\}$. The \textit{degree} of a vertex $v \in G$, denoted by $deg_{G}(v)$, is $|N_{G}(v)|$. Then
 $\Delta(G) = max_{v \in V(G)} deg_{G}(v)$ and $\delta(G) = min_{v \in V(G)} deg_{G}(v) $ is the maximum and minimum degree of $G$, respectively.
 A subgraph of $G$ is a graph $G^{'}$ such that $V(G^{'}) \subseteq V(G)$ and $E(G^{'}) \subseteq E(G)$ (see Fig.~\ref{fig:subgraph}).
@@ -58,20 +58,19 @@ For an in-depth review of general graph theoretic definitions, the reader can re
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ENDING OF A FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Graph colouring}
-In graph theory, a \textit{graph colouring} is a special case of \textit{graph labeling} as it is an assignment of labels traditionally
+In graph theory, a \textit{graph colouring} is a special case of \textit{graph labelling} as it is an assignment of labels traditionally
 called "colours" to elements of a graph subject to certain constraints. In this work, the type of colourig that is of interest is
-\textit{vertex colouring}. A \textit{proper vertex colouring} is a labeling of the graph’s vertices with colours such that no two adjacent
-vertices have the same color.
+\textit{vertex colouring}. A \textit{proper vertex colouring} is a labelling of the graph’s vertices with colours such that no two adjacent
+vertices have the same colour.
 
 A colouring using at most $k$ colours is called a \textit{(proper) $k$-colouring}.
-A (proper) \textit{$k$-vertex-colouring} of a graph $G$ is a mapping $\phi$ from $V(G)$ to $\{1, 2, \dots, k\}$ (whose elements are called
-\textit{colours})such that no two adjacent vertices receive the same colour, that is, $\phi(v) \neq \phi(v^{'})$ for all $v, v^{'} \in V(G)$
+A (proper) \textit{$k$-vertex-colouring} of a graph $G$ is a mapping $neighbourhood$ from $V(G)$ to $\{1, 2, \dots, k\}$ (whose elements are called
+\textit{colours}) such that no two adjacent vertices receive the same colour, that is, $neighbourhood(v) \neq neighbourhood(v^{'})$ for all $v, v^{'} \in V(G)$
 where $v \neq v^{'}$.
-The \textit{chromatic number} of a graph $G$, denoted
-$\chi{G}$, is the least number of distinct colours with which $G$ can be properly coloured. A graph that can be assigned a \textit{(proper) $k$-colouring}
-is \textit{$k$-colorable}, and it is \textit{$k$-chromatic} if its chromatic number is exactly $k$. A subset of vertices assigned to the same colour
-is called a \textit{colour class}, every such class forms an \textit{independent set}. Thus, a $k$-coloring is the same as a partition of the
-vertex set into $k$ independent sets.
+The \textit{chromatic number} of a graph $G$, denoted $\chi{G}$, is the least number of distinct colours with which $G$ can be properly coloured.
+A graph that can be assigned a \textit{(proper) $k$-colouring} is \textit{$k$-colourable}, and it is \textit{$k$-chromatic} if its chromatic number
+is exactly $k$. A subset of vertices assigned to the same colour is called a \textit{colour class}, every such class forms an
+\textit{independent set}. Thus, a $k$-colouring is the same as a partition of the vertex set into $k$ independent sets.
 
 
 \section{Computational Complexity Theory} \label{sec:complexity}

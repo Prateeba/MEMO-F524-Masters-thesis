@@ -1,99 +1,12 @@
 \chapter{Future works}
+While researching the SLIDING TOKEN problem, I came across an example where it was possible of
+transforming the given initial configuration $C_1$ into $C_2$ through different reconfiguration sequences.
+Thus, the question of finding Shortest reconfiguration path in the SLIDING TOKEN problem naturally arised.
 
-While working on this thesis a few questions popped up in my brain :
-\paragraph{Shortest reconfiguration path in the sliding token reconfiguration problem.}
-\begin{flushleft}
-    Shortest Sliding Token [Yamada and Uehara 2016]\\
-    \textbf{Instance: } A yes-instance $(G, I, J)$ of Sliding Token, where $I, J$ are independent sets of a graph $G$. \\
-    \textbf{Question: } Find a shortest TS-sequence that transforms $I$ into $J$ (and vice versa) \\
-\end{flushleft}
+the maximal diameter of any connected component of $G(\varphi)$ for a $CNF_C(S)$-
+formula $\varphi$, where the diameter of a component is the maximal shortest-path
+distance between any two vectors in that component.
 
-%-------------------------------------------- Init --------------------------------------------
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-        \begin{scaletikzpicturetowidth}{\textwidth}
-            \begin{tikzpicture}[scale=1]
-                \def\ver{0.12} %size of a vertex
-                \def\xa{1}
-                \def\ya{5}
-                % highlight change
-                \draw[fill=yellow, opacity=.7, draw=none] (\xa,\ya+3)  circle (0.3cm); % v1 ;
-                \draw[fill=yellow, opacity=.7, draw=none] (\xa+1,\ya+1)  circle (0.3cm); % v3 ;
-
-                %nodes
-                \draw (\xa,\ya) circle (0.2cm);       % v5
-                \draw (\xa+1,\ya+1) circle (0.2cm);   % v3
-                \draw (\xa+1,\ya+2) circle (0.2cm);   % v2
-                \draw (\xa,\ya+3) circle (0.2cm);     % v1
-                \draw (\xa-1,\ya+2) circle (0.2cm);   % v6
-                \draw (\xa-1,\ya+1) circle (0.2cm);   % v4
-
-                %labels
-                \node (1) at (\xa,\ya+3.5) {$v_1$};     % v1
-                \node (2) at (\xa+1.5,\ya+2) {$v_2$};   % v2
-                \node (3) at (\xa+1.5,\ya+1) {$v_3$};   % v3
-                \node (5) at (\xa,\ya-0.5) {$v_5$};     % v5
-                \node (4) at (\xa-1.5,\ya+1) {$v_4$};   % v4
-                \node (6) at (\xa-1.5,\ya+2) {$v_6$};   % v6
-
-                %token
-                \path[fill] (\xa,\ya+3) circle (\ver);   % v1
-                \path[fill] (\xa+1,\ya+1) circle (\ver);   % v3
-
-                %edges
-                \draw[thick] (\xa,\ya)--(\xa+1,\ya+1)--(\xa+1,\ya+2)--(\xa,\ya+3)--(\xa-1,\ya+2)--(\xa-1,\ya+1)--(\xa,\ya) ; % contour
-                \draw[thick] (\xa,\ya)--(\xa,\ya+3) ;       % v5 - v1
-                \draw[thick] (\xa+1,\ya+1)--(\xa-1,\ya+1) ; % v3 - v4
-                \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
-            \end{tikzpicture}
-        \end{scaletikzpicturetowidth}
-        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
-        \label{fig:s1}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.4\textwidth}
-        \begin{scaletikzpicturetowidth}{\textwidth}
-            \begin{tikzpicture}[scale=1]
-                \def\ver{0.12} %size of a vertex
-                \def\xa{1}
-                \def\ya{5}
-                % highlight change
-                \draw[fill=yellow, opacity=.7, draw=none] (\xa+1,\ya+2)  circle (0.3cm); % v2 ;
-                \draw[fill=yellow, opacity=.7, draw=none] (\xa-1,\ya+1)  circle (0.3cm); % v4 ;
-
-                %nodes
-                \draw (\xa,\ya) circle (0.2cm);       % v5
-                \draw (\xa+1,\ya+1) circle (0.2cm);   % v3
-                \draw (\xa+1,\ya+2) circle (0.2cm);   % v2
-                \draw (\xa,\ya+3) circle (0.2cm);     % v1
-                \draw (\xa-1,\ya+2) circle (0.2cm);   % v6
-                \draw (\xa-1,\ya+1) circle (0.2cm);   % v4
-
-                %labels
-                \node (1) at (\xa,\ya+3.5) {$v_1$};     % v1
-                \node (2) at (\xa+1.5,\ya+2) {$v_2$};   % v2
-                \node (3) at (\xa+1.5,\ya+1) {$v_3$};   % v3
-                \node (5) at (\xa,\ya-0.5) {$v_5$};     % v5
-                \node (4) at (\xa-1.5,\ya+1) {$v_4$};   % v4
-                \node (6) at (\xa-1.5,\ya+2) {$v_6$};   % v6
-
-                %token
-                \path[fill] (\xa+1,\ya+2) circle (\ver);   % v2
-                \path[fill] (\xa-1,\ya+1) circle (\ver);   % v4
-
-                %edges
-                \draw[thick] (\xa,\ya)--(\xa+1,\ya+1)--(\xa+1,\ya+2)--(\xa,\ya+3)--(\xa-1,\ya+2)--(\xa-1,\ya+1)--(\xa,\ya) ; % contour
-                \draw[thick] (\xa,\ya)--(\xa,\ya+3) ;       % v5 - v1
-                \draw[thick] (\xa+1,\ya+1)--(\xa-1,\ya+1) ; % v3 - v4
-                \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
-            \end{tikzpicture}
-        \end{scaletikzpicturetowidth}
-        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
-        \label{fig:s2}
-    \end{subfigure}
-    \caption{Configuration-to-edge input instance}
-    \label{fig:s1}
-\end{figure}
 
 %-------------------------------------------- shortest 1 --------------------------------------------
 \begin{figure}[H]
@@ -265,7 +178,7 @@ While working on this thesis a few questions popped up in my brain :
 %-------------------------------------------- shortest 2 --------------------------------------------
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
         \begin{scaletikzpicturetowidth}{\textwidth}
             \begin{tikzpicture}[scale=1]
                 \def\ver{0.12} %size of a vertex
@@ -305,7 +218,7 @@ While working on this thesis a few questions popped up in my brain :
         \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
         \label{fig:s11}
     \end{subfigure}
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
         \begin{scaletikzpicturetowidth}{\textwidth}
             \begin{tikzpicture}[scale=1]
                 \def\ver{0.12} %size of a vertex
@@ -345,7 +258,7 @@ While working on this thesis a few questions popped up in my brain :
         \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
         \label{fig:s12}
     \end{subfigure}
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
         \begin{scaletikzpicturetowidth}{\textwidth}
             \begin{tikzpicture}[scale=1]
                 \def\ver{0.12} %size of a vertex
@@ -389,6 +302,17 @@ While working on this thesis a few questions popped up in my brain :
     \label{fig:s2}
 \end{figure}
 
+However this question has already been asked by Yamada and Uehara in 2016, defined below and remains open. The difficulty lies in
+computing the reconfiguration graph.
+\paragraph{Shortest reconfiguration path in the sliding token reconfiguration problem.}
+\begin{flushleft}
+    Shortest Sliding Token [Yamada and Uehara 2016]\\
+    \textbf{Instance: } A yes-instance $(G, I, J)$ of Sliding Token, where $I, J$ are independent sets of a graph $G$. \\
+    \textbf{Question: } Find a shortest TS-sequence that transforms $I$ into $J$ (and vice versa) \\
+\end{flushleft}
+
+On the bright side, in the past years positive results have been established for cographs, interval graphs, caterpillars, trees,
+prefect graphs and spider graphs. Those interesting results are summed up below.
 \begin{theorem}(Kaminski et al. 2012)
 It is $\NP$-complete to decide if there is a TS-sequence having at most $l$ token-slides between two independent sets $I, J$ of a
 perfect graph $G$ even when $l$ is polynomial in $|V(G)|$.
@@ -403,7 +327,7 @@ Shortest Sliding Token can be solved in polynomial time for proper interval grap
 \end{theorem}
 
 \begin{theorem}(Sugimori, AAAC 2018)
-Shortest Sliding Token can be solved in $O(poly(n))$ time when the input graph is a tree T on n vertices.
+Shortest Sliding Token can be solved in $O(poly(n))$ time when the input graph is a tree $T$ on n vertices.
 \end{theorem}
 
 \begin{theorem}(Ryuhei Uehara, CIAC 2019)
@@ -411,6 +335,10 @@ Shortest Sliding Token can be solved in $O(n^2)$ time when the input graph is a 
 vertex of degree at least $3$) on $n$ vertices.
 \end{theorem}
 
+\paragraph{Conn}
+In this work, we were focused mainly on $st$-connectivity questions, $i.e$ the existence of a reconfiguration sequence from
+configuration $s$ to configuration $t$ in the reconfiguration graph. However the connectivity question merits also the same
+attention, since knowing whether the reconfiguration graph is connexe can infer the complexity results of the problem studied.
 
 \paragraph{St-Conn(S) problem in NCL.}
 
