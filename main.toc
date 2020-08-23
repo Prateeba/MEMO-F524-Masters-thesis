@@ -2,74 +2,70 @@
 \contentsline {chapter}{Abstract}{iii}{section*.1}%
 \contentsline {chapter}{Acknowledgements}{v}{section*.2}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.5}%
-\contentsline {chapter}{\numberline {2}Preliminaries}{5}{chapter.6}%
-\contentsline {section}{\numberline {2.1}Graph theory}{5}{section.7}%
-\contentsline {subsection}{\numberline {2.1.1}Basic Notation}{5}{subsection.8}%
-\contentsline {subsection}{\numberline {2.1.2}Graph colouring}{6}{subsection.10}%
-\contentsline {section}{\numberline {2.2}Computational Complexity Theory}{6}{section.11}%
-\contentsline {subsection}{\numberline {2.2.1}Computational Complexity Classes}{7}{subsection.13}%
-\contentsline {subsubsection}{Time complexity classes}{8}{section*.14}%
-\contentsline {subsubsection}{Space complexity classes}{8}{section*.15}%
-\contentsline {subsubsection}{Nondeterminism}{9}{section*.16}%
-\contentsline {subsubsection}{Completeness}{9}{section*.17}%
-\contentsline {paragraph}{Reducibility}{9}{section*.18}%
-\contentsline {subsubsection}{Relationship of Complexity Classes}{10}{section*.21}%
-\contentsline {section}{\numberline {2.3}Reconfiguration Graph}{10}{section.22}%
-\contentsline {section}{\numberline {2.4}Set theory}{10}{section.23}%
-\contentsline {chapter}{\numberline {3}The Nondeterministic Constraint Logic (NCL)}{11}{chapter.24}%
-\contentsline {section}{\numberline {3.1}Graph Formulation}{12}{section.25}%
-\contentsline {section}{\numberline {3.2}AND/OR Constraint Graphs}{12}{section.26}%
-\contentsline {section}{\numberline {3.3}NCL Results}{13}{section.28}%
-\contentsline {section}{\numberline {3.4}Alternative formulation : Sliding tokens}{14}{section.29}%
-\contentsline {subsection}{\numberline {3.4.1}Known results for the SLIDING TOKEN problem.}{15}{subsection.33}%
-\contentsline {subsection}{\numberline {3.4.2}${\ensuremath {\mathsf {PSPACE}}}$-completeness.}{16}{subsection.34}%
-\contentsline {subsubsection}{Reduction structure.}{16}{section*.35}%
-\contentsline {subsubsection}{The OR gadget and the AND gadget.}{16}{section*.36}%
-\contentsline {subsubsection}{AND/OR Graphs}{17}{section*.38}%
-\contentsline {section}{\numberline {3.5}Labelled variant of Sliding-Token Problem}{21}{section.44}%
-\contentsline {subsection}{\numberline {3.5.1}Standard sliding token problem}{21}{subsection.45}%
-\contentsline {subsection}{\numberline {3.5.2}Labelled tokens}{22}{subsection.47}%
-\contentsline {subsubsection}{$k$-colouring.}{22}{section*.48}%
-\contentsline {subsubsection}{List colouring}{22}{section*.49}%
-\contentsline {subsection}{\numberline {3.5.3}Preliminaries}{23}{subsection.51}%
-\contentsline {paragraph}{(a,b)-forbidding paths}{23}{section*.52}%
-\contentsline {subsection}{\numberline {3.5.4}Reduction Structure}{23}{subsection.53}%
-\contentsline {chapter}{\numberline {4}Reconfiguration of satisfiability problems}{27}{chapter.62}%
-\contentsline {section}{\numberline {4.1}Schaefer's framework}{28}{section.63}%
-\contentsline {subsection}{\numberline {4.1.1}Preliminaries}{28}{subsection.64}%
-\contentsline {section}{\numberline {4.2}Gopalan et al.'s results}{30}{section.76}%
-\contentsline {subsection}{\numberline {4.2.1}Complexity-theoric dichotomies}{30}{subsection.77}%
-\contentsline {subsection}{\numberline {4.2.2}Structural dichotomy theorem}{30}{subsection.78}%
-\contentsline {section}{\numberline {4.3}A computational Trichotomy}{31}{section.80}%
-\contentsline {chapter}{\numberline {5}Subset sum Reconfiguration}{33}{chapter.82}%
-\contentsline {section}{\numberline {5.1}$k$-move Subset Sum Reconfiguration}{34}{section.84}%
-\contentsline {section}{\numberline {5.2}Labelled SLIDING TOKEN problem.}{35}{section.88}%
-\contentsline {section}{\numberline {5.3}Exact Cover Reconfiguration problem}{35}{section.89}%
-\contentsline {subsection}{\numberline {5.3.1}$k$-colourability}{36}{subsection.94}%
-\contentsline {subsection}{\numberline {5.3.2}${\ensuremath {\mathsf {PSPACE}}}$-hardness result of the ECR problem.}{36}{subsection.95}%
-\contentsline {subsubsection}{Input instance of the labelled SLIDING TOKEN PROBLEM}{37}{section*.97}%
-\contentsline {subsubsection}{Preliminaries}{37}{section*.100}%
-\contentsline {paragraph}{Slide Set.}{38}{section*.101}%
-\contentsline {paragraph}{Maximally split configuration $C$.}{38}{section*.103}%
-\contentsline {paragraph}{Sploot set of a configuration $C$.}{38}{section*.106}%
-\contentsline {subsubsection}{Output $\mathcal {U}$ and $\mathcal {S}$}{38}{section*.107}%
-\contentsline {subsubsection}{Output exact cover starting and ending configurations, $C_1$ and $C_2$}{39}{section*.110}%
-\contentsline {subsubsection}{$23$-colourability of the output instance $H = (U, \mathcal {S})$}{39}{section*.112}%
-\contentsline {subsubsection}{High level idea}{40}{section*.114}%
-\contentsline {subsubsection}{Bijection between configurations.}{40}{section*.115}%
-\contentsline {subsubsection}{Reduction structure.}{41}{section*.118}%
-\contentsline {subsubsection}{Sliding tokens reachability $\rightarrow $ Exact cover reachability}{41}{section*.120}%
-\contentsline {subsubsection}{Exact Cover reachability $\rightarrow $ Sliding tokens reachability}{41}{section*.126}%
-\contentsline {section}{\numberline {5.4}$3$-move Subset Sum reconfiguration problem}{42}{section.131}%
-\contentsline {subsubsection}{High level idea}{43}{section*.133}%
-\contentsline {subsubsection}{Reduction Structure}{43}{section*.134}%
-\contentsline {subsubsection}{Output $\mathcal {S}$ and $x$}{43}{section*.135}%
-\contentsline {subsubsection}{Output size}{43}{section*.136}%
-\contentsline {subsubsection}{Correctness}{43}{section*.137}%
-\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{47}{chapter.140}%
-\contentsline {chapter}{\numberline {7}Future works}{49}{chapter.142}%
-\contentsline {paragraph}{Shortest reconfiguration path in the sliding token reconfiguration problem.}{51}{section*.145}%
-\contentsline {paragraph}{Conn}{51}{section*.151}%
-\contentsline {paragraph}{St-Conn(S) problem in NCL.}{51}{section*.152}%
-\contentsline {paragraph}{Can schaefer's dichotomy be applied to the 3-move subset sum reconfiguration problem i.e can we have a tight result for $k \leq 3$ and $k \geq 3 ? $}{52}{section*.153}%
-\contentsline {paragraph}{Finding an optimal $k < 23$ for the colour classes of the exact cover problem. More en rapport avec le path in hypercube.}{52}{section*.154}%
+\contentsline {chapter}{\numberline {2}Preliminaries}{3}{chapter.6}%
+\contentsline {section}{\numberline {2.1}Graph theory}{3}{section.7}%
+\contentsline {subsection}{\numberline {2.1.1}Basic Notation}{3}{subsection.8}%
+\contentsline {subsection}{\numberline {2.1.2}Graph colouring}{4}{subsection.10}%
+\contentsline {section}{\numberline {2.2}Computational Complexity Theory}{5}{section.11}%
+\contentsline {subsection}{\numberline {2.2.1}Computational Complexity Classes}{5}{subsection.13}%
+\contentsline {subsubsection}{Time complexity classes}{6}{section*.14}%
+\contentsline {subsubsection}{Space complexity classes}{6}{section*.15}%
+\contentsline {subsubsection}{Nondeterminism}{7}{section*.16}%
+\contentsline {subsubsection}{Completeness}{7}{section*.17}%
+\contentsline {paragraph}{Reducibility}{7}{section*.18}%
+\contentsline {subsubsection}{Relationship of Complexity Classes}{8}{section*.21}%
+\contentsline {section}{\numberline {2.3}Reconfiguration Graph}{8}{section.22}%
+\contentsline {chapter}{\numberline {3}The Nondeterministic Constraint Logic (NCL)}{9}{chapter.23}%
+\contentsline {section}{\numberline {3.1}Graph Formulation}{10}{section.24}%
+\contentsline {section}{\numberline {3.2}AND/OR Constraint Graphs}{10}{section.25}%
+\contentsline {section}{\numberline {3.3}NCL Results}{11}{section.27}%
+\contentsline {section}{\numberline {3.4}Alternative formulation : Sliding tokens}{12}{section.28}%
+\contentsline {subsection}{\numberline {3.4.1}Known results for the SLIDING TOKEN problem.}{13}{subsection.32}%
+\contentsline {subsection}{\numberline {3.4.2}${\ensuremath {\mathsf {PSPACE}}}$-completeness.}{14}{subsection.33}%
+\contentsline {subsubsection}{Reduction structure.}{14}{section*.34}%
+\contentsline {subsubsection}{The OR gadget and the AND gadget.}{14}{section*.35}%
+\contentsline {subsubsection}{AND/OR Graphs}{15}{section*.37}%
+\contentsline {section}{\numberline {3.5}Labelled variant of Sliding-Token Problem}{19}{section.43}%
+\contentsline {section}{\numberline {3.6}Standard Sliding-Token Problem}{19}{section.48}%
+\contentsline {subsection}{\numberline {3.6.1}Standard sliding token problem}{20}{subsection.49}%
+\contentsline {chapter}{\numberline {4}Reconfiguration of satisfiability problems}{21}{chapter.51}%
+\contentsline {section}{\numberline {4.1}Schaefer's framework}{22}{section.52}%
+\contentsline {subsection}{\numberline {4.1.1}Preliminaries}{22}{subsection.53}%
+\contentsline {section}{\numberline {4.2}Gopalan et al.'s results}{24}{section.65}%
+\contentsline {subsection}{\numberline {4.2.1}Complexity-theoric dichotomies}{24}{subsection.66}%
+\contentsline {subsection}{\numberline {4.2.2}Structural dichotomy theorem}{24}{subsection.67}%
+\contentsline {section}{\numberline {4.3}A computational Trichotomy for Conn(S)}{25}{section.69}%
+\contentsline {chapter}{\numberline {5}Subset sum Reconfiguration}{27}{chapter.71}%
+\contentsline {section}{\numberline {5.1}$k$-move Subset Sum Reconfiguration}{28}{section.72}%
+\contentsline {section}{\numberline {5.2}Labelled SLIDING TOKEN problem.}{29}{section.76}%
+\contentsline {section}{\numberline {5.3}Exact Cover Reconfiguration problem}{29}{section.77}%
+\contentsline {subsection}{\numberline {5.3.1}$k$-colourability}{30}{subsection.82}%
+\contentsline {subsection}{\numberline {5.3.2}${\ensuremath {\mathsf {PSPACE}}}$-hardness result of the ECR problem.}{30}{subsection.83}%
+\contentsline {subsubsection}{Input instance of the labelled SLIDING TOKEN PROBLEM}{31}{section*.85}%
+\contentsline {subsubsection}{Preliminaries}{32}{section*.88}%
+\contentsline {paragraph}{Slide Set.}{32}{section*.89}%
+\contentsline {paragraph}{Maximally split configuration $C$.}{32}{section*.91}%
+\contentsline {paragraph}{Sploot set of a configuration $C$.}{32}{section*.94}%
+\contentsline {subsubsection}{Output $\mathcal {U}$ and $\mathcal {S}$}{32}{section*.95}%
+\contentsline {subsubsection}{Output exact cover starting and ending configurations, $C_1$ and $C_2$}{33}{section*.98}%
+\contentsline {subsubsection}{$23$-colourability of the output instance $H = (U, \mathcal {S})$}{33}{section*.100}%
+\contentsline {subsubsection}{High level idea}{34}{section*.102}%
+\contentsline {subsubsection}{Bijection between configurations.}{34}{section*.103}%
+\contentsline {subsubsection}{Reduction structure.}{35}{section*.106}%
+\contentsline {subsubsection}{Sliding tokens reachability $\rightarrow $ Exact cover reachability}{35}{section*.108}%
+\contentsline {subsubsection}{Exact Cover reachability $\rightarrow $ Sliding tokens reachability}{35}{section*.114}%
+\contentsline {section}{\numberline {5.4}$3$-move Subset Sum reconfiguration problem}{36}{section.119}%
+\contentsline {subsubsection}{High level idea}{37}{section*.121}%
+\contentsline {subsubsection}{Reduction Structure}{37}{section*.122}%
+\contentsline {subsubsection}{Output $\mathcal {S}$ and $x$}{37}{section*.123}%
+\contentsline {subsubsection}{Output size}{37}{section*.124}%
+\contentsline {subsubsection}{Correctness}{37}{section*.125}%
+\contentsline {section}{\numberline {5.5}Geometric interpretations}{39}{section.128}%
+\contentsline {subsection}{\numberline {5.5.1}Knapsack Reconfiguration $\rightarrow $ Constrained Hypercube Path problem }{40}{subsection.132}%
+\contentsline {subsection}{\numberline {5.5.2}$k$-move Subset sum reconfiguration $\rightarrow $ Constrained Hypercube Path problem}{40}{subsection.135}%
+\contentsline {section}{\numberline {5.6}Summary}{40}{section.136}%
+\contentsline {chapter}{\numberline {6}Conclusions and Future Works}{43}{chapter.138}%
+\contentsline {subsection}{\numberline {6.0.1}Future works}{44}{subsection.140}%
+\contentsline {subsubsection}{Shortest sliding token problem}{44}{section*.141}%
+\contentsline {subsubsection}{Satisfiability of Boolean formulas}{46}{section*.149}%
+\contentsline {subsubsection}{$3$-move subset sum reconfiguration problem}{47}{section*.150}%

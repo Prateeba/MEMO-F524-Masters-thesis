@@ -7,7 +7,6 @@ A level-1 auxiliary file: Chapters/chap1_NCL/main.aux
 A level-1 auxiliary file: Chapters/chap2_SAT/main.aux
 A level-1 auxiliary file: Chapters/chap3_SUBSETSUMs_recon/main.aux
 A level-1 auxiliary file: Chapters/Chap6_conclusion/main.aux
-A level-1 auxiliary file: Chapters/Chap5_future_works/main.aux
 The style file: plain.bst
 Database file #1: main.bib
 Warning--empty journal in allender_complexity_nodate
@@ -25,6 +24,7 @@ Warning--empty year in ito_reconfiguration_2009
 Warning--empty journal in kaminski_complexity_2012
 Warning--empty year in kaminski_complexity_2012
 Warning--empty year in Karp1972
+Warning--empty year in kavvadias_inverse_nodate
 Warning--empty journal in manquinho_satisability-based_nodate
 Warning--empty year in manquinho_satisability-based_nodate
 Warning--empty journal in mouawad_reconfiguration_2014
@@ -35,45 +35,45 @@ Warning--empty year in savitch_relationships_1970
 Warning--empty year in sipserIntroductionTheoryComputation2006
 Warning--empty journal in van_der_zanden_parameterized_nodate
 Warning--empty year in van_der_zanden_parameterized_nodate
-You've used 33 entries,
+You've used 38 entries,
             2118 wiz_defined-function locations,
-            700 strings with 10471 characters,
-and the built_in function-call counts, 11386 in all, are:
-= -- 1094
-> -- 566
+            729 strings with 11134 characters,
+and the built_in function-call counts, 13003 in all, are:
+= -- 1252
+> -- 629
 < -- 11
-+ -- 226
-- -- 187
-* -- 786
-:= -- 1882
-add.period$ -- 105
-call.type$ -- 33
-change.case$ -- 185
++ -- 255
+- -- 207
+* -- 916
+:= -- 2152
+add.period$ -- 120
+call.type$ -- 38
+change.case$ -- 210
 chr.to.int$ -- 0
-cite$ -- 58
-duplicate$ -- 461
-empty$ -- 829
-format.name$ -- 187
-if$ -- 2381
+cite$ -- 64
+duplicate$ -- 516
+empty$ -- 963
+format.name$ -- 207
+if$ -- 2711
 int.to.chr$ -- 0
-int.to.str$ -- 33
-missing$ -- 34
-newline$ -- 168
-num.names$ -- 74
-pop$ -- 235
+int.to.str$ -- 38
+missing$ -- 39
+newline$ -- 193
+num.names$ -- 84
+pop$ -- 252
 preamble$ -- 1
-purify$ -- 154
+purify$ -- 174
 quote$ -- 0
-skip$ -- 338
+skip$ -- 374
 stack$ -- 0
-substring$ -- 594
-swap$ -- 121
+substring$ -- 732
+swap$ -- 126
 text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 126
-warning$ -- 25
-while$ -- 102
-width$ -- 35
-write$ -- 344
-(There were 25 warnings)
+type$ -- 146
+warning$ -- 26
+while$ -- 118
+width$ -- 40
+write$ -- 398
+(There were 26 warnings)

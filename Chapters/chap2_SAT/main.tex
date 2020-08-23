@@ -4,27 +4,29 @@ In this chapter, boolean satisifiability reconfiguration problems are presented.
 as SAT has fascinated scientific world. In 1978 Schaefer proposed a framework for expressing variants of the satisfiability problem,
 and showed a dichotomy theorem: the satisfiability problem for certain classes of Boolean formulas is in $\P$ while it is $\NP$-complete for
 all other classes in the framework \cite{schaefer_complexity_1978}. In a single stroke, this result pinpoints the computational complexity
-of all well-known variants of SAT, such as $3$-SAT, HORN $3$-SAT, NOT-ALL-EQUAL $3$-SAT, and 1-IN-$3$ SAT. Since then, dichotomies or
-trichotomies have been established for several aspects of the satisfiability problem such as optimization [6,8,24], counting [7], inverse
-satisfiability [23], minimal satisfiability [28], unique satisfiability [19], 3-valued satisfiability [3] and
-propositional abduction [9].
+of all well-known variants of SAT, such as $3$-SAT, HORN $3$-SAT, NOT-ALL-EQUAL $3$-SAT, and 1-IN-$3$ SAT \cite{DBLP:journals/siamcomp/GopalanKMP09}.
+Since then, dichotomies or trichotomies have been established for several aspects of the satisfiability problem such as optimization
+\cite{CREIGNOU1995511,khanna_approximability_2001}, inverse satisfiability \cite{kavvadias_inverse_nodate}, minimal satisfiability \cite{KIROUSIS200320},
+and 3-valued satisfiability \cite{10.1145/1120582.1120584}.
 
 
-In 2006, Gopalan et al. studied connectivity properties of the solution graph motivated mainly by research on satisfiability algorithms
-and the satisfiability threshold. For Boolean satisfiability problems, the structure of the solution space is characterized by the solution
-graph, where the vertices are the solutions, and two solutions are connected iff they differ in exactly one variable.
-The connectivity problem (Conn) is to decide whether the solutions of a given Boolean formula $\varphi$ on $n$ variables induce a
+Continuing Schaefer's work, Gopalan et al. were interested by the connectivity properties of the solution graph motivated mainly by research
+on satisfiability algorithms and the satisfiability threshold. The structure of the solution space of Boolean formulas can be characterized by
+a $\textit{solution graph}$ where the vertices are the solutions (satisfying assignments) and two solutions are connection iff they differ in exactly
+one variable. The connectivity problem (Conn) is to decide whether the solutions of a given Boolean formula $\varphi$ on $n$ variables induce a
 connected subgraph of the $n$-dimensional hypercube, while the st-connectivity problem (st-Conn) is to decide whether two specific
-solutions $s$ and $t$ of $\varphi$ are connected. They proved dichotomies for the diameter of connected components and for the complexity of the
-st-connectivity question, and conjectured a trichotomy for the connectivity question. Building on this work, recently the trichotomy was
-established in \cite{schwerdtfeger_computational_2015}: Conn is either in $\P$, $\coNP$-complete, or $\PSPACE$-complete.
+solutions $s$ and $t$ of $\varphi$ are connected. Concerning the st-connectivity question, they proved dichtomies for the diameter of connected components
+and the complexity. For the connectivity question, they conjectured a trichotomy. Building on this work, recently the trichotomy was
+established by Schwerdtfeger in \cite{schwerdtfeger_computational_2015} and showed that Conn is either in $\P$, $\coNP$-complete, or $\PSPACE$-complete.
 
-A direct application of st-connectivity in solution graphs are reconfiguration problems. Gopalan et al.’s results have also been applied
-directly to reconfiguration problems which happens to be the subject of this thesis. The solutions (satisfying assignments) of a formula
-$\varphi$ over $n$ variables induce  a subgraph $G(\varphi)$ of the $n$-dimensional hypercube graph, that is, the vertices are the
-solutions of $\varphi$, and two solutions are connected iff they differ in exactly one variable.
 
-- Roadmap.
+Recently, Gopalan et al.'s results have been applied to reconfiguration problems, mostly the st-connectivity and connectivity questions have been
+applied to reconfiguration problems such as INDEPENDENT-SET RECONFIGURATION, GRAPH-k-COLORING RECONFIGURATION, and many complexity results were obtained.
+
+
+\textit{Roadmap.} In section \ref{sec:schaefer's framework} we introduce Schaefer's framework and remarkable results, followed by section
+\ref{sec:gopalan-et-al.'s-results} presenting Gopalan et al.'s results. Finally in section \ref{sec:a-computational-trichotomy} we present
+Schwerdtfeger's results which establishes the trichotomy conjectured by Gopalan et al.'s for the connectivity problem.
 
 
 % ----------------------------------------------------------------------------------------------------------------------------------
@@ -33,7 +35,7 @@ solutions of $\varphi$, and two solutions are connected iff they differ in exact
 \section{Schaefer's framework}\label{sec:schaefer's framework}
 Schaefer identified the complexity of every satisfiability problem SAT($\mathcal{S}$), where $\mathcal{S}$ ranges over all finite sets of
 logical relations \cite{schwerdtfeger_computational_2015}. To state Schaefer’s main result, we need to define some basic concepts.
-We will use the standard notions and definitions used in \cite{schaefer_complexity_1978} and \cite{DBLP:journals/siamcomp/GopalanKMP09}.
+We will use the standard notions and definitions defined in \cite{schaefer_complexity_1978} and \cite{DBLP:journals/siamcomp/GopalanKMP09}.
 
 \subsection{Preliminaries}
 
@@ -54,19 +56,19 @@ clause of $\varphi$ true. A CNF($\mathcal{S}$)-formula is $\textit{satisfiable}$
 
 The satisfiability problem SAT($\mathcal{S}$) associated with a finite set $\mathcal{S}$ of logical relations asks:
 given a CNF($\mathcal{S}$)-formula $\varphi$, is it satisfiable? All well known restrictions of Boolean satisfiability, such as $3$-SAT,
-NOT-ALL-EQUAL $3$-SAT, and POSITIVE $1$-IN-$3$ SAT, can be cast as $SAT(\mathcal{S})$ problems, for a suitable choice of $\mathcal{S}$.
+NOT-ALL-EQUAL $3$-SAT, and POSITIVE $1$-IN-$3$ SAT, can be cast as SAT$(\mathcal{S})$ problems, for a suitable choice of $\mathcal{S}$.
 
 Schaefer identified the complexity of every satisfiability problem SAT($\mathcal{S}$), where $\mathcal{S}$ ranges over all finite sets of
 logical relations. To state Schaefer’s main result, we need to deﬁne some properties and relations for $R$ and $\mathcal{S}$.
 
 \begin{defn} Let $R$ be a logical relation.
     \begin{enumerate}
-        \item $R$ is bijunctive if it is the set of solutions of a $2$-CNF formula.
-        \item $R$ is Horn if it is the set of solutions of a Horn formula, where a Horn formula is a CNF-formula where each $C_i$ has at most
+        \item $R$ is \textit{bijunctive} if it is the set of solutions of a $2$-CNF formula.
+        \item $R$ is \textit{Horn} if it is the set of solutions of a Horn formula, where a Horn formula is a CNF-formula where each $C_i$ has at most
         one positive literal.
-        \item $R$ is dual Horn if it is the set of solutions of a dual Horn formula, where a dual Horn formula is a CNF-formula where each
+        \item $R$ is \textit{dual Horn} if it is the set of solutions of a dual Horn formula, where a dual Horn formula is a CNF-formula where each
         $C_i$ has at most one negative literal.
-        \item $R$ is affine if it is the set of solutions of a system of linear equations over $\mathcal{Z}_2$.
+        \item $R$ is \textit{affine} if it is the set of solutions of a system of linear equations over $\mathcal{Z}_2$.
     \end{enumerate}
 \end{defn}
 
@@ -80,11 +82,11 @@ logical relations. To state Schaefer’s main result, we need to deﬁne some pr
 \end{defn}
 
 We are now ready to present Schaefer's theorem :
-\begin{theorem}{(Schaefer’s Dichotomy Theorem [22])} Let $S$ be a finite set of logical relations. If $\mathcal{S}$ is Schaefer, then
+\begin{theorem}{(Schaefer’s Dichotomy Theorem \cite{schaefer_complexity_1978})} Let $S$ be a finite set of logical relations. If $\mathcal{S}$ is Schaefer, then
 SAT($\mathcal{S}$) is in $\P$; otherwise, SAT($\mathcal{S}$) is $\NP$-complete.
 \end{theorem}\label{theorem:dichotomy}
 
-Theorem \ref{theorem:dichotomy} is called a dichotomy theorem because Ladner \cite{ladner} has shown that if $P \neq NP$, then there are problems
+Theorem \ref{theorem:dichotomy} is called a dichotomy theorem because Ladner \cite{ladner} has shown that if $\P \neq \NP$, then there are problems
 in $\NP$ that are neither in $\P$, nor $\NP$-complete. Thus, Theorem \ref{theorem:dichotomy} asserts that no SAT($\mathcal{S}$) problem
 is a problem of the kind discovered by Ladner.
 
@@ -95,9 +97,9 @@ is a problem of the kind discovered by Ladner.
 % ----------------------------------------------------------------------------------------------------------------------------------
 \section{Gopalan et al.'s results}\label{sec:gopalan-et-al.'s-results}
 
-Gopalan et al. believed continued expanding Schaefer's dichotomie and focused on the connectivity of Boolean satisfiability. They believe
-that connectivity properties of Boolean satisfiability merit study in their own right, as they shed light on the structure of the solution
-space of Boolean formulas thus specifically addressed CNF(S)-formulas and studied the complexity of the
+Gopalan et al. continued expanding Schaefer's dichotomie and focused on the connectivity of Boolean satisfiability. They believed
+that the connectivity properties of Boolean satisfiability merit some study in their own right, as they shed light on the structure of the solution
+space of Boolean formulas thus specifically addressed CNF($\mathcal{S}$)-formulas and studied the complexity of the
 following two decision problems,
 \begin{itemize}
     \item the connectivity problem $Conn(S)$, that asks for a given $CNF(S)$-formula $\varphi$ whether $G(\varphi)$ is connected,
@@ -114,12 +116,12 @@ and $\PSPACE$-complete in all other cases. Their second main result is a dichoto
 problem: it is in $\coNP$ for formulas built from tight relations, and $\PSPACE$-complete in all other cases.
 
 \subsection{Structural dichotomy theorem}
-In addition to these two complexity-theoretic dichotomies, we establish a structural dichotomy theorem for the diameter of the connected
-components of the solution space of Boolean formulas. This result asserts that, in the PSPACE-complete cases, the diameter of
+In addition to these two complexity-theoretic dichotomies, they established a structural dichotomy theorem for the diameter of the connected
+components of the solution space of Boolean formulas. This result asserts that, in the $\PSPACE$-complete cases, the diameter of
 the connected components can be exponential, but in all other cases it is linear. Thus, small
 diameter and tractability of the st-connectivity problem are remarkably aligned.
 
-Their results are summarized in comparison to the satisfiability problem $SAT(\mathcal{S})$ in table \ref{tab:1}.
+Their results are summarized in comparison to the satisfiability problem SAT($\mathcal{S})$ in table \ref{tab:1}.
 \begin{table}[h!]
     \centering
     \begin{tabular}{|c || c | c | c | c |}
@@ -136,23 +138,12 @@ Their results are summarized in comparison to the satisfiability problem $SAT(\m
 \end{table}
 
 
-%Our original hope was that tractability results for connectivity could conceivably inform
-%heuristic algorithms for satisﬁability and enhance their effectiveness. In this context, our
-%ﬁndings are prima facie negative: we show that when satisﬁability is intractable, then con-
-%nectivity is also intractable. But our results do contain a glimmer of hope: there are broad
-%classes of intractable satisﬁability problems, those built from tight relations, with polynomial
-%st-connectivity and small diameter. It would be interesting to investigate if these properties
-%make random instances built from tight relations easier for WalkSAT and similar heuristics,
-%and if so, whether such heuristics are amenable to rigorous analysis.
+\section{A computational Trichotomy for Conn(S)}\label{sec:a-computational-trichotomy}
+Schwerdtfeger investigated issues in Gopalan et al.'s work and argued that repeated occurrences of variables in constraint applications
+can make the problems harder and the diameter exponential in some cases. This lead to a slight shift of the boundaries established by
+Gopalan et al.'s in the hard direction and an introduction to the new classes called \textit{safely tight} and relations \textit{CPSS} fitted to
+the correct boundaries.
 
-
-\section{A computational Trichotomy}\label{sec:a-computational-trichotomy}
-Schwerdtfeger investigated issues in Gopalan et al.'s work and argued that repeated occurrences of variables in constraint applications.
-And thus proved that repeated variables can make the problems harder and the diameter exponential in some cases, which leads to a slight
-shift of the boundaries. Also, corrections are needed in the application of Gopalan et al.’s concept of structural expressibility, used
-in the reductions from 3-CNF formulas that establish PSPACE-completeness. In Section 4, we prove the conjectured trichotomy for
-ConnC(S), also with the boundaries shifted in the hard direction. Fitted to the correct boundaries, we will introduce the classes of
-safely tight and CPSS sets of relations; The supplemental Section 5 will investigate certain properties of CPSS sets of relations.
 
 The following table summarizes their results.
 \begin{table}[h!]

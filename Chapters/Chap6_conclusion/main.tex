@@ -1,11 +1,11 @@
-\chapter{Conclusions and Future Work}
+\chapter{Conclusions and Future Works}
 Throughout this thesis, we have researched and analysed reconfiguration problems by starting with the Nondeterministic Constraint Logic
 which seems to be the go-to reduction in order to prove $\PSPACE$-hardness results. More specifically, we focused on the alternative
 formulation of NCL and detailed the $\PSPACE$-completeness result of the sliding token problem. We then showed that the labelled variant of the
-SLIDING TOKEN problem is also $\PSPACE$-complete. This latter result was then used to establish the complexity result of the
-$k$-move Subset sum reconfiguration problem for $k = 3$. Our contribution was to provide detailed explanatory examples and explications to complement
-the proof of theorem \ref{theorem:3_move_theorem}.
-All reconfiguration problems encountered during our journey to the completion of this thesis is summed in fig \ref{fig:conclusion}.
+SLIDING TOKEN problem is also $\PSPACE$-complete. This latter result was then used to establish the complexity result of the Exact Cover merge
+and split reconfiguration problem which was then used to prove the hardness of the $k$-move Subset sum reconfiguration problem for $k = 3$.
+As a contribution to this part, we provided detailed explanatory examples and clarifications to complement the proof.
+Every reconfiguration problems we encountered during our journey to the completion of this thesis is summed in fig \ref{fig:conclusion}.
 
 \begin{figure}[H]
     \begin{center}
@@ -33,3 +33,381 @@ All reconfiguration problems encountered during our journey to the completion of
     \end{center}
     \caption{$\PSPACE$-complete problems encountered and their relationship.}\label{fig:conclusion}
 \end{figure}
+
+%------------------------************************* Future works **********************------------------------
+
+\subsection{Future works}
+
+\subsubsection{Shortest sliding token problem}
+Given a SLIDING TOKEN instance and two configurations $C_1$ and $C_2$, there may be several reconfiguration sequences to transform the given
+initial configuration $C_1$ into $C_2$ (see figures \ref{fig:sequence1} and \ref{fig:sequence2}). Thus, the question of finding the
+Shortest reconfiguration path in the SLIDING TOKEN problem naturally arised.
+
+
+%-------------------------------------------- shortest 1 --------------------------------------------
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \begin{scaletikzpicturetowidth}{\textwidth}
+            \begin{tikzpicture}[scale=1]
+                \def\ver{0.12} %size of a vertex
+                \def\xa{1}
+                \def\ya{5}
+                % highlight change
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa,\ya+3)  circle (0.3cm); % v1 ;
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa+1,\ya+1)  circle (0.3cm); % v3 ;
+
+                %nodes
+                \draw (\xa,\ya) circle (0.2cm);       % v5
+                \draw (\xa+1,\ya+1) circle (0.2cm);   % v3
+                \draw (\xa+1,\ya+2) circle (0.2cm);   % v2
+                \draw (\xa,\ya+3) circle (0.2cm);     % v1
+                \draw (\xa-1,\ya+2) circle (0.2cm);   % v6
+                \draw (\xa-1,\ya+1) circle (0.2cm);   % v4
+
+                %labels
+                \node (1) at (\xa,\ya+3.5) {$v_1$};     % v1
+                \node (2) at (\xa+1.5,\ya+2) {$v_2$};   % v2
+                \node (3) at (\xa+1.5,\ya+1) {$v_3$};   % v3
+                \node (5) at (\xa,\ya-0.5) {$v_5$};     % v5
+                \node (4) at (\xa-1.5,\ya+1) {$v_4$};   % v4
+                \node (6) at (\xa-1.5,\ya+2) {$v_6$};   % v6
+
+                %token
+                \path[fill] (\xa,\ya+3) circle (\ver);   % v1
+                \path[fill] (\xa+1,\ya+1) circle (\ver);   % v3
+
+                %edges
+                \draw[thick] (\xa,\ya)--(\xa+1,\ya+1)--(\xa+1,\ya+2)--(\xa,\ya+3)--(\xa-1,\ya+2)--(\xa-1,\ya+1)--(\xa,\ya) ; % contour
+                \draw[thick] (\xa,\ya)--(\xa,\ya+3) ;       % v5 - v1
+                \draw[thick] (\xa+1,\ya+1)--(\xa-1,\ya+1) ; % v3 - v4
+                \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
+            \end{tikzpicture}
+        \end{scaletikzpicturetowidth}
+        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+        \label{fig:s11}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \begin{scaletikzpicturetowidth}{\textwidth}
+            \begin{tikzpicture}[scale=1]
+                \def\ver{0.12} %size of a vertex
+                \def\xa{1}
+                \def\ya{5}
+                % highlight change
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa,\ya+3)  circle (0.3cm); % v1 ;
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa,\ya)  circle (0.3cm); % v5 ;
+
+                %nodes
+                \draw (\xa,\ya) circle (0.2cm);       % v5
+                \draw (\xa+1,\ya+1) circle (0.2cm);   % v3
+                \draw (\xa+1,\ya+2) circle (0.2cm);   % v2
+                \draw (\xa,\ya+3) circle (0.2cm);     % v1
+                \draw (\xa-1,\ya+2) circle (0.2cm);   % v6
+                \draw (\xa-1,\ya+1) circle (0.2cm);   % v4
+
+                %labels
+                \node (1) at (\xa,\ya+3.5) {$v_1$};     % v1
+                \node (2) at (\xa+1.5,\ya+2) {$v_2$};   % v2
+                \node (3) at (\xa+1.5,\ya+1) {$v_3$};   % v3
+                \node (5) at (\xa,\ya-0.5) {$v_5$};     % v5
+                \node (4) at (\xa-1.5,\ya+1) {$v_4$};   % v4
+                \node (6) at (\xa-1.5,\ya+2) {$v_6$};   % v6
+
+                %token
+                \path[fill] (\xa,\ya+3) circle (\ver);   % v1
+                \path[fill] (\xa,\ya) circle (\ver);     % v5
+
+                %edges
+                \draw[thick] (\xa,\ya)--(\xa+1,\ya+1)--(\xa+1,\ya+2)--(\xa,\ya+3)--(\xa-1,\ya+2)--(\xa-1,\ya+1)--(\xa,\ya) ; % contour
+                \draw[thick] (\xa,\ya)--(\xa,\ya+3) ;       % v5 - v1
+                \draw[thick] (\xa+1,\ya+1)--(\xa-1,\ya+1) ; % v3 - v4
+                \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
+            \end{tikzpicture}
+        \end{scaletikzpicturetowidth}
+        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+        \label{fig:s12}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \begin{scaletikzpicturetowidth}{\textwidth}
+            \begin{tikzpicture}[scale=1]
+                \def\ver{0.12} %size of a vertex
+                \def\xa{1}
+                \def\ya{5}
+                % highlight change
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa,\ya+3)  circle (0.3cm); % v1 ;
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa-1,\ya+1) circle (0.3cm); % v4 ;
+
+                %nodes
+                \draw (\xa,\ya) circle (0.2cm);       % v5
+                \draw (\xa+1,\ya+1) circle (0.2cm);   % v3
+                \draw (\xa+1,\ya+2) circle (0.2cm);   % v2
+                \draw (\xa,\ya+3) circle (0.2cm);     % v1
+                \draw (\xa-1,\ya+2) circle (0.2cm);   % v6
+                \draw (\xa-1,\ya+1) circle (0.2cm);   % v4
+
+                %labels
+                \node (1) at (\xa,\ya+3.5) {$v_1$};     % v1
+                \node (2) at (\xa+1.5,\ya+2) {$v_2$};   % v2
+                \node (3) at (\xa+1.5,\ya+1) {$v_3$};   % v3
+                \node (5) at (\xa,\ya-0.5) {$v_5$};     % v5
+                \node (4) at (\xa-1.5,\ya+1) {$v_4$};   % v4
+                \node (6) at (\xa-1.5,\ya+2) {$v_6$};   % v6
+
+                %token
+                \path[fill] (\xa,\ya+3) circle (\ver);   % v1
+                \path[fill] (\xa-1,\ya+1) circle (\ver); % v4
+
+                %edges
+                \draw[thick] (\xa,\ya)--(\xa+1,\ya+1)--(\xa+1,\ya+2)--(\xa,\ya+3)--(\xa-1,\ya+2)--(\xa-1,\ya+1)--(\xa,\ya) ; % contour
+                \draw[thick] (\xa,\ya)--(\xa,\ya+3) ;       % v5 - v1
+                \draw[thick] (\xa+1,\ya+1)--(\xa-1,\ya+1) ; % v3 - v4
+                \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
+            \end{tikzpicture}
+        \end{scaletikzpicturetowidth}
+        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+        \label{fig:s13}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \begin{scaletikzpicturetowidth}{\textwidth}
+            \begin{tikzpicture}[scale=1]
+                \def\ver{0.12} %size of a vertex
+                \def\xa{1}
+                \def\ya{5}
+                % highlight change
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa+1,\ya+2) circle (0.3cm); % v2 ;
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa-1,\ya+1) circle (0.3cm); % v4 ;
+
+                %nodes
+                \draw (\xa,\ya) circle (0.2cm);       % v5
+                \draw (\xa+1,\ya+1) circle (0.2cm);   % v3
+                \draw (\xa+1,\ya+2) circle (0.2cm);   % v2
+                \draw (\xa,\ya+3) circle (0.2cm);     % v1
+                \draw (\xa-1,\ya+2) circle (0.2cm);   % v6
+                \draw (\xa-1,\ya+1) circle (0.2cm);   % v4
+
+                %labels
+                \node (1) at (\xa,\ya+3.5) {$v_1$};     % v1
+                \node (2) at (\xa+1.5,\ya+2) {$v_2$};   % v2
+                \node (3) at (\xa+1.5,\ya+1) {$v_3$};   % v3
+                \node (5) at (\xa,\ya-0.5) {$v_5$};     % v5
+                \node (4) at (\xa-1.5,\ya+1) {$v_4$};   % v4
+                \node (6) at (\xa-1.5,\ya+2) {$v_6$};   % v6
+
+                %token
+                \path[fill] (\xa+1,\ya+2) circle (\ver); % v2
+                \path[fill] (\xa-1,\ya+1) circle (\ver); % v4
+
+                %edges
+                \draw[thick] (\xa,\ya)--(\xa+1,\ya+1)--(\xa+1,\ya+2)--(\xa,\ya+3)--(\xa-1,\ya+2)--(\xa-1,\ya+1)--(\xa,\ya) ; % contour
+                \draw[thick] (\xa,\ya)--(\xa,\ya+3) ;       % v5 - v1
+                \draw[thick] (\xa+1,\ya+1)--(\xa-1,\ya+1) ; % v3 - v4
+                \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
+            \end{tikzpicture}
+        \end{scaletikzpicturetowidth}
+        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+        \label{fig:s14}
+    \end{subfigure}
+    \caption{Configuration-to-edge input instance}
+    \label{fig:sequence1}
+\end{figure}
+
+%-------------------------------------------- shortest 2 --------------------------------------------
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \begin{scaletikzpicturetowidth}{\textwidth}
+            \begin{tikzpicture}[scale=1]
+                \def\ver{0.12} %size of a vertex
+                \def\xa{1}
+                \def\ya{5}
+                % highlight change
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa,\ya+3)  circle (0.3cm); % v1 ;
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa+1,\ya+1)  circle (0.3cm); % v3 ;
+
+                %nodes
+                \draw (\xa,\ya) circle (0.2cm);       % v5
+                \draw (\xa+1,\ya+1) circle (0.2cm);   % v3
+                \draw (\xa+1,\ya+2) circle (0.2cm);   % v2
+                \draw (\xa,\ya+3) circle (0.2cm);     % v1
+                \draw (\xa-1,\ya+2) circle (0.2cm);   % v6
+                \draw (\xa-1,\ya+1) circle (0.2cm);   % v4
+
+                %labels
+                \node (1) at (\xa,\ya+3.5) {$v_1$};     % v1
+                \node (2) at (\xa+1.5,\ya+2) {$v_2$};   % v2
+                \node (3) at (\xa+1.5,\ya+1) {$v_3$};   % v3
+                \node (5) at (\xa,\ya-0.5) {$v_5$};     % v5
+                \node (4) at (\xa-1.5,\ya+1) {$v_4$};   % v4
+                \node (6) at (\xa-1.5,\ya+2) {$v_6$};   % v6
+
+                %token
+                \path[fill] (\xa,\ya+3) circle (\ver);   % v1
+                \path[fill] (\xa+1,\ya+1) circle (\ver);   % v3
+
+                %edges
+                \draw[thick] (\xa,\ya)--(\xa+1,\ya+1)--(\xa+1,\ya+2)--(\xa,\ya+3)--(\xa-1,\ya+2)--(\xa-1,\ya+1)--(\xa,\ya) ; % contour
+                \draw[thick] (\xa,\ya)--(\xa,\ya+3) ;       % v5 - v1
+                \draw[thick] (\xa+1,\ya+1)--(\xa-1,\ya+1) ; % v3 - v4
+                \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
+            \end{tikzpicture}
+        \end{scaletikzpicturetowidth}
+        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+        \label{fig:s21}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \begin{scaletikzpicturetowidth}{\textwidth}
+            \begin{tikzpicture}[scale=1]
+                \def\ver{0.12} %size of a vertex
+                \def\xa{1}
+                \def\ya{5}
+                % highlight change
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa,\ya+3)  circle (0.3cm); % v1 ;
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa-1,\ya+1)  circle (0.3cm); % v4 ;
+
+                %nodes
+                \draw (\xa,\ya) circle (0.2cm);       % v5
+                \draw (\xa+1,\ya+1) circle (0.2cm);   % v3
+                \draw (\xa+1,\ya+2) circle (0.2cm);   % v2
+                \draw (\xa,\ya+3) circle (0.2cm);     % v1
+                \draw (\xa-1,\ya+2) circle (0.2cm);   % v6
+                \draw (\xa-1,\ya+1) circle (0.2cm);   % v4
+
+                %labels
+                \node (1) at (\xa,\ya+3.5) {$v_1$};     % v1
+                \node (2) at (\xa+1.5,\ya+2) {$v_2$};   % v2
+                \node (3) at (\xa+1.5,\ya+1) {$v_3$};   % v3
+                \node (5) at (\xa,\ya-0.5) {$v_5$};     % v5
+                \node (4) at (\xa-1.5,\ya+1) {$v_4$};   % v4
+                \node (6) at (\xa-1.5,\ya+2) {$v_6$};   % v6
+
+                %token
+                \path[fill] (\xa,\ya+3) circle (\ver);   % v1
+                \path[fill] (\xa-1,\ya+1) circle (\ver); % v4
+
+                %edges
+                \draw[thick] (\xa,\ya)--(\xa+1,\ya+1)--(\xa+1,\ya+2)--(\xa,\ya+3)--(\xa-1,\ya+2)--(\xa-1,\ya+1)--(\xa,\ya) ; % contour
+                \draw[thick] (\xa,\ya)--(\xa,\ya+3) ;       % v5 - v1
+                \draw[thick] (\xa+1,\ya+1)--(\xa-1,\ya+1) ; % v3 - v4
+                \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
+            \end{tikzpicture}
+        \end{scaletikzpicturetowidth}
+        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+        \label{fig:s22}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \begin{scaletikzpicturetowidth}{\textwidth}
+            \begin{tikzpicture}[scale=1]
+                \def\ver{0.12} %size of a vertex
+                \def\xa{1}
+                \def\ya{5}
+                % highlight change
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa+1,\ya+2)  circle (0.3cm); % v2 ;
+                \draw[fill=yellow, opacity=.7, draw=none] (\xa-1,\ya+1) circle (0.3cm); % v4 ;
+
+                %nodes
+                \draw (\xa,\ya) circle (0.2cm);       % v5
+                \draw (\xa+1,\ya+1) circle (0.2cm);   % v3
+                \draw (\xa+1,\ya+2) circle (0.2cm);   % v2
+                \draw (\xa,\ya+3) circle (0.2cm);     % v1
+                \draw (\xa-1,\ya+2) circle (0.2cm);   % v6
+                \draw (\xa-1,\ya+1) circle (0.2cm);   % v4
+
+                %labels
+                \node (1) at (\xa,\ya+3.5) {$v_1$};     % v1
+                \node (2) at (\xa+1.5,\ya+2) {$v_2$};   % v2
+                \node (3) at (\xa+1.5,\ya+1) {$v_3$};   % v3
+                \node (5) at (\xa,\ya-0.5) {$v_5$};     % v5
+                \node (4) at (\xa-1.5,\ya+1) {$v_4$};   % v4
+                \node (6) at (\xa-1.5,\ya+2) {$v_6$};   % v6
+
+                %token
+                \path[fill] (\xa+1,\ya+2) circle (\ver);   % v2
+                \path[fill] (\xa-1,\ya+1) circle (\ver); % v4
+
+                %edges
+                \draw[thick] (\xa,\ya)--(\xa+1,\ya+1)--(\xa+1,\ya+2)--(\xa,\ya+3)--(\xa-1,\ya+2)--(\xa-1,\ya+1)--(\xa,\ya) ; % contour
+                \draw[thick] (\xa,\ya)--(\xa,\ya+3) ;       % v5 - v1
+                \draw[thick] (\xa+1,\ya+1)--(\xa-1,\ya+1) ; % v3 - v4
+                \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
+            \end{tikzpicture}
+        \end{scaletikzpicturetowidth}
+        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+        \label{fig:s23}
+    \end{subfigure}
+    \caption{Configuration-to-edge input instance}
+    \label{fig:sequence2}
+\end{figure}
+
+However this question has already been asked by Yamada and Uehara in 2016, defined below and remains open. The difficulty lies in
+computing the reconfiguration graph.
+\begin{flushleft}
+    Shortest Sliding Token [Yamada and Uehara 2016]\\
+    \textbf{Instance: } A yes-instance $(G, I, J)$ of Sliding Token, where $I, J$ are independent sets of a graph $G$. \\
+    \textbf{Question: } Find a shortest TS-sequence that transforms $I$ into $J$ (and vice versa) \\
+\end{flushleft}
+
+On the bright side, in the past years positive results have been established for cographs, interval graphs, caterpillars, trees,
+prefect graphs and spider graphs. Those interesting results are summed up below.
+\begin{theorem}(Kaminski et al. 2012)
+It is $\NP$-complete to decide if there is a TS-sequence having at most $l$ token-slides between two independent sets $I, J$ of a
+perfect graph $G$ even when $l$ is polynomial in $|V(G)|$.
+\end{theorem}
+
+\begin{theorem}(Kaminski et al. 2012)
+Shortest Sliding Token can be solved in linear time for cographs (P4-free graphs).
+\end{theorem}
+
+\begin{theorem}(Yamada and Uehara 2016)
+Shortest Sliding Token can be solved in polynomial time for proper interval graphs, trivially perfect graphs, and caterpillars.
+\end{theorem}
+
+\begin{theorem}(Sugimori, AAAC 2018)
+Shortest Sliding Token can be solved in $O(poly(n))$ time when the input graph is a tree $T$ on n vertices.
+\end{theorem}
+
+\begin{theorem}(Ryuhei Uehara, CIAC 2019)
+Shortest Sliding Token can be solved in $O(n^2)$ time when the input graph is a spider G (i.e., a tree having exactly one
+vertex of degree at least $3$) on $n$ vertices.
+\end{theorem}
+
+
+\subsubsection{Satisfiability of Boolean formulas}
+In this work, we were focused mainly on $st$-connectivity questions, $i.e$ the existence of a reconfiguration sequence from
+configuration $s$ to configuration $t$ in the reconfiguration graph. However the connectivity question merits also the same
+attention, since knowing whether the reconfiguration graph is connexe can infer the complexity results of the problem studied.
+Gopalan et al. showed with their dichotomy that small diameter and tractability of the st-connectivity problem are remarkably aligned.
+It would be interesting to see if this alignment between small diameter and tractability remains for the connectivity problem.
+
+They also proved that both connectivity and st-connectivity are hard for 3-CNF formulae by a reduction from a generic $\PSPACE$ computation.
+It would be interesting to study both problems under the Nondeterministic Constraint logic as it has the same computational power as a space-bounded
+Turing machine.
+%Next we show that CONN(S3) and ST-CONN(S3) are PSPACE-hard. Consider the fol-
+%lowing known PSPACE-complete problem: Given a deterministic Turing machine M =
+%(Q, Σ, Γ, δ, q0, qaccept, qreject) and n in unary, will M accept the string consisting of n blanks,
+%without ever leaving its n tape squares? We give a polynomial time reduction from this prob-
+%lem to ST-CONN(S3) and CONN(S3).
+
+
+
+\subsubsection{$3$-move subset sum reconfiguration problem}
+Recall we studied the following problem in chapter \ref{chap:subset-sum-reconf} :
+\begin{defn}{($k$-move Subset Sum Reconfiguration Problem).} Given two solutions $A_1$ and $A_2$ to an instance of the subset sum problem,
+can $A_2$ be obtained by repeated $k$-move reconfiguration, beginning with $A_1$, so that all intermediate subsets are also solutions?
+\end{defn}
+
+It would be interesting to study the connectivity question of the $k$-move subset sum reconfiguration problem defined below :
+\begin{defn}{($k$-move Subset Sum Reconfiguration Problem conn).} Given an integer $x$ and a set of integers $S = \{a_1, a_2, \dots, a_n\}$,
+let $G(S)$ be the subgraph graph induced by the feasible solutions of $S$ where there is an edge between two vertices
+of $G(S)$ iff the symmetric difference is at most $k$. Is $G(S)$ connected ?
+\end{defn}
+
+
+- Finding an optimal $k < 23$ for the colour classes of the exact cover problem. More en rapport avec le path in hypercube.
+Heuristics ?
+
+%- détailler la preuve des sliding tokens pour le cas labellé,
+%- visualiser les graphes de reconfigurations pour 3SSR,
+%- considérer le problème de connexité globale, sans configuration de départ et d'arrivée : La question "le graphe de
+%reconfiguration est-il connexe ?" est-elle PSPACE-complete également ? Le problème correspondant dans NCL
+%a-t-il été étudié ? Voir Gopalan et al. (https://arxiv.org/pdf/cs/0609072.pdf, page 4) pour la définition du problème
+%correspondant pour SAT.

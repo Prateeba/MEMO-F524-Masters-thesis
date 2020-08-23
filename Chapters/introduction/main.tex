@@ -1,9 +1,9 @@
 \chapter{Introduction}\label{ch:intro}
-Reconfiguration problems are combinatorial problems in which we are given a collection of configurations, together with some
-transformation rule(s) that allows us to change one configuration to another such that each intermediate solution remains satisfiable at all times.
-A configuration can be the arrangement of puzzle pieces, the location of a robot with respect to obstacles in space, or the ordering of symbols to
-form a string. Combinatorial reconfiguration problems ask the reachability between the two given satisfying solutions. The area of reconfiguration
-considers both structural and algorithmic problems on the space of solutions, under various definitions of feasibility and adjacency.
+Reconfiguration problems are computational problems in which we wish to find a step-by-step transformation between two feasible solutions
+(referred as configurations) of a problem such that all intermediate results are also feasible. A configuration can be the arrangement of puzzle
+pieces, the ordering of symbols to form a string or the location of a robot with respect to obstacles in space. Combinatorial reconfiguration
+problems ask the reachability between the two given satisfying solutions. The area of reconfiguration considers both structural and algorithmic
+problems on the space of solutions, under various definitions of feasibility and adjacency.
 
 
 The \textit{reconfiguration framework} is defined in terms of a source problem, an instance of the source problem, a definition of a feasible solution
@@ -18,9 +18,9 @@ including vertex colouring \cite{bonsma}, \cite{bonsma_cereceda}, \cite{cereceda
 integer programming, matching, spanning tree, matroid bases \cite{DBLP:journals/tcs/ItoDHPSUU11}, block puzzles \cite{hearn_pspace-completeness_2004},
 shortest path \cite{shortest_path}, independent set \cite{hearn_pspace-completeness_2004},\cite{DBLP:journals/tcs/ItoDHPSUU11}, \cite{kaminski_complexity_2012},
 and satisfiability \cite{DBLP:journals/siamcomp/GopalanKMP09}.
-Many problems in $\P$ have their reconfigurability problems in $\P$ as well, such as spanning tree, matching, and matroid problems in general. On the other hand,
+Many problems in $\P$ have their reconfiguration problems in $\P$ as well, such as spanning tree, matching, and matroid problems in general. On the other hand,
 the reconfigurability of independent set, set cover, and integer programming are $\PSPACE$-complete \cite{DBLP:journals/tcs/ItoDHPSUU11}. In general however, knowing
-the complexity of a decision problem does not allow us to directly infer the complexity status of its reconfigurability problem(s). Several $\NP$-complete problems have
+the complexity of a decision problem does not allow us to directly infer the complexity status of its reconfiguration problem(s). Several $\NP$-complete problems have
 reconfigurability analogues that are in $\P$, for example the $3$-colourability problem \cite{DBLP:conf/iwoca/JohnsonCH08}. Alternatively, some problems in $\P$
 have reconfigurability versions that are $\PSPACE$-complete, such as shortest paths \cite{DBLP:journals/corr/abs-1009-3217} or the problem of deciding whether
 two $4$-colourings of a given bipartite or planar graph are reconfigurable \cite{bonsma}.
@@ -38,10 +38,10 @@ over and detail the $\PSPACE-$completeness of the following decision problems :
 In the first half of this thesis, we study the Nondeterministic Constraint Logic of Computation introduced by Hearn and Demaine.
 The NCL framework consists of different graph games ($i.e.$ problems) specific for every major complexity class, more specifically the
 class $\PSPACE$. These graph games are created in order to facilitate the reduction to other games. Reviewing NCL as part of this thesis is
-fundamental since it has been and still is the trigger for many $\PSPACE-$ hardness results in recreational mathematics.
+fundamental since it has been and still is the trigger for many $\PSPACE-$ hardness results.
 
 The second part of this thesis focuses on Satisfiability reconfiguration problems and the Subset sum reconfiguration problem and
-provides a visual support for the latter problem with the intent on helping on having a better idea of the reconfiguration graph and it's
+provides a visual support for the latter problem with the intent on helping to have a better idea of the reconfiguration graph and its
 connectivity properties. Finally, in Chapter 7 our conclusions are presented and some proposals for future work are made.
 
 

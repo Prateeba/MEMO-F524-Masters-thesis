@@ -1,12 +1,7 @@
 \chapter{Future works}
-While researching the SLIDING TOKEN problem, I came across an example where it was possible of
-transforming the given initial configuration $C_1$ into $C_2$ through different reconfiguration sequences.
-Thus, the question of finding Shortest reconfiguration path in the SLIDING TOKEN problem naturally arised.
-
-the maximal diameter of any connected component of $G(\varphi)$ for a $CNF_C(S)$-
-formula $\varphi$, where the diameter of a component is the maximal shortest-path
-distance between any two vectors in that component.
-
+Given a SLIDING TOKEN instance and two configurations $C_1$ and $C_2$, there may be several reconfiguration sequences to transform the given
+initial configuration $C_1$ into $C_2$ (see figures \ref{fig:sequence1} and \ref{fig:sequence2}). Thus, the question of finding the
+Shortest reconfiguration path in the SLIDING TOKEN problem naturally arised.
 
 %-------------------------------------------- shortest 1 --------------------------------------------
 \begin{figure}[H]
@@ -169,10 +164,10 @@ distance between any two vectors in that component.
             \end{tikzpicture}
         \end{scaletikzpicturetowidth}
         \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
-        \label{fig:s13}
+        \label{fig:s14}
     \end{subfigure}
     \caption{Configuration-to-edge input instance}
-    \label{fig:s2}
+    \label{fig:sequence1}
 \end{figure}
 
 %-------------------------------------------- shortest 2 --------------------------------------------
@@ -216,7 +211,7 @@ distance between any two vectors in that component.
             \end{tikzpicture}
         \end{scaletikzpicturetowidth}
         \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
-        \label{fig:s11}
+        \label{fig:s21}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
         \begin{scaletikzpicturetowidth}{\textwidth}
@@ -256,7 +251,7 @@ distance between any two vectors in that component.
             \end{tikzpicture}
         \end{scaletikzpicturetowidth}
         \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
-        \label{fig:s12}
+        \label{fig:s22}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
         \begin{scaletikzpicturetowidth}{\textwidth}
@@ -296,10 +291,10 @@ distance between any two vectors in that component.
             \end{tikzpicture}
         \end{scaletikzpicturetowidth}
         \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
-        \label{fig:s13}
+        \label{fig:s23}
     \end{subfigure}
     \caption{Configuration-to-edge input instance}
-    \label{fig:s2}
+    \label{fig:sequence2}
 \end{figure}
 
 However this question has already been asked by Yamada and Uehara in 2016, defined below and remains open. The difficulty lies in
@@ -339,6 +334,9 @@ vertex of degree at least $3$) on $n$ vertices.
 In this work, we were focused mainly on $st$-connectivity questions, $i.e$ the existence of a reconfiguration sequence from
 configuration $s$ to configuration $t$ in the reconfiguration graph. However the connectivity question merits also the same
 attention, since knowing whether the reconfiguration graph is connexe can infer the complexity results of the problem studied.
+
+\paragraph{NCL}
+Connectivity question in NCL
 
 \paragraph{St-Conn(S) problem in NCL.}
 

@@ -14,11 +14,16 @@ $i \in \{0,\dots,l-1\}$, $v_{i}v_{i+1} \in E(G)$. It is a path if all vertices a
 called a \textit{$uv-$path}. A graph $G$ is \textit{connected} if there is a path between every pair of vertices. The \textit{$k$-th power} of
 a graph $G = (V,E)$ is the graph $G^{k}$ whose vertex set is $V$ and two distinct vertices $u,v$ are adjacent in $G^{k}$ if and only if the
 shortest path distance between $u$ and $v$ in $G$ is at most $k$.
+A \textit{hypergraph} $H$ is a pair $H = (X,E)$ where $X$ is a set of elements, called nodes or vertices, and $E$ is a set of non-empty subsets of $X$
+called \textit{hyperedges} or \textit{links}.
 
 An \textit{independent set} of a graph $G$ is a vextex-subset of $G$ in which
 no two vertices are adjacent. Given a set of elements $\{1,2,\dots,n\}$ (called the universe, denoted $\mathcal{U}$) and a
 collection $\mathcal{S}$ of $m$ sets whose union equals the universe, an \textit{exact cover} is a sub-collection $\mathcal{S}^{*}$ of $\mathcal{S}$
-such that each element in $\mathcal{U}$ is contained in exactly one subset in $\mathcal{S}^{*}$.
+such that each element in $\mathcal{U}$ is contained in exactly one subset in $\mathcal{S}^{*}$. The set $\mathcal{S}$ of subsets of $U$ can be
+considered as a hypergraph $H = (U, \mathcal{S})$, where each element of $U$ is a vertex and each element of $\mathcal{S}$ is a hyperedge.
+
+
 For an in-depth review of general graph theoretic definitions, the reader can refer to Diestel's textbook \cite{diestel_graph_2000}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGINING OF A FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure} [H]
@@ -58,23 +63,22 @@ For an in-depth review of general graph theoretic definitions, the reader can re
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ENDING OF A FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Graph colouring}
-In graph theory, a \textit{graph colouring} is a special case of \textit{graph labelling} as it is an assignment of labels traditionally
-called "colours" to elements of a graph subject to certain constraints. In this work, the type of colourig that is of interest is
+In graph theory, a \textit{graph colouring} is a special case of \textit{graph labelling} which is an assignment of labels traditionally
+called "colours" vertices of a graph subject to certain constraints. In this work, the type of colourig that is of interest is
 \textit{vertex colouring}. A \textit{proper vertex colouring} is a labelling of the graph’s vertices with colours such that no two adjacent
 vertices have the same colour.
 
 A colouring using at most $k$ colours is called a \textit{(proper) $k$-colouring}.
-A (proper) \textit{$k$-vertex-colouring} of a graph $G$ is a mapping $neighbourhood$ from $V(G)$ to $\{1, 2, \dots, k\}$ (whose elements are called
-\textit{colours}) such that no two adjacent vertices receive the same colour, that is, $neighbourhood(v) \neq neighbourhood(v^{'})$ for all $v, v^{'} \in V(G)$
-where $v \neq v^{'}$.
-The \textit{chromatic number} of a graph $G$, denoted $\chi{G}$, is the least number of distinct colours with which $G$ can be properly coloured.
+A (proper) \textit{$k$-vertex-colouring} of a graph $G$ is a mapping from $V(G)$ to $\{1, 2, \dots, k\}$ (whose elements are called
+\textit{colours}) such that no two adjacent vertices receive the same colour.
+The \textit{chromatic number} of a graph $G$, denoted $\chi(G)$, is the least number of distinct colours with which $G$ can be properly coloured.
 A graph that can be assigned a \textit{(proper) $k$-colouring} is \textit{$k$-colourable}, and it is \textit{$k$-chromatic} if its chromatic number
 is exactly $k$. A subset of vertices assigned to the same colour is called a \textit{colour class}, every such class forms an
 \textit{independent set}. Thus, a $k$-colouring is the same as a partition of the vertex set into $k$ independent sets.
 
 
 \section{Computational Complexity Theory} \label{sec:complexity}
-Computer problems come in different varieties; some are easy, and some are hard. For example the sorting problem is an easy one compared to the
+Computational problems come in different varieties; some are easy, and some are hard. For example the sorting problem is an easy one compared to the
 scheduling problem where say we have to find a schedule for the entire university to satisfy some reasonable constraints, such as that no two classes
 take place in the same room at the same time. The scheduling problem seems to be much harder than the sorting problem.
 
@@ -175,8 +179,8 @@ description of the classical complexity classes generally encountered. The inter
 excellent textbook of Sipser \cite{sipserIntroductionTheoryComputation2006}. The following section describes the different computational complexity
 classes in which different decision problems fits.
 
-In general, these complexity classes study how the critical ressources (\textit{time} and \textit{space}) grows in terms if the input size.
-For decision problems, the input is the description of the problem and its size measured as bits of information.
+In general, these complexity classes study how the critical resources (\textit{time} and \textit{space}) grows in terms if the input size.
+For decision problems, the input is the description of the instance and its size is the number of bits required to encode it.
 
 \subsubsection{Time complexity classes}
 We start by characterizing in terms of time. The class $\P$ consists of all problems solvable in polynomial time, that is, all problems solved by
@@ -196,8 +200,8 @@ exponential-in-$s$ time without repeating a position. Thus, every problem in $\P
 
 \subsubsection{Nondeterminism}
 Next, we consider allowing nondeterminism in order to solve a problem. A nondeterministic algorithm can at any computation step, proceed with
-various possibilities (see Fig.~\ref{fig:nondeterministic}). A nondeterministic algorithm can be thought of as an extremly lucky: whenever it needs
-to make a decision, it by defintion makes the correct choice. The class $\NP$ consists of all problems that can be solved in polynomial time by such a
+various possibilities (see Fig.~\ref{fig:nondeterministic}). A nondeterministic algorithm can be thought of as an extremely lucky: whenever it needs
+to make a decision, it by definition makes the correct choice. The class $\NP$ consists of all problems that can be solved in polynomial time by such a
 nondeterministic algorithm. Similarly, we can define $\NPSPACE$ for the nondeterministic analog of $\PSPACE$, and $\NEXP$ for $\EXP$.
 
 \subsubsection{Completeness}
@@ -230,7 +234,7 @@ together, we can conclude that :
   $\P \subseteq \NP \subseteq \PSPACE = \NPSPACE \subseteq \EXP \subseteq \NEXP \subseteq \EXPSPACE$
 \end{center}
 All of the containments are believed to be strict, but beyond the above relations, the only strict containment known among those
-classes is $\P  \subsetneq \EXP$. Whether $\P = NP$ is the most famous unresolved question in Computational Complexity Theory.
+classes is $\P  \subsetneq \EXP$. Whether $\P = \NP$ is the most famous unresolved question in Computational Complexity Theory.
 
 
 \section{Reconfiguration Graph}
@@ -242,6 +246,3 @@ connected by an edge if the corresponding configurations can each be obtained fr
 the terms that will be used throughout this work.
 
 
-\section{Set theory}
-The \textit{symmetric difference} of two sets $A$ and $B$ are elements in $A$ or $B$, but not in both $A$ and $B$ and written as
-$A \triangle B$.

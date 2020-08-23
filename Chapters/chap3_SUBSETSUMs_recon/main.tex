@@ -1,10 +1,14 @@
-\chapter{Subset sum Reconfiguration}
+\chapter{Subset sum Reconfiguration}\label{chap:subset-sum-reconf}
 The subset sum problem is a well-known \NP-complete problem in which given an integer $x$ and a set of integers $S = \{a_1, a_2,\dots, a_n\}$,
 we wish to find a subset $A \subseteq [n]$ such that $\sum_{i \in A} a_{i} = x$.
 
-In \cite{Ito11approximabilityof}, Ito and Demaine considered the following problem :
-Given two \textit{packings}\footnote{Please refer to \cite{Ito11approximabilityof} for the definition of packings} $A_1$ and $A_2$, both of total
-size at least $k$, can we transform $A_1$ into $A_2$ via packings by moving (namely, either adding or removing) a
+In \cite{Ito11approximabilityof}, Ito and Demaine considered the following version of the subset sum problem:
+Given a knapsack with a nonnegative integer capacity $c$, and a set $A$ of $n$ items $a_1, a_2, \dots , a_n$, each of which has a nonnegative integer size
+$s(a_i), 1 \leq i \leq n$. We call a subset $A^{'}$ of $A$ a \textit{packing} if the total size of $A$ does not exceed the capacity $c$, that is,
+$\sum_{a \in A^{'}} s(a) \leq c$. Given an integer threshold $k$, the subset sum problem is to ﬁnd a packing $A$ whose total size is at least $k$, that is,
+$k \leq \sum_{a \in A^{'}} s(a) \leq c$.
+
+Given two \textit{packings} $A_1$ and $A_2$, both of total size at least $k$, can we transform $A_1$ into $A_2$ via packings by moving (namely, either adding or removing) a
 single item to/from the previous one without ever going through a packing of total size less than $k$. This problem is referred to as the
 SUBSET SUM RECONFIGURATION problem and is proved to be strongly $\NP$-hard, and $\PSPACE$-complete for the variant with conflict graph
 \cite{Ito11approximabilityof}.
@@ -401,7 +405,7 @@ $f_{red}(p)$ via split and merges.
 Both directions are proved inductively. That is, we consider only “adjacent” configurations. We also assume that the starting token
 arrangement $p : T \rightarrow V$ has $ \{p(t) : t \in T \}$ independent.
 
-\subsubsection{Sliding tokens reachability  $\rightarrow$ Exact cover reachability}
+\subsubsection{Sliding tokens reachability $\rightarrow$ Exact cover reachability}
 Let $p$ be a token arrangement that can be reconfigured into $p^{'}$ via a token slide from $v_i$ to $v_j$. Then $f_{red}(p^{'})$ can be reached
 from $f_{red}(p)$ via the following sequence of merges and splits.
 \begin{enumerate}
@@ -571,5 +575,131 @@ An element $T$ in $\mathcal{S}$ can be split in $T_1$ and $T_2$ of $\mathcal{S}$
 
 \end{example}
 
+
+\section{Geometric interpretations}
+In this section, we will view the subset sum and subset sum reconfiguration problems from a geometric point of view.
+We will first start by defining the notion of a $n$-hypercube and the Constrained Hypercube Path problem below :
+
+The $n$-hypercube is the graph with vertex set $\{0, 1\}^n$ such that two vertices are adjacent whenever their coordinates differ by
+exactly one component. In this section, we consider the following abstraction of reconfiguration problems involving subsets.
+
+\begin{defn}{(Constrained Hypercube Path).} Given two vertices $s, t$ of the $n$-hypercube, both contained in a polytope
+$P := \{x \in \mathbb{R}^n : Ax \leq b\}$ for some $A = (a_{ij}) \in \mathbb{Z}^{d \times n}$ and $b \in \mathbb{Z}^d$, does there exist a path from $s$ to $t$
+in the hypercube, all vertices of which lie in $P$?
+\end{defn}
+
+Given the definition above, we will argue that the knapsack decision problem can be cast as a Constrained Hypercube path problem.
+The knapsack (decision) problem involves exactly two linear constraints, and the Knapsack reconfiguration problem can be cast as a special case of the
+constrained hypercube path problem where $d = 2$. The definitions are as follows.
+\begin{defn}{(Knapsack (decision) Problem).} Given integers $l$ and $u$ and two sets of integers $S = \{a_1, a_2,\dots, a_n\}$ and $W = \{w_1, w_2,\dots, w_n\}$,
+does there exist a subset $A \subseteq [ n ]$ such that $\sum_{i \in A} a_i \geq l$ and $\sum_{i \in A} w_i \leq u$ ?
+\end{defn}
+
+\begin{defn}{(Knapsack Reconfiguration Problem).} Given two solutions $A_1$ and $A_2$ to an instance of the knapsack problem, can $A_2$ be obtained
+by repeated $1-$move reconfiguration, beginning with $A_1$, so that all intermediate subsets are also solutions ?
+\end{defn}
+
+\subsection{Knapsack Reconfiguration $\rightarrow$ Constrained Hypercube Path problem }
+Let $X \subseteq \{0,1\}^{n}$ and the polytope $P$ in this context is defined in the following way $P := \{k \leq \sum_{i=1}^{n} x_{i}w_{i} \leq c\}$
+
+\begin{example} {$\mathcal{S = W} = \{a_1 = w_1 = 1 , a_2 = w_2 = 3 , a_3 = w_3 = 6\}$, $k = 1$ and $c = 7$}
+
+  \begin{figure}[H]
+    \begin{subfigure}[b]{0.55\textwidth}
+      \begin{scaletikzpicturetowidth}{\textwidth}
+        \raggedleft
+        \begin{tikzpicture}[scale=0.8, x={({1}, {0})}]
+          \begin{axis}[
+            view/h=40,
+            width=300pt,
+            height=300pt,
+            axis lines*=left,
+            xmin=-0.1,xmax=1,
+            ymin=-0.1,ymax=1,
+            zmin=-0.1,zmax=1,
+            enlargelimits=upper,
+            xtick={0,1},
+            ytick={0,1},
+            ztick={0,1},
+            xlabel={$x_1$},
+            ylabel={$x_2$},
+            zlabel={$x_3$}
+            ]
+            % pre-cube
+            \addplot3 coordinates {(0,0,0) (0,1,0) (0,1,1) (0,0,1) (0,0,0)
+              (0,0,1) (1,0,1) (1,0,0) (0,0,0) (1, 0, 0) (1,1,0) (0,1,0) (0,1,1) (1,1,1) (1,1,0) (1,1,1) (1,0,1)};
+            % upper
+            \addplot3[draw = none, fill=yellow,fill opacity=0.5] coordinates {(0,1,4/6) (1,1,1/2) (1,0,1)  (0,1/3,1) (0,1,4/6)};
+            \addplot3 [only marks,mark=*] coordinates { (0,1,4/6) (1,1,1/2) (0,1/3,1)};
+            %lower
+            \addplot3[draw = none, fill=orange,fill opacity=0.5] coordinates {(1,0,0) (0,1/3,0) (0,0,1/6) (1,0,0)} ;
+            \addplot3 [only marks,mark=*] coordinates { (1,0,0) (0,1/3,0) (0,0,1/6)};
+            % solution paths
+            \addplot3[mark=none,ultra thick] coordinates {(0,1,0) (1,1,0) (1,0,0) (1,0,1) (0,0,1)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{scaletikzpicturetowidth}
+      \caption{Initial token configuration $T_{A}$.}
+      \label{fig:standard_1}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.55\textwidth}
+      \begin{scaletikzpicturetowidth}{\textwidth}
+        \raggedright
+        \begin{tikzpicture}[scale=0.8, x={({1}, {0})}]
+          \begin{axis}[
+            view/h=40,
+            width=300pt,
+            height=300pt,
+            axis lines*=left,
+            xmin=-0.1,xmax=1,
+            ymin=-0.1,ymax=1,
+            zmin=-0.1,zmax=1,
+            enlargelimits=upper,
+            xtick={0,1},
+            ytick={0,1},
+            ztick={0,1},
+            xlabel={$x_1$},
+            ylabel={$x_2$},
+            zlabel={$x_3$}
+            ]
+            % upper
+            %\addplot3[fill=red,fill opacity=0.5] coordinates {(0,1,4/6) (1,1,1/2) (1,0,1)  (0,1/3,1) (0,1,4/6)};
+            %\addplot3 [only marks,mark=*] coordinates { (0,1,4/6) (1,1,1/2) (0,1/3,1)};
+            %lower
+            %\addplot3[fill=green,fill opacity=0.5] coordinates {(1,0,0) (0,1/3,0) (0,0,1/6) (1,0,0)} ;
+            %\addplot3 [only marks,mark=*] coordinates { (1,0,0) (0,1/3,0) (0,0,1/6)};
+            % solution paths
+            \addplot3[mark=none,ultra thick] coordinates {(0,1,0) (1,1,0) (1,0,0) (1,0,1) (0,0,1)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{scaletikzpicturetowidth}
+      \caption{Target token configuration $T_{B}$.}
+      \label{fig:standard_2}
+    \end{subfigure}
+    \caption{A Standard sliding token instance with initial and target labelled token configuration $T_{A}$ and $T_{B}$ respectively.}
+    \label{fig:input_instance_standard}
+  \end{figure}
+\end{example}
+
+
+\subsection{$k$-move Subset sum reconfiguration $\rightarrow$ Constrained Hypercube Path problem}
+Let $X \subseteq \{0,1\}^{n}$ and the polytope $P$ in this context is defined in the following way $P := \{ \sum_{i=1}^{n} x_{i}a_{i} = x\}$
+
+
+\section{Summary}
+\begin{figure}[h!]
+  \begin{center}
+    \begin{scaletikzpicturetowidth}{\textwidth}
+      \begin{tikzpicture}[scale=1]
+        \node (1) [draw, rounded rectangle] {Constrained Hypercube Path problem};
+        \node (2) [below=of 1, draw, rounded rectangle] {Knapsack Reconfiguration problem};
+        \node (3) [below=of 2, draw, rounded rectangle] {Subset Sum Reconfiguration problem};
+        \draw[<-]  (1) to node [auto] {Special case where $d = 2$} (2);
+        \draw[<-]  (2) to node [auto] {Special case where $S = W$} (3);
+      \end{tikzpicture}
+    \end{scaletikzpicturetowidth}
+  \end{center}
+  \caption{To define}\label{fig:specialCase}
+\end{figure}
 
 

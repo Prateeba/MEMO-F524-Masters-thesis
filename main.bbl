@@ -28,6 +28,12 @@ Paul~S. Bonsma.
 \newblock Shortest path reconfiguration is pspace-hard.
 \newblock {\em CoRR}, abs/1009.3217, 2010.
 
+\bibitem{10.1145/1120582.1120584}
+Andrei~A. Bulatov.
+\newblock A dichotomy theorem for constraint satisfaction problems on a
+  3-element set.
+\newblock {\em J. ACM}, 53(1):66–120, January 2006.
+
 \bibitem{cardinal_reconfiguration_2018}
 Jean Cardinal, Erik~D. Demaine, David Eppstein, Robert~A. Hearn, and Andrew
   Winslow.
@@ -40,6 +46,12 @@ Jean Cardinal, Erik~D. Demaine, David Eppstein, Robert~A. Hearn, and Andrew
 Luis Cereceda, Jan van~den Heuvel, and Matthew Johnson.
 \newblock Connectedness of the graph of vertex-colourings.
 \newblock {\em Discrete Mathematics}, 308:913--919, 03 2008.
+
+\bibitem{CREIGNOU1995511}
+N.~Creignou.
+\newblock A dichotomy theorem for maximum generalized satisfiability problems.
+\newblock {\em Journal of Computer and System Sciences}, 51(3):511 -- 522,
+  1995.
 
 \bibitem{2014arXiv1406.6576D}
 Erik~D. {Demaine}, Martin~L. {Demaine}, Eli {Fox-Epstein}, Duc~A. {Hoang},
@@ -143,6 +155,21 @@ Richard~M. Karp.
   Research}}, {{Mathematics Program}}, {{IBM World Trade Corporation}}, and the
   {{IBM Research Mathematical Sciences Department}}}, pages 85--103. {Springer
   US}.
+
+\bibitem{kavvadias_inverse_nodate}
+Dimitris Kavvadias and Martha Sideri.
+\newblock {THE} {INVERSE} {SATISFIABILITY} {PROBLEM}.
+\newblock {\em SIAM Journal on Computing}, 28:12.
+
+\bibitem{khanna_approximability_2001}
+Sanjeev Khanna, Madhu Sudan, Luca Trevisan, and David~P. Williamson.
+\newblock The {Approximability} of {Constraint} {Satisfaction} {Problems}.
+\newblock {\em SIAM Journal on Computing}, 30(6):1863--1920, January 2001.
+
+\bibitem{KIROUSIS200320}
+Lefteris~M. Kirousis and Phokion~G. Kolaitis.
+\newblock The complexity of minimal satisfiability problems.
+\newblock {\em Information and Computation}, 187(1):20 -- 39, 2003.
 
 \bibitem{ladner}
 Richard~E. Ladner.

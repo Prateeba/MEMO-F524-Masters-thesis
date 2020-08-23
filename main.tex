@@ -44,6 +44,7 @@
 \usepgflibrary{decorations.pathreplacing}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{arrows,automata}
+\usepackage{pgfplots}
 
 
 \def\arr{\hbox{𝓇}}
@@ -140,6 +141,9 @@
 
 % Document
 \begin{document}
+    \newcommand{\Depth}{2}
+    \newcommand{\Height}{2}
+    \newcommand{\Width}{2}
     \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
     \pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
 
@@ -200,13 +204,13 @@
     \begin{abstract}
         \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
         Reconfiguration problems arise when we wish to find a step-by-step transformation between two feasible solutions of a problem
-        such that all intermediate results are also feasible. Recently, study about the solution space of reconfiguration problems
-        defined as \textit{reconfiguration graph} sparked great interest. In this work, we focus on the structural questions
+        such that all intermediate results are also feasible \cite{DBLP:journals/tcs/ItoDHPSUU11}. Recently, study about the solution space of
+        reconfiguration problems defined as \textit{reconfiguration graph} sparked great interest. In this work, we focus on the structural questions
         (Is the reconfiguration graph connected?, Is there a path between a node $s$ and a node $t$ in the reconfiguration graph?).
         In the first half this thesis we analyse various aspects of the Constraint Logic framework, from the book “Games, Puzzles and Computation”
-        by Hearn and Demaine which provides several problems that are often a convenient starting point for reductions in order tp prove
+        by Hearn and Demaine which provides several problems that are often a convenient starting point for reductions in order to prove
         $\PSPACE$-hardness and present an in-depth study of the alternative formulation of NCL, the sliding tokens problem.
-        In the second half of this thesis, we analyse the complexity results around the boolean Satisfiability reconfiguration problems and
+        In the second half of this thesis, we analyse the complexity results around the Boolean Satisfiability reconfiguration problems and
         investigate dichotomies/tricotomies that have been established and their applications. We also focus on complementing some
         recent $\PSPACE-$hardness proofs given in \cite{cardinal_reconfiguration_2018} concerning the $k$-move Subset sum reconfiguration problem.
 
@@ -221,7 +225,7 @@
         \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
         First and foremost, my utmost gratitude to Prof. Jean cardinal, whose patience and encouragement I will never forget.
         And whose door was always open whenever I had questions concerning my research or whenever I was lost, I could always
-        count on him for guidance. He consistently allowed this thesis to be my own work, but steered me in the right direction whenever
+        count on him for guidance. He consistently allowed me to be creative but steered me in the right direction whenever
         he thought I needed it.
 
         I am also deeply indebted to my parents who have given me the opportunity of an education and support throughout my life.
@@ -275,11 +279,8 @@
 \include{Chapters/chap1_NCL/main}
 \include{Chapters/chap2_SAT/main}
 \include{Chapters/chap3_SUBSETSUMs_recon/main}
-%\include{Chapters/chap4_constrained_hypercube_path/main}
-    \include{Chapters/Chap6_conclusion/main}
-\include{Chapters/Chap5_future_works/main}
+\include{Chapters/Chap6_conclusion/main}
 
-%\include{Chapters/chap1_NCL/test_fig}
 
 
 %----------------------------------------------------------------------------------------

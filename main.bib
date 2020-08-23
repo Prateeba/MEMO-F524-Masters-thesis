@@ -438,3 +438,80 @@
     numpages = {17}
 }
 
+
+@article{CREIGNOU1995511,
+    title = "A Dichotomy Theorem for Maximum Generalized Satisfiability Problems",
+    journal = "Journal of Computer and System Sciences",
+    volume = "51",
+    number = "3",
+    pages = "511 - 522",
+    year = "1995",
+    issn = "0022-0000",
+    doi = "https://doi.org/10.1006/jcss.1995.1087",
+    url = "http://www.sciencedirect.com/science/article/pii/S0022000085710872",
+    author = "N. Creignou",
+    abstract = "We study the complexity of an infinite class of optimization satisfiability problems. Each problem is represented through a finite set, S, of logical relations (generalizing the notion of clauses of bounded length). We prove the existence of a dichotomic classification for optimization satisfiability problems Max-Sat(S). We exhibit a particular infinite set of logical relations L, such that the following holds: If every relation in S is 0-valid (respectively 1-valid) or if even/relation in S belongs to L, then Max-Sat(S) is solvable in polynomial time, otherwise it is MAX SNP-complete. Therefore, Max-Sat(S) either is in P or has some ϵ-approximation algorithm with ϵ < 1 although not a polynomial-time approximation scheme, unless P = NP: L = {Posn, Negn, Spidern,p,q, Complete-Bipartiten,p:n, p, q ∈ N}, where Posn(x1, ..., xn) ≡ (x1 ∧ ··· ∧ xn),Negn(x1, ..., xn) ≡ (¬x1 ∧ ··· ∧ ¬xn),Spider n,p,q(x1, ..., xn, y1, ..., yp, z1 ..., zq) ≡ Λni=1 (xi → y1) ∧ Λpi=1 (y1≡yi ∧ Λqi=1 (y1 → zi), andComplete-Bipartiten,p(x1, ..., xn, y1, ..., yp) ≡ Λni=1 Λpj=1 (xi → yj)."
+}
+
+@article{khanna_approximability_2001,
+    title = {The {Approximability} of {Constraint} {Satisfaction} {Problems}},
+    volume = {30},
+    issn = {0097-5397, 1095-7111},
+    url = {http://epubs.siam.org/doi/10.1137/S0097539799349948},
+    doi = {10.1137/S0097539799349948},
+    abstract = {We study optimization problems that may be expressed as "Boolean constraint satisfaction problems". An instance of a Boolean constraint satisfaction problem is given by m constraints applied to n Boolean variables. Different computational problems arise from constraint satisfaction problems depending on the nature of the "underlying" constraints as well as on the goal of the optimization task. Here we consider four possible goals: MAX CSP (MIN CSP) is the class of problems where the goal is to find an assignment maximizing the number of satisfied constraints (minimizing the number of unsatisfied constraints). MAX ONES (MIN ONES) is the class of optimization problems where the goal is to find an assignment satisfying all constraints with maximum (minimum) number of variables set to 1. Each class consists of infinitely many problems and a problem within a class is specified by a finite collection of finite Boolean functions that describe the possible constraints that may be used.},
+    language = {en},
+    number = {6},
+    urldate = {2020-08-22},
+    journal = {SIAM Journal on Computing},
+    author = {Khanna, Sanjeev and Sudan, Madhu and Trevisan, Luca and Williamson, David P.},
+    month = jan,
+    year = {2001},
+    pages = {1863--1920},
+    file = {Khanna et al. - 2001 - The Approximability of Constraint Satisfaction Pro.pdf:/home/prat/Zotero/storage/KBP2CKZL/Khanna et al. - 2001 - The Approximability of Constraint Satisfaction Pro.pdf:application/pdf}
+}
+
+@article{kavvadias_inverse_nodate,
+    title = {{THE} {INVERSE} {SATISFIABILITY} {PROBLEM}},
+    volume = {28},
+    abstract = {We study the complexity of telling whether a set of bit-vectors represents the set of all satisfying truth assignments of a Boolean expression of a certain type. We show that the problem is coNP-complete when the expression is required to be in conjunctive normal form with three literals per clause (3CNF). We also prove a dichotomy theorem analogous to the classical one by Schaefer, stating that, unless P=NP, the problem can be solved in polynomial time if and only if the clauses allowed are all Horn, or all anti-Horn, or all 2CNF, or all equivalent to equations modulo two.},
+    language = {en},
+    journal = {SIAM Journal on Computing},
+    author = {Kavvadias, Dimitris and Sideri, Martha},
+    pages = {12},
+    file = {Kavvadias and Sideri - THE INVERSE SATISFIABILITY PROBLEM.pdf:/home/prat/Zotero/storage/N6UVJ9KH/Kavvadias and Sideri - THE INVERSE SATISFIABILITY PROBLEM.pdf:application/pdf}
+}
+
+@article{KIROUSIS200320,
+    title = "The complexity of minimal satisfiability problems",
+    journal = "Information and Computation",
+    volume = "187",
+    number = "1",
+    pages = "20 - 39",
+    year = "2003",
+    issn = "0890-5401",
+    doi = "https://doi.org/10.1016/S0890-5401(03)00037-3",
+    url = "http://www.sciencedirect.com/science/article/pii/S0890540103000373",
+    author = "Lefteris M. Kirousis and Phokion G. Kolaitis",
+    abstract = "A dichotomy theorem for a class of decision problems is a result asserting that certain problems in the class are solvable in polynomial time, while the rest are NP-complete. The first remarkable such dichotomy theorem was proved by Schaefer in 1978. It concerns the class of generalized satisfiability problems Sat(S), whose input is a CNF(S)-formula, i.e., a formula constructed from elements of a fixed set S of generalized connectives using conjunctions and substitutions by variables. Here, we investigate the complexity of minimal satisfiability problems MinSat(S), where S is a fixed set of generalized connectives. The input to such a problem is a CNF(S)-formula and a satisfying truth assignment; the question is to decide whether there is another satisfying truth assignment that is strictly smaller than the given truth assignment with respect to the coordinate-wise partial order on truth assignments. Minimal satisfiability problems were first studied by researchers in artificial intelligence while investigating the computational complexity of propositional circumscription. The question of whether dichotomy theorems can be proved for these problems was raised at that time, but was left open. We settle this question affirmatively by establishing a dichotomy theorem for the class of all MinSat(S)-problems, where S is a finite set of generalized connectives. We also prove a dichotomy theorem for a variant of MinSat(S) in which the minimization is restricted to a subset of the variables, whereas the remaining variables may vary arbitrarily (this variant is related to extensions of propositional circumscription and was first studied by Cadoli). Moreover, we show that similar dichotomy theorems hold also when some of the variables are assigned constant values. Finally, we give simple criteria that tell apart the polynomial-time solvable cases of these minimal satisfiability problems from the NP-complete ones."
+}
+
+@article{10.1145/1120582.1120584,
+    author = {Bulatov, Andrei A.},
+    title = {A Dichotomy Theorem for Constraint Satisfaction Problems on a 3-Element Set},
+    year = {2006},
+    issue_date = {January 2006},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    volume = {53},
+    number = {1},
+    issn = {0004-5411},
+    url = {https://doi.org/10.1145/1120582.1120584},
+    doi = {10.1145/1120582.1120584},
+    abstract = {The Constraint Satisfaction Problem (CSP) provides a common framework for many combinatorial problems. The general CSP is known to be NP-complete; however, certain restrictions on a possible form of constraints may affect the complexity and lead to tractable problem classes. There is, therefore, a fundamental research direction, aiming to separate those subclasses of the CSP that are tractable and those which remain NP-complete.Schaefer gave an exhaustive solution of this problem for the CSP on a 2-element domain. In this article, we generalise this result to a classification of the complexity of the CSP on a 3-element domain. The main result states that every subproblem of the CSP is either tractable or NP-complete, and the criterion separating them is that conjectured in Bulatov et al. [2005] and Bulatov and Jeavons [2001b]. We also characterize those subproblems for which standard constraint propagation techniques provide a decision procedure. Finally, we exhibit a polynomial time algorithm which, for a given set of allowed constraints, outputs if this set gives rise to a tractable problem class. To obtain the main result and the algorithm, we extensively use the algebraic technique for the CSP developed in Jeavons [1998b], Bulatov et al.[2005], and Bulatov and Jeavons [2001b].},
+    journal = {J. ACM},
+    month = jan,
+    pages = {66–120},
+    numpages = {55},
+    keywords = {homomorphism problem, Constraint satisfaction problem, dichotomy theorem, complexity}
+}
