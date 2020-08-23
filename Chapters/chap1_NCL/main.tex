@@ -11,7 +11,7 @@ framework simply requires the construction of a couple of gadgets that can be co
 In the last section of \cite{hearn_pspace-completeness_2004} gives an interesting equivalent formulation of NCL in terms of sliding tokens along
 graph edges. This latter formulation will be the focus of sections \ref{sec:sliding_tokens} and \ref{sec:labelled_sliding_token} to prove that
 the Sliding token problem and labelled variant of the sliding token problem are $\PSPACE$-complete (theorems \ref{theorem:ncl_sliding_token}
-and \ref{theorem:labelled_sliding} respectively).
+and \ref{theorem:labelled} respectively).
 
 \textit{Roadmap.} Section \ref{sec:formalism} describes the constraint logic using a graph formulation.
 Section \ref{sec:contraint_graph} gives an overview of AND/OR constraint graphs which is the primary formulation used in the NCL framework.
@@ -398,7 +398,7 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
   First, we show that SLIDING TOKEN problem is in $\PSPACE$.
   The SLIDING TOKEN problem is in $\PSPACE$ since the state of the input graph can be described in a linear number of bits, specifying the
   position of each token and the list of possible moves from any state can be computed in polynomial time. Thus we can nondeterministically
-  traverse the state space, at each step nondeterministically choosing a move to make , and maintaining the current state but not the previously
+  traverse the state space, at each step nondeterministically choosing a move to make, and maintaining the current state but not the previously
   visited states showing that SLIDING TOKEN is in $\NPSPACE$. By Savitch's celebrated theorem, we have that $\NPSPACE = \PSPACE$
   \cite{savitch_relationships_1970}, implying that SLIDING TOKEN is in $\PSPACE$.
 
@@ -1116,36 +1116,44 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
 \end{example}
 
 
-\section{Labelled variant of Sliding-Token Problem}\label{sec:labelled_sliding_token}
+\section{LABELLED variant of Sliding-Token Problem}\label{sec:labelled_sliding_token}
 
-The labelled sliding token problem is a variant of the Sliding token problem where each token has a unique label. The purpose of this section is
-to prove that the sliding token problem remains $\PSPACE$-hard even with labelled tokens. We will first start by giving a formal definition of the
-labelled sliding token problem.
+The LABELLED sliding token problem is a variant of the Sliding token problem where each token has a unique label. The purpose of this section is
+to prove that the sliding token problem remains $\PSPACE$-hard even with LABELLED tokens. We will first start by giving a formal definition of the
+LABELLED sliding token problem.
 
-\begin{defn}{(Labelled SLIDING TOKEN problem)} Given a $3$-regular graph $G=(V,E)$ and $T$ a set of labelled tokens \todo {Finish formal demo}
+\begin{defn}{(LABELLED SLIDING TOKEN problem)}
+  Suppose that we are given two independent sets $I_b$ and $I_r$ of a graph $G = (V,E)$ such that $|I_b| = |I_r|$ and imagine that a
+\textit{uniquely labelled token} is placed on each vertex in $I_b$ through a mapping function. Then, the LABELLED SLIDING TOKEN problem is to determine
+whether there exists a sequence $ S = \langle I_1, I_2, \dots, I_l \rangle$ of independent sets of $G$ such that :
+\begin{enumerate}
+  \item $I_1 = I_b, I_l = I_r,$ and $|I_i| = |I_b| = |I_r|$ for all $i, 1 \leq i \leq l;$ and
+  \item For each $i, 2 \leq i \leq l$ there is an edge $xy$ in $G$ such that  $I_{i-1} \setminus I_{i} = \{x\}$ and $I_{i} \setminus I_{i-1} = \{y\}$.
+\end{enumerate}
+That is, $I_i$ can be obtained from $I_{i-1}$ by sliding exactly one labelled token on a vertex $x \in I_{i-1}$ to its adjacent vertex $y \in I_{i}$
+along an edge $xy \in E(G)$. We denote by a $6$-tuple $(G, I_{b}, I_{r}, T)$ an instance of LABELLED SLIDING TOKEN problem where $T$ is a
+set of labelled tokens.
 \end{defn}
 
-\begin{lemma} The labelled SLIDING TOKEN problem is $\PSPACE$-complete.\end{lemma} \label{lemma:labelled}
+\begin{theorem} The labelled SLIDING TOKEN problem is $\PSPACE$-complete.\end{theorem} \label{theorem:labelled}
 \begin{proof}
-  The lemma \ref{lemma:labelled} is proved by a reduction from the configuration-to-configuration problem for AND/OR graph such that the
+  Theorem \ref{theorem:labelled} is proved by a reduction from the configuration-to-configuration problem for AND/OR graph such that the
   NCL instance is solvable if and only if the corresponding labelled SLIDING TOKEN instance is solvable. The AND and OR gadgets used in the
-  reduction are exactly the same in figures \ref{fig:and_or_gadgets_sliding_token} except for the fact that the tokens are labelled. The same
-  reduction given by Demaine and Hearn can be applied even when the input NCL instance is labelled due this following observation :
+  reduction are exactly the same gadgets shown in figure \ref{fig:and_or_gadgets_sliding_token} except for the fact that the tokens are labelled.
+  The same reduction given by Demaine and Hearn can be applied even when the input NCL instance is labelled due this following observation :
 
-  \begin{obs} No port token may ever leave its port edge \end{obs}
+  \begin{obs} No port token may ever leave its port edge .\end{obs}
+  This condition is inductively assumed for all other port edges, choosing a particular port edge $E$ there is never a legal move outside $E$ for
+  its token – another port token would have to leave its own edge first.
+  Thus, there is no possibility of having solutions that are only feasible solutions for the SLIDING TOKEN problem and
+  not for the LABELLED SLIDING TOKEN problem since the tokens of each gadget never slides further than.
 \end{proof}
 
 
 
 \section{Standard Sliding-Token Problem}\label{sec:Standard-sliding-token-problem}
-In \cite{bonsma}, Bonsma showed that a slightly different
-version of the SLIDING TOKEN problem is also $\PSPACE$-hard. This latter version called the Standard sliding token problem
-(described in section \ref{subsec:standard_sliding_token}) is then used to establish the hardness of the $k$-COLOUR PATH problem. To achieve our
-goal only a slight modification of that proof is needed. For the sake of completeness we will go through the original proof and add the
-modification needed. On our journey we will encouter some interesting graph colouring problems described in sections \ref{subsection:coloring_problems}.
-
-
-\subsection{Standard sliding token problem}\label{subsec:standard_sliding_token}
+Another variant of SLIDING TOKEN problem was studied by Bosnma. In \cite{bonsma}, Bonsma showed that a slightly different
+version of the SLIDING TOKEN problem is also $\PSPACE$-hard. This latter version called the Standard sliding token problem.
 Bonsma and Cereceda showed in \cite{bonsma} that the sliding tokens problem remains $\PSPACE$-complete even for very restricted graphs and
 token configurations, defined as follows : The graph $G_s$ is composed of \textit{token triangles} (i.e., copies of $K_3$), \textit{token edges}
 (i.e., copies of $K_2$) and link edges. Every vertex of $G_s$ is part of exactly one token triangle or one token edge.
@@ -1201,7 +1209,7 @@ and minimum degree is $2$. An instance of the Standard Sliding token problem is 
 \end{figure}
 
 
-We say that a token conﬁguration $T$ of $G_s$ is \textit{standard} if each token triangle and token edge of $G_s$ contains exactly one token
+We say that a token configuration $T$ of $G_s$ is \textit{standard} if each token triangle and token edge of $G_s$ contains exactly one token
 in $T$. Then, any move from a standard token configuration results in another standard token configuration since any token will never leave its
 token triangle or token edge, and will never slide along a link edge because the first time any token would slide to another triangle or edge,
 it would become adjacent to the token belonging to this triangle or edge. So tokens may never slide along a link edge. It is this latter

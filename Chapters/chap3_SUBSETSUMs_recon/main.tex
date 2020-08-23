@@ -1,9 +1,10 @@
 \chapter{Subset sum Reconfiguration}\label{chap:subset-sum-reconf}
-The subset sum problem is a well-known \NP-complete problem in which given an integer $x$ and a set of integers $S = \{a_1, a_2,\dots, a_n\}$,
-we wish to find a subset $A \subseteq [n]$ such that $\sum_{i \in A} a_{i} = x$.
+The subset sum problem is a well-known \NP-complete problem \cite{sipserIntroductionTheoryComputation2006} in which given an integer $x$ and a
+set of integers $S = \{a_1, a_2,\dots, a_n\}$, we wish to find a subset $A \subseteq [n]$ such that $\sum_{i \in A} a_{i} = x$.
 
-In \cite{Ito11approximabilityof}, Ito and Demaine considered the following version of the subset sum problem:
-Given a knapsack with a nonnegative integer capacity $c$, and a set $A$ of $n$ items $a_1, a_2, \dots , a_n$, each of which has a nonnegative integer size
+In \cite{Ito11approximabilityof}, Ito and Demaine considered the decision version of the MAXIMUM SUBSET SUM problem which they
+referred to as the SUBSET SUM problem and defined it as follows :
+Given a knapsack with a non negative integer capacity $c$, and a set $A$ of $n$ items $a_1, a_2, \dots , a_n$, each of which has a non negative integer size
 $s(a_i), 1 \leq i \leq n$. We call a subset $A^{'}$ of $A$ a \textit{packing} if the total size of $A$ does not exceed the capacity $c$, that is,
 $\sum_{a \in A^{'}} s(a) \leq c$. Given an integer threshold $k$, the subset sum problem is to ﬁnd a packing $A$ whose total size is at least $k$, that is,
 $k \leq \sum_{a \in A^{'}} s(a) \leq c$.
@@ -577,8 +578,9 @@ An element $T$ in $\mathcal{S}$ can be split in $T_1$ and $T_2$ of $\mathcal{S}$
 
 
 \section{Geometric interpretations}
-In this section, we will view the subset sum and subset sum reconfiguration problems from a geometric point of view.
-We will first start by defining the notion of a $n$-hypercube and the Constrained Hypercube Path problem below :
+In this section, we will view the $k$-move subset sum reconfiguration from a geometric point of view.
+We will first start by defining the notion of a $n$-hypercube, Constrained Hypercube Path problem and the Knapsack reconfiguration
+problem below :
 
 The $n$-hypercube is the graph with vertex set $\{0, 1\}^n$ such that two vertices are adjacent whenever their coordinates differ by
 exactly one component. In this section, we consider the following abstraction of reconfiguration problems involving subsets.
@@ -588,27 +590,40 @@ $P := \{x \in \mathbb{R}^n : Ax \leq b\}$ for some $A = (a_{ij}) \in \mathbb{Z}^
 in the hypercube, all vertices of which lie in $P$?
 \end{defn}
 
-Given the definition above, we will argue that the knapsack decision problem can be cast as a Constrained Hypercube path problem.
-The knapsack (decision) problem involves exactly two linear constraints, and the Knapsack reconfiguration problem can be cast as a special case of the
-constrained hypercube path problem where $d = 2$. The definitions are as follows.
 \begin{defn}{(Knapsack (decision) Problem).} Given integers $l$ and $u$ and two sets of integers $S = \{a_1, a_2,\dots, a_n\}$ and $W = \{w_1, w_2,\dots, w_n\}$,
-does there exist a subset $A \subseteq [ n ]$ such that $\sum_{i \in A} a_i \geq l$ and $\sum_{i \in A} w_i \leq u$ ?
+does there exist a subset $A \subseteq [ n ]$ such that $\sum_{i \in A}a_i \geq l$ and $\sum_{i \in A} w_i \leq u$ ?
 \end{defn}
 
 \begin{defn}{(Knapsack Reconfiguration Problem).} Given two solutions $A_1$ and $A_2$ to an instance of the knapsack problem, can $A_2$ be obtained
-by repeated $1-$move reconfiguration, beginning with $A_1$, so that all intermediate subsets are also solutions ?
+by repeated $1-$move reconfiguration, beginning with $A_i$, so that all intermediate subsets are also solutions ?
 \end{defn}
 
-\subsection{Knapsack Reconfiguration $\rightarrow$ Constrained Hypercube Path problem }
-Let $X \subseteq \{0,1\}^{n}$ and the polytope $P$ in this context is defined in the following way $P := \{k \leq \sum_{i=1}^{n} x_{i}w_{i} \leq c\}$
+Notice that the problem defined by Ito and Demaine is the knapsack reconfiguration problem where $S = W$, the capacity $c$ of the
+knapsack is the integer $u$, the given threshold $k$ is the integer $l$ and the size of each item $a_i$ of $A$ is the weight $w_i$ in $W$.
+Given the definition of the Constraint Hypercube Path problem above, we can argue that the knapsack reconfiguration where $S = W$ is equivalent to
+the Constrained Hypercube path problem where $d = 2$ since it involves exactly two linear constraints. The equivalence and geometric interpretation
+is shown in section \ref{subsection:knapsack-reconf}.
 
-\begin{example} {$\mathcal{S = W} = \{a_1 = w_1 = 1 , a_2 = w_2 = 3 , a_3 = w_3 = 6\}$, $k = 1$ and $c = 7$}
+
+\subsection{Knapsack reconfiguration where $S = W$ $\rightarrow$ Constrained Hypercube Path problem} \label{subsection:knapsack-reconf}
+
+Let $u$ be the capacity of the knapsack, $l$ be the given integer threshold, $W = \{w_1, w_2, \dots, w_n\}$ where $w_i$ is the weight of the item $i$
+of the knapsack and $x \subseteq \{0,1\}^{n}$ be a Boolean variable that indicates whether an item is chosen. The solution space of this given instance of the subset sum reconfiguration problem
+is characterized by an $n$-hypercube since in an $n$-hypercube the vertices are adjacent whenever their
+coordinates differ by exactly one component corresponding to the addition or removal of an item. The solutions to this given instance is the
+points of the $n$-hypercube that lies in the polytope  $P := \{l \leq \sum_{i=1}^{n} x_{i}w_{i} \leq u\}$.
+
+
+\begin{example} The following example shows the geometric interpretation of an instance denoted $I$ of the Knapsack reconfiguration problem where
+  $\mathcal{W} = \{1, 3, 6\}$, $l = 1$ and $u = 7$. The $n$-hypercube induced by all possible configurations of $I$ is shown in blue in figure
+  \ref{fig:geo_1}, the two linear upper and lower bound constraints are represented by the yellow and orange hyperplanes respectively. It is very
+interesting to notice that the feasible configurations to the given instance are the points lying between the yellow and orange hyperplanes and the
+red path represent the reconfiguration sequence between the feasible solutions. Notice that this path is also included in the polytope $P$ delimited by the
+hyperplanes.
 
   \begin{figure}[H]
-    \begin{subfigure}[b]{0.55\textwidth}
-      \begin{scaletikzpicturetowidth}{\textwidth}
-        \raggedleft
-        \begin{tikzpicture}[scale=0.8, x={({1}, {0})}]
+        \centering
+        \begin{tikzpicture}[scale=1.2, x={({1}, {0})}]
           \begin{axis}[
             view/h=40,
             width=300pt,
@@ -635,17 +650,31 @@ Let $X \subseteq \{0,1\}^{n}$ and the polytope $P$ in this context is defined in
             \addplot3[draw = none, fill=orange,fill opacity=0.5] coordinates {(1,0,0) (0,1/3,0) (0,0,1/6) (1,0,0)} ;
             \addplot3 [only marks,mark=*] coordinates { (1,0,0) (0,1/3,0) (0,0,1/6)};
             % solution paths
-            \addplot3[mark=none,ultra thick] coordinates {(0,1,0) (1,1,0) (1,0,0) (1,0,1) (0,0,1)};
+            \addplot3[draw=red, mark=none,ultra thick] coordinates {(0,1,0) (1,1,0) (1,0,0) (1,0,1) (0,0,1)};
           \end{axis}
         \end{tikzpicture}
-      \end{scaletikzpicturetowidth}
-      \caption{Initial token configuration $T_{A}$.}
-      \label{fig:standard_1}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.55\textwidth}
-      \begin{scaletikzpicturetowidth}{\textwidth}
-        \raggedright
-        \begin{tikzpicture}[scale=0.8, x={({1}, {0})}]
+      \caption{Geometric visualisation of a given knapsack reconfiguration problem.}
+      \label{fig:geo_1}
+  \end{figure}
+\end{example}
+
+
+\subsection{$3$-move Subset sum reconfiguration $\rightarrow$ Constrained Hypercube Path problem}
+Let $A = \{a_1, a_2, \dots, a_n\}$ be the set of integers, $x$ be the target sum and $x \subseteq \{0,1\}^{n}$ be a Boolean variable that indicates
+whether an integer $a_i$ is chosen. The solution space of this given instance is characterized by $H_{n}^{3}[S]$ which is an $n$-hypercube where
+the vertices are adjacent whenever the symmetric difference of their coordinates equals $k$ corresponding to replacing
+elements $a_i$ and $a_j$ by $a_i + a_j$ or $a_i + a_j$ by $a_i$ and $a_j$. The solutions to this given instance are the points of
+$H_{n}^{3}[S]$ that lies in the polytope $P := \{ \sum_{i=1}^{n} x_{i}a_{i} = x\}$.
+
+
+\begin{example} {The following example shows the geometric interpretation of an instance denoted $I$ of the $3$-move subset sum reconfiguration
+problem where $\mathcal{S} = \{2, 3, 5\}$ and $x = 5$. The $n$-hypercube induced by all possible configurations of $I$ denoted $Q$ is shown in dotted
+blue in figure \ref{fig:geo_1}. The hyperplane representing the target sum constraint is represented in yellow. The solutions to this given instance
+is the points of $Q$ that lies in the hyperplane. The red path represents the reconfiguration sequence between the feasible solutions.
+}
+  \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1.2, x={({1}, {0})}]
           \begin{axis}[
             view/h=40,
             width=300pt,
@@ -662,44 +691,24 @@ Let $X \subseteq \{0,1\}^{n}$ and the polytope $P$ in this context is defined in
             ylabel={$x_2$},
             zlabel={$x_3$}
             ]
+            % pre-cube
+            \addplot3[draw = blue, dotted, mark=*] coordinates {(0,0,0) (0,1,0) (0,1,1) (0,0,1) (0,0,0)
+              (0,0,1) (1,0,1) (1,0,0) (0,0,0) (1, 0, 0) (1,1,0) (0,1,0) (0,1,1) (1,1,1) (1,1,0) (1,1,1) (1,0,1)};
+            \addplot3[draw=red, ultra thick] coordinates {(0,0,1) (1,1,0)};
+            \addplot3[fill=black, ultra thick] coordinates {(0,1,1) (1,1,0)};
+            \addplot3[fill=black, ultra thick] coordinates {(1,0,1) (1,1,0)};
+            \addplot3[fill=black, ultra thick] coordinates {(0,1,0) (1,0,1)};
             % upper
-            %\addplot3[fill=red,fill opacity=0.5] coordinates {(0,1,4/6) (1,1,1/2) (1,0,1)  (0,1/3,1) (0,1,4/6)};
-            %\addplot3 [only marks,mark=*] coordinates { (0,1,4/6) (1,1,1/2) (0,1/3,1)};
-            %lower
-            %\addplot3[fill=green,fill opacity=0.5] coordinates {(1,0,0) (0,1/3,0) (0,0,1/6) (1,0,0)} ;
-            %\addplot3 [only marks,mark=*] coordinates { (1,0,0) (0,1/3,0) (0,0,1/6)};
-            % solution paths
-            \addplot3[mark=none,ultra thick] coordinates {(0,1,0) (1,1,0) (1,0,0) (1,0,1) (0,0,1)};
+            \addplot3[draw = none, fill=yellow,fill opacity=0.5] coordinates {(1,0,3/5) (1,1,0) (0,1,2/5) (0,0,1) (1,0,3/5)};
+            \addplot3 [only marks,mark=*] coordinates {(1,0,3/5) (1,1,0) (0,1,2/5) (0,0,1)};
+            %\addplot3[mark=none,ultra thick] coordinates {(0,1,0) (1,1,0) (1,0,0) (1,0,1) (0,0,1)};
           \end{axis}
         \end{tikzpicture}
-      \end{scaletikzpicturetowidth}
-      \caption{Target token configuration $T_{B}$.}
-      \label{fig:standard_2}
-    \end{subfigure}
-    \caption{A Standard sliding token instance with initial and target labelled token configuration $T_{A}$ and $T_{B}$ respectively.}
-    \label{fig:input_instance_standard}
+      \caption{Geometric visualisation of a given instance of the $3$-move subset sum reconfiguration problem.}
+      \label{fig:geo_2}
   \end{figure}
 \end{example}
 
 
-\subsection{$k$-move Subset sum reconfiguration $\rightarrow$ Constrained Hypercube Path problem}
-Let $X \subseteq \{0,1\}^{n}$ and the polytope $P$ in this context is defined in the following way $P := \{ \sum_{i=1}^{n} x_{i}a_{i} = x\}$
-
-
-\section{Summary}
-\begin{figure}[h!]
-  \begin{center}
-    \begin{scaletikzpicturetowidth}{\textwidth}
-      \begin{tikzpicture}[scale=1]
-        \node (1) [draw, rounded rectangle] {Constrained Hypercube Path problem};
-        \node (2) [below=of 1, draw, rounded rectangle] {Knapsack Reconfiguration problem};
-        \node (3) [below=of 2, draw, rounded rectangle] {Subset Sum Reconfiguration problem};
-        \draw[<-]  (1) to node [auto] {Special case where $d = 2$} (2);
-        \draw[<-]  (2) to node [auto] {Special case where $S = W$} (3);
-      \end{tikzpicture}
-    \end{scaletikzpicturetowidth}
-  \end{center}
-  \caption{To define}\label{fig:specialCase}
-\end{figure}
-
-
+\section{Sum free sets}
+A set $\mathcal{S}$ is said to be sum-free if the equation $x + y = z$ has no solutions within $\mathcal{S}$.
