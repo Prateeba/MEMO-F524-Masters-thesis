@@ -1,0 +1,84 @@
+Hi, I am Prateeba (just in case) and today I will talking about Reconfiguration problems which is the subject of my Masters thesis. I will first introduce the subject with an introductory problem, followed by its definition and a graph-theoric perspective of Reconfiguration problems. 
+As we will see, Reconfiguration problems arises in many different areas such as graph colouring, block puzzles etc. Here I will only introduce the main areas that I have researched throughout this work and will finally finish with some interesting open questions. 
+
+Let us start with the POWER SUPPLY problem. 
+(Read slide) and what we want to know is whether $G$ (Read slide)
+Here we have an example of an instance of the POWER SUPPLY PROBLEM where the blue vertices are the power stations and its labels are the power supplies's capacity and the red vertices are the customers where the labels are the customers' demands. 
+A solution to this instance the following assignments of customers to power supplies. 
+
+The POWER SUPPLY PROBLEM is a known NP-complete problem. 
+
+Now suppose we are (Read slide). This problem is known as the POWER SUPPLY RECONFIGURATION problem. 
+For example, given the following initial feasible solution $s_0$ and target solution $s_t$, can we transform $s_0$ to $s_t$ while moving only one customer at a time while satisfying the demands and capacities. One way of doing so would be to first move customer 10 to power supply 20 and then move customer 7 to power supply 20.
+
+The POWER SUPPLY RECONFIGURATION PROBLEM has been proved to be a PSPACE-complete problem.  
+
+This example gives us a general idea of what Reconfiguration problems are about. In general Reconfiguration problems are computational problems (Read slide). 
+
+Reconfiguration problems can also be viewed from a Graph-theoric perspective where the solution space of the given problem is represented by a graph called a Reconfiguration graph. The vertex set of a reconfiguration graph consists of all the possible solutions (configurations) of the given input instance. I will be 
+using configurations and solutions interchangeably. And two nodes (Read slide). 
+Lastly, any path or walk in the Reconfiguration graph is called a Reconfiguration sequence. 
+
+--------------------- SAT ------------------------- \\ 
+Reconfiguration problems arises in many different areas as mentioned before, the three following areas were the ones researched in this work. We first start with the Boolean satifisability reconfiguration problem. The Boolean satisfiability problem is to test .. 
+and it is a well known NP-complete problem. 
+
+In the reconfiguration version of the Boolean satifisability, there are two  decision problems that arises and are related to the subgraph induced by the satisfying assignments of a given $n$-variable Boolean formula referred to as $G(\varphi)$ (Read slide) introducing two decision problems known as the connectivity problem where given a boolean $\varphi$, we wish to know whether $G(\varphi)$ is connected and the st-connectivity problem where ... 
+
+An example of the connectivity problem is given in this slide. All truth assignments satisfying $\varphi$ are represented in red. For this instance, $G(\varphi)$ is connected. 
+
+Here we are given, an example of the st-connectivity problem with two satisfying solutions $s_0$ and $s_t$. As we can see there is a way to transform one feasible solution to the other by flipping only one variable at a time s.t each intermediate solution is also feasible. 
+
+---------------------- SLIDING TOKENS----------------- \\ 
+
+The next main area where Reconfiguration problem arises is Sliding tokens problems which is defined as follows : 
+(Read slide). 
+An example of the sliding token problem is given here where in order to reach the target configuration we must first slide the token on $v_3$ to $v_4$. The sliding tokens problem is often seen as the reconfiguration version of the independent Sets problem. 
+
+In this work we established the complexity of the Labelled variant of the Sliding tokens problem defined as follows. Its definition is quite similar to the sliding tokens problem where (Read slide). 
+
+Well, it turns out that the Labelled variant of the sliding Token problem is also PSPACE-complete. 
+This result has been established by a reduction from the Nondeterministic Constraint Logic. The next slides gives a quick introduction of the NCL framework introduced by Eric Demaine and Robert Hearn using its simplest description which is a Graph formulation. An NCL machine consists of a graph $G = (V,E)$ which we can think of our computational model where : ... 
+Demaine and Hearn also gave a restricted variant referred to as Restricted NCL where the constraint graph $G = (V,E)$ is
+$3$-regular, uses only weight 1 and 2 where edges having a weight of 1 are called a Red edge and edges having a weight of 2 are called blue edges. The constraint graph contains only two types of vertices called AND and OR vertices where an AND vertex has 2 red edges and one blue edge and a blue vertex has 3 blues vertices and the minimum inflow constraint is equal to 2. 
+
+An example is given here, The given instance is composed of only red and blue vertices and the minimum inflow of 2 is satisfied. 
+An interesting question concerning the restricted NCL asks whether a target edge $e$ can be reversed while of course maintaining the minimum inflow constraint. This problem is called the Configuration-to-edge problem and it is  PSPACE-complete.  
+
+The reduction to prove the result of the Labelled sliding tokens problem was done from this variant. 
+
+
+---------------------- SUBSET SUM RECONF ------------------
+The last main area we have considered in this thesis is the Subset SUM RECONFIGURATION problems. In the Subset Sum problem, we are given an integer .. and a set of intergers .. and we wish to find a subset A such that the sum of its elements is equal to $x$. 
+
+For the reconfiguration version of the Subset sum problem, there are actually two variants. The difference lies in the transformation rule adopted. Ito and Demaine considered a variant where the transformation rule consists of adding or removing a single item to/from the previous solution while keeping the sum in a target range. This version is called the SUBSET SUM RECONF problem. 
+
+Cardinal et al. considered another variant where the transformation step consisted of either swapping an integer $y$ and an integer $z$ with their sum $y + z$ and vice versa. This problem is called the $k$-move Subset Sum reconfiguration problem. 
+
+An example of the $k$-move SSR reconf is the following where $k = 3$, the integer set is equal to $S$ and the goal is to reconfigure $A_1$ into $A_2$ while maintaining the sum of each intermediate subsets to $12$. We can first swap 2,3 with 5 and then swap 7 with 3,4.
+
+An instance of SSR problem would be the following where given the integer set is the same, we are given a lower and upper range we wish to transform $A_1$ to $A_2$. A solution would be to first remove ... and then add .. 
+
+In this work, we gave an additional geometric interpretation of the Subset sum reconfiguration problems in terms of a Constrained Hypercube Path problem with is defined as follows: 
+Given two vertices $s,t$ of the $n$-hypercube, both contained in a polytope $P$ defined by $n$ linear constraints, does there exist a path from $s$ to $t$ in the hypercube, all vertices of which lie in $P$ ?  
+
+We show that the SSR problem can be cast as a Constrained hypercube path problem in the following way : 
+Let $x \subseteq \{0,1\}^{n}$ be a Boolean variable that indicates whether an item is chosen or not.  
+Then the solution space of a given instance can be represented by an $n$-hypercube where the vertices are adjacent whenever their coordinates differ by exactly one component corresponding to the addition or removal of an item. 
+The solutions to this given instance is the points of the $n$-hypercube that lies in the polytope $P$ defined but the upper and lower constraints. 
+
+An example is given in the following slide where $S$ is the integer set, the lower ... and we wish to transform $A_1$ to $A_2$.  The n-hypercube induced by all possible conﬁgurations of this instance is represented here.  The two linear upper and lower bound constraints are represented by the yellow and orange hyperplanes respectively. It is very interesting to notice that the feasible conﬁgurations to the given instance are the points lying between the yellow and orange hyperplanes (change slide) and the red path represent the reconﬁguration sequence between $A_1$ and $A_2$. Notice that this path is also included in the polytope $P$ delimited by the hyperplanes.
+
+The same procedure can be applied to the $k$-move SSR problem.
+Again,  Let $x \subseteq \{0,1\}^{n}$ be a Boolean variable that indicates whether an integer is chosen or not. The solution space in this case is represented by the $kth$ power of the $n$-hypercube noted by the following notation $H_n^k[Q]$ where $Q$ is the $n$-hypercube and where the vertices are adjacent whenever their symmetric difference is at most $k$.
+Then the solutions to this given instance would be the points in the $kth$ power graph of the $n$-hypercube that lies in the polytope $P$ delimited by the target sum constraint. 
+An example of this interpretation is given here with $S$ ..
+(Read slide)
+Again we notice that reconfiguration sequence that transforms $A_1$ into $A_2$ is contained in the polytope delimited by the hyperplane representing the satisfaction of the target sum $x = 5$. 
+
+It was mostly the two last areas that was the focus of this work. I will now finish by presenting some questions that are still open for the Subset sum reconfiguration and are related to the connectivity properties of the subgraph induced by the feasible solution. Those questions are analoguous to the Connectivity question in the SAT reconfiguration and are the following : 
+
+
+Thank you very much for your attention. 
+
+

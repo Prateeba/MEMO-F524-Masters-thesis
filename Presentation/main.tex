@@ -1,0 +1,49 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum, lmodern}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{algorithm,algorithmic}
+\usepackage{optidef} %formules d'optimisation
+\usepackage{biblatex}
+\addbibresource{main.bib}
+\include{pythonlisting}
+\usetikzlibrary{arrows}
+\usetheme{/Milano} % or Median, or Metro, or PraterStreet, or Milano
+\newtheorem{remark}[theorem]{Remark}
+
+\author{Prateeba\\ Ruggoo}
+\supervisor{Jean\\ Cardinal}
+\title{Reconfiguration problems}
+\institute{Université Libre de Bruxelles}
+\department{Department of Computer Science - ULB}
+\date{\today}
+
+\logo{\includegraphics[scale=0.7]{img/ulbquadri_mini}}
+\titlepagelogoA{\includegraphics[scale=1.5]{img/ulbquadri_mini}}
+\backgroundlogo{\includegraphics[scale=1.4]{img/ulb}}
+
+\begin{document}
+
+\frame{\maketitle}
+\begin{frame}{Table of contents}
+	\tableofcontents
+\end{frame}
+
+\input{chapters/intro.tex}
+\input{chapters/SAT.tex}
+\input{chapters/sliding_tokens}
+\input{chapters/subset_sum}
+\input{chapters/open_questions}
+
+\begin{frame}[allowframebreaks]{References}
+   \printbibliography    
+\end{frame}
+
+\thanksframe{Thank you for your attention. \\}
+
+
+\end{document}
