@@ -1,4 +1,4 @@
-\chapter{Conclusions and Future Works}
+\chapter{Conclusions and Future Works} \label{chap:conclu}
 Throughout this thesis, we have researched and analysed reconfiguration problems by starting with the Nondeterministic Constraint Logic
 which seems to be the go-to reduction in order to prove $\PSPACE$-hardness results. More specifically, we focused on the alternative
 formulation of NCL and detailed the $\PSPACE$-completeness result of the sliding token problem. We then showed that the labelled variant of the
@@ -12,22 +12,15 @@ Every reconfiguration problems we encountered during our journey to the completi
         \begin{scaletikzpicturetowidth}{\textwidth}
             \begin{tikzpicture}[scale=0.8]
                 \node (1) at (0,0) [draw, rounded rectangle, align=center] {CONFIGURATION-TO-EDGE\\for restricted NCL};
-                \node (2)  [below=of 1, draw, rounded rectangle, align=center] {SLIDING-TOKEN\\problem};
-                \node (3)  [below=of 2, draw, rounded rectangle, align=center] {STANDARD SLIDING-TOKEN\\problem};
-                \node (4)  [below=of 3, draw, rounded rectangle, align=center] {LIST-COLOUR PATH\\problem};
-                \node (5)  [below=of 4, draw, rounded rectangle, align=center] {$K$-COLOUR PATH\\problem};
-                \node (6) at (8, -2.3) [draw, rounded rectangle, align=center] {Labelled sliding token\\problem};
-                \node (7) [below=of 6, draw, rounded rectangle, align=center] {Exact cover split and merge\\ reconfiguration problem};
-                \node (8) [below=of 7, draw, rounded rectangle, align=center] {$k$-move Subset sum\\reconfiguration problem};
+                \node (2)  [below left=of 1, draw, rounded rectangle, align=center] {SLIDING-TOKEN\\problem};
+                \node (3)  [below right=of 1, draw, rounded rectangle, align=center] {Labelled sliding token\\problem};
+                \node (4) [below=of 3, draw, rounded rectangle, align=center] {Exact cover split and merge\\ reconfiguration problem};
+                \node (5) [below=of 4, draw, rounded rectangle, align=center] {$k$-move Subset sum\\reconfiguration problem};
 
                 \draw[->]  (1) to node [auto] {$\leq{p}$} (2);
-                \draw[-]  (2) to node [auto] {variant} (3);
+                \draw[->]  (1) to node [auto] {$\leq{p}$} (3);
                 \draw[->]  (3) to node [auto] {$\leq{p}$} (4);
                 \draw[->]  (4) to node [auto] {$\leq{p}$} (5);
-                \draw[-]  (2) to node [auto] {variant} (6);
-                \draw[->]  (6) to node [auto] {$\leq{p}$} (7);
-                \draw[->]  (7) to node [auto] {$\leq{p}$} (8);
-
             \end{tikzpicture}
         \end{scaletikzpicturetowidth}
     \end{center}
@@ -36,12 +29,12 @@ Every reconfiguration problems we encountered during our journey to the completi
 
 %------------------------************************* Future works **********************------------------------
 
-\subsection{Future works}
+\section{Future works}
 
-\subsubsection{Shortest sliding token problem}
-Given a SLIDING TOKEN instance and two configurations $C_1$ and $C_2$, there may be several reconfiguration sequences to transform the given
+\subsection{SLIDING TOKENS problem}
+Given a SLIDING TOKENS instance and two configurations $C_1$ and $C_2$, there may be several reconfiguration sequences to transform the given
 initial configuration $C_1$ into $C_2$ (see figures \ref{fig:sequence1} and \ref{fig:sequence2}). Thus, the question of finding the
-Shortest reconfiguration path in the SLIDING TOKEN problem naturally arised.
+Shortest reconfiguration path in the SLIDING TOKENS problem naturally arised.
 
 
 %-------------------------------------------- shortest 1 --------------------------------------------
@@ -84,7 +77,7 @@ Shortest reconfiguration path in the SLIDING TOKEN problem naturally arised.
                 \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
             \end{tikzpicture}
         \end{scaletikzpicturetowidth}
-        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+        \caption{Initial Independent Set $I_1 = \{v_1, v_3\}$}
         \label{fig:s11}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
@@ -124,7 +117,7 @@ Shortest reconfiguration path in the SLIDING TOKEN problem naturally arised.
                 \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
             \end{tikzpicture}
         \end{scaletikzpicturetowidth}
-        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+        \caption{Intermediate Independent Set}
         \label{fig:s12}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
@@ -164,7 +157,7 @@ Shortest reconfiguration path in the SLIDING TOKEN problem naturally arised.
                 \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
             \end{tikzpicture}
         \end{scaletikzpicturetowidth}
-        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+        \caption{Target Independent Set $I_2 = \{v_2, v_4\}$}
         \label{fig:s13}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
@@ -251,7 +244,7 @@ Shortest reconfiguration path in the SLIDING TOKEN problem naturally arised.
                 \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
             \end{tikzpicture}
         \end{scaletikzpicturetowidth}
-        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+        \caption{Initial Independent Set $I_1 = \{v_1, v_3\}$}
         \label{fig:s21}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
@@ -291,7 +284,7 @@ Shortest reconfiguration path in the SLIDING TOKEN problem naturally arised.
                 \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
             \end{tikzpicture}
         \end{scaletikzpicturetowidth}
-        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+        \caption{Intermediate Independent Set}
         \label{fig:s22}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
@@ -331,7 +324,7 @@ Shortest reconfiguration path in the SLIDING TOKEN problem naturally arised.
                 \draw[thick] (\xa+1,\ya+2)--(\xa-1,\ya+2) ; % v2 - v6
             \end{tikzpicture}
         \end{scaletikzpicturetowidth}
-        \caption{A $3$-regular graph $G=(V,E)$ and initial independent set $I_1 = \{v_1, v_3\}$}
+        \caption{Target Independent Set $I_2 = \{v_2, v_4\}$}
         \label{fig:s23}
     \end{subfigure}
     \caption{Configuration-to-edge input instance}
@@ -362,52 +355,25 @@ Shortest Sliding Token can be solved in polynomial time for proper interval grap
 \end{theorem}
 
 \begin{theorem}(Sugimori, AAAC 2018)
-Shortest Sliding Token can be solved in $O(poly(n))$ time when the input graph is a tree $T$ on n vertices.
+Shortest Sliding Token can be solved in $O(poly(n))$ time when the input graph is a tree on $n$ vertices.
 \end{theorem}
 
 \begin{theorem}(Ryuhei Uehara, CIAC 2019)
-Shortest Sliding Token can be solved in $O(n^2)$ time when the input graph is a spider G (i.e., a tree having exactly one
+Shortest Sliding Token can be solved in $O(n^2)$ time when the input graph is a spider (i.e., a tree having exactly one
 vertex of degree at least $3$) on $n$ vertices.
 \end{theorem}
 
 
-\subsubsection{Satisfiability of Boolean formulas}
-In this work, we were focused mainly on $st$-connectivity questions, $i.e$ the existence of a reconfiguration sequence from
-configuration $s$ to configuration $t$ in the reconfiguration graph. However the connectivity question merits also the same
-attention, since knowing whether the reconfiguration graph is connexe can infer the complexity results of the problem studied.
-Gopalan et al. showed with their dichotomy that small diameter and tractability of the st-connectivity problem are remarkably aligned.
-It would be interesting to see if this alignment between small diameter and tractability remains for the connectivity problem.
-
-They also proved that both connectivity and st-connectivity are hard for 3-CNF formulae by a reduction from a generic $\PSPACE$ computation.
-It would be interesting to study both problems under the Nondeterministic Constraint logic as it has the same computational power as a space-bounded
-Turing machine.
-%Next we show that CONN(S3) and ST-CONN(S3) are PSPACE-hard. Consider the fol-
-%lowing known PSPACE-complete problem: Given a deterministic Turing machine M =
-%(Q, Σ, Γ, δ, q0, qaccept, qreject) and n in unary, will M accept the string consisting of n blanks,
-%without ever leaving its n tape squares? We give a polynomial time reduction from this prob-
-%lem to ST-CONN(S3) and CONN(S3).
-
-
-
-\subsubsection{$3$-move subset sum reconfiguration problem}
-Recall we studied the following problem in chapter \ref{chap:subset-sum-reconf} :
-\begin{defn}{($k$-move Subset Sum Reconfiguration Problem).} Given two solutions $A_1$ and $A_2$ to an instance of the subset sum problem,
+\subsection{$3$-move SUBSET SUM RECONFIGURATION problem}
+Recall that we studied the following problem in chapter \ref{chap:subset-sum-reconf} :
+\begin{defn}{($k$-move SUBSET SUM RECONFIGURATION Problem).} Given two solutions $A_1$ and $A_2$ to an instance of the subset sum problem,
 can $A_2$ be obtained by repeated $k$-move reconfiguration, beginning with $A_1$, so that all intermediate subsets are also solutions?
 \end{defn}
 
-It would be interesting to study the connectivity question of the $k$-move subset sum reconfiguration problem defined below :
-\begin{defn}{($k$-move Subset Sum Reconfiguration Problem conn).} Given an integer $x$ and a set of integers $S = \{a_1, a_2, \dots, a_n\}$,
+It would be interesting to study the connectivity question of the $k$-move SUBSET SUM RECONFIGURATION problem defined below :
+\begin{defn}{($k$-move SUBSET SUM RECONFIGURATION Problem conn).} Given an integer $x$ and a set of integers $S = \{a_1, a_2, \dots, a_n\}$,
 let $G(S)$ be the subgraph graph induced by the feasible solutions of $S$ where there is an edge between two vertices
 of $G(S)$ iff the symmetric difference is at most $k$. Is $G(S)$ connected ?
 \end{defn}
 
-
-- Finding an optimal $k < 23$ for the colour classes of the exact cover problem. More en rapport avec le path in hypercube.
-Heuristics ?
-
-%- détailler la preuve des sliding tokens pour le cas labellé,
-%- visualiser les graphes de reconfigurations pour 3SSR,
-%- considérer le problème de connexité globale, sans configuration de départ et d'arrivée : La question "le graphe de
-%reconfiguration est-il connexe ?" est-elle PSPACE-complete également ? Le problème correspondant dans NCL
-%a-t-il été étudié ? Voir Gopalan et al. (https://arxiv.org/pdf/cs/0609072.pdf, page 4) pour la définition du problème
-%correspondant pour SAT.
+Another question concerns finding an optimal coloring with $k$ colors that is smaller than $23$ for the ECR problem.

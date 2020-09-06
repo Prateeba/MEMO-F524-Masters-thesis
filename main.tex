@@ -10,6 +10,8 @@
     parskip, % Uncomment to add space between paragraphs
 ]{MastersDoctoralThesis} % The class file specifying the document structure
 
+\setcounter{secnumdepth}{3}
+
 % Packages
 \usepackage{lmodern}
 \usepackage{scrextend}
@@ -209,10 +211,10 @@
         (Is the reconfiguration graph connected?, Is there a path between a node $s$ and a node $t$ in the reconfiguration graph?).
         In the first half this thesis we analyse various aspects of the Constraint Logic framework, from the book “Games, Puzzles and Computation”
         by Hearn and Demaine which provides several problems that are often a convenient starting point for reductions in order to prove
-        $\PSPACE$-hardness and present an in-depth study of the alternative formulation of NCL, the sliding tokens problem.
+        $\PSPACE$-hardness and present an in-depth study of the alternative formulation of NCL, the SLIDING TOKENS problem.
         In the second half of this thesis, we analyse the complexity results around the Boolean Satisfiability reconfiguration problems and
-        investigate dichotomies/tricotomies that have been established and their applications. We also focus on complementing some
-        recent $\PSPACE-$hardness proofs given in \cite{cardinal_reconfiguration_2018} concerning the $k$-move Subset sum reconfiguration problem.
+        focus on complementing some recent $\PSPACE$-hardness proofs given in \cite{cardinal_reconfiguration_2018} concerning the
+        $k$-move SUBSET SUM RECONFIGURATION problem.
 
 
     \end{abstract}
@@ -223,7 +225,7 @@
 
     \begin{acknowledgements}
         \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-        First and foremost, my utmost gratitude to Prof. Jean cardinal, whose patience and encouragement I will never forget.
+        First and foremost, my utmost gratitude to Prof. Jean Cardinal, whose patience and encouragement I will never forget.
         And whose door was always open whenever I had questions concerning my research or whenever I was lost, I could always
         count on him for guidance. He consistently allowed me to be creative but steered me in the right direction whenever
         he thought I needed it.
@@ -280,6 +282,8 @@
 \include{Chapters/chap2_SAT/main}
 \include{Chapters/chap3_SUBSETSUMs_recon/main}
 \include{Chapters/Chap6_conclusion/main}
+
+%\include{Figures/fig}
 
 
 

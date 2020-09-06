@@ -17,15 +17,16 @@ and \ref{theorem:labelled} respectively).
 Section \ref{sec:contraint_graph} gives an overview of AND/OR constraint graphs which is the primary formulation used in the NCL framework.
 Section \ref{sec:ncl_results} present some complexity results of decision problems stemming from the constraint logic framework.
 In section \ref{sec:sliding_tokens} we detail the $\PSPACE$-completeness proof of the sliding token problem using the alternative
-formulation of NCL (theorem \ref{theorem:ncl_sliding_token}). Lastly, in section \ref{sec:labelled_sliding_token} the hardness proof of the
-labelled variant of the sliding token problem is given.
+formulation of NCL (theorem \ref{theorem:ncl_sliding_token}), followed by the hardness proof of the labelled variant of the sliding token problem
+in section \ref{sec:labelled_sliding_token} (theorem \ref{theorem:labelled}). Lastly, in section \ref{sec:Standard-sliding-token-problem} the
+variant of the SLIDING TOKEN problem studied by Bosnma is presented.
 
 \section{Graph Formulation}\label{sec:formalism}
 The simplest description of NCL is a graph formulation. An NCL machine consists of a \textit{constraint graph}, $G = (V,E)$ that we can think of as
 our computation model. Let $G$ be an undirected graph to which each edge is assigned a nonnegative integer and each vertex has a
-nonnegative \textit{minimum inflow constraint}. A \textit{configuration} of this machine is an orientation (direction) of the edges such that the sum
+non negative \textit{minimum inflow constraint}. A \textit{configuration} of this machine is an orientation (direction) of the edges such that the sum
 of incoming edge weights at each vertex is at least the minimum in-ﬂow constraint of that vertex. A \textit{move} from one
-configuration to another configuration is simply the reversal of a single edge such that the minimum in-ﬂow constraints remain satisﬁed.
+configuration to another configuration is simply the reversal of a single edge such that the minimum in-ﬂow constraints remain satisfied.
 
 
 \section{AND/OR Constraint Graphs} \label{sec:contraint_graph}
@@ -133,9 +134,9 @@ Additionally, the constraint graphs can be required to have bounded bandwidth, a
 $\PSPACE$-complete\cite{van_der_zanden_parameterized_nodate}.
 
 
-\section{Alternative formulation : Sliding tokens} \label{sec:sliding_tokens}
+\section{Alternative formulation : SLIDING TOKENS} \label{sec:sliding_tokens}
 The SLIDING TOKEN problem was introduced by Hearn and Demaine in \cite{hearn_pspace-completeness_2004} as a variant of SLIDING-BLOCK puzzle
-with $1 \times 1 $ blocks on a graph but require no adjacent tokens, which can be seen as a reconfiguration problem for Independent Set.
+with $1 \times 1 $ blocks on a graph that requires no adjacent tokens, which can be seen as a reconfiguration problem for Independent Set.
 Suppose that we are given two independent sets $I_b$ and $I_r$ of a graph $G =(V,E)$ such that $|I_b| = |I_r|$ and imagine that a
 \textit{token} is placed on each vertex in $I_b$. Then, the SLIDING TOKEN problem is to determine whether there exists a sequence
 $ S = \langle I_1, I_2, \dots, I_l \rangle$ of independent sets of $G$ such that :
@@ -283,11 +284,11 @@ $I_{b} = I_{1}$ and $I_{r} = I_{5}$.
   \label{fig:sliding_token_example}
 \end{figure}
 
-\subsection{Known results for the SLIDING TOKEN problem.}
+\subsection{Known results for the SLIDING TOKENS problem.}
 Analogous to the Independent Set problem being the key problem among thousands of $\NP$-complete problems to prove $\NP$-hardness,
-the SLIDING TOKEN problem plays an important role since several $\PSPACE$-hardness results have been proved using reductions from it.
+the SLIDING TOKENS problem plays an important role since several $\PSPACE$-hardness results have been proved using reductions from it.
 
-For the sliding token problem, some polynomial time algorithms have been investigated as follows: Linear time algorithms have been shown
+For the SLIDING TOKENS problem, some polynomial time algorithms have been investigated as follows: Linear time algorithms have been shown
 for cographs (also known as P4-free graphs) \cite{kaminski_complexity_2012} and trees \cite{2014arXiv1406.6576D}. Polynomial time algorithms
 are shown for bipartite permutation graphs \cite{fox-epstein_sliding_2015}, and claw-free graphs \cite{bonsma_reconfiguring_2014}.
 On the other hand, $\PSPACE$-completeness is shown for graphs of bounded treewidth \cite{mouawad_reconfiguration_2014}, and planar
@@ -295,19 +296,19 @@ graphs \cite{hearn_pspace-completeness_2004}.
 
 \subsection{$\PSPACE$-completeness.}
 
-In this section we go over the $\PSPACE$-completeness result of the SLIDING TOKEN problem, proved by a reduction from NCL. As seen in
+In this section we go over the $\PSPACE$-completeness result of the SLIDING TOKENS problem, proved by a reduction from NCL. As seen in
 section \ref{sec:ncl_results}, there are slightly different versions of decision problems for NCL and all of them are $\PSPACE-$complete.
 For our purpose, we just need the version for the configuration-to-configuration for planar NCL. Recall that an instance of the
-C2C planar NCL problem is defined on a $3-$regular, planar, directed graph where each edge has a weight $\in \{1,2\}$ and each vertex is
+C2E planar NCL problem is defined on a $3-$regular, planar, directed graph where each edge has a weight $\in \{1,2\}$ and each vertex is
 either and $AND$ or an $OR$ vertex. The proof of theorem \ref{theorem:ncl_sliding_token} is organised in sections
 \ref{subsubsection:reduction_structure} to \ref{subsubsection:and_or} which explains the reduction structure, gadgets used and how they are
 connected together.
 
 \subsubsection{Reduction structure.}\label{subsubsection:reduction_structure}
-To show that the SLIDING TOKEN problem is $\PSPACE$-complete we provide a reduction from configuration-to-configuration for AND/OR graphs
-such that the NCL instance is solvable if and only if the corresponding SLIDING TOKEN is solvable. The sliding token instance is constructed by
+To show that the SLIDING TOKENS problem is $\PSPACE$-complete we provide a reduction from C2E for AND/OR graphs
+such that the NCL instance is solvable if and only if the corresponding SLIDING TOKENS is solvable. The SLIDING TOKENS  instance is constructed by
 piecing together gadgets which emulates the directed edges, the AND vertices and the OR vertices of the given NCL instance.
-We construct the corresponding NCL $AND$ and $OR$ vertex gadgets out of sliding-token subgraphs illustrated in figures
+We construct the corresponding NCL $AND$ and $OR$ vertex gadgets out of SLIDING-TOKENS subgraphs illustrated in figures
 \ref{fig:and_gadget_sliding_token} and \ref{fig:or_gadget_sliding_token} respectively.
 
 \subsubsection{The OR gadget and the AND gadget.}\label{subsubsection:or_and}
@@ -378,7 +379,7 @@ constraint is satisfied by sliding on a appropriate vertex among the three inter
     \caption{$OR$ gadget}
     \label{fig:or_gadget_sliding_token}
   \end{subfigure}
-  \caption{Sliding Tokens vertex gadgets.}
+  \caption{SLIDING TOKENS vertex gadgets.}
   \label{fig:and_or_gadgets_sliding_token}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ENDING OF A FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -389,24 +390,24 @@ First, the edges that cross the dotted-line gadget borders are called “port”
 inward-directed NCL edge, and vice-versa. Second, observe that no port token may ever leave its port edge. Choosing a particular port
 edge $E$, if we inductively assume that this condition holds for all other port edges, then there is never a legal move outside $E$ for
 its token – another port token would have to leave its own edge first.
-Given an $AND/OR$ graph $G$ and two legal configurations $C_1, C_2$ for $G$, we construct a corresponding sliding-token graph by joining together
+Given an $AND/OR$ graph $G$ and two legal configurations $C_1, C_2$ for $G$, we construct a corresponding SLIDING-TOKENS graph by joining together
 $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port tokens appropriately.
 
 
-\begin{theorem}Sliding Token problem is $\PSPACE$-complete. \end{theorem}\label{theorem:ncl_sliding_token}
+\begin{theorem}SLIDING TOKENS problem is $\PSPACE$-complete. \end{theorem}\label{theorem:ncl_sliding_token}
 \begin{proof}
-  First, we show that SLIDING TOKEN problem is in $\PSPACE$.
-  The SLIDING TOKEN problem is in $\PSPACE$ since the state of the input graph can be described in a linear number of bits, specifying the
+  First, we show that SLIDING TOKENS problem is in $\PSPACE$.
+  The SLIDING TOKENS problem is in $\PSPACE$ since the state of the input graph can be described in a linear number of bits, specifying the
   position of each token and the list of possible moves from any state can be computed in polynomial time. Thus we can nondeterministically
   traverse the state space, at each step nondeterministically choosing a move to make, and maintaining the current state but not the previously
-  visited states showing that SLIDING TOKEN is in $\NPSPACE$. By Savitch's celebrated theorem, we have that $\NPSPACE = \PSPACE$
-  \cite{savitch_relationships_1970}, implying that SLIDING TOKEN is in $\PSPACE$.
+  visited states showing that SLIDING TOKENS is in $\NPSPACE$. By Savitch's celebrated theorem, we have that $\NPSPACE = \PSPACE$
+  \cite{savitch_relationships_1970}, implying that SLIDING TOKENS is in $\PSPACE$.
 
-  The SLIDING TOKEN problem is $\PSPACE$-hard by a reduction from planar Nondeterministic Constraint Logic using the reduction structure
-  provided above. The NCL instance is solvable if and only if the corresponding SLIDING TOKEN is solvable.
+  The SLIDING TOKENS problem is $\PSPACE$-hard by a reduction from planar Nondeterministic Constraint Logic using the reduction structure
+  provided above. The NCL instance is solvable if and only if the corresponding SLIDING TOKENS is solvable.
 \end{proof}
 
-\begin{example}{C2E to SLIDING TOKEN problem reduction. \\}
+\begin{example}{C2E to SLIDING TOKENS problem reduction. \\}
 \textbf{Input instance : C2E for restricted NCL.} \hfill
 
 \begin{figure}[H]
@@ -586,12 +587,12 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
     \label{fig:input_instance_3}
   \end{subfigure}
   \caption{Reconfiguration sequence which transforms $C_0$ which is the initial configuration into $C_3 = $ which is the target configuration.}
-  \label{fig:input_instance_config_to_edge}
+  \label{fig:input_instance_config_to_config}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Output instance %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %------------------------------------------- out 1 & 2 ---------------------------------------------
-\textbf{Output instance : SLIDING TOKEN instance.} \hfill
+\textbf{Output instance : SLIDING TOKENS instance.} \hfill
 
 \begin{figure}[H]
   \raggedright
@@ -1110,46 +1111,622 @@ $AND$ and $OR$ vertex gadgets at their shared port edges, placing the port token
     \caption{$S_3.$}
     \label{fig:output_instance_final}
   \end{subfigure}
-\caption{Reconfiguration sequence which transforms the initial configuration $S_0$ of the corresponding output sliding token instance to the target configuration $S_3$.}
+\caption{Reconfiguration sequence which transforms the initial configuration $S_0$ of the corresponding output SLIDING TOKENS instance to the target configuration $S_3$.}
 \label{fig:input_instance_config_to_edge}
 \end{figure}
 \end{example}
 
 
-\section{LABELLED variant of Sliding-Token Problem}\label{sec:labelled_sliding_token}
+\section{LABELLED variant of SLIDING-TOKENS Problem}\label{sec:labelled_sliding_token}
 
-The LABELLED sliding token problem is a variant of the Sliding token problem where each token has a unique label. The purpose of this section is
-to prove that the sliding token problem remains $\PSPACE$-hard even with LABELLED tokens. We will first start by giving a formal definition of the
-LABELLED sliding token problem.
+The LABELLED SLIDING TOKENS problem is a variant of the SLIDING TOKENS problem where each token has a unique label. The purpose of this section is
+to prove that the SLIDING TOKENS problem remains $\PSPACE$-hard even with labelled tokens. We will first start by giving a formal definition of the
+LABELLED SLIDING TOKENS problem.
 
-\begin{defn}{(LABELLED SLIDING TOKEN problem)}
+\begin{defn}{(LABELLED SLIDING TOKENS problem)}
   Suppose that we are given two independent sets $I_b$ and $I_r$ of a graph $G = (V,E)$ such that $|I_b| = |I_r|$ and imagine that a
-\textit{uniquely labelled token} is placed on each vertex in $I_b$ through a mapping function. Then, the LABELLED SLIDING TOKEN problem is to determine
+\textit{labelled token} is placed on each vertex in $I_b$ where each label is unique. Then, the LABELLED SLIDING TOKEN problem is to determine
 whether there exists a sequence $ S = \langle I_1, I_2, \dots, I_l \rangle$ of independent sets of $G$ such that :
 \begin{enumerate}
   \item $I_1 = I_b, I_l = I_r,$ and $|I_i| = |I_b| = |I_r|$ for all $i, 1 \leq i \leq l;$ and
   \item For each $i, 2 \leq i \leq l$ there is an edge $xy$ in $G$ such that  $I_{i-1} \setminus I_{i} = \{x\}$ and $I_{i} \setminus I_{i-1} = \{y\}$.
 \end{enumerate}
 That is, $I_i$ can be obtained from $I_{i-1}$ by sliding exactly one labelled token on a vertex $x \in I_{i-1}$ to its adjacent vertex $y \in I_{i}$
-along an edge $xy \in E(G)$. We denote by a $6$-tuple $(G, I_{b}, I_{r}, T)$ an instance of LABELLED SLIDING TOKEN problem where $T$ is a
+along an edge $xy \in E(G)$. We denote by a $4$-tuple $(G, I_{b}, I_{r}, T)$ an instance of LABELLED SLIDING TOKEN problem where $T$ is a
 set of labelled tokens.
 \end{defn}
 
-\begin{theorem} The labelled SLIDING TOKEN problem is $\PSPACE$-complete.\end{theorem} \label{theorem:labelled}
+\begin{theorem} The LABELLED SLIDING TOKENS problem is $\PSPACE$-complete.\end{theorem} \label{theorem:labelled}
 \begin{proof}
-  Theorem \ref{theorem:labelled} is proved by a reduction from the configuration-to-configuration problem for AND/OR graph such that the
-  NCL instance is solvable if and only if the corresponding labelled SLIDING TOKEN instance is solvable. The AND and OR gadgets used in the
+  Theorem \ref{theorem:labelled} is proved by a reduction from the C2E problem for AND/OR graph such that the
+  NCL instance is solvable if and only if the corresponding LABELLED SLIDING TOKENS instance is solvable. The AND and OR gadgets used in the
   reduction are exactly the same gadgets shown in figure \ref{fig:and_or_gadgets_sliding_token} except for the fact that the tokens are labelled.
-  The same reduction given by Demaine and Hearn can be applied even when the input NCL instance is labelled due this following observation :
+  Each token of each gadget is attributed a unique label. The same reduction given by Demaine and Hearn can be applied even when the
+  input NCL instance is labelled due this following observation.
 
-  \begin{obs} No port token may ever leave its port edge .\end{obs}
+  \begin{obs} No port token may ever leave its port edge.\end{obs}
   This condition is inductively assumed for all other port edges, choosing a particular port edge $E$ there is never a legal move outside $E$ for
   its token – another port token would have to leave its own edge first.
-  Thus, there is no possibility of having solutions that are only feasible solutions for the SLIDING TOKEN problem and
-  not for the LABELLED SLIDING TOKEN problem since the tokens of each gadget never slides further than.
+  Thus, there is no possibility of having solutions that are only feasible solutions for the SLIDING TOKENS problem and
+  not for the LABELLED SLIDING TOKENS problem since the tokens of each gadget never slides further than their port edge.
 \end{proof}
 
 
+\begin{example}{C2E to LABELLED SLIDING TOKENS problem reduction. \\}
+  \textbf{Input instance : C2E for restricted NCL same as figure \ref{fig:input_instance_config_to_config}.} \hfill
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Output instance %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------- out 1 & 2 ---------------------------------------------
+  \textbf{Output instance : LABELLED SLIDING TOKENS instance.} \hfill
+
+  \begin{figure}[H]
+    \raggedright
+    \begin{subfigure}[b]{0.6\textwidth}
+      \begin{scaletikzpicturetowidth}{\textwidth}
+        \begin{tikzpicture}[scale=0.8]
+          %%%%%%%%%%%% AND 1 %%%%%%%%%%%%
+          \def\ver{0.12} %size of a vertex
+          \def\xa{-1}
+          \def\ya{0}
+          % Highlight change
+          %graph G
+          \draw (\xa,\ya) circle (0.2cm);          %v1 no fill
+          \draw (\xa+0.5,\ya-0.8) circle (0.2cm);  %v4 no fill
+          \draw (\xa-0.5,\ya-0.8) circle (0.2cm);  %v3 no fill
+          % Tokens
+          \path[fill] (\xa-0.5,\ya-0.8) circle (\ver);   %v3
+          \node (a) at (\xa-1.4,\ya-0.8) {\textcolor{violet}{\large $t_1$}};
+          %labels
+          \draw[thick] (\xa,\ya)--(\xa-0.5,\ya-0.8);
+          \draw[thick] (\xa,\ya)--(\xa+0.5,\ya-0.8);
+          \path[draw, thick, dashed, rounded corners=4mm] (\xa,\ya+0.6)--(\xa+1.2,\ya-1.2)--(\xa-1.2,\ya-1.2)--cycle;
+          %%%%%%%%%%%% AND 2 %%%%%%%%%%%%
+          \def\ver{0.12} %size of a vertex
+          \def\xb{4}
+          \def\yb{-3}
+          %graph G
+          \draw (\xb,\yb) circle (0.2cm);          %v1 no fill
+          \draw (\xb+0.5,\yb-0.8) circle (0.2cm);  %v4 no fill
+          \draw (\xb-0.5,\yb-0.8) circle (0.2cm);  %v3 no fill
+          % Tokens
+          \path[fill] (\xb+0.5,\yb-0.8) circle (\ver);   %v3
+          \node (b) at (\xb+1.4,\yb-0.8) {\textcolor{violet}{\large $t_3$}};
+          %labels
+          \draw[thick] (\xb,\yb)--(\xb-0.5,\yb-0.8);
+          \draw[thick] (\xb,\yb)--(\xb+0.5,\yb-0.8);
+          \path[draw, thick, dashed, rounded corners=4mm] (\xb,\yb+0.6)--(\xb+1.2,\yb-1.2)--(\xb-1.2,\yb-1.2)--cycle;
+          %%%%%%%%%%%% AND 3 %%%%%%%%%%%%
+          \def\ver{0.12} %size of a vertex
+          \def\xc{9}
+          \def\yc{0}
+          %graph G
+          \draw (\xc,\yc) circle (0.2cm);          %v1 no fill
+          \draw (\xc+0.5,\yc-0.8) circle (0.2cm);  %v4 no fill
+          \draw (\xc-0.5,\yc-0.8) circle (0.2cm);  %v3 no fill
+          % Tokens
+          \path[fill] (\xc-0.5,\yc-0.8) circle (\ver);   %v3
+          \node (c) at (\xc-1.4,\yc-0.8) {\textcolor{violet}{\large $t_2$}};
+          %labels
+          \draw[thick] (\xc,\yc)--(\xc-0.5,\yc-0.8);
+          \draw[thick] (\xc,\yc)--(\xc+0.5,\yc-0.8);
+          \path[draw, thick, dashed, rounded corners=4mm] (\xc,\yc+0.6)--(\xc+1.2,\yc-1.2)--(\xc-1.2,\yc-1.2)--cycle;
+          %%%%%%%%%%%% OR 1 %%%%%%%%%%%%
+          \def\ver{0.12} %size of a vertex
+          \def\xd{0}
+          \def\yd{-11}
+          %G_1
+          \draw (\xd,\yd) circle (0.2cm);           %v1
+          \draw (\xd+0.5,\yd-0.8) circle (0.2cm);   %v4
+          \draw (\xd-0.5,\yd-0.8) circle (0.2cm);   %v3
+          \draw (\xd,\yd+1) circle (0.2cm);         %v2
+          \draw (\xd-1.5,\yd-1.5) circle (0.2cm);   %v5
+          \draw (\xd+1.5,\yd-1.5) circle (0.2cm);   %v6
+          % Tokens
+          \path[fill] (\xd,\yd) circle (\ver);           %v1
+          \path[fill] (\xd-1.5,\yd-1.5) circle (\ver);   %v5
+          \path[fill] (\xd+1.5,\yd-1.5) circle (\ver);   %v6
+          \node (d) at (\xd+0.8,\yd) {\textcolor{violet}{\large $t_7$}};
+          \node (e) at (\xd+2.4,\yd-1.5) {\textcolor{violet}{\large $t_8$}};
+          \node (f) at (\xd-2.4,\yd-1.5) {\textcolor{violet}{\large $t_9$}};
+
+          %labels
+          \draw[thick] (\xd,\yd+1)--(\xd, \yd)--(\xd-0.5,\yd-0.8)--(\xd-1.5,\yd-1.5);
+          \draw[thick] (\xd-0.5,\yd-0.8)--(\xd+0.5,\yd-0.8)--(\xd+1.5,\yd-1.5);
+          \draw[thick] (\xd,\yd)-- (\xd+0.5,\yd-0.8);
+
+          \path[draw, thick, dashed, rounded corners=6mm] (\xd,\yd+1.8)--(\xd+2.2,\yd-2)--(\xd-2.2,\yd-2)--cycle;
+          %%%%%%%%%%%% OR 2 %%%%%%%%%%%%
+          \def\ver{0.12} %size of a vertex
+          \def\xe{4}
+          \def\ye{-7}
+          %G_1
+          \draw (\xe,\ye) circle (0.2cm);           %v1
+          \draw (\xe+0.5,\ye-0.8) circle (0.2cm);   %v4
+          \draw (\xe-0.5,\ye-0.8) circle (0.2cm);   %v3
+          \draw (\xe,\ye+1) circle (0.2cm);         %v2
+          \draw (\xe-1.5,\ye-1.5) circle (0.2cm);   %v5
+          \draw (\xe+1.5,\ye-1.5) circle (0.2cm);   %v6
+          % tokens
+          \path[fill] (\xe,\ye+1) circle (\ver);         %v2
+          \path[fill] (\xe+0.5,\ye-0.8) circle (\ver);   %v4
+          \path[fill] (\xe-1.5,\ye-1.5) circle (\ver);   %v5
+          \node (d) at (\xe-0.8,\ye+1) {\textcolor{violet}{\large $t_4$}};
+          \node (e) at (\xe+1.4,\ye-0.8) {\textcolor{violet}{\large $t_5$}};
+          \node (f) at (\xe-2.4,\ye-1.5) {\textcolor{violet}{\large $t_6$}};
+          %labels
+          \draw[thick] (\xe,\ye+1)--(\xe, \ye)--(\xe-0.5,\ye-0.8)--(\xe-1.5,\ye-1.5);
+          \draw[thick] (\xe-0.5,\ye-0.8)--(\xe+0.5,\ye-0.8)--(\xe+1.5,\ye-1.5);
+          \draw[thick] (\xe,\ye)-- (\xe+0.5,\ye-0.8);
+          \path[draw, thick, dashed, rounded corners=6mm] (\xe,\ye+1.8)--(\xe+2.2,\ye-2)--(\xe-2.2,\ye-2)--cycle;
+          %%%%%%%%%%%% OR 3 %%%%%%%%%%%%
+          \def\ver{0.12} %size of a vertex
+          \def\xf{8}
+          \def\yf{-11}
+          %G_1
+          \draw (\xf,\yf) circle (0.2cm);           %v1
+          \draw (\xf+0.5,\yf-0.8) circle (0.2cm);   %v4
+          \draw (\xf-0.5,\yf-0.8) circle (0.2cm);   %v3
+          \draw (\xf,\yf+1) circle (0.2cm);         %v2
+          \draw (\xf-1.5,\yf-1.5) circle (0.2cm);   %v5
+          \draw (\xf+1.5,\yf-1.5) circle (0.2cm);   %v6
+          % tokens
+          \path[fill] (\xf,\yf+1) circle (\ver);         %v2
+          \path[fill] (\xf-0.5,\yf-0.8) circle (\ver);   %v3
+          \path[fill] (\xf+1.5,\yf-1.5) circle (\ver);   %v6
+          \node (g) at (\xf+0.8,\yf+1){\textcolor{violet}{\large $t_{10}$}};
+          \node (h) at (\xf-1.4,\yf-0.8) {\textcolor{violet}{\large $t_{11}$}};
+          \node (i) at (\xf+2.4,\yf-1.5) {\textcolor{violet}{\large $t_{12}$}};
+
+          %labels
+          \draw[thick] (\xf,\yf+1)--(\xf, \yf)--(\xf-0.5,\yf-0.8)--(\xf-1.5,\yf-1.5);
+          \draw[thick] (\xf-0.5,\yf-0.8)--(\xf+0.5,\yf-0.8)--(\xf+1.5,\yf-1.5);
+          \draw[thick] (\xf,\yf)-- (\xf+0.5,\yf-0.8);
+          \path[draw, thick, dashed, rounded corners=6mm] (\xf,\yf+1.8)--(\xf+2.2,\yf-2)--(\xf-2.2,\yf-2)--cycle;
+          %%%%%%%%%%% EDGES %%%%%%%%%
+          \node (a) at (4.5,-5) {\textbf{E}};            % Label reject
+          \draw [-, red, thick, arrows={->[scale=3,red]}] (\xc-0.5,\yc-0.8) to [out=170,in=10] (\xa+0.5,\ya-0.8);            % AND 3  -- AND 1
+          \draw [-, red, thick, arrows={->[scale=3,red]}] (\xa-0.5,\ya-0.8)  to [out=300,in=170] (\xb-0.5,\yb-0.8);          % AND 1  -- AND 2
+          \draw [-, red, thick, arrows={->[scale=3,red]}] (\xb+0.5,\yb-0.8) to [out=5,in=235] (\xc+0.5,\yc-0.8);             % AND 2  -- AND 3
+          \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd-1.5,\yd-1.5) to [out=130,in=220] (\xa,\ya);                 % OR 1  -- AND 1
+          \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd+1.5,\yd-1.5) to [out=340,in=200] (\xf-1.5,\yf-1.5);         % OR 1  -- OR 3
+          \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf,\yf+1)  to [out=140,in=340] (\xe+1.5,\ye-1.5);              % OR 3  -- OR 2
+          \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe-1.5,\ye-1.5) to [out=200,in=40] (\xd,\yd+1);                % OR 2  -- OR 1
+          \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf+1.5,\yf-1.5) to [out=40,in=320] (\xc,\yc);                  % OR 3  -- AND 3
+          \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe,\ye+1) to [out=100,in=260] (\xb,\yb);                       % OR 2  -- AND 2
+        \end{tikzpicture}
+      \end{scaletikzpicturetowidth}
+      \caption{$S_0$.}
+      \label{fig:output_instance_final}
+    \end{subfigure}
+    \vspace{3em}
+    \begin{subfigure}[b]{0.6\textwidth}
+      \begin{scaletikzpicturetowidth}{\textwidth}
+        \begin{tikzpicture}[scale=0.8]
+          %%%%%%%%%%%% AND 1 %%%%%%%%%%%%
+          \def\ver{0.12} %size of a vertex
+          \def\xa{-1}
+          \def\ya{0}
+          % Highlight change
+          \draw[fill=yellow, opacity=.7, draw=none] (\xa+0.5,\ya-0.8) circle (0.3cm);
+          %graph G
+          \draw (\xa,\ya) circle (0.2cm);          %v1 no fill
+          \draw (\xa+0.5,\ya-0.8) circle (0.2cm);  %v4 no fill
+          \draw (\xa-0.5,\ya-0.8) circle (0.2cm);  %v3 no fill
+          % Tokens
+          \path[fill] (\xa-0.5,\ya-0.8) circle (\ver);   %v3
+          \path[fill] (\xa+0.5,\ya-0.8) circle (\ver);   %v4
+          \node (a) at (\xa-1.4,\ya-0.8) {\textcolor{violet}{\large $t_1$}};
+          \node (a) at (\xa+1.4,\ya-0.8) {\textcolor{violet}{\large $t_2$}};
+          %labels
+          \draw[thick] (\xa,\ya)--(\xa-0.5,\ya-0.8);
+          \draw[thick] (\xa,\ya)--(\xa+0.5,\ya-0.8);
+          \path[draw, thick, dashed, rounded corners=4mm] (\xa,\ya+0.6)--(\xa+1.2,\ya-1.2)--(\xa-1.2,\ya-1.2)--cycle;
+          %%%%%%%%%%%% AND 2 %%%%%%%%%%%%
+          \def\ver{0.12} %size of a vertex
+          \def\xb{4}
+          \def\yb{-3}
+          %graph G
+          \draw (\xb,\yb) circle (0.2cm);          %v1 no fill
+          \draw (\xb+0.5,\yb-0.8) circle (0.2cm);  %v4 no fill
+          \draw (\xb-0.5,\yb-0.8) circle (0.2cm);  %v3 no fill
+          % Tokens
+          \path[fill] (\xb+0.5,\yb-0.8) circle (\ver);   %v3
+          \node (b) at (\xb+1.4,\yb-0.8) {\textcolor{violet}{\large $t_3$}};
+          %labels
+          \draw[thick] (\xb,\yb)--(\xb-0.5,\yb-0.8);
+          \draw[thick] (\xb,\yb)--(\xb+0.5,\yb-0.8);
+          \path[draw, thick, dashed, rounded corners=4mm] (\xb,\yb+0.6)--(\xb+1.2,\yb-1.2)--(\xb-1.2,\yb-1.2)--cycle;
+          %%%%%%%%%%%% AND 3 %%%%%%%%%%%%
+          \def\ver{0.12} %size of a vertex
+          \def\xc{9}
+          \def\yc{0}
+          %graph G
+          \draw (\xc,\yc) circle (0.2cm);          %v1 no fill
+          \draw (\xc+0.5,\yc-0.8) circle (0.2cm);  %v4 no fill
+          \draw (\xc-0.5,\yc-0.8) circle (0.2cm);  %v3 no fill
+          %labels
+          \draw[thick] (\xc,\yc)--(\xc-0.5,\yc-0.8);
+          \draw[thick] (\xc,\yc)--(\xc+0.5,\yc-0.8);
+          \path[draw, thick, dashed, rounded corners=4mm] (\xc,\yc+0.6)--(\xc+1.2,\yc-1.2)--(\xc-1.2,\yc-1.2)--cycle;
+          %%%%%%%%%%%% OR 1 %%%%%%%%%%%%
+          \def\ver{0.12} %size of a vertex
+          \def\xd{0}
+          \def\yd{-11}
+          %G_1
+          \draw (\xd,\yd) circle (0.2cm);           %v1
+          \draw (\xd+0.5,\yd-0.8) circle (0.2cm);   %v4
+          \draw (\xd-0.5,\yd-0.8) circle (0.2cm);   %v3
+          \draw (\xd,\yd+1) circle (0.2cm);         %v2
+          \draw (\xd-1.5,\yd-1.5) circle (0.2cm);   %v5
+          \draw (\xd+1.5,\yd-1.5) circle (0.2cm);   %v6
+
+          \path[fill] (\xd,\yd) circle (\ver);           %v1
+          \path[fill] (\xd-1.5,\yd-1.5) circle (\ver);   %v5
+          \path[fill] (\xd+1.5,\yd-1.5) circle (\ver);   %v6
+          \node (d) at (\xd+0.8,\yd) {\textcolor{violet}{\large $t_7$}};
+          \node (e) at (\xd+2.4,\yd-1.5) {\textcolor{violet}{\large $t_8$}};
+          \node (f) at (\xd-2.4,\yd-1.5) {\textcolor{violet}{\large $t_9$}};
+          %labels
+          \draw[thick] (\xd,\yd+1)--(\xd, \yd)--(\xd-0.5,\yd-0.8)--(\xd-1.5,\yd-1.5);
+          \draw[thick] (\xd-0.5,\yd-0.8)--(\xd+0.5,\yd-0.8)--(\xd+1.5,\yd-1.5);
+          \draw[thick] (\xd,\yd)-- (\xd+0.5,\yd-0.8);
+          \path[draw, thick, dashed, rounded corners=6mm] (\xd,\yd+1.8)--(\xd+2.2,\yd-2)--(\xd-2.2,\yd-2)--cycle;
+          %%%%%%%%%%%% OR 2 %%%%%%%%%%%%
+          \def\ver{0.12} %size of a vertex
+          \def\xe{4}
+          \def\ye{-7}
+          %G_1
+          \draw (\xe,\ye) circle (0.2cm);           %v1
+          \draw (\xe+0.5,\ye-0.8) circle (0.2cm);   %v4
+          \draw (\xe-0.5,\ye-0.8) circle (0.2cm);   %v3
+          \draw (\xe,\ye+1) circle (0.2cm);         %v2
+          \draw (\xe-1.5,\ye-1.5) circle (0.2cm);   %v5
+          \draw (\xe+1.5,\ye-1.5) circle (0.2cm);   %v6
+          \path[fill] (\xe,\ye+1) circle (\ver);         %v2
+          \path[fill] (\xe+0.5,\ye-0.8) circle (\ver);   %v4
+          \path[fill] (\xe-1.5,\ye-1.5) circle (\ver);   %v5
+          \node (d) at (\xe-0.8,\ye+1) {\textcolor{violet}{\large $t_4$}};
+          \node (e) at (\xe+1.4,\ye-0.8) {\textcolor{violet}{\large $t_5$}};
+          \node (f) at (\xe-2.4,\ye-1.5) {\textcolor{violet}{\large $t_6$}};
+          %labels
+          \draw[thick] (\xe,\ye+1)--(\xe, \ye)--(\xe-0.5,\ye-0.8)--(\xe-1.5,\ye-1.5);
+          \draw[thick] (\xe-0.5,\ye-0.8)--(\xe+0.5,\ye-0.8)--(\xe+1.5,\ye-1.5);
+          \draw[thick] (\xe,\ye)-- (\xe+0.5,\ye-0.8);
+          \path[draw, thick, dashed, rounded corners=6mm] (\xe,\ye+1.8)--(\xe+2.2,\ye-2)--(\xe-2.2,\ye-2)--cycle;
+          %%%%%%%%%%%% OR 3 %%%%%%%%%%%%
+          \def\ver{0.12} %size of a vertex
+          \def\xf{8}
+          \def\yf{-11}
+          %G_1
+          \draw (\xf,\yf) circle (0.2cm);           %v1
+          \draw (\xf+0.5,\yf-0.8) circle (0.2cm);   %v4
+          \draw (\xf-0.5,\yf-0.8) circle (0.2cm);   %v3
+          \draw (\xf,\yf+1) circle (0.2cm);         %v2
+          \draw (\xf-1.5,\yf-1.5) circle (0.2cm);   %v5
+          \draw (\xf+1.5,\yf-1.5) circle (0.2cm);   %v6
+          %tokens
+          \path[fill] (\xf,\yf+1) circle (\ver);         %v2
+          \path[fill] (\xf-0.5,\yf-0.8) circle (\ver);   %v3
+          \path[fill] (\xf+1.5,\yf-1.5) circle (\ver);   %v6
+          \node (g) at (\xf+0.8,\yf+1){\textcolor{violet}{\large $t_{10}$}};
+          \node (h) at (\xf-1.4,\yf-0.8) {\textcolor{violet}{\large $t_{11}$}};
+          \node (i) at (\xf+2.4,\yf-1.5) {\textcolor{violet}{\large $t_{12}$}};
+          %labels
+          \draw[thick] (\xf,\yf+1)--(\xf, \yf)--(\xf-0.5,\yf-0.8)--(\xf-1.5,\yf-1.5);
+          \draw[thick] (\xf-0.5,\yf-0.8)--(\xf+0.5,\yf-0.8)--(\xf+1.5,\yf-1.5);
+          \draw[thick] (\xf,\yf)-- (\xf+0.5,\yf-0.8);
+          \path[draw, thick, dashed, rounded corners=6mm] (\xf,\yf+1.8)--(\xf+2.2,\yf-2)--(\xf-2.2,\yf-2)--cycle;
+          %%%%%%%%%%% EDGES %%%%%%%%%
+          \node (a) at (4.5,-5) {\textbf{E}};            % Label reject
+          \draw [-, red, thick, arrows={->[scale=3,red]}]  (\xa+0.5,\ya-0.8) to [out=10,in=170]  (\xc-0.5,\yc-0.8);          % AND 1  -- AND 3
+          \draw [-, red, thick, arrows={->[scale=3,red]}] (\xa-0.5,\ya-0.8)  to [out=300,in=170] (\xb-0.5,\yb-0.8);          % AND 1  -- AND 2
+          \draw [-, red, thick, arrows={->[scale=3,red]}] (\xb+0.5,\yb-0.8) to [out=5,in=235] (\xc+0.5,\yc-0.8);             % AND 2  -- AND 3
+          \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd-1.5,\yd-1.5) to [out=130,in=220] (\xa,\ya);                 % OR 1  -- AND 1
+          \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd+1.5,\yd-1.5) to [out=340,in=200] (\xf-1.5,\yf-1.5);         % OR 1  -- OR 3
+          \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf,\yf+1)  to [out=140,in=340] (\xe+1.5,\ye-1.5);              % OR 3  -- OR 2
+          \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe-1.5,\ye-1.5) to [out=200,in=40] (\xd,\yd+1);                % OR 2  -- OR 1
+          \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf+1.5,\yf-1.5) to [out=40,in=320] (\xc,\yc);                  % OR 3  -- AND 3
+          \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe,\ye+1) to [out=100,in=260] (\xb,\yb);                       % OR 2  -- AND 2
+        \end{tikzpicture}
+      \end{scaletikzpicturetowidth}
+      \caption{$S_1.$}
+      \label{fig:output_instance_final}
+    \end{subfigure}
+  \end{figure}
+
+
+%------------------------------------------- out 3 & 4 ---------------------------------------------
+  \begin{figure}[H]\ContinuedFloat
+  \raggedright
+  \begin{subfigure}[b]{0.6\textwidth}
+    \begin{scaletikzpicturetowidth}{\textwidth}
+      \begin{tikzpicture}[scale=0.8]
+        %%%%%%%%%%%% AND 1 %%%%%%%%%%%%
+        \def\ver{0.12} %size of a vertex
+        \def\xa{-1}
+        \def\ya{0}
+        % Highlight change
+        \draw[fill=yellow, opacity=.7, draw=none] (\xa+0.5,\ya-0.8) circle (0.3cm);
+        %\draw[fill=yellow, opacity=.7, draw=none] (\xa-0.5,\ya-0.8) circle (0.3cm);
+        %graph G
+        \draw (\xa,\ya) circle (0.2cm);          %v1 no fill
+        \draw (\xa+0.5,\ya-0.8) circle (0.2cm);  %v4 no fill
+        \draw (\xa-0.5,\ya-0.8) circle (0.2cm);  %v3 no fill
+        % Tokens
+        \path[fill] (\xa-0.5,\ya-0.8) circle (\ver);   %v3
+        \path[fill] (\xa+0.5,\ya-0.8) circle (\ver);   %v4
+        \node (a) at (\xa-1.4,\ya-0.8) {\textcolor{violet}{\large $t_1$}};
+        \node (a) at (\xa+1.4,\ya-0.8) {\textcolor{violet}{\large $t_2$}};
+        %labels
+        \draw[thick] (\xa,\ya)--(\xa-0.5,\ya-0.8);
+        \draw[thick] (\xa,\ya)--(\xa+0.5,\ya-0.8);
+        \path[draw, thick, dashed, rounded corners=4mm] (\xa,\ya+0.6)--(\xa+1.2,\ya-1.2)--(\xa-1.2,\ya-1.2)--cycle;
+        %%%%%%%%%%%% AND 2 %%%%%%%%%%%%
+        \def\ver{0.12} %size of a vertex
+        \def\xb{4}
+        \def\yb{-3}
+        %graph G
+        \draw (\xb,\yb) circle (0.2cm);          %v1 no fill
+        \draw (\xb+0.5,\yb-0.8) circle (0.2cm);  %v4 no fill
+        \draw (\xb-0.5,\yb-0.8) circle (0.2cm);  %v3 no fill
+        %labels
+        \draw[thick] (\xb,\yb)--(\xb-0.5,\yb-0.8);
+        \draw[thick] (\xb,\yb)--(\xb+0.5,\yb-0.8);
+        \path[draw, thick, dashed, rounded corners=4mm] (\xb,\yb+0.6)--(\xb+1.2,\yb-1.2)--(\xb-1.2,\yb-1.2)--cycle;
+        %%%%%%%%%%%% AND 3 %%%%%%%%%%%%
+        \def\ver{0.12} %size of a vertex
+        \def\xc{9}
+        \def\yc{0}
+        % Highlight
+        \draw[fill=yellow, opacity=.7, draw=none] (\xc+0.5,\yc-0.8) circle (0.3cm);
+        %graph G
+        \draw (\xc,\yc) circle (0.2cm);          %v1 no fill
+        \draw (\xc+0.5,\yc-0.8) circle (0.2cm);  %v4 no fill
+        \draw (\xc-0.5,\yc-0.8) circle (0.2cm);  %v3 no fill
+        % Tokens
+        \path[fill] (\xc+0.5,\yc-0.8) circle (\ver);   %v4
+        \node (a) at (\xc+1.4,\yc-0.8) {\textcolor{violet}{\large $t_3$}};
+        %labels
+        \draw[thick] (\xc,\yc)--(\xc-0.5,\yc-0.8);
+        \draw[thick] (\xc,\yc)--(\xc+0.5,\yc-0.8);
+        \path[draw, thick, dashed, rounded corners=4mm] (\xc,\yc+0.6)--(\xc+1.2,\yc-1.2)--(\xc-1.2,\yc-1.2)--cycle;
+        %%%%%%%%%%%% OR 1 %%%%%%%%%%%%
+        \def\ver{0.12} %size of a vertex
+        \def\xd{0}
+        \def\yd{-11}
+        %G_1
+        \draw (\xd,\yd) circle (0.2cm);           %v1
+        \draw (\xd+0.5,\yd-0.8) circle (0.2cm);   %v4
+        \draw (\xd-0.5,\yd-0.8) circle (0.2cm);   %v3
+        \draw (\xd,\yd+1) circle (0.2cm);         %v2
+        \draw (\xd-1.5,\yd-1.5) circle (0.2cm);   %v5
+        \draw (\xd+1.5,\yd-1.5) circle (0.2cm);   %v6
+        % tokens
+        \path[fill] (\xd,\yd) circle (\ver);           %v1
+        \path[fill] (\xd-1.5,\yd-1.5) circle (\ver);   %v5
+        \path[fill] (\xd+1.5,\yd-1.5) circle (\ver);   %v6
+        \node (d) at (\xd+0.8,\yd) {\textcolor{violet}{\large $t_7$}};
+        \node (e) at (\xd+2.4,\yd-1.5) {\textcolor{violet}{\large $t_8$}};
+        \node (f) at (\xd-2.4,\yd-1.5) {\textcolor{violet}{\large $t_9$}};
+        %labels
+        \draw[thick] (\xd,\yd+1)--(\xd, \yd)--(\xd-0.5,\yd-0.8)--(\xd-1.5,\yd-1.5);
+        \draw[thick] (\xd-0.5,\yd-0.8)--(\xd+0.5,\yd-0.8)--(\xd+1.5,\yd-1.5);
+        \draw[thick] (\xd,\yd)-- (\xd+0.5,\yd-0.8);
+        %edges
+        \path[draw, thick, dashed, rounded corners=6mm] (\xd,\yd+1.8)--(\xd+2.2,\yd-2)--(\xd-2.2,\yd-2)--cycle;
+        %%%%%%%%%%%% OR 2 %%%%%%%%%%%%
+        \def\ver{0.12} %size of a vertex
+        \def\xe{4}
+        \def\ye{-7}
+        %G_1
+        \draw (\xe,\ye) circle (0.2cm);           %v1
+        \draw (\xe+0.5,\ye-0.8) circle (0.2cm);   %v4
+        \draw (\xe-0.5,\ye-0.8) circle (0.2cm);   %v3
+        \draw (\xe,\ye+1) circle (0.2cm);         %v2
+        \draw (\xe-1.5,\ye-1.5) circle (0.2cm);   %v5
+        \draw (\xe+1.5,\ye-1.5) circle (0.2cm);   %v6
+        % token
+        \path[fill] (\xe,\ye+1) circle (\ver);         %v2
+        \path[fill] (\xe+0.5,\ye-0.8) circle (\ver);   %v4
+        \path[fill] (\xe-1.5,\ye-1.5) circle (\ver);   %v5
+        \node (d) at (\xe-0.8,\ye+1) {\textcolor{violet}{\large $t_4$}};
+        \node (e) at (\xe+1.4,\ye-0.8) {\textcolor{violet}{\large $t_5$}};
+        \node (f) at (\xe-2.4,\ye-1.5) {\textcolor{violet}{\large $t_6$}};
+        %labels
+        \draw[thick] (\xe,\ye+1)--(\xe, \ye)--(\xe-0.5,\ye-0.8)--(\xe-1.5,\ye-1.5);
+        \draw[thick] (\xe-0.5,\ye-0.8)--(\xe+0.5,\ye-0.8)--(\xe+1.5,\ye-1.5);
+        \draw[thick] (\xe,\ye)-- (\xe+0.5,\ye-0.8);
+        \path[draw, thick, dashed, rounded corners=6mm] (\xe,\ye+1.8)--(\xe+2.2,\ye-2)--(\xe-2.2,\ye-2)--cycle;
+        %%%%%%%%%%%% OR 3 %%%%%%%%%%%%
+        \def\ver{0.12} %size of a vertex
+        \def\xf{8}
+        \def\yf{-11}
+        %G_1
+        \draw (\xf,\yf) circle (0.2cm);           %v1
+        \draw (\xf+0.5,\yf-0.8) circle (0.2cm);   %v4
+        \draw (\xf-0.5,\yf-0.8) circle (0.2cm);   %v3
+        \draw (\xf,\yf+1) circle (0.2cm);         %v2
+        \draw (\xf-1.5,\yf-1.5) circle (0.2cm);   %v5
+        \draw (\xf+1.5,\yf-1.5) circle (0.2cm);   %v6
+        \path[fill] (\xf,\yf+1) circle (\ver);         %v2
+        \path[fill] (\xf-0.5,\yf-0.8) circle (\ver);   %v3
+        \path[fill] (\xf+1.5,\yf-1.5) circle (\ver);   %v6
+        \node (g) at (\xf+0.8,\yf+1){\textcolor{violet}{\large $t_{10}$}};
+        \node (h) at (\xf-1.4,\yf-0.8) {\textcolor{violet}{\large $t_{11}$}};
+        \node (i) at (\xf+2.4,\yf-1.5) {\textcolor{violet}{\large $t_{12}$}};
+        %labels
+        \draw[thick] (\xf,\yf+1)--(\xf, \yf)--(\xf-0.5,\yf-0.8)--(\xf-1.5,\yf-1.5);
+        \draw[thick] (\xf-0.5,\yf-0.8)--(\xf+0.5,\yf-0.8)--(\xf+1.5,\yf-1.5);
+        \draw[thick] (\xf,\yf)-- (\xf+0.5,\yf-0.8);
+        \path[draw, thick, dashed, rounded corners=6mm] (\xf,\yf+1.8)--(\xf+2.2,\yf-2)--(\xf-2.2,\yf-2)--cycle;
+        %%%%%%%%%%% EDGES %%%%%%%%%
+        \node (a) at (4.5,-5) {\textbf{E}};            % Label reject
+        \draw [-, red, thick, arrows={->[scale=3,red]}]  (\xa+0.5,\ya-0.8) to [out=10,in=170]  (\xc-0.5,\yc-0.8);          % AND 1  -- AND 3
+        \draw [-, red, thick, arrows={->[scale=3,red]}] (\xa-0.5,\ya-0.8)  to [out=300,in=170] (\xb-0.5,\yb-0.8);          % AND 1  -- AND 2
+        \draw [-, red, thick, arrows={->[scale=3,red]}] (\xc+0.5,\yc-0.8) to [out=235,in=5] (\xb+0.5,\yb-0.8) ;            % AND 3  -- AND 2
+        \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd-1.5,\yd-1.5) to [out=130,in=220] (\xa,\ya);                 % OR 1  -- AND 1
+        \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd+1.5,\yd-1.5) to [out=340,in=200] (\xf-1.5,\yf-1.5);         % OR 1  -- OR 3
+        \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf,\yf+1)  to [out=140,in=340] (\xe+1.5,\ye-1.5);              % OR 3  -- OR 2
+        \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe-1.5,\ye-1.5) to [out=200,in=40] (\xd,\yd+1);                % OR 2  -- OR 1
+        \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf+1.5,\yf-1.5) to [out=40,in=320] (\xc,\yc);                  % OR 3  -- AND 3
+        \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe,\ye+1) to [out=100,in=260] (\xb,\yb);                       % OR 2  -- AND 2
+      \end{tikzpicture}
+    \end{scaletikzpicturetowidth}
+    \caption{$S_2.$}
+    \label{fig:output_instance_final}
+  \end{subfigure}
+  \vspace{3em}
+  \begin{subfigure}[b]{0.6\textwidth}
+    \begin{scaletikzpicturetowidth}{\textwidth}
+      \begin{tikzpicture}[scale=0.8]
+        %%%%%%%%%%%% AND 1 %%%%%%%%%%%%
+        \def\ver{0.12} %size of a vertex
+        \def\xa{-1}
+        \def\ya{0}
+        % Highlight change
+        \draw[fill=yellow, opacity=.7, draw=none] (\xa+0.5,\ya-0.8) circle (0.3cm);
+        %\draw[fill=yellow, opacity=.7, draw=none] (\xa-0.5,\ya-0.8) circle (0.3cm);
+        %graph G
+        \draw (\xa,\ya) circle (0.2cm);          %v1 no fill
+        \draw (\xa+0.5,\ya-0.8) circle (0.2cm);  %v4 no fill
+        \draw (\xa-0.5,\ya-0.8) circle (0.2cm);  %v3 no fill
+        % Tokens
+        \path[fill] (\xa-0.5,\ya-0.8) circle (\ver);   %v3
+        \path[fill] (\xa+0.5,\ya-0.8) circle (\ver);   %v4
+        \node (a) at (\xa-1.4,\ya-0.8) {\textcolor{violet}{\large $t_1$}};
+        \node (a) at (\xa+1.4,\ya-0.8) {\textcolor{violet}{\large $t_2$}};
+        %labels
+        \draw[thick] (\xa,\ya)--(\xa-0.5,\ya-0.8);
+        \draw[thick] (\xa,\ya)--(\xa+0.5,\ya-0.8);
+        \path[draw, thick, dashed, rounded corners=4mm] (\xa,\ya+0.6)--(\xa+1.2,\ya-1.2)--(\xa-1.2,\ya-1.2)--cycle;
+        %%%%%%%%%%%% AND 2 %%%%%%%%%%%%
+        \def\ver{0.12} %size of a vertex
+        \def\xb{4}
+        \def\yb{-3}
+        % Highlight change
+        \draw[fill=yellow, opacity=.7, draw=none] (\xb,\yb) circle (0.3cm);
+        %graph G
+        \draw (\xb,\yb) circle (0.2cm);          %v1 no fill
+        \draw (\xb+0.5,\yb-0.8) circle (0.2cm);  %v4 no fill
+        \draw (\xb-0.5,\yb-0.8) circle (0.2cm);  %v3 no fill
+        % Tokens
+        \path[fill] (\xb,\yb)  circle (\ver);   %v1
+        \node (a) at (\xb+0.9,\yb) {\textcolor{violet}{\large $t_4$}};
+        %labels
+        \draw[thick] (\xb,\yb)--(\xb-0.5,\yb-0.8);
+        \draw[thick] (\xb,\yb)--(\xb+0.5,\yb-0.8);
+        \path[draw, thick, dashed, rounded corners=4mm] (\xb,\yb+0.6)--(\xb+1.2,\yb-1.2)--(\xb-1.2,\yb-1.2)--cycle;
+        %%%%%%%%%%%% AND 3 %%%%%%%%%%%%
+        \def\ver{0.12} %size of a vertex
+        \def\xc{9}
+        \def\yc{0}
+        % Highlight
+        \draw[fill=yellow, opacity=.7, draw=none] (\xc+0.5,\yc-0.8) circle (0.3cm);
+        %graph G
+        \draw (\xc,\yc) circle (0.2cm);          %v1 no fill
+        \draw (\xc+0.5,\yc-0.8) circle (0.2cm);  %v4 no fill
+        \draw (\xc-0.5,\yc-0.8) circle (0.2cm);  %v3 no fill
+        % Tokens
+        \path[fill] (\xc+0.5,\yc-0.8) circle (\ver);   %v4
+        \node (a) at (\xc+1.4,\yc-0.8) {\textcolor{violet}{\large $t_3$}};
+        %labels
+        \draw[thick] (\xc,\yc)--(\xc-0.5,\yc-0.8);
+        \draw[thick] (\xc,\yc)--(\xc+0.5,\yc-0.8);
+        \path[draw, thick, dashed, rounded corners=4mm] (\xc,\yc+0.6)--(\xc+1.2,\yc-1.2)--(\xc-1.2,\yc-1.2)--cycle;
+        %%%%%%%%%%%% OR 1 %%%%%%%%%%%%
+        \def\ver{0.12} %size of a vertex
+        \def\xd{0}
+        \def\yd{-11}
+        %G_1
+        \draw (\xd,\yd) circle (0.2cm);           %v1
+        \draw (\xd+0.5,\yd-0.8) circle (0.2cm);   %v4
+        \draw (\xd-0.5,\yd-0.8) circle (0.2cm);   %v3
+        \draw (\xd,\yd+1) circle (0.2cm);         %v2
+        \draw (\xd-1.5,\yd-1.5) circle (0.2cm);   %v5
+        \draw (\xd+1.5,\yd-1.5) circle (0.2cm);   %v6
+
+        \path[fill] (\xd,\yd) circle (\ver);           %v1
+        \path[fill] (\xd-1.5,\yd-1.5) circle (\ver);   %v5
+        \path[fill] (\xd+1.5,\yd-1.5) circle (\ver);   %v6
+        \node (d) at (\xd+0.8,\yd) {\textcolor{violet}{\large $t_7$}};
+        \node (e) at (\xd+2.4,\yd-1.5) {\textcolor{violet}{\large $t_8$}};
+        \node (f) at (\xd-2.4,\yd-1.5) {\textcolor{violet}{\large $t_9$}};
+        %labels
+        \draw[thick] (\xd,\yd+1)--(\xd, \yd)--(\xd-0.5,\yd-0.8)--(\xd-1.5,\yd-1.5);
+        \draw[thick] (\xd-0.5,\yd-0.8)--(\xd+0.5,\yd-0.8)--(\xd+1.5,\yd-1.5);
+        \draw[thick] (\xd,\yd)-- (\xd+0.5,\yd-0.8);
+
+        \path[draw, thick, dashed, rounded corners=6mm] (\xd,\yd+1.8)--(\xd+2.2,\yd-2)--(\xd-2.2,\yd-2)--cycle;
+
+        %%%%%%%%%%%% OR 2 %%%%%%%%%%%%
+        \def\ver{0.12} %size of a vertex
+        \def\xe{4}
+        \def\ye{-7}
+        %G_1
+        \draw (\xe,\ye) circle (0.2cm);           %v1
+        \draw (\xe+0.5,\ye-0.8) circle (0.2cm);   %v4
+        \draw (\xe-0.5,\ye-0.8) circle (0.2cm);   %v3
+        \draw (\xe,\ye+1) circle (0.2cm);         %v2
+        \draw (\xe-1.5,\ye-1.5) circle (0.2cm);   %v5
+        \draw (\xe+1.5,\ye-1.5) circle (0.2cm);   %v6
+
+        \path[fill] (\xe+0.5,\ye-0.8) circle (\ver);   %v4
+        \path[fill] (\xe-1.5,\ye-1.5) circle (\ver);   %v5
+        \node (e) at (\xe+1.4,\ye-0.8) {\textcolor{violet}{\large $t_5$}};
+        \node (f) at (\xe-2.4,\ye-1.5) {\textcolor{violet}{\large $t_6$}};
+
+        %labels
+        \draw[thick] (\xe,\ye+1)--(\xe, \ye)--(\xe-0.5,\ye-0.8)--(\xe-1.5,\ye-1.5);
+        \draw[thick] (\xe-0.5,\ye-0.8)--(\xe+0.5,\ye-0.8)--(\xe+1.5,\ye-1.5);
+        \draw[thick] (\xe,\ye)-- (\xe+0.5,\ye-0.8);
+
+        \path[draw, thick, dashed, rounded corners=6mm] (\xe,\ye+1.8)--(\xe+2.2,\ye-2)--(\xe-2.2,\ye-2)--cycle;
+
+        %%%%%%%%%%%% OR 3 %%%%%%%%%%%%
+        \def\ver{0.12} %size of a vertex
+        \def\xf{8}
+        \def\yf{-11}
+        %G_1
+        \draw (\xf,\yf) circle (0.2cm);           %v1
+        \draw (\xf+0.5,\yf-0.8) circle (0.2cm);   %v4
+        \draw (\xf-0.5,\yf-0.8) circle (0.2cm);   %v3
+        \draw (\xf,\yf+1) circle (0.2cm);         %v2
+        \draw (\xf-1.5,\yf-1.5) circle (0.2cm);   %v5
+        \draw (\xf+1.5,\yf-1.5) circle (0.2cm);   %v6
+
+        \path[fill] (\xf,\yf+1) circle (\ver);         %v2
+        \path[fill] (\xf-0.5,\yf-0.8) circle (\ver);   %v3
+        \path[fill] (\xf+1.5,\yf-1.5) circle (\ver);   %v6
+        \node (g) at (\xf+0.8,\yf+1){\textcolor{violet}{\large $t_{10}$}};
+        \node (h) at (\xf-1.4,\yf-0.8) {\textcolor{violet}{\large $t_{11}$}};
+        \node (i) at (\xf+2.4,\yf-1.5) {\textcolor{violet}{\large $t_{12}$}};
+        %labels
+        \draw[thick] (\xf,\yf+1)--(\xf, \yf)--(\xf-0.5,\yf-0.8)--(\xf-1.5,\yf-1.5);
+        \draw[thick] (\xf-0.5,\yf-0.8)--(\xf+0.5,\yf-0.8)--(\xf+1.5,\yf-1.5);
+        \draw[thick] (\xf,\yf)-- (\xf+0.5,\yf-0.8);
+
+        \path[draw, thick, dashed, rounded corners=6mm] (\xf,\yf+1.8)--(\xf+2.2,\yf-2)--(\xf-2.2,\yf-2)--cycle;
+
+        %%%%%%%%%%% EDGES %%%%%%%%%
+        \node (a) at (4.5,-5) {\textbf{E}};            % Label reject
+        \draw [-, red, thick, arrows={->[scale=3,red]}]  (\xa+0.5,\ya-0.8) to [out=10,in=170]  (\xc-0.5,\yc-0.8);          % AND 1  -- AND 3
+        \draw [-, red, thick, arrows={->[scale=3,red]}] (\xa-0.5,\ya-0.8)  to [out=300,in=170] (\xb-0.5,\yb-0.8);          % AND 1  -- AND 2
+        \draw [-, red, thick, arrows={->[scale=3,red]}] (\xc+0.5,\yc-0.8) to [out=235,in=5] (\xb+0.5,\yb-0.8) ;            % AND 3  -- AND 2
+        \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd-1.5,\yd-1.5) to [out=130,in=220] (\xa,\ya);                 % OR 1  -- AND 1
+        \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xd+1.5,\yd-1.5) to [out=340,in=200] (\xf-1.5,\yf-1.5);         % OR 1  -- OR 3
+        \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf,\yf+1)  to [out=140,in=340] (\xe+1.5,\ye-1.5);              % OR 3  -- OR 2
+        \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xe-1.5,\ye-1.5) to [out=200,in=40] (\xd,\yd+1);                % OR 2  -- OR 1
+        \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xf+1.5,\yf-1.5) to [out=40,in=320] (\xc,\yc);                  % OR 3  -- AND 3
+        \draw [-, blue, thick, arrows={->[scale=3,blue]}] (\xb,\yb) to [out=260,in=100] (\xe,\ye+1);                       % AND 2  -- OR 2
+      \end{tikzpicture}
+    \end{scaletikzpicturetowidth}
+    \caption{$S_3.$}
+    \label{fig:output_instance_final}
+  \end{subfigure}
+  \caption{Reconfiguration sequence which transforms the initial configuration $S_0$ of the corresponding output LABELLED SLIDING TOKENS instance to the target configuration $S_3$.}
+  \label{fig:input_instance_config_to_edge}
+  \end{figure}
+\end{example}
 
 \section{Standard Sliding-Token Problem}\label{sec:Standard-sliding-token-problem}
 Another variant of SLIDING TOKEN problem was studied by Bosnma. In \cite{bonsma}, Bonsma showed that a slightly different
@@ -1208,14 +1785,12 @@ and minimum degree is $2$. An instance of the Standard Sliding token problem is 
     \label{fig:standard_sliding}
 \end{figure}
 
-
 We say that a token configuration $T$ of $G_s$ is \textit{standard} if each token triangle and token edge of $G_s$ contains exactly one token
 in $T$. Then, any move from a standard token configuration results in another standard token configuration since any token will never leave its
 token triangle or token edge, and will never slide along a link edge because the first time any token would slide to another triangle or edge,
 it would become adjacent to the token belonging to this triangle or edge. So tokens may never slide along a link edge. It is this latter
-observation that will allow us to prove the $\PSPACE$-hardness of the labelled variant while doing only a little modification
-in the original proof.
+observation that will allow us to prove the $\PSPACE$-hardness of the labelled variant.
 
-The sliding tokens problem remains $\PSPACE$-complete even if $G_s$ is such a restricted graph and both $T_0$ and $T_t$ are standard token
-configurations \cite{bonsma}. This restricted problem is called the Standard sliding tokens problem.
+The SLIDING TOKENS problem remains $\PSPACE$-complete even if $G_s$ is such a restricted graph and both $T_0$ and $T_t$ are standard token
+configurations \cite{bonsma}. This restricted problem is called the Standard SLIDING TOKENS problem.
 
